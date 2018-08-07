@@ -79,14 +79,17 @@
 
 
 
+<meta name="description" content="预编译 一、js运行三部曲1. 语法分析   2. 预编译  3. 解释执行二、预编译前奏1.imply global暗示全局变量：即任何变量，如果变量未经声明就赋值，此变量就为全局对象所有。  如 a = 10 , 则 window.a = 10;  如function test() {       var a  = b = 123;   }   test();    先将123赋给b，然后声明">
 <meta property="og:type" content="article">
 <meta property="og:title" content="test">
 <meta property="og:url" content="http://yoursite.com/2018/08/07/test/index.html">
-<meta property="og:site_name" content="顾智龙">
+<meta property="og:site_name" content="gzl的博客">
+<meta property="og:description" content="预编译 一、js运行三部曲1. 语法分析   2. 预编译  3. 解释执行二、预编译前奏1.imply global暗示全局变量：即任何变量，如果变量未经声明就赋值，此变量就为全局对象所有。  如 a = 10 , 则 window.a = 10;  如function test() {       var a  = b = 123;   }   test();    先将123赋给b，然后声明">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-08-07T10:55:46.450Z">
+<meta property="og:updated_time" content="2018-08-07T14:12:21.606Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="test">
+<meta name="twitter:description" content="预编译 一、js运行三部曲1. 语法分析   2. 预编译  3. 解释执行二、预编译前奏1.imply global暗示全局变量：即任何变量，如果变量未经声明就赋值，此变量就为全局对象所有。  如 a = 10 , 则 window.a = 10;  如function test() {       var a  = b = 123;   }   test();    先将123赋给b，然后声明">
 
 
 
@@ -122,7 +125,7 @@
 
 
 
-  <title>test | 顾智龙</title>
+  <title>test | gzl的博客</title>
   
 
 
@@ -152,7 +155,7 @@
     <div class="custom-logo-site-title">
       <a href="/"  class="brand" rel="start">
         <span class="logo-line-before"><i></i></span>
-        <span class="site-title">顾智龙</span>
+        <span class="site-title">gzl的博客</span>
         <span class="logo-line-after"><i></i></span>
       </a>
     </div>
@@ -258,7 +261,7 @@
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="顾智龙">
+      <meta itemprop="name" content="gzl的博客">
     </span>
 
     
@@ -316,7 +319,83 @@
       
 
       
-        
+        <p>预编译</p>
+<h3 id="一、js运行三部曲"><a href="#一、js运行三部曲" class="headerlink" title="一、js运行三部曲"></a>一、js运行三部曲</h3><h5 id="1-语法分析-2-预编译-3-解释执行"><a href="#1-语法分析-2-预编译-3-解释执行" class="headerlink" title="1. 语法分析   2. 预编译  3. 解释执行"></a>1. 语法分析   2. 预编译  3. 解释执行</h5><h3 id="二、预编译前奏"><a href="#二、预编译前奏" class="headerlink" title="二、预编译前奏"></a>二、预编译前奏</h3><h5 id="1-imply-global"><a href="#1-imply-global" class="headerlink" title="1.imply global"></a>1.imply global</h5><pre><code>暗示全局变量：即任何变量，如果变量未经声明就赋值，此变量就为全局对象所有。
+
+如 a = 10 , 则 window.a = 10;
+
+如function test() {
+      var a  = b = 123;
+  }
+  test();
+
+  先将123赋给b，然后声明a，然后将b赋给a;
+
+  console.log(b)   --&gt;   123;
+  console.log(a)   --&gt;   undefined
+</code></pre><h5 id="2-一切声明的全局变量，全是window的属性-如"><a href="#2-一切声明的全局变量，全是window的属性-如" class="headerlink" title="2.一切声明的全局变量，全是window的属性, 如"></a>2.一切声明的全局变量，全是window的属性, 如</h5><pre><code>   var a = 123,则window.a = 10;
+   console.log(a)  --&gt;  console.log(window.a)
+
+window就是全局的域 
+</code></pre><h3 id="三、预编译"><a href="#三、预编译" class="headerlink" title="三、预编译"></a>三、预编译</h3><pre><code>预编译发生在函数执行的前一刻
+
+局部（AO）
+
+1.创建AO对象  (Activation Object)(执行期上下文)
+
+2.找形参和变量声明，将变量和形参名作为AO属性名，值为undefined
+
+3.将实参值和形参统一
+
+4.在函数体里面找函数声明，值赋予函数体
+
+全局（GO）            window === GO
+
+1.生成了一个GO对象  Global Object
+
+2.找变量声明，将变量作为GO属性名，值为undefined
+
+4.在函数体里面找函数声明，值赋予函数体
+</code></pre><h6 id="例一：-局部"><a href="#例一：-局部" class="headerlink" title="例一：(局部)"></a>例一：(局部)</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">&lt;script type=&quot;text/javascript&quot;&gt;</span><br><span class="line">	function fn(a) &#123;</span><br><span class="line">		console.log(a);    //f a() &#123;&#125;</span><br><span class="line"></span><br><span class="line">		var a = 123;</span><br><span class="line"></span><br><span class="line">		console.log(a);    //123</span><br><span class="line"></span><br><span class="line">		function a() &#123;&#125;</span><br><span class="line"></span><br><span class="line">		console.log(a);    //123</span><br><span class="line"></span><br><span class="line">		var b = function () &#123;&#125;</span><br><span class="line"></span><br><span class="line">		console.log(b);    //f () &#123;&#125;</span><br><span class="line"></span><br><span class="line">		function d() &#123;&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	fn(1);</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+<pre><code>1.创建AO对象
+2.  AO{
+        a: undefined,
+        b: undefined,
+    }
+3.  AO{
+           a: 1,
+        b: undefined,
+     }
+4.  AO{
+        a: function a() {},
+        b: undefined,
+        d: function d() {}
+     }
+ 执行函数对a赋值
+ AO{
+        a: 123,
+        b: undefined,
+        d: function d() {}
+    }
+ 执行函数对b赋值
+  AO{
+        a: 123,
+        b: function () {},
+        d: function d() {}
+    }
+</code></pre><h6 id="例二：-全局"><a href="#例二：-全局" class="headerlink" title="例二：(全局)"></a>例二：(全局)</h6> <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&lt;script type=&quot;text/javascript&quot;&gt;		</span><br><span class="line">    console.log(a);   //f a() &#123;&#125;</span><br><span class="line">	var a = 123;</span><br><span class="line">	function a() &#123;&#125;</span><br><span class="line">	console.log(a);  //123</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+<pre><code>1.创建GO对象      
+2. GO{
+        a:undefined;
+    }
+4. GO{
+        a:function () {}   
+    }
+执行函数对a赋值
+   GO{
+        a:123
+    }
+</code></pre>
       
     </div>
     
@@ -400,8 +479,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -443,6 +531,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#一、js运行三部曲"><span class="nav-number">1.</span> <span class="nav-text">一、js运行三部曲</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#1-语法分析-2-预编译-3-解释执行"><span class="nav-number">1.0.1.</span> <span class="nav-text">1. 语法分析   2. 预编译  3. 解释执行</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#二、预编译前奏"><span class="nav-number">2.</span> <span class="nav-text">二、预编译前奏</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#1-imply-global"><span class="nav-number">2.0.1.</span> <span class="nav-text">1.imply global</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#2-一切声明的全局变量，全是window的属性-如"><span class="nav-number">2.0.2.</span> <span class="nav-text">2.一切声明的全局变量，全是window的属性, 如</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#三、预编译"><span class="nav-number">3.</span> <span class="nav-text">三、预编译</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#例一：-局部"><span class="nav-number">3.0.0.1.</span> <span class="nav-text">例一：(局部)</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#例二：-全局"><span class="nav-number">3.0.0.2.</span> <span class="nav-text">例二：(全局)</span></a></li></ol></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
