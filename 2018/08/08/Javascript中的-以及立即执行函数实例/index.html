@@ -79,18 +79,18 @@
 
 
 
-<meta name="description" content="一、”,”&amp;quot;,&amp;quot; 运算符会返回&amp;quot;()&amp;quot;中的最后一个，--&amp;gt; 你不知道的js 12345678910111213141516先看外面的括号(优先级高),然后返回,后面的值&amp;lt;script type=&quot;text/javascript&quot;&amp;gt;	var x = (1,2);  	console.log(x);   //   2		var f = (		f">
+<meta name="description" content="一、”,”运算符&amp;quot;,&amp;quot; 运算符会返回&amp;quot;()&amp;quot;中的最后一个，--&amp;gt; 你不知道的js 12345678910111213141516先看外面的括号(优先级高),然后返回,后面的值&amp;lt;script type=&quot;text/javascript&quot;&amp;gt;	var x = (1,2);  	console.log(x);   //   2		var f = (">
 <meta name="keywords" content="javascript">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Javascript中的, 以及立即执行函数实例">
 <meta property="og:url" content="http://yoursite.com/2018/08/08/Javascript中的-以及立即执行函数实例/index.html">
 <meta property="og:site_name" content="gzl的博客">
-<meta property="og:description" content="一、”,”&amp;quot;,&amp;quot; 运算符会返回&amp;quot;()&amp;quot;中的最后一个，--&amp;gt; 你不知道的js 12345678910111213141516先看外面的括号(优先级高),然后返回,后面的值&amp;lt;script type=&quot;text/javascript&quot;&amp;gt;	var x = (1,2);  	console.log(x);   //   2		var f = (		f">
+<meta property="og:description" content="一、”,”运算符&amp;quot;,&amp;quot; 运算符会返回&amp;quot;()&amp;quot;中的最后一个，--&amp;gt; 你不知道的js 12345678910111213141516先看外面的括号(优先级高),然后返回,后面的值&amp;lt;script type=&quot;text/javascript&quot;&amp;gt;	var x = (1,2);  	console.log(x);   //   2		var f = (">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-08-08T01:01:21.538Z">
+<meta property="og:updated_time" content="2018-08-08T01:06:23.448Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Javascript中的, 以及立即执行函数实例">
-<meta name="twitter:description" content="一、”,”&amp;quot;,&amp;quot; 运算符会返回&amp;quot;()&amp;quot;中的最后一个，--&amp;gt; 你不知道的js 12345678910111213141516先看外面的括号(优先级高),然后返回,后面的值&amp;lt;script type=&quot;text/javascript&quot;&amp;gt;	var x = (1,2);  	console.log(x);   //   2		var f = (		f">
+<meta name="twitter:description" content="一、”,”运算符&amp;quot;,&amp;quot; 运算符会返回&amp;quot;()&amp;quot;中的最后一个，--&amp;gt; 你不知道的js 12345678910111213141516先看外面的括号(优先级高),然后返回,后面的值&amp;lt;script type=&quot;text/javascript&quot;&amp;gt;	var x = (1,2);  	console.log(x);   //   2		var f = (">
 
 
 
@@ -320,7 +320,7 @@
       
 
       
-        <h3 id="一、”-”"><a href="#一、”-”" class="headerlink" title="一、”,”"></a>一、”,”</h3><pre><code>&quot;,&quot; 运算符会返回&quot;()&quot;中的最后一个，--&gt; 你不知道的js
+        <h3 id="一、”-”运算符"><a href="#一、”-”运算符" class="headerlink" title="一、”,”运算符"></a>一、”,”运算符</h3><pre><code>&quot;,&quot; 运算符会返回&quot;()&quot;中的最后一个，--&gt; 你不知道的js
 </code></pre><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">先看外面的括号(优先级高),然后返回,后面的值</span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">"text/javascript"</span>&gt;</span><span class="undefined"></span></span><br><span class="line"><span class="undefined">	var x = (1,2);  </span></span><br><span class="line"><span class="undefined">	console.log(x);   //   2</span></span><br><span class="line"><span class="undefined">	</span></span><br><span class="line"><span class="undefined">	var f = (</span></span><br><span class="line"><span class="undefined">		function f() &#123;</span></span><br><span class="line"><span class="undefined">			return "1";</span></span><br><span class="line"><span class="undefined">		&#125;,</span></span><br><span class="line"><span class="undefined">		function g() &#123;</span></span><br><span class="line"><span class="undefined">			return 2;</span></span><br><span class="line"><span class="undefined">		&#125;</span></span><br><span class="line"><span class="undefined">	)();  //f是函数g()执行后的返回值,所以f是2</span></span><br><span class="line"><span class="undefined"></span></span><br><span class="line"><span class="undefined">	console.log(typeof f); //   number</span></span><br><span class="line"><span class="xml"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="undefined"></span></span></span><br></pre></td></tr></table></figure>
 <h3 id="二、立即执行函数实例"><a href="#二、立即执行函数实例" class="headerlink" title="二、立即执行函数实例"></a>二、立即执行函数实例</h3><p><em>1.</em> 考查知识点<br><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">"text/javascript"</span>&gt;</span><span class="undefined"></span></span><br><span class="line"><span class="undefined">	var x = 1;</span></span><br><span class="line"><span class="undefined">	if (function f() &#123;&#125;) &#123;</span></span><br><span class="line"><span class="undefined">		x += typeof f;</span></span><br><span class="line"><span class="undefined">	&#125;</span></span><br><span class="line"><span class="undefined">	console.log(x);  //1undefined</span></span><br><span class="line"><span class="xml"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="undefined"></span></span></span><br><span class="line"><span class="undefined">f函数外加括号, 已经变成函数表达式, </span></span><br><span class="line"><span class="undefined">不再是函数声明, f已经成为undefined;</span></span><br></pre></td></tr></table></figure></p>
 <p><em>2.</em> compare<br><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">"text/javascript"</span>&gt;</span><span class="undefined"></span></span><br><span class="line"><span class="undefined">	2.1</span></span><br><span class="line"><span class="undefined">	function foo(x) &#123;</span></span><br><span class="line"><span class="undefined">		console.log(arguments);</span></span><br><span class="line"><span class="undefined">	&#125;()       </span></span><br><span class="line"><span class="undefined"></span></span><br><span class="line"><span class="undefined">	     报错语法错误,只有函数表达式才可以被执行</span></span><br><span class="line"><span class="undefined"></span></span><br><span class="line"><span class="undefined">	2.2</span></span><br><span class="line"><span class="undefined">	function foo(x) &#123;</span></span><br><span class="line"><span class="undefined">		console.log(arguments);</span></span><br><span class="line"><span class="undefined">	&#125;(1,2,3,4,5)</span></span><br><span class="line"><span class="undefined"></span></span><br><span class="line"><span class="undefined">	2.2的理解</span></span><br><span class="line"><span class="undefined">	function foo(x) &#123;</span></span><br><span class="line"><span class="undefined">		console.log(arguments);</span></span><br><span class="line"><span class="undefined">	&#125;          </span></span><br><span class="line"><span class="undefined"></span></span><br><span class="line"><span class="undefined">	(1,2,3,4,5)</span></span><br><span class="line"><span class="xml"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="undefined"></span></span></span><br><span class="line"><span class="undefined">可以理解为分家了      不执行也不报错</span></span><br></pre></td></tr></table></figure></p>
@@ -364,6 +364,10 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/08/08/关于原型/" rel="prev" title="关于原型">
+                关于原型 <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -440,7 +444,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">3</span>
+                  <span class="site-state-item-count">4</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -486,7 +490,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#一、”-”"><span class="nav-number">1.</span> <span class="nav-text">一、”,”</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#二、立即执行函数实例"><span class="nav-number">2.</span> <span class="nav-text">二、立即执行函数实例</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#一、”-”运算符"><span class="nav-number">1.</span> <span class="nav-text">一、”,”运算符</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#二、立即执行函数实例"><span class="nav-number">2.</span> <span class="nav-text">二、立即执行函数实例</span></a></li></ol></div>
             
 
           </div>
