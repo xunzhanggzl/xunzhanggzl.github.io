@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="javascript," />
 
 
 
@@ -79,17 +79,18 @@
 
 
 
-<meta name="description" content="一个矿大的小菜鸟">
-<meta property="og:type" content="website">
-<meta property="og:title" content="小菜鸟">
-<meta property="og:url" content="http://yoursite.com/about/index.html">
+<meta name="description" content="一、DOM基本操作1.getElementById方法定义在Document.prototype上，即Element节点上不能使用。  2.getElementsByName方法定义在HTMLDocument.prototype上，即非html中的document 不能使用(xml document,Element)  3.getElementsByTagName方法定义在Document.pro">
+<meta name="keywords" content="javascript">
+<meta property="og:type" content="article">
+<meta property="og:title" content="dom结构">
+<meta property="og:url" content="http://yoursite.com/2018/08/25/dom结构/index.html">
 <meta property="og:site_name" content="gzl的博客">
-<meta property="og:description" content="一个矿大的小菜鸟">
+<meta property="og:description" content="一、DOM基本操作1.getElementById方法定义在Document.prototype上，即Element节点上不能使用。  2.getElementsByName方法定义在HTMLDocument.prototype上，即非html中的document 不能使用(xml document,Element)  3.getElementsByTagName方法定义在Document.pro">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-08-08T00:14:37.625Z">
+<meta property="og:updated_time" content="2018-08-25T04:07:21.082Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="小菜鸟">
-<meta name="twitter:description" content="一个矿大的小菜鸟">
+<meta name="twitter:title" content="dom结构">
+<meta name="twitter:description" content="一、DOM基本操作1.getElementById方法定义在Document.prototype上，即Element节点上不能使用。  2.getElementsByName方法定义在HTMLDocument.prototype上，即非html中的document 不能使用(xml document,Element)  3.getElementsByTagName方法定义在Document.pro">
 
 
 
@@ -119,13 +120,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/about/"/>
+  <link rel="canonical" href="http://yoursite.com/2018/08/25/dom结构/"/>
 
 
 
 
 
-  <title>小菜鸟 | gzl的博客</title>
+  <title>dom结构 | gzl的博客</title>
   
 
 
@@ -240,33 +241,168 @@
 
   <div id="posts" class="posts-expand">
     
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/08/25/dom结构/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="gzl">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="gzl的博客">
+    </span>
+
     
-    
-    <div class="post-block page">
       <header class="post-header">
 
-	<h1 class="post-title" itemprop="name headline">小菜鸟</h1>
-
-
-
-</header>
-
-      
-      
-      
-      <div class="post-body">
         
         
-          <h2 id="一个矿大的小菜鸟"><a href="#一个矿大的小菜鸟" class="headerlink" title="一个矿大的小菜鸟"></a>一个矿大的小菜鸟</h2>
+          <h1 class="post-title" itemprop="name headline">dom结构</h1>
         
-      </div>
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-08-25T11:08:33+08:00">
+                2018-08-25
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
       
       
+
+      
+        <h3 id="一、DOM基本操作"><a href="#一、DOM基本操作" class="headerlink" title="一、DOM基本操作"></a>一、DOM基本操作</h3><pre><code>1.getElementById方法定义在Document.prototype上，即Element节点上不能使用。
+
+2.getElementsByName方法定义在HTMLDocument.prototype上，即非html中的document
+不能使用(xml document,Element)
+
+3.getElementsByTagName方法定义在Document.prototype和Element.prototype上
+
+4.HTMLDocument.prototype定义了一些常用属性，body,head分别指代HTML文档中的&lt;body&gt;和
+&lt;head&gt;标签
+
+5.Document.prototype上定义了documentElement属性，指代文档的根元素，在HTML文档中，
+他总是指代&lt;html&gt;元素
+
+6.getElementsByClassName,querySelectorAll,querySelector在Document.prototype,
+Element.prototype类中均有定义
+</code></pre><h3 id="二、DOM结构树"><a href="#二、DOM结构树" class="headerlink" title="二、DOM结构树"></a>二、DOM结构树</h3><pre><code>            1.Document        HTMLDocument
+
+                              1)Text
+            2.Character
+                              2)Comment
+Node
+            3.Element         HTMLElement
+
+
+            4.Attr            
+</code></pre>
       
     </div>
     
     
     
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/javascript/" rel="tag"># javascript</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/08/08/this与数组与深度克隆/" rel="next" title="this与数组与深度克隆">
+                <i class="fa fa-chevron-left"></i> this与数组与深度克隆
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
   </div>
 
 
@@ -370,7 +506,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#一个矿大的小菜鸟"><span class="nav-number">1.</span> <span class="nav-text">一个矿大的小菜鸟</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#一、DOM基本操作"><span class="nav-number">1.</span> <span class="nav-text">一、DOM基本操作</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#二、DOM结构树"><span class="nav-number">2.</span> <span class="nav-text">二、DOM结构树</span></a></li></ol></div>
             
 
           </div>
