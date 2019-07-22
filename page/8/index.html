@@ -326,6 +326,162 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/08/08/关于原型/"/>
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="gzl"/>
+      <meta itemprop="description" content=""/>
+      <meta itemprop="image" content="/images/avatar.gif"/>
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="gzl的博客"/>
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/2018/08/08/关于原型/" class="post-title-link" itemprop="url">关于原型</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+
+          
+          
+          
+
+          
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2018-08-08 09:42:47 / 修改时间：10:54:26" itemprop="dateCreated datePublished" datetime="2018-08-08T09:42:47+08:00">2018-08-08</time>
+            </span>
+          
+
+          
+            
+
+            
+          
+
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+
+          <br/>
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h3 id="一、实例"><a href="#一、实例" class="headerlink" title="一、实例"></a>一、实例</h3><h4 id="1-new-Person-在前"><a href="#1-new-Person-在前" class="headerlink" title="1. new Person()在前"></a>1. new Person()在前</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">Person.prototype.name = <span class="string">'sunny'</span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Person</span>(<span class="params"></span>) </span>&#123;&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> person = <span class="keyword">new</span> Person();</span><br><span class="line"></span><br><span class="line">Person.prototype.name = <span class="string">'cherry'</span>;</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(person.name);  <span class="comment">//cherry</span></span><br></pre></td></tr></table></figure>
+<h4 id="2-new-Person-在后"><a href="#2-new-Person-在后" class="headerlink" title="2. new Person()在后"></a>2. new Person()在后</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">Person.prototype.name = <span class="string">'sunny'</span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Person</span>(<span class="params"></span>) </span>&#123;&#125;</span><br><span class="line"></span><br><span class="line">Person.prototype.name = <span class="string">'cherry'</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> person = <span class="keyword">new</span> Person();</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(person.name);   <span class="comment">//cherry</span></span><br></pre></td></tr></table></figure>
+<h4 id="3-改变写法"><a href="#3-改变写法" class="headerlink" title="3. 改变写法"></a>3. 改变写法</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">Person.prototype.name = <span class="string">'sunny'</span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Person</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">	<span class="comment">//var this = &#123;__proto__ : Person.prototype&#125;</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> person = <span class="keyword">new</span> Person();</span><br><span class="line"></span><br><span class="line">Person.prototype = &#123;</span><br><span class="line">	name : <span class="string">'cherry'</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(person.name);  <span class="comment">//sunny</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">这样理解</span><br><span class="line"><span class="keyword">var</span> obj = &#123;<span class="attr">name</span> : <span class="string">"a"</span>&#125;;</span><br><span class="line"><span class="keyword">var</span> obj1 = obj;</span><br><span class="line">obj = &#123;<span class="attr">name</span> : <span class="string">"b"</span>&#125;;</span><br><span class="line"></span><br><span class="line">Person.prototype = &#123;<span class="attr">name</span> : <span class="string">"a"</span>&#125;;</span><br><span class="line">__proto__ = Person.prototype;</span><br><span class="line">Person.prototype = &#123;<span class="attr">name</span> : <span class="string">"b"</span>&#125;;</span><br></pre></td></tr></table></figure>
+<h4 id="4-new-Person最后执行"><a href="#4-new-Person最后执行" class="headerlink" title="4. new Person最后执行"></a>4. new Person最后执行</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">Person.prototype.name = <span class="string">'sunny'</span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Person</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">	<span class="comment">// var this = &#123;__proto__ : Person.prototype&#125;</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">Person.prototype = &#123;</span><br><span class="line">	name : <span class="string">'cherry'</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> person = <span class="keyword">new</span> Person();</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(person.name);   <span class="comment">//cherry</span></span><br></pre></td></tr></table></figure>
+<h3 id="二、隐式添加"><a href="#二、隐式添加" class="headerlink" title="二、隐式添加"></a>二、隐式添加</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">Person.prototype.name = <span class="string">'abc'</span>;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Person</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">	<span class="comment">// var this = Object.create(Person.prototype);</span></span><br><span class="line">	<span class="comment">// var this = &#123;</span></span><br><span class="line">	<span class="comment">// 	__proto__ : Person.prototype</span></span><br><span class="line">	<span class="comment">// &#125;</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> person = <span class="keyword">new</span> Person();</span><br></pre></td></tr></table></figure>
+<h3 id="三、继承"><a href="#三、继承" class="headerlink" title="三、继承"></a>三、继承</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 继承  </span></span><br><span class="line"></span><br><span class="line"><span class="comment">//1.圣杯模式</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">inherit</span>(<span class="params">Target, Origin</span>) </span>&#123;</span><br><span class="line">	<span class="function"><span class="keyword">function</span> <span class="title">F</span>(<span class="params"></span>) </span>&#123;&#125;</span><br><span class="line">	F.prototype = Origin.prototype;</span><br><span class="line">	Target.prototype = <span class="keyword">new</span> F();</span><br><span class="line">	Target.prototype.constructor = Target;</span><br><span class="line">	Target.prototype.uber = Origin.prototype;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 2.雅虎写法  闭包</span></span><br><span class="line"><span class="keyword">var</span> inherit = (<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">	<span class="keyword">var</span> F = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;&#125;</span><br><span class="line">	<span class="keyword">return</span> <span class="function"><span class="keyword">function</span> (<span class="params">Target, Origin</span>) </span>&#123;</span><br><span class="line">		F.prototype = Origin.prototype;</span><br><span class="line">		Target.prototype = <span class="keyword">new</span> F();</span><br><span class="line">		Target.prototype.constructor = Target;</span><br><span class="line">		Target.prototype.uber = Origin.prototype;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;());</span><br><span class="line"></span><br><span class="line">Father.prototype.lastName = <span class="string">"G"</span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Father</span>(<span class="params"></span>) </span>&#123;&#125;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Son</span>(<span class="params"></span>) </span>&#123;&#125;</span><br><span class="line"></span><br><span class="line">inherit(Son, Father);</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> son = <span class="keyword">new</span> Son();</span><br><span class="line"><span class="keyword">var</span> father = <span class="keyword">new</span> Father();</span><br></pre></td></tr></table></figure>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/08/08/Javascript中的-以及立即执行函数实例/"/>
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -652,247 +808,11 @@ var num = (function (a,b,c) {
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/08/07/预编译/"/>
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="gzl"/>
-      <meta itemprop="description" content=""/>
-      <meta itemprop="image" content="/images/avatar.gif"/>
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="gzl的博客"/>
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/2018/08/07/预编译/" class="post-title-link" itemprop="url">预编译</a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-
-          
-          
-          
-
-          
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-
-              
-                
-              
-
-              <time title="创建时间：2018-08-07 18:55:46" itemprop="dateCreated datePublished" datetime="2018-08-07T18:55:46+08:00">2018-08-07</time>
-            </span>
-          
-
-          
-            
-
-            
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">更新于</span>
-                
-                <time title="修改时间：2019-07-18 16:22:19" itemprop="dateModified" datetime="2019-07-18T16:22:19+08:00">2019-07-18</time>
-              </span>
-            
-          
-
-          
-
-          
-            
-            
-          
-
-          
-          
-
-          
-
-          
-
-          <br/>
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h3 id="一、js运行三部曲"><a href="#一、js运行三部曲" class="headerlink" title="一、js运行三部曲"></a>一、js运行三部曲</h3><pre><code>1. 语法分析   2. 预编译   3. 解释执行
-</code></pre><h3 id="二、预编译前奏"><a href="#二、预编译前奏" class="headerlink" title="二、预编译前奏"></a>二、预编译前奏</h3><h4 id="1-imply-global"><a href="#1-imply-global" class="headerlink" title="1.imply global"></a>1.imply global</h4><pre><code>暗示全局变量：即任何变量，如果变量未经声明就赋值，此变量就为全局对象所有。
-
-如 a = 10 , 则 window.a = 10;
-
-如function test() {var a  = b = 123;}
-
-test();
-
-先将123赋给b，然后声明a，然后将b赋给a;
-
-console.log(b)   --&gt;   123;
-
-console.log(a)   --&gt;   undefined
-</code></pre><h4 id="2-一切声明的全局变量，全是window的属性"><a href="#2-一切声明的全局变量，全是window的属性" class="headerlink" title="2.一切声明的全局变量，全是window的属性"></a>2.一切声明的全局变量，全是window的属性</h4><pre><code>如var a = 123,则window.a = 10;
-
-console.log(a)  --&gt;  console.log(window.a)
-
-window就是全局的域 
-</code></pre><h3 id="三、预编译"><a href="#三、预编译" class="headerlink" title="三、预编译"></a>三、预编译</h3><pre><code>预编译发生在函数执行的前一刻
-
-局部（AO）
-
-1.创建AO对象  (Activation Object)(执行期上下文)
-
-2.找形参和变量声明，将变量和形参名作为AO属性名，值为undefined
-
-3.将实参值和形参统一
-
-4.在函数体里面找函数声明，值赋予函数体
-
-全局（GO）            window === GO
-
-1.生成了一个GO对象  Global Object
-
-2.找变量声明，将变量作为GO属性名，值为undefined
-
-4.在函数体里面找函数声明，值赋予函数体
-</code></pre><h4 id="例一：-局部"><a href="#例一：-局部" class="headerlink" title="例一：(局部)"></a>例一：(局部)</h4><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">"text/javascript"</span>&gt;</span><span class="undefined"></span></span><br><span class="line"><span class="javascript">    <span class="function"><span class="keyword">function</span> <span class="title">fn</span>(<span class="params">a</span>) </span>&#123;</span></span><br><span class="line"><span class="javascript">        <span class="built_in">console</span>.log(a);    <span class="comment">//f a() &#123;&#125;</span></span></span><br><span class="line"><span class="undefined"></span></span><br><span class="line"><span class="javascript">        <span class="keyword">var</span> a = <span class="number">123</span>;</span></span><br><span class="line"><span class="undefined"></span></span><br><span class="line"><span class="javascript">        <span class="built_in">console</span>.log(a);    <span class="comment">//123</span></span></span><br><span class="line"><span class="undefined"></span></span><br><span class="line"><span class="javascript">        <span class="function"><span class="keyword">function</span> <span class="title">a</span>(<span class="params"></span>) </span>&#123;&#125;</span></span><br><span class="line"><span class="undefined"></span></span><br><span class="line"><span class="javascript">        <span class="built_in">console</span>.log(a);    <span class="comment">//123</span></span></span><br><span class="line"><span class="undefined"></span></span><br><span class="line"><span class="javascript">        <span class="keyword">var</span> b = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;&#125;</span></span><br><span class="line"><span class="undefined"></span></span><br><span class="line"><span class="javascript">        <span class="built_in">console</span>.log(b);    <span class="comment">//f () &#123;&#125;</span></span></span><br><span class="line"><span class="undefined"></span></span><br><span class="line"><span class="javascript">        <span class="function"><span class="keyword">function</span> <span class="title">d</span>(<span class="params"></span>) </span>&#123;&#125;</span></span><br><span class="line"><span class="undefined">    &#125;</span></span><br><span class="line"><span class="undefined">    fn(1);</span></span><br><span class="line"><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
-<pre><code>1.创建AO对象
-2.  AO{
-        a: undefined,
-        b: undefined,
-    }
-3.  AO{
-           a: 1,
-        b: undefined,
-     }
-4.  AO{
-        a: function a() {},
-        b: undefined,
-        d: function d() {}
-     }
- 执行函数对a赋值
-   AO{
-        a: 123,
-        b: undefined,
-        d: function d() {}
-    }
- 执行函数对b赋值
-   AO{
-        a: 123,
-        b: function () {},
-        d: function d() {}
-    }
-</code></pre><h4 id="例二：-全局"><a href="#例二：-全局" class="headerlink" title="例二：(全局)"></a>例二：(全局)</h4><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">"text/javascript"</span>&gt;</span><span class="undefined"></span></span><br><span class="line"><span class="javascript">    <span class="built_in">console</span>.log(a);   <span class="comment">//f a() &#123;&#125;</span></span></span><br><span class="line"><span class="javascript">    <span class="keyword">var</span> a = <span class="number">123</span>;</span></span><br><span class="line"><span class="javascript">    <span class="function"><span class="keyword">function</span> <span class="title">a</span>(<span class="params"></span>) </span>&#123;&#125;</span></span><br><span class="line"><span class="javascript">    <span class="built_in">console</span>.log(a);  <span class="comment">//123</span></span></span><br><span class="line"><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
-<pre><code>1.创建GO对象      
-2. GO{
-        a:undefined;
-    }
-4. GO{
-        a:function () {}   
-    }
-   执行函数对a赋值
-   GO{
-        a:123
-    }
-</code></pre><h4 id="例三"><a href="#例三" class="headerlink" title="例三(+)"></a>例三(+)</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">test</span>(<span class="params">c</span>) </span>&#123;</span><br><span class="line">    <span class="comment">// var this = Object.create(test.prototype);</span></span><br><span class="line">    <span class="comment">// var this = &#123;</span></span><br><span class="line">    <span class="comment">// 	__proto__ : test.prototype</span></span><br><span class="line">    <span class="comment">// &#125;</span></span><br><span class="line">    <span class="keyword">var</span> a = <span class="number">123</span>;</span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">b</span>(<span class="params"></span>) </span>&#123;&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">AO&#123;</span><br><span class="line">    <span class="built_in">arguments</span> : [<span class="number">1</span>];</span><br><span class="line">    <span class="keyword">this</span> : <span class="built_in">window</span>,</span><br><span class="line">        c : <span class="number">1</span>,</span><br><span class="line">            a : <span class="literal">undefined</span>,</span><br><span class="line">                b : <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-          
-        
-      
-    </div>
-
-    
-
-    
-
-    
-    
-    
-
-    
-
-    
-      
-    
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/7/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/7/">7</a><span class="page-number current">8</span>
+    <a class="extend prev" rel="prev" href="/page/7/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/7/">7</a><span class="page-number current">8</span><a class="page-number" href="/page/9/">9</a><a class="extend next" rel="next" href="/page/9/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
   </nav>
 
 
@@ -935,7 +855,7 @@ window就是全局的域
         
           <a href="/archives/">
         
-          <span class="site-state-item-count">24</span>
+          <span class="site-state-item-count">25</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -1005,7 +925,9 @@ window就是全局的域
         
           
         
-        <span class="site-state-item-count">14</span>
+          
+        
+        <span class="site-state-item-count">15</span>
         <span class="site-state-item-name">标签</span>
         </a>
       </div>
