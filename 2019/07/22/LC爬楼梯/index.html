@@ -93,18 +93,18 @@
   };
 </script>
 
-  <meta name="description" content="markdown简单语法学习上面为效果，下面为写法  超链接写法翔工作室博客gzl’s blog郭霖123[翔工作室博客](http://blog.flyingstudio.online) [gzl’s blog](https://xunzhanggzl.github.io/)[郭霖](https://blog.csdn.net/guolin_blog) 在文中突出字体(粗体、斜体、块状)是的，小">
-<meta name="keywords" content="markdown基础">
+  <meta name="description" content="爬楼梯 递归自上而下的递归，n 变大以后会超出时间限制 12345678910111213/** * @param &amp;#123;number&amp;#125; n * @return &amp;#123;number&amp;#125; */var climbStairs = function (n) &amp;#123;    if (n === 1) &amp;#123;        return 1;    &amp;#125;">
+<meta name="keywords" content="递归,备忘录,哈希表,动态规划">
 <meta property="og:type" content="article">
-<meta property="og:title" content="markdown基础">
-<meta property="og:url" content="http://yoursite.com/2018/09/28/markdown基础/index.html">
+<meta property="og:title" content="爬楼梯">
+<meta property="og:url" content="http://yoursite.com/2019/07/22/LC爬楼梯/index.html">
 <meta property="og:site_name" content="gzl的博客">
-<meta property="og:description" content="markdown简单语法学习上面为效果，下面为写法  超链接写法翔工作室博客gzl’s blog郭霖123[翔工作室博客](http://blog.flyingstudio.online) [gzl’s blog](https://xunzhanggzl.github.io/)[郭霖](https://blog.csdn.net/guolin_blog) 在文中突出字体(粗体、斜体、块状)是的，小">
+<meta property="og:description" content="爬楼梯 递归自上而下的递归，n 变大以后会超出时间限制 12345678910111213/** * @param &amp;#123;number&amp;#125; n * @return &amp;#123;number&amp;#125; */var climbStairs = function (n) &amp;#123;    if (n === 1) &amp;#123;        return 1;    &amp;#125;">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-07-19T05:28:28.763Z">
+<meta property="og:updated_time" content="2019-07-22T02:18:25.010Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="markdown基础">
-<meta name="twitter:description" content="markdown简单语法学习上面为效果，下面为写法  超链接写法翔工作室博客gzl’s blog郭霖123[翔工作室博客](http://blog.flyingstudio.online) [gzl’s blog](https://xunzhanggzl.github.io/)[郭霖](https://blog.csdn.net/guolin_blog) 在文中突出字体(粗体、斜体、块状)是的，小">
+<meta name="twitter:title" content="爬楼梯">
+<meta name="twitter:description" content="爬楼梯 递归自上而下的递归，n 变大以后会超出时间限制 12345678910111213/** * @param &amp;#123;number&amp;#125; n * @return &amp;#123;number&amp;#125; */var climbStairs = function (n) &amp;#123;    if (n === 1) &amp;#123;        return 1;    &amp;#125;">
 
 
 
@@ -112,7 +112,7 @@
 
   
   
-  <link rel="canonical" href="http://yoursite.com/2018/09/28/markdown基础/"/>
+  <link rel="canonical" href="http://yoursite.com/2019/07/22/LC爬楼梯/"/>
 
 
 
@@ -123,7 +123,7 @@
 </script>
 
   
-  <title>markdown基础 | gzl的博客</title>
+  <title>爬楼梯 | gzl的博客</title>
   
 
 
@@ -330,7 +330,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/09/28/markdown基础/"/>
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/07/22/LC爬楼梯/"/>
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="gzl"/>
@@ -347,7 +347,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">markdown基础
+          <h1 class="post-title" itemprop="name headline">爬楼梯
 
               
             
@@ -373,23 +373,13 @@
                 
               
 
-              <time title="创建时间：2018-09-28 14:37:53" itemprop="dateCreated datePublished" datetime="2018-09-28T14:37:53+08:00">2018-09-28</time>
+              <time title="创建时间：2019-07-22 10:07:37 / 修改时间：10:18:25" itemprop="dateCreated datePublished" datetime="2019-07-22T10:07:37+08:00">2019-07-22</time>
             </span>
           
 
           
             
 
-            
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">更新于</span>
-                
-                <time title="修改时间：2019-07-19 13:28:28" itemprop="dateModified" datetime="2019-07-19T13:28:28+08:00">2019-07-19</time>
-              </span>
             
           
 
@@ -402,7 +392,7 @@
                 <span class="post-meta-item-text">分类于</span>
               
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/markdown/" itemprop="url" rel="index"><span itemprop="name">markdown</span></a></span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/LeetCode/" itemprop="url" rel="index"><span itemprop="name">LeetCode</span></a></span>
 
                 
                 
@@ -442,57 +432,13 @@
       
 
       
-        <h3 id="markdown简单语法学习"><a href="#markdown简单语法学习" class="headerlink" title="markdown简单语法学习"></a>markdown简单语法学习</h3><font face="微软雅黑" color="blue" style="background-color: #f7f7f7">上面为效果，下面为写法</font>
-
-<h4 id="超链接写法"><a href="#超链接写法" class="headerlink" title="超链接写法"></a>超链接写法</h4><p><em><a href="http://blog.flyingstudio.online" target="_blank" rel="noopener">翔工作室博客</a></em><br><em><a href="https://xunzhanggzl.github.io/" target="_blank" rel="noopener">gzl’s blog</a></em><br><em><a href="https://blog.csdn.net/guolin_blog" target="_blank" rel="noopener">郭霖</a></em><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[翔工作室博客](http://blog.flyingstudio.online) </span><br><span class="line">[gzl’s blog](https://xunzhanggzl.github.io/)</span><br><span class="line">[郭霖](https://blog.csdn.net/guolin_blog)</span><br></pre></td></tr></table></figure></p>
-<h4 id="在文中突出字体-粗体、斜体、块状"><a href="#在文中突出字体-粗体、斜体、块状" class="headerlink" title="在文中突出字体(粗体、斜体、块状)"></a>在文中突出字体(粗体、斜体、块状)</h4><p>是的，小时候，我们常常把<strong>“亲戚”</strong>看得多么美好和重要。一旦<code>长大成人</code>，开始独立生活，我们便很快知道，亲戚关系常常是<strong>庸俗的</strong>；互相设法沾光，沾不上光就<code>翻白眼</code>；甚至你生活中<strong>最大的困难</strong>也常常是亲戚们造成的；<em>生活同样会告诉你，亲戚往往不如<strong>朋友</strong>对你真诚。</em><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">是的，小时候，我们常常把**“亲戚”**看得多么美好和重要。一旦`长大成人`，</span><br><span class="line">开始独立生活，我们便很快知道，亲戚关系常常是**庸俗的**；互相设法沾光，</span><br><span class="line">沾不上光就`翻白眼`；甚至你生活中**最大的困难**也常常是亲戚们造成的；</span><br><span class="line">*生活同样会告诉你，亲戚往往不如**朋友**对你真诚。*</span><br></pre></td></tr></table></figure></p>
-<h4 id="分割线"><a href="#分割线" class="headerlink" title="分割线"></a>分割线</h4><hr>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">----------</span><br></pre></td></tr></table></figure>
-<h4 id="引用"><a href="#引用" class="headerlink" title="引用"></a>引用</h4><blockquote>
-<p>一个平平常常的日子，细蒙蒙的雨丝夹着一星半点的雪花，正纷纷淋淋地向大地飘洒着。时令已快到惊蛰，雪当然再也不会存留，往往还没等落地，就已经消失得无影无踪了。黄土高原严寒而漫长的冬天看来就要过去，但那真正温暖的春天还远远地没有到来。</p>
-</blockquote>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&gt; 一个平平常常的日子，细蒙蒙的雨丝夹着一星半点的雪花，</span><br><span class="line">正纷纷淋淋地向大地飘洒着。时令已快到惊蛰，雪当然再也不会存留，</span><br><span class="line">往往还没等落地，就已经消失得无影无踪了。黄土高原严寒而漫长的</span><br><span class="line">冬天看来就要过去，但那真正温暖的春天还远远地没有到来。</span><br></pre></td></tr></table></figure>
-<h4 id="列表"><a href="#列表" class="headerlink" title="列表"></a>列表</h4><p>有序列表</p>
-<ol>
-<li>我有一个梦想</li>
-<li>我有一个梦想</li>
-<li>我有一个梦想<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">1. 我有一个梦想</span><br><span class="line">2. 我有一个梦想</span><br><span class="line">3. 我有一个梦想</span><br></pre></td></tr></table></figure>
-</li>
-</ol>
-<p>无序列表</p>
-<ul>
-<li>我有一个梦想</li>
-<li>我有一个梦想</li>
-<li>我有一个梦想<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">- 我有一个梦想</span><br><span class="line">+ 我有一个梦想</span><br><span class="line">* 我有一个梦想</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-<h4 id="表格"><a href="#表格" class="headerlink" title="表格"></a>表格</h4><table>
-<thead>
-<tr>
-<th style="text-align:left">language</th>
-<th style="text-align:center">learn</th>
-<th style="text-align:right">Time</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:left">Javascript</td>
-<td style="text-align:center">first</td>
-<td style="text-align:right">10</td>
-</tr>
-<tr>
-<td style="text-align:left">python</td>
-<td style="text-align:center">second</td>
-<td style="text-align:right">20</td>
-</tr>
-<tr>
-<td style="text-align:left">Java</td>
-<td style="text-align:center">third</td>
-<td style="text-align:right">30</td>
-</tr>
-</tbody>
-</table>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">| language  | learn  | Time|</span><br><span class="line">| :-        | :-:    | -:  |</span><br><span class="line">| Javascript| first  | 10  |</span><br><span class="line">| python    | second | 20  |</span><br><span class="line">| Java      | third  | 30  |</span><br><span class="line"></span><br><span class="line">:- 表示左对齐</span><br><span class="line">:-:表示居中对齐</span><br><span class="line">-: 表示右对齐</span><br></pre></td></tr></table></figure>
+        <p><a href="https://leetcode-cn.com/problems/climbing-stairs/" target="_blank" rel="noopener">爬楼梯</a></p>
+<h1 id="递归"><a href="#递归" class="headerlink" title="递归"></a>递归</h1><p>自上而下的递归，n 变大以后会超出时间限制</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * @param &#123;number&#125; n</span></span><br><span class="line"><span class="comment"> * @return &#123;number&#125;</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">var</span> climbStairs = <span class="function"><span class="keyword">function</span> (<span class="params">n</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (n === <span class="number">1</span>) &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span> (n === <span class="number">2</span>) &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">2</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> climbStairs(n<span class="number">-1</span>) + climbStairs(n<span class="number">-2</span>);</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<h1 id="备忘录哈希表"><a href="#备忘录哈希表" class="headerlink" title="备忘录哈希表"></a>备忘录哈希表</h1><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * @param &#123;number&#125; n</span></span><br><span class="line"><span class="comment"> * @return &#123;number&#125;</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">var</span> climbStairs = <span class="function"><span class="keyword">function</span> (<span class="params">n</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">let</span> map = [<span class="number">1</span>, <span class="number">2</span>];</span><br><span class="line">    <span class="keyword">if</span> (n === <span class="number">1</span> || n === <span class="number">2</span>) &#123;</span><br><span class="line">        <span class="keyword">return</span> map[n<span class="number">-1</span>];</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">let</span> i = <span class="number">2</span>; i &lt; n; i ++) &#123;</span><br><span class="line">        map[i] = map[i<span class="number">-1</span>] + map[i<span class="number">-2</span>];</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> map[n<span class="number">-1</span>];</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<h1 id="动态规划"><a href="#动态规划" class="headerlink" title="动态规划"></a>动态规划</h1><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment">* @param &#123;number&#125; n</span></span><br><span class="line"><span class="comment">* @return &#123;number&#125;</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"><span class="keyword">var</span> climbStairs = <span class="function"><span class="keyword">function</span> (<span class="params">n</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">let</span> a = <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">let</span> b = <span class="number">2</span>;</span><br><span class="line">    <span class="keyword">if</span> (n === <span class="number">1</span> || n === <span class="number">2</span>) &#123;</span><br><span class="line">        <span class="keyword">return</span> n;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">let</span> i = <span class="number">2</span>; i &lt; n; i ++) &#123;</span><br><span class="line">        [a, b] = [b, a + b];</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> b;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p><strong>参考</strong></p>
+<p><a href="https://juejin.im/post/5a29d52cf265da43333e4da7" target="_blank" rel="noopener">漫画：什么是动态规划？</a></p>
 
       
     </div>
@@ -523,7 +469,13 @@
         
         <div class="post-tags">
           
-            <a href="/tags/markdown基础/" rel="tag"># markdown基础</a>
+            <a href="/tags/递归/" rel="tag"># 递归</a>
+          
+            <a href="/tags/备忘录/" rel="tag"># 备忘录</a>
+          
+            <a href="/tags/哈希表/" rel="tag"># 哈希表</a>
+          
+            <a href="/tags/动态规划/" rel="tag"># 动态规划</a>
           
         </div>
       
@@ -536,8 +488,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/09/27/python-spiderlearning3/" rel="next" title="python Re库入门与实战">
-                <i class="fa fa-chevron-left"></i> python Re库入门与实战
+              <a href="/2019/07/22/LC对称二叉树/" rel="next" title="对称二叉树">
+                <i class="fa fa-chevron-left"></i> 对称二叉树
               </a>
             
           </div>
@@ -545,10 +497,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2018/10/14/算法javascript/" rel="prev" title="算法javascript">
-                算法javascript <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -735,7 +683,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#markdown简单语法学习"><span class="nav-number">1.</span> <span class="nav-text">markdown简单语法学习</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#超链接写法"><span class="nav-number">1.1.</span> <span class="nav-text">超链接写法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#在文中突出字体-粗体、斜体、块状"><span class="nav-number">1.2.</span> <span class="nav-text">在文中突出字体(粗体、斜体、块状)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#分割线"><span class="nav-number">1.3.</span> <span class="nav-text">分割线</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#引用"><span class="nav-number">1.4.</span> <span class="nav-text">引用</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#列表"><span class="nav-number">1.5.</span> <span class="nav-text">列表</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#表格"><span class="nav-number">1.6.</span> <span class="nav-text">表格</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#递归"><span class="nav-number">1.</span> <span class="nav-text">递归</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#备忘录哈希表"><span class="nav-number">2.</span> <span class="nav-text">备忘录哈希表</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#动态规划"><span class="nav-number">3.</span> <span class="nav-text">动态规划</span></a></li></ol></div>
             
 
           </div>
