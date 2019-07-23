@@ -93,18 +93,13 @@
   };
 </script>
 
-  <meta name="description" content="一、js运行三部曲1. 语法分析   2. 预编译   3. 解释执行 二、预编译前奏1.imply global暗示全局变量：即任何变量，如果变量未经声明就赋值，此变量就为全局对象所有。  如 a = 10 , 则 window.a = 10;  如function test() {var a  = b = 123;}  test();  先将123赋给b，然后声明a，然后将b赋给a;  con">
-<meta name="keywords" content="javascript">
-<meta property="og:type" content="article">
-<meta property="og:title" content="预编译">
-<meta property="og:url" content="http://yoursite.com/2018/08/07/预编译/index.html">
+  <meta property="og:type" content="website">
+<meta property="og:title" content="gzl的博客">
+<meta property="og:url" content="http://yoursite.com/page/10/index.html">
 <meta property="og:site_name" content="gzl的博客">
-<meta property="og:description" content="一、js运行三部曲1. 语法分析   2. 预编译   3. 解释执行 二、预编译前奏1.imply global暗示全局变量：即任何变量，如果变量未经声明就赋值，此变量就为全局对象所有。  如 a = 10 , 则 window.a = 10;  如function test() {var a  = b = 123;}  test();  先将123赋给b，然后声明a，然后将b赋给a;  con">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-07-18T08:22:19.872Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="预编译">
-<meta name="twitter:description" content="一、js运行三部曲1. 语法分析   2. 预编译   3. 解释执行 二、预编译前奏1.imply global暗示全局变量：即任何变量，如果变量未经声明就赋值，此变量就为全局对象所有。  如 a = 10 , 则 window.a = 10;  如function test() {var a  = b = 123;}  test();  先将123赋给b，然后声明a，然后将b赋给a;  con">
+<meta name="twitter:title" content="gzl的博客">
 
 
 
@@ -112,7 +107,7 @@
 
   
   
-  <link rel="canonical" href="http://yoursite.com/2018/08/07/预编译/"/>
+  <link rel="canonical" href="http://yoursite.com/page/10/"/>
 
 
 
@@ -123,7 +118,7 @@
 </script>
 
   
-  <title>预编译 | gzl的博客</title>
+  <title>gzl的博客</title>
   
 
 
@@ -171,7 +166,8 @@
     
   
 
-  <div class="container sidebar-position-left page-post-detail">
+  <div class="container sidebar-position-left 
+  page-home">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -313,9 +309,9 @@
           
           <div id="content" class="content">
             
-
-  <div id="posts" class="posts-expand">
+  <section id="posts" class="posts-expand">
     
+      
 
   
 
@@ -347,8 +343,10 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">预编译
-
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/2018/08/07/预编译/" class="post-title-link" itemprop="url">预编译</a>
               
             
           </h1>
@@ -427,7 +425,9 @@
       
 
       
-        <h3 id="一、js运行三部曲"><a href="#一、js运行三部曲" class="headerlink" title="一、js运行三部曲"></a>一、js运行三部曲</h3><pre><code>1. 语法分析   2. 预编译   3. 解释执行
+        
+          
+            <h3 id="一、js运行三部曲"><a href="#一、js运行三部曲" class="headerlink" title="一、js运行三部曲"></a>一、js运行三部曲</h3><pre><code>1. 语法分析   2. 预编译   3. 解释执行
 </code></pre><h3 id="二、预编译前奏"><a href="#二、预编译前奏" class="headerlink" title="二、预编译前奏"></a>二、预编译前奏</h3><h4 id="1-imply-global"><a href="#1-imply-global" class="headerlink" title="1.imply global"></a>1.imply global</h4><pre><code>暗示全局变量：即任何变量，如果变量未经声明就赋值，此变量就为全局对象所有。
 
 如 a = 10 , 则 window.a = 10;
@@ -505,13 +505,13 @@ window就是全局的域
         a:123
     }
 </code></pre><h4 id="例三"><a href="#例三" class="headerlink" title="例三(+)"></a>例三(+)</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">test</span>(<span class="params">c</span>) </span>&#123;</span><br><span class="line">    <span class="comment">// var this = Object.create(test.prototype);</span></span><br><span class="line">    <span class="comment">// var this = &#123;</span></span><br><span class="line">    <span class="comment">// 	__proto__ : test.prototype</span></span><br><span class="line">    <span class="comment">// &#125;</span></span><br><span class="line">    <span class="keyword">var</span> a = <span class="number">123</span>;</span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">b</span>(<span class="params"></span>) </span>&#123;&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">AO&#123;</span><br><span class="line">    <span class="built_in">arguments</span> : [<span class="number">1</span>];</span><br><span class="line">    <span class="keyword">this</span> : <span class="built_in">window</span>,</span><br><span class="line">        c : <span class="number">1</span>,</span><br><span class="line">            a : <span class="literal">undefined</span>,</span><br><span class="line">                b : <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+          
+        
       
     </div>
 
     
 
-    
-      
     
 
     
@@ -529,39 +529,14 @@ window就是全局的域
 
     <footer class="post-footer">
       
-        
-          
-        
-        <div class="post-tags">
-          
-            <a href="/tags/javascript/" rel="tag"># javascript</a>
-          
-        </div>
+
+      
+
       
 
       
       
-      
-
-      
-        <div class="post-nav">
-          <div class="post-nav-next post-nav-item">
-            
-          </div>
-
-          <span class="post-nav-divider"></span>
-
-          <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2018/08/08/作用域、立即执行函数、闭包/" rel="prev" title="作用域、立即执行函数、闭包">
-                作用域、立即执行函数、闭包 <i class="fa fa-chevron-right"></i>
-              </a>
-            
-          </div>
-        </div>
-      
-
-      
+        <div class="post-eof"></div>
       
     </footer>
   </div>
@@ -571,15 +546,18 @@ window就是全局的域
   </article>
 
 
-  </div>
+    
+  </section>
+
+  
+  <nav class="pagination">
+    <a class="extend prev" rel="prev" href="/page/9/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/9/">9</a><span class="page-number current">10</span>
+  </nav>
+
 
 
           </div>
           
-
-  
-
-
 
         </div>
         
@@ -599,17 +577,8 @@ window就是全局的域
       
 
       
-        <ul class="sidebar-nav motion-element">
-          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
-            文章目录
-          </li>
-          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
-            站点概览
-          </li>
-        </ul>
-      
 
-      <div class="site-overview-wrap sidebar-panel">
+      <div class="site-overview-wrap sidebar-panel sidebar-panel-active">
         <div class="site-overview">
 
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -737,23 +706,6 @@ window就是全局的域
         </div>
       </div>
 
-      
-      <!--noindex-->
-        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
-          <div class="post-toc">
-
-            
-            
-            
-            
-
-            
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#一、js运行三部曲"><span class="nav-number">1.</span> <span class="nav-text">一、js运行三部曲</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#二、预编译前奏"><span class="nav-number">2.</span> <span class="nav-text">二、预编译前奏</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-imply-global"><span class="nav-number">2.1.</span> <span class="nav-text">1.imply global</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-一切声明的全局变量，全是window的属性"><span class="nav-number">2.2.</span> <span class="nav-text">2.一切声明的全局变量，全是window的属性</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#三、预编译"><span class="nav-number">3.</span> <span class="nav-text">三、预编译</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#例一：-局部"><span class="nav-number">3.1.</span> <span class="nav-text">例一：(局部)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#例二：-全局"><span class="nav-number">3.2.</span> <span class="nav-text">例二：(全局)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#例三"><span class="nav-number">3.3.</span> <span class="nav-text">例三(+)</span></a></li></ol></li></ol></div>
-            
-
-          </div>
-        </div>
-      <!--/noindex-->
       
 
       
@@ -886,10 +838,6 @@ window就是全局的域
 
 
   
-  <script src="/js/scrollspy.js?v=7.2.0"></script>
-<script src="/js/post-details.js?v=7.2.0"></script>
-
-
 
   <script src="/js/next-boot.js?v=7.2.0"></script>
 
@@ -903,8 +851,6 @@ window就是全局的域
 
   
 
-
-  
 
 
   
