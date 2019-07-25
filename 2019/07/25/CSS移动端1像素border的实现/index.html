@@ -93,13 +93,18 @@
   };
 </script>
 
-  <meta property="og:type" content="website">
-<meta property="og:title" content="gzl的博客">
-<meta property="og:url" content="http://yoursite.com/index.html">
+  <meta name="description" content="文件结构1234567│  index.css│  index.html│  index.styl├  common│      base.styl│      index.styl│      mixin.styl 这里使用的是 stylus 预处理，真正实现了移动端一像素的 border  这里的公共样式放在了 common 文件夹下， common/index.styl 为导出口，根目录下的">
+<meta name="keywords" content="CSS预处理,移动端,flex">
+<meta property="og:type" content="article">
+<meta property="og:title" content="CSS移动端1像素border的实现">
+<meta property="og:url" content="http://yoursite.com/2019/07/25/CSS移动端1像素border的实现/index.html">
 <meta property="og:site_name" content="gzl的博客">
+<meta property="og:description" content="文件结构1234567│  index.css│  index.html│  index.styl├  common│      base.styl│      index.styl│      mixin.styl 这里使用的是 stylus 预处理，真正实现了移动端一像素的 border  这里的公共样式放在了 common 文件夹下， common/index.styl 为导出口，根目录下的">
 <meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2019-07-25T02:00:42.875Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="gzl的博客">
+<meta name="twitter:title" content="CSS移动端1像素border的实现">
+<meta name="twitter:description" content="文件结构1234567│  index.css│  index.html│  index.styl├  common│      base.styl│      index.styl│      mixin.styl 这里使用的是 stylus 预处理，真正实现了移动端一像素的 border  这里的公共样式放在了 common 文件夹下， common/index.styl 为导出口，根目录下的">
 
 
 
@@ -107,7 +112,7 @@
 
   
   
-  <link rel="canonical" href="http://yoursite.com/"/>
+  <link rel="canonical" href="http://yoursite.com/2019/07/25/CSS移动端1像素border的实现/"/>
 
 
 
@@ -118,7 +123,7 @@
 </script>
 
   
-  <title>gzl的博客</title>
+  <title>CSS移动端1像素border的实现 | gzl的博客</title>
   
 
 
@@ -166,8 +171,7 @@
     
   
 
-  <div class="container sidebar-position-left 
-  page-home">
+  <div class="container sidebar-position-left page-post-detail">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -205,7 +209,7 @@
         
         
           
-          <li class="menu-item menu-item-home menu-item-active">
+          <li class="menu-item menu-item-home">
 
     
     
@@ -309,9 +313,9 @@
           
           <div id="content" class="content">
             
-  <section id="posts" class="posts-expand">
+
+  <div id="posts" class="posts-expand">
     
-      
 
   
 
@@ -343,10 +347,8 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/2019/07/25/CSS移动端1像素border的实现/" class="post-title-link" itemprop="url">CSS移动端1像素border的实现</a>
+          <h1 class="post-title" itemprop="name headline">CSS移动端1像素border的实现
+
               
             
           </h1>
@@ -430,9 +432,7 @@
       
 
       
-        
-          
-            <h1 id="文件结构"><a href="#文件结构" class="headerlink" title="文件结构"></a>文件结构</h1><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">│  index.css</span><br><span class="line">│  index.html</span><br><span class="line">│  index.styl</span><br><span class="line">├  common</span><br><span class="line">│      base.styl</span><br><span class="line">│      index.styl</span><br><span class="line">│      mixin.styl</span><br></pre></td></tr></table></figure>
+        <h1 id="文件结构"><a href="#文件结构" class="headerlink" title="文件结构"></a>文件结构</h1><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">│  index.css</span><br><span class="line">│  index.html</span><br><span class="line">│  index.styl</span><br><span class="line">├  common</span><br><span class="line">│      base.styl</span><br><span class="line">│      index.styl</span><br><span class="line">│      mixin.styl</span><br></pre></td></tr></table></figure>
 <p>这里使用的是 stylus 预处理，真正实现了移动端一像素的 border </p>
 <p>这里的公共样式放在了 common 文件夹下， common/index.styl 为导出口，根目录下的 index.styl 只需导入 common/index.styl 就可以了。 </p>
 <p>HTML 部分代码</p>
@@ -448,13 +448,13 @@
 <h1 id="编译后的-CSS"><a href="#编译后的-CSS" class="headerlink" title="编译后的 CSS"></a>编译后的 CSS</h1><p>根目录下的 index.css</p>
 <figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line">@<span class="keyword">media</span> (-webkit-min-device-pixel-ratio: <span class="number">1.5</span>), (min-device-pixel-ratio: <span class="number">1.5</span>) &#123;</span><br><span class="line">  <span class="selector-class">.border-1px</span><span class="selector-pseudo">::after</span> &#123;</span><br><span class="line">    <span class="attribute">-webkit-transform</span>: <span class="built_in">scaleY</span>(0.7);</span><br><span class="line">    <span class="attribute">transform</span>: <span class="built_in">scaleY</span>(0.7);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line">@<span class="keyword">media</span> (-webkit-min-device-pixel-ratio: <span class="number">2</span>), (min-device-pixel-ratio: <span class="number">2</span>) &#123;</span><br><span class="line">  <span class="selector-class">.border-1px</span><span class="selector-pseudo">::after</span> &#123;</span><br><span class="line">    <span class="attribute">-webkit-transform</span>: <span class="built_in">scaleY</span>(0.5);</span><br><span class="line">    <span class="attribute">transform</span>: <span class="built_in">scaleY</span>(0.5);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-class">.tab</span> &#123;</span><br><span class="line">  <span class="attribute">display</span>: flex;</span><br><span class="line">  <span class="attribute">width</span>: <span class="number">100%</span>;</span><br><span class="line">  <span class="attribute">height</span>: <span class="number">40px</span>;</span><br><span class="line">  <span class="attribute">line-height</span>: <span class="number">40px</span>;</span><br><span class="line">  <span class="attribute">position</span>: relative;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-class">.tab</span><span class="selector-pseudo">::after</span> &#123;</span><br><span class="line">  <span class="attribute">display</span>: block;</span><br><span class="line">  <span class="attribute">position</span>: absolute;</span><br><span class="line">  <span class="attribute">left</span>: <span class="number">0</span>;</span><br><span class="line">  <span class="attribute">bottom</span>: <span class="number">0</span>;</span><br><span class="line">  <span class="attribute">width</span>: <span class="number">100%</span>;</span><br><span class="line">  <span class="attribute">border-top</span>: <span class="number">1px</span> solid <span class="built_in">rgba</span>(7,17,27,0.1);</span><br><span class="line">  <span class="attribute">content</span>: <span class="string">" "</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-class">.tab</span> <span class="selector-class">.tab-item</span> &#123;</span><br><span class="line">  <span class="attribute">flex</span>: <span class="number">1</span>;</span><br><span class="line">  <span class="attribute">text-align</span>: center;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-class">.tab</span> <span class="selector-class">.tab-item</span> &gt; <span class="selector-tag">a</span> &#123;</span><br><span class="line">  <span class="attribute">display</span>: block;</span><br><span class="line">  <span class="attribute">text-decoration</span>: none;</span><br><span class="line">  <span class="attribute">font-size</span>: <span class="number">14px</span>;</span><br><span class="line">  <span class="attribute">color</span>: <span class="number">#4d555d</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-          
-        
       
     </div>
 
     
 
+    
+      
     
 
     
@@ -472,376 +472,43 @@
 
     <footer class="post-footer">
       
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/07/24/JS循环/"/>
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="gzl"/>
-      <meta itemprop="description" content=""/>
-      <meta itemprop="image" content="/images/avatar.gif"/>
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="gzl的博客"/>
-    </span>
-
-    
-      <header class="post-header">
-
         
+          
         
-          <h1 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/2019/07/24/JS循环/" class="post-title-link" itemprop="url">for of、for in</a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-
+        <div class="post-tags">
           
+            <a href="/tags/CSS预处理/" rel="tag"># CSS预处理</a>
           
+            <a href="/tags/移动端/" rel="tag"># 移动端</a>
           
-
+            <a href="/tags/flex/" rel="tag"># flex</a>
           
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-
-              
-                
-              
-
-              <time title="创建时间：2019-07-24 07:26:01 / 修改时间：08:33:55" itemprop="dateCreated datePublished" datetime="2019-07-24T07:26:01+08:00">2019-07-24</time>
-            </span>
-          
-
-          
-            
-
-            
-          
-
-          
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/JavaScript/" itemprop="url" rel="index"><span itemprop="name">JavaScript</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-            
-          
-
-          
-          
-
-          
-
-          
-
-          <br/>
-          
-
-          
-
-          
-
         </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h1 id="for-in"><a href="#for-in" class="headerlink" title="for in"></a>for in</h1><p><code>for...in</code> 循环实际是为循环可枚举（enumerable）对象而设计的：</p>
-<p>如果表示要迭代的对象的变量值为 <code>null</code>  或 <code>undefined</code>，<code>for...in</code> 语句在 ES5 中不会抛出错误，只是不执行循环体，建议使用 <code>for...in</code> 之前，先检测确认该对象的值不是 <code>null</code> 或 <code>undefined</code> 。</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> arr = <span class="literal">null</span>;</span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">let</span> prop <span class="keyword">in</span> arr) &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(prop);</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 不会打印出任何东西</span></span><br></pre></td></tr></table></figure>
-<h2 id="循环一个"><a href="#循环一个" class="headerlink" title="循环一个 {}"></a>循环一个 {}</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> obj = &#123; <span class="attr">a</span>: <span class="number">1</span>, <span class="attr">b</span>: <span class="number">2</span>, <span class="attr">c</span>: <span class="number">3</span> &#125;;</span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">let</span> prop <span class="keyword">in</span> obj) &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(prop + <span class="string">": "</span> + obj[prop]);</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 输出</span></span><br><span class="line"><span class="comment">// a: 1</span></span><br><span class="line"><span class="comment">// b: 2</span></span><br><span class="line"><span class="comment">// c: 3</span></span><br></pre></td></tr></table></figure>
-<p>可以用来循环一个数组，<strong>但不推荐</strong>，因为不像对象，数组的 <code>index</code> 跟普通的对象属性不一样，是重要的数值序列指标。</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> arr = [<span class="string">"a"</span>,<span class="string">"b"</span>,<span class="string">"c"</span>,<span class="string">"d"</span>,<span class="string">"e"</span>];</span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">let</span> prop <span class="keyword">in</span> arr) &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(prop + <span class="string">": "</span> + arr[prop])</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 输出</span></span><br><span class="line"><span class="comment">// 0: a</span></span><br><span class="line"><span class="comment">// 1: b</span></span><br><span class="line"><span class="comment">// 2: c</span></span><br><span class="line"><span class="comment">// 3: d</span></span><br><span class="line"><span class="comment">// 4: e</span></span><br></pre></td></tr></table></figure>
-<p>总之，<code>for...in</code> 是用来循环带有字符串 key 的对象的方法。</p>
-<h1 id="for-of"><a href="#for-of" class="headerlink" title="for of"></a>for of</h1><p>ES6 在 for 和 for…in 基础上，新增了一个 <code>for of</code> 循环，在<strong>迭代器</strong>产生的一系列值上循环。</p>
-<p><code>for...of</code> 循环的值必须是一个 <code>iterable</code> ，或者说它必须是可以转换 / 封箱到一个 <code>iterable</code> 对象的值。<code>iterable</code> 就是一个能够产生迭代器供循环使用的对象。 </p>
-<p>JavaScript 中默认为（或提供）iterable 的标准内建值包括：</p>
-<ul>
-<li>Arrays</li>
-<li>Strings</li>
-<li>Generators</li>
-<li>Collections / TypedArrays</li>
-</ul>
-<p>默认情况下平凡的对象并不适用 for…of 循环，因为他们并没有默认的迭代器。</p>
-<h2 id="循环一个数组-Array"><a href="#循环一个数组-Array" class="headerlink" title="循环一个数组(Array):"></a>循环一个数组(Array):</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> arr = [<span class="string">"a"</span>,<span class="string">"b"</span>,<span class="string">"c"</span>,<span class="string">"d"</span>,<span class="string">"e"</span>];</span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">let</span> value <span class="keyword">of</span> arr) &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(value);</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 输出</span></span><br><span class="line"><span class="comment">// a</span></span><br><span class="line"><span class="comment">// b</span></span><br><span class="line"><span class="comment">// c</span></span><br><span class="line"><span class="comment">// d</span></span><br><span class="line"><span class="comment">// e</span></span><br></pre></td></tr></table></figure>
-<p>我们可以使用 <code>const</code> 来替代 <code>let</code>，这样它就变成了在循环里的不可修改的静态变量。</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> arr = [<span class="string">"a"</span>,<span class="string">"b"</span>,<span class="string">"c"</span>,<span class="string">"d"</span>,<span class="string">"e"</span>];</span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">const</span> value <span class="keyword">of</span> arr) &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(value);</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 输出</span></span><br><span class="line"><span class="comment">// a</span></span><br><span class="line"><span class="comment">// b</span></span><br><span class="line"><span class="comment">// c</span></span><br><span class="line"><span class="comment">// d</span></span><br><span class="line"><span class="comment">// e</span></span><br></pre></td></tr></table></figure>
-<h2 id="循环一个字符串："><a href="#循环一个字符串：" class="headerlink" title="循环一个字符串："></a>循环一个字符串：</h2><p>原生字符串值 “gzl” 被强制类型转换 / 封箱到等价的 String 封装对象中，而 Strings 默认是一个 iterable。</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> str = <span class="string">"gzl"</span>;</span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">let</span> value <span class="keyword">of</span> str) &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(value);</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 输出</span></span><br><span class="line"><span class="comment">// g</span></span><br><span class="line"><span class="comment">// z</span></span><br><span class="line"><span class="comment">// l</span></span><br></pre></td></tr></table></figure>
-<p><strong>参考</strong></p>
-<p><a href="http://www.ituring.com.cn/book/1666" target="_blank" rel="noopener">你不知道的JavaScript（下卷）P110</a></p>
-
-          
-        
-      
-    </div>
-
-    
-
-    
-
-    
-    
-    
-
-    
-
-    
-      
-    
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
       
 
       
       
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
       
 
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/07/23/CSS半透明边框/"/>
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="gzl"/>
-      <meta itemprop="description" content=""/>
-      <meta itemprop="image" content="/images/avatar.gif"/>
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="gzl的博客"/>
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/2019/07/23/CSS半透明边框/" class="post-title-link" itemprop="url">CSS半透明边框</a>
-              
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
             
-          </h1>
-        
-
-        <div class="post-meta">
-
-          
-          
-          
-
-          
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-
-              
-                
-              
-
-              <time title="创建时间：2019-07-23 16:15:59 / 修改时间：16:18:38" itemprop="dateCreated datePublished" datetime="2019-07-23T16:15:59+08:00">2019-07-23</time>
-            </span>
-          
-
-          
+              <a href="/2019/07/24/JS循环/" rel="next" title="for of、for in">
+                <i class="fa fa-chevron-left"></i> for of、for in
+              </a>
             
+          </div>
 
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
             
-          
-
-          
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/CSS/" itemprop="url" rel="index"><span itemprop="name">CSS</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-            
-          
-
-          
-          
-
-          
-
-          
-
-          <br/>
-          
-
-          
-
-          
-
+          </div>
         </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
       
 
       
-        
-          
-            <h1 id="CSS半透明边框"><a href="#CSS半透明边框" class="headerlink" title="CSS半透明边框"></a>CSS半透明边框</h1><p>假设我们想给一个容器设置一层白色背景和一道半透明白色边框，body 的背景会从它的半透明边框上透上来。如果我们这样写：</p>
-<p>HTML 部分</p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"btn"</span>&gt;</span>123456<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br></pre></td></tr></table></figure>
-<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">body</span>&#123;</span><br><span class="line">    <span class="attribute">background</span>: yellow;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-class">.btn</span>&#123;</span><br><span class="line">    <span class="attribute">border</span>: <span class="number">10px</span> solid <span class="built_in">hsla</span>(0, 0%, 100%, 0.5);</span><br><span class="line">    <span class="attribute">background</span>: white;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>打开浏览器会发现不起作用，因为 <code>background</code> 在 <code>Box Model</code> 中，它是布满整个元素的盒子区域的，并不是从 <code>padding</code> 内部开始（也就是说从 border 就开始啦），但有一点需要注意，<code>background-color</code> 是从元素的边框左上角起到右下角止，而 <code>background-image</code> 却不一样，他是从 <code>padding</code> 边缘的左上角起而到 <code>border</code> 的右下角边缘止。</p>
-<p>所以我们需要 <code>background-clip</code> 这个属性，设置元素的背景（背景图片或颜色）是否延伸到边框下面。</p>
-<p><a href="https://developer.mozilla.org/zh-CN/docs/Web/CSS/background-clip" target="_blank" rel="noopener">MDN: background-clip</a></p>
-<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">body</span>&#123;</span><br><span class="line">    <span class="attribute">background</span>: yellow;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-class">.btn</span>&#123;</span><br><span class="line">    <span class="attribute">border</span>: <span class="number">10px</span> solid <span class="built_in">hsla</span>(0, 0%, 100%, 0.5);</span><br><span class="line">    <span class="attribute">background</span>: white;</span><br><span class="line">    <span class="attribute">background-clip</span>: padding-box;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p><strong>参考</strong></p>
-<p><a href="https://www.cnblogs.com/coco1s/p/6802374.html" target="_blank" rel="noopener">奇妙的 background-clip: text</a></p>
-
-          
-        
-      
-    </div>
-
-    
-
-    
-
-    
-    
-    
-
-    
-
-    
-      
-    
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
       
     </footer>
   </div>
@@ -851,18 +518,15 @@
   </article>
 
 
-    
-  </section>
-
-  
-  <nav class="pagination">
-    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><span class="space">&hellip;</span><a class="page-number" href="/page/10/">10</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
-  </nav>
-
+  </div>
 
 
           </div>
           
+
+  
+
+
 
         </div>
         
@@ -882,8 +546,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <div class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <div class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
 
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1022,6 +695,23 @@
       </div>
 
       
+      <!--noindex-->
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+            
+            
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#文件结构"><span class="nav-number">1.</span> <span class="nav-text">文件结构</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#编译后的-CSS"><span class="nav-number">2.</span> <span class="nav-text">编译后的 CSS</span></a></li></ol></div>
+            
+
+          </div>
+        </div>
+      <!--/noindex-->
+      
 
       
 
@@ -1153,6 +843,10 @@
 
 
   
+  <script src="/js/scrollspy.js?v=7.2.0"></script>
+<script src="/js/post-details.js?v=7.2.0"></script>
+
+
 
   <script src="/js/next-boot.js?v=7.2.0"></script>
 
@@ -1166,6 +860,8 @@
 
   
 
+
+  
 
 
   
