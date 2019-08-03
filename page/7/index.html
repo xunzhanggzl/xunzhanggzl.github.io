@@ -326,6 +326,183 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/07/18/LC有效的括号/"/>
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="gzl"/>
+      <meta itemprop="description" content=""/>
+      <meta itemprop="image" content="/images/avatar.gif"/>
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="gzl的博客"/>
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/2019/07/18/LC有效的括号/" class="post-title-link" itemprop="url">有效的括号</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+
+          
+          
+          
+
+          
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2019-07-18 17:31:21" itemprop="dateCreated datePublished" datetime="2019-07-18T17:31:21+08:00">2019-07-18</time>
+            </span>
+          
+
+          
+            
+
+            
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2019-07-19 13:30:08" itemprop="dateModified" datetime="2019-07-19T13:30:08+08:00">2019-07-19</time>
+              </span>
+            
+          
+
+          
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/LeetCode/" itemprop="url" rel="index"><span itemprop="name">LeetCode</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+
+          <br/>
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="有效的括号"><a href="#有效的括号" class="headerlink" title="有效的括号"></a>有效的括号</h1><p><a href="https://leetcode-cn.com/problems/valid-parentheses/" target="_blank" rel="noopener">有效的括号</a></p>
+<p>这是一个很经典的关于栈的问题</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> map = &#123;</span><br><span class="line">    <span class="string">"("</span>: <span class="string">")"</span>,</span><br><span class="line">    <span class="string">"&#123;"</span>: <span class="string">"&#125;"</span>,</span><br><span class="line">    <span class="string">"["</span>: <span class="string">"]"</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> isValid = <span class="function"><span class="keyword">function</span> (<span class="params">s</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (s.length % <span class="number">2</span> !== <span class="number">0</span>) &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">    &#125;    </span><br><span class="line">    <span class="keyword">let</span> stack = [];</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; s.length; i ++) &#123;</span><br><span class="line">        <span class="keyword">if</span> (s[i] <span class="keyword">in</span> map) &#123;</span><br><span class="line">            stack.push(map[s[i]]);</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            <span class="keyword">if</span> (s[i] !== stack.pop()) &#123;</span><br><span class="line">                <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> stack.length === <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(isValid(<span class="string">"()"</span>))     <span class="comment">// true</span></span><br><span class="line"><span class="built_in">console</span>.log(isValid(<span class="string">"()&#123;&#125;[]"</span>)) <span class="comment">// true</span></span><br><span class="line"><span class="built_in">console</span>.log(isValid(<span class="string">"(]"</span>))     <span class="comment">// false</span></span><br><span class="line"><span class="built_in">console</span>.log(isValid(<span class="string">"&#123;([])&#125;"</span>)) <span class="comment">// true</span></span><br></pre></td></tr></table></figure>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/05/13/林俊杰/"/>
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -714,225 +891,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/10/14/JS排序算法/"/>
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="gzl"/>
-      <meta itemprop="description" content=""/>
-      <meta itemprop="image" content="/images/avatar.gif"/>
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="gzl的博客"/>
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/2018/10/14/JS排序算法/" class="post-title-link" itemprop="url">排序算法</a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-
-          
-          
-          
-
-          
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-
-              
-                
-              
-
-              <time title="创建时间：2018-10-14 22:32:01" itemprop="dateCreated datePublished" datetime="2018-10-14T22:32:01+08:00">2018-10-14</time>
-            </span>
-          
-
-          
-            
-
-            
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">更新于</span>
-                
-                <time title="修改时间：2019-07-23 15:28:16" itemprop="dateModified" datetime="2019-07-23T15:28:16+08:00">2019-07-23</time>
-              </span>
-            
-          
-
-          
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/算法/" itemprop="url" rel="index"><span itemprop="name">算法</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-            
-          
-
-          
-          
-
-          
-
-          
-
-          <br/>
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h1 id="冒泡排序"><a href="#冒泡排序" class="headerlink" title="冒泡排序"></a>冒泡排序</h1><p>外循环会从数组的第一位迭代至最后一位，它控制了在数组中经过多少轮排序，每一轮比较都会把数组中最大的数放到最后。</p>
-<p>下面的内循环代码中 <strong>减去了 i</strong> 是因为减去外循环中已经跑过的轮数，就可以避免内循环中所有不必要的比较。</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 冒泡排序</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">bubbleSort</span>(<span class="params">arr</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">let</span> len = arr.length;</span><br><span class="line">    <span class="built_in">console</span>.time(<span class="string">'冒泡排序耗时'</span>);</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; len; i++) &#123;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">let</span> j = <span class="number">0</span>; j &lt; len - <span class="number">1</span> - i; j++) &#123;</span><br><span class="line">            <span class="keyword">if</span> (arr[j] &gt; arr[j + <span class="number">1</span>]) &#123; <span class="comment">//相邻元素两两对比</span></span><br><span class="line">                [ arr[j + <span class="number">1</span>], arr[j] ] = [ arr[j], arr[j + <span class="number">1</span>] ];</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">console</span>.timeEnd(<span class="string">'冒泡排序耗时'</span>);</span><br><span class="line">    <span class="keyword">return</span> arr;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> arr = [<span class="number">3</span>, <span class="number">44</span>, <span class="number">38</span>, <span class="number">5</span>, <span class="number">47</span>, <span class="number">15</span>, <span class="number">36</span>, <span class="number">26</span>, <span class="number">27</span>, <span class="number">2</span>, <span class="number">46</span>, <span class="number">4</span>, <span class="number">19</span>, <span class="number">50</span>, <span class="number">48</span>];</span><br><span class="line"><span class="built_in">console</span>.log(bubbleSort(arr));</span><br></pre></td></tr></table></figure>
-<h1 id="选择排序"><a href="#选择排序" class="headerlink" title="选择排序"></a>选择排序</h1><p>选择排序算法是一种原址比较排序算法。大致思路是找到数据结构中的最小值并将其放置在第一位，接着找到第二小的值并将其放在第二位，以此类推。</p>
-<p>下面代码中 <code>minIndex</code> 记录的是每一轮最小值的位置，内循环选出 <code>minIndex</code> 后外循环进行交换，一共需要进行 <code>len - 1</code> 轮</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 选择排序</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">selectionSort</span>(<span class="params">arr</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">let</span> len = arr.length;</span><br><span class="line">    <span class="keyword">let</span> minIndex;</span><br><span class="line">    <span class="built_in">console</span>.time(<span class="string">'选择排序耗时'</span>);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; len - <span class="number">1</span>; i ++) &#123;</span><br><span class="line">        minIndex = i;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">let</span> j = i + <span class="number">1</span>; j &lt; len; j ++) &#123;</span><br><span class="line">            <span class="keyword">if</span> (arr[minIndex] &gt; arr[j]) &#123;</span><br><span class="line">                minIndex = j;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        [ arr[i], arr[minIndex] ] = [ arr[minIndex], arr[i] ];</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">console</span>.timeEnd(<span class="string">'选择排序耗时'</span>);</span><br><span class="line">    <span class="keyword">return</span> arr;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> arr = [<span class="number">3</span>, <span class="number">44</span>, <span class="number">38</span>, <span class="number">5</span>, <span class="number">47</span>, <span class="number">15</span>, <span class="number">36</span>, <span class="number">26</span>, <span class="number">27</span>, <span class="number">2</span>, <span class="number">46</span>, <span class="number">4</span>, <span class="number">19</span>, <span class="number">50</span>, <span class="number">48</span>];</span><br><span class="line"><span class="built_in">console</span>.log(selectionSort(arr));</span><br></pre></td></tr></table></figure>
-<h1 id="插入排序"><a href="#插入排序" class="headerlink" title="插入排序"></a>插入排序</h1><p>原理很简单，就像打扑克牌的时候一样按顺序整理牌。如果后一个大于前一个，那么就插入，小于的话就不做交换。</p>
-<ol>
-<li><p>从第一个元素开始，该元素可以认为已经被排序；</p>
-</li>
-<li><p>取出下一个元素，在已经排序的元素序列中从后向前扫描；</p>
-</li>
-<li><p>如果该元素（已排序）大于新元素，将该元素移到下一位置；</p>
-</li>
-<li><p>重复步骤3，直到找到已排序的元素小于或者等于新元素的位置；</p>
-</li>
-<li><p>将新元素插入到该位置后；</p>
-</li>
-<li><p>重复步骤2~5。</p>
-</li>
-</ol>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 插入排序</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">insertionSort</span>(<span class="params">arr</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">let</span> len = arr.length;</span><br><span class="line">    <span class="built_in">console</span>.time(<span class="string">'插入排序耗时'</span>);</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">1</span>; i &lt; len; i++) &#123;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">let</span> j = i; j &gt; <span class="number">0</span>; j--) &#123;</span><br><span class="line">            <span class="keyword">if</span> (arr[j] &lt; arr[j - <span class="number">1</span>]) &#123;</span><br><span class="line">                [ arr[j], arr[j - <span class="number">1</span>] ] = [ arr[j - <span class="number">1</span>], arr[j] ];</span><br><span class="line">            &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                <span class="keyword">continue</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">console</span>.timeEnd(<span class="string">'插入排序耗时'</span>);</span><br><span class="line">    <span class="keyword">return</span> arr;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> arr = [<span class="number">3</span>, <span class="number">44</span>, <span class="number">38</span>, <span class="number">5</span>, <span class="number">47</span>, <span class="number">15</span>, <span class="number">36</span>, <span class="number">26</span>, <span class="number">27</span>, <span class="number">2</span>, <span class="number">46</span>, <span class="number">4</span>, <span class="number">19</span>, <span class="number">50</span>, <span class="number">48</span>];</span><br><span class="line"><span class="built_in">console</span>.log(insertionSort(arr));</span><br></pre></td></tr></table></figure>
-<h1 id="希尔排序"><a href="#希尔排序" class="headerlink" title="希尔排序"></a>希尔排序</h1><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 希尔排序</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">shellSort</span>(<span class="params">arr,gap</span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(arr)<span class="comment">//为了方便观察过程，使用时去除</span></span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">let</span> i = <span class="number">0</span>; i&lt;gap.length; i ++) &#123;  <span class="comment">//最外层循环，一次取不同的步长，步长需要预先给出</span></span><br><span class="line">        <span class="keyword">let</span> n = gap[i]; <span class="comment">//步长为n</span></span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">let</span> j = i + n; j &lt; arr.length; j ++) &#123; <span class="comment">//接下类和插入排序一样，j循环依次取后面的数</span></span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">let</span> k = j; k &gt; <span class="number">0</span>; k-=n) &#123; <span class="comment">//k循环进行比较，和直接插入的唯一区别是1变为了n</span></span><br><span class="line">                <span class="keyword">if</span>(arr[k] &lt; arr[k-n]) &#123;</span><br><span class="line">                    [arr[k],arr[k-n]] = [arr[k-n],arr[k]];</span><br><span class="line">                    <span class="built_in">console</span>.log(<span class="string">`当前序列为[<span class="subst">$&#123;arr&#125;</span>] \n 交换了<span class="subst">$&#123;arr[k]&#125;</span>和<span class="subst">$&#123;arr[k-n]&#125;</span>`</span>)<span class="comment">//为了观察过程</span></span><br><span class="line">                &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                    <span class="keyword">continue</span>;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> arr;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> arr = [<span class="number">3</span>, <span class="number">2</span>, <span class="number">45</span>, <span class="number">6</span>, <span class="number">55</span>, <span class="number">23</span>, <span class="number">5</span>, <span class="number">4</span>, <span class="number">8</span>, <span class="number">9</span>, <span class="number">19</span>, <span class="number">0</span>];</span><br><span class="line"><span class="keyword">let</span> gap = [<span class="number">3</span>,<span class="number">2</span>,<span class="number">1</span>];</span><br><span class="line"><span class="built_in">console</span>.log(shellSort(arr,gap))</span><br></pre></td></tr></table></figure>
-<h1 id="归并排序"><a href="#归并排序" class="headerlink" title="归并排序"></a>归并排序</h1><p>分而治之思想的算法应用：算法首先将原始数组分割直至只有一个元素的子数组，然后开始归并。</p>
-<ol>
-<li><p>把长度为n的输入序列分成两个长度为n/2的子序列；</p>
-</li>
-<li><p>对这两个子序列分别采用归并排序；</p>
-</li>
-<li><p>将两个排序好的子序列合并成一个最终的排序序列。</p>
-</li>
-</ol>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 归并排序</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">mergeSort</span>(<span class="params">arr</span>) </span>&#123;  <span class="comment">//采用自上而下的递归方法</span></span><br><span class="line">    <span class="keyword">var</span> len = arr.length;</span><br><span class="line">    <span class="keyword">if</span> (len &lt; <span class="number">2</span>) &#123;</span><br><span class="line">        <span class="keyword">return</span> arr;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">var</span> middle = <span class="built_in">Math</span>.floor(len / <span class="number">2</span>),</span><br><span class="line">        left = arr.slice(<span class="number">0</span>, middle),</span><br><span class="line">        right = arr.slice(middle);</span><br><span class="line">    <span class="keyword">return</span> merge(mergeSort(left), mergeSort(right));</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">merge</span>(<span class="params">left, right</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">let</span> result = [];</span><br><span class="line"></span><br><span class="line">    <span class="keyword">while</span> (left.length &amp;&amp; right.length) &#123;</span><br><span class="line">        <span class="keyword">if</span> (left[<span class="number">0</span>] &lt;= right[<span class="number">0</span>]) &#123;</span><br><span class="line">            result.push(left.shift());</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            result.push(right.shift());</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">while</span> (left.length) &#123;</span><br><span class="line">        result.push(left.shift())</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">while</span> (right.length) &#123;</span><br><span class="line">        result.push(right.shift());</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> result;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> arr = [<span class="number">3</span>, <span class="number">44</span>, <span class="number">38</span>, <span class="number">5</span>, <span class="number">47</span>, <span class="number">15</span>, <span class="number">36</span>, <span class="number">26</span>, <span class="number">27</span>, <span class="number">2</span>, <span class="number">46</span>, <span class="number">4</span>, <span class="number">19</span>, <span class="number">50</span>, <span class="number">48</span>];</span><br><span class="line"><span class="built_in">console</span>.log(mergeSort(arr));</span><br></pre></td></tr></table></figure>
-<h1 id="快速排序"><a href="#快速排序" class="headerlink" title="快速排序"></a>快速排序</h1><p>分而治之思想在排序算法上的典型应用    </p>
-<ol>
-<li><p>从数列中挑出一个元素，称为 “基准”（pivot）；</p>
-</li>
-<li><p>重新排序数列，所有元素比基准值小的摆放在基准前面，所有元素比基准值大的摆在基准的后面（相同的数可以到任一边）。在这个分区退出之后，该基准就处于数列的中间位置。这个称为分区（partition）操作；</p>
-</li>
-<li><p>递归地（recursive）把小于基准值元素的子数列和大于基准值元素的子数列排序。</p>
-</li>
-</ol>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 快速排序</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">quickSort</span>(<span class="params">arr</span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.time(<span class="string">'2.快速排序耗时'</span>);</span><br><span class="line">    <span class="keyword">if</span> (arr.length &lt;= <span class="number">1</span>) &#123; <span class="keyword">return</span> arr; &#125;</span><br><span class="line">    <span class="keyword">let</span> pivotIndex = <span class="built_in">Math</span>.floor(arr.length / <span class="number">2</span>);</span><br><span class="line">    <span class="keyword">let</span> pivot = arr.splice(pivotIndex, <span class="number">1</span>)[<span class="number">0</span>];</span><br><span class="line">    <span class="keyword">let</span> left = [];</span><br><span class="line">    <span class="keyword">let</span> right = [];</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; arr.length; i++)&#123;</span><br><span class="line">        <span class="keyword">if</span> (arr[i] &lt; pivot) &#123;</span><br><span class="line">            left.push(arr[i]);</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            right.push(arr[i]);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">console</span>.timeEnd(<span class="string">'2.快速排序耗时'</span>);</span><br><span class="line">    <span class="keyword">return</span> quickSort(left).concat([pivot], quickSort(right));</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> arr=[<span class="number">3</span>,<span class="number">44</span>,<span class="number">38</span>,<span class="number">5</span>,<span class="number">47</span>,<span class="number">15</span>,<span class="number">36</span>,<span class="number">26</span>,<span class="number">27</span>,<span class="number">2</span>,<span class="number">46</span>,<span class="number">4</span>,<span class="number">19</span>,<span class="number">50</span>,<span class="number">48</span>];</span><br><span class="line"><span class="built_in">console</span>.log(quickSort(arr));</span><br></pre></td></tr></table></figure>
-<p><strong>参考</strong></p>
-<p><a href="https://juejin.im/post/57dcd394a22b9d00610c5ec8#heading-23" target="_blank" rel="noopener">十大经典排序算法总结（JavaScript描述）</a></p>
-
-          
-        
-      
-    </div>
-
-    
-
-    
-
-    
-    
-    
-
-    
-
-    
-      
-    
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -980,7 +938,7 @@
         
           <a href="/archives/">
         
-          <span class="site-state-item-count">32</span>
+          <span class="site-state-item-count">33</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
