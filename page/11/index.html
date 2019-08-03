@@ -326,6 +326,183 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/08/08/作用域、立即执行函数、闭包/"/>
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="gzl"/>
+      <meta itemprop="description" content=""/>
+      <meta itemprop="image" content="/images/avatar.gif"/>
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="gzl的博客"/>
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/2018/08/08/作用域、立即执行函数、闭包/" class="post-title-link" itemprop="url">作用域、立即执行函数、闭包</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+
+          
+          
+          
+
+          
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2018-08-08 08:19:10" itemprop="dateCreated datePublished" datetime="2018-08-08T08:19:10+08:00">2018-08-08</time>
+            </span>
+          
+
+          
+            
+
+            
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2019-07-18 16:21:50" itemprop="dateModified" datetime="2019-07-18T16:21:50+08:00">2019-07-18</time>
+              </span>
+            
+          
+
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+
+          <br/>
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h3 id="一、作用域"><a href="#一、作用域" class="headerlink" title="一、作用域"></a>一、作用域</h3><pre><code>定义： 所有变量（包括基本类型和引用类型）都存在于一个执行环境中（也称为作用域）当中，
+这个执行环境决定了变量的生命周期，以及哪一部分代码可以访问其中的变量。
+</code></pre><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line">&lt;script type=<span class="string">"text/javascript"</span>&gt;</span><br><span class="line">	<span class="function"><span class="keyword">function</span> <span class="title">a</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">	    <span class="function"><span class="keyword">function</span> <span class="title">b</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">	        <span class="function"><span class="keyword">function</span> <span class="title">c</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">	             <span class="comment">//something</span></span><br><span class="line">	        &#125;</span><br><span class="line">	        c();</span><br><span class="line">	    &#125;</span><br><span class="line">	    b();</span><br><span class="line">	&#125;</span><br><span class="line">	a();</span><br><span class="line"></span><br><span class="line">	a defined a.[[scope]] -- &gt; <span class="number">0</span> : GO</span><br><span class="line"></span><br><span class="line">	a doing   a.[[scope]] -- &gt; <span class="number">0</span> : aAO</span><br><span class="line">	                           <span class="number">1</span> : GO</span><br><span class="line"></span><br><span class="line">	b defined b.[[scope]] -- &gt; <span class="number">0</span> : aAO</span><br><span class="line">	                           <span class="number">1</span> : GO</span><br><span class="line"></span><br><span class="line">	b doing   b.[[scope]] -- &gt; <span class="number">0</span> : bAO</span><br><span class="line">	                           <span class="number">1</span> : aAO</span><br><span class="line">	                           <span class="number">2</span> : GO</span><br><span class="line"></span><br><span class="line">	c defined c.[[scope]] -- &gt; <span class="number">0</span> : bAO</span><br><span class="line">	                           <span class="number">1</span> : aAO</span><br><span class="line">	                           <span class="number">2</span> : GO</span><br><span class="line"></span><br><span class="line">	c doing   c.[[scope]] -- &gt; <span class="number">0</span> : cAO</span><br><span class="line">	                           <span class="number">1</span> : bAO</span><br><span class="line">	                           <span class="number">2</span> : aAO</span><br><span class="line">	                           <span class="number">3</span> : GO</span><br><span class="line">&lt;<span class="regexp">/script&gt;</span></span><br></pre></td></tr></table></figure>
+<h3 id="二、立即执行函数"><a href="#二、立即执行函数" class="headerlink" title="二、立即执行函数"></a>二、立即执行函数</h3><pre><code>1.立即执行函数,执行完后立即销毁(释放)即针对初始化功能的函数
+2.对于函数，只有表达式才能被执行，外面有一层括号使之成为表达式
+
+var num = (function (a,b,c) {
+    var d = a + b + c;
+    return d;    
+}(1,2,3));   
+</code></pre><h3 id="三、闭包"><a href="#三、闭包" class="headerlink" title="三、闭包"></a>三、闭包</h3><h4 id="1-函数累加器-可以不依赖于全局变量"><a href="#1-函数累加器-可以不依赖于全局变量" class="headerlink" title="1.函数累加器(可以不依赖于全局变量)"></a>1.函数累加器(可以不依赖于全局变量)</h4><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">"text/javascript"</span>&gt;</span><span class="undefined"></span></span><br><span class="line"><span class="javascript">    <span class="function"><span class="keyword">function</span> <span class="title">add</span>(<span class="params"></span>) </span>&#123;</span></span><br><span class="line"><span class="javascript">        <span class="keyword">var</span> count = <span class="number">0</span>;</span></span><br><span class="line"><span class="javascript">        <span class="function"><span class="keyword">function</span> <span class="title">demo</span>(<span class="params"></span>) </span>&#123;</span></span><br><span class="line"><span class="undefined">            count ++;</span></span><br><span class="line"><span class="javascript">            <span class="built_in">console</span>.log(count);</span></span><br><span class="line"><span class="undefined">        &#125;</span></span><br><span class="line"><span class="javascript">        <span class="keyword">return</span> demo;</span></span><br><span class="line"><span class="undefined">    &#125;</span></span><br><span class="line"><span class="javascript">    <span class="keyword">var</span> counter = add();</span></span><br><span class="line"><span class="undefined">    counter();</span></span><br><span class="line"><span class="undefined">    counter();</span></span><br><span class="line"><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<h4 id="2-可以做缓存-存储结构"><a href="#2-可以做缓存-存储结构" class="headerlink" title="2.可以做缓存(存储结构)"></a>2.可以做缓存(存储结构)</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">1.</span>  用对象返回两个函数</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">test</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> food = <span class="string">"apple"</span>;</span><br><span class="line">    <span class="keyword">var</span> obj = &#123;</span><br><span class="line">        eat : <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">            <span class="keyword">if</span> (food != <span class="string">""</span>) &#123;</span><br><span class="line">                <span class="built_in">console</span>.log(<span class="string">"I am eating "</span> + food);</span><br><span class="line">                food = <span class="string">""</span>;</span><br><span class="line">            &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">                <span class="built_in">console</span>.log(<span class="string">"There is nothing!"</span>);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;,</span><br><span class="line">        pushFood : <span class="function"><span class="keyword">function</span> (<span class="params">x</span>) </span>&#123;</span><br><span class="line">            food = x;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> obj;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//用对象的形式返回出来,简化返回两个函数</span></span><br><span class="line"><span class="keyword">var</span> person = test();</span><br><span class="line"></span><br><span class="line">person.eat();</span><br><span class="line">person.eat();</span><br><span class="line">person.pushFood(<span class="string">'banana'</span>);</span><br><span class="line">person.eat();</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="number">2</span>  . 用数组返回两个函数</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">test</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> num = <span class="number">100</span>;</span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">a</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">        num ++;</span><br><span class="line">        <span class="built_in">console</span>.log(num);</span><br><span class="line">    &#125;			</span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">b</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">        num --;</span><br><span class="line">        <span class="built_in">console</span>.log(num);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> [a,b];</span><br><span class="line">&#125;		</span><br><span class="line"><span class="keyword">var</span> myArr = test();</span><br><span class="line">myArr[<span class="number">0</span>]();</span><br><span class="line">myArr[<span class="number">1</span>]();</span><br></pre></td></tr></table></figure>
+<h4 id="3-可以实现封装，属性私有化"><a href="#3-可以实现封装，属性私有化" class="headerlink" title="3.可以实现封装，属性私有化"></a>3.可以实现封装，属性私有化</h4><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">"text/javascript"</span>&gt;</span><span class="undefined"></span></span><br><span class="line"><span class="javascript">	<span class="function"><span class="keyword">function</span> <span class="title">Deng</span>(<span class="params">name, wife</span>) </span>&#123;</span></span><br><span class="line"><span class="javascript">		<span class="keyword">var</span> prepareWife = <span class="string">'xiaozhang'</span>;</span></span><br><span class="line"><span class="javascript">		<span class="keyword">this</span>.name = name;</span></span><br><span class="line"><span class="javascript">		<span class="keyword">this</span>.wife = wife;</span></span><br><span class="line"><span class="javascript">		<span class="keyword">this</span>.divorce = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span></span><br><span class="line"><span class="javascript">			<span class="keyword">this</span>.wife = prepareWife;</span></span><br><span class="line"><span class="undefined">		&#125;</span></span><br><span class="line"><span class="javascript">		<span class="keyword">this</span>.sayPrepareWife = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span></span><br><span class="line"><span class="javascript">			<span class="built_in">console</span>.log(prepareWife);</span></span><br><span class="line"><span class="undefined">		&#125;</span></span><br><span class="line"><span class="undefined">	&#125;</span></span><br><span class="line"><span class="undefined"></span></span><br><span class="line"><span class="javascript">	<span class="keyword">var</span> deng = <span class="keyword">new</span> Deng(<span class="string">'deng'</span>, <span class="string">'xiaoliu'</span>);</span></span><br><span class="line"><span class="undefined"></span></span><br><span class="line"><span class="javascript">	<span class="built_in">console</span>.log(deng.prepareWife);  <span class="comment">// undefined</span></span></span><br><span class="line"><span class="javascript">	<span class="built_in">console</span>.log(deng.sayPrepareWife()); <span class="comment">//xiaozhang  闭包</span></span></span><br><span class="line"><span class="xml"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="undefined"></span></span></span><br></pre></td></tr></table></figure>
+<h4 id="4-模块化开发，防止污染全局变量"><a href="#4-模块化开发，防止污染全局变量" class="headerlink" title="4.模块化开发，防止污染全局变量"></a>4.模块化开发，防止污染全局变量</h4><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">			变量可以不互相污染</span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">"text/javascript"</span>&gt;</span><span class="undefined"></span></span><br><span class="line"><span class="javascript">	<span class="keyword">var</span> name = <span class="string">"xyz"</span>;</span></span><br><span class="line"><span class="undefined"></span></span><br><span class="line"><span class="javascript">	<span class="keyword">var</span> init = (<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span></span><br><span class="line"><span class="javascript">		<span class="keyword">var</span> name = <span class="string">"abc"</span>;</span></span><br><span class="line"><span class="javascript">		<span class="function"><span class="keyword">function</span> <span class="title">callName</span>(<span class="params"></span>) </span>&#123;</span></span><br><span class="line"><span class="javascript">			<span class="built_in">console</span>.log(name);</span></span><br><span class="line"><span class="undefined">		&#125;</span></span><br><span class="line"><span class="javascript">		<span class="keyword">return</span> <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span></span><br><span class="line"><span class="undefined">			callName();</span></span><br><span class="line"><span class="undefined">		&#125;</span></span><br><span class="line"><span class="undefined">	&#125;());</span></span><br><span class="line"><span class="undefined"></span></span><br><span class="line"><span class="javascript">	<span class="keyword">var</span> initDeng = (<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span></span><br><span class="line"><span class="javascript">		<span class="keyword">var</span> name = <span class="string">"def"</span>;</span></span><br><span class="line"><span class="javascript">		<span class="function"><span class="keyword">function</span> <span class="title">callName</span>(<span class="params"></span>) </span>&#123;</span></span><br><span class="line"><span class="javascript">			<span class="built_in">console</span>.log(name);</span></span><br><span class="line"><span class="undefined">		&#125;</span></span><br><span class="line"><span class="javascript">		<span class="keyword">return</span> <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span></span><br><span class="line"><span class="undefined">			callName();	</span></span><br><span class="line"><span class="undefined">		&#125;</span></span><br><span class="line"><span class="undefined">	&#125;());</span></span><br><span class="line"><span class="undefined"></span></span><br><span class="line"><span class="undefined">	init();</span></span><br><span class="line"><span class="undefined">	initDeng();</span></span><br><span class="line"><span class="xml"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="undefined"></span></span></span><br></pre></td></tr></table></figure>
+<hr>
+<p><em>闭包产生的问题实例  (1)</em><br><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">              会打印出十个10</span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">"text/javascript"</span>&gt;</span><span class="undefined"></span></span><br><span class="line"><span class="javascript">	<span class="function"><span class="keyword">function</span> <span class="title">test</span>(<span class="params"></span>) </span>&#123;</span></span><br><span class="line"><span class="javascript">		<span class="keyword">var</span> arr = [];</span></span><br><span class="line"><span class="javascript">		<span class="keyword">for</span>(<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; <span class="number">10</span>; i ++)&#123;</span></span><br><span class="line"><span class="javascript">			arr[i] = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span></span><br><span class="line"><span class="javascript">				<span class="built_in">document</span>.write(i);</span></span><br><span class="line"><span class="undefined">			&#125;</span></span><br><span class="line"><span class="undefined">		&#125;</span></span><br><span class="line"><span class="javascript">		<span class="keyword">return</span> arr;</span></span><br><span class="line"><span class="undefined">	&#125;</span></span><br><span class="line"><span class="undefined"></span></span><br><span class="line"><span class="javascript">	<span class="keyword">var</span> myArr = test();</span></span><br><span class="line"><span class="javascript">	<span class="keyword">for</span>(<span class="keyword">var</span> j = <span class="number">0</span>; j &lt; <span class="number">10</span>; j ++)&#123;</span></span><br><span class="line"><span class="undefined">		myArr[j]();</span></span><br><span class="line"><span class="undefined">	&#125;</span></span><br><span class="line"><span class="xml"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="undefined"></span></span></span><br></pre></td></tr></table></figure></p>
+<p><em>解决方法（唯一）</em><br><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">              会打印出 0 - 9</span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">"text/javascript"</span>&gt;</span><span class="undefined"></span></span><br><span class="line"><span class="javascript">	<span class="function"><span class="keyword">function</span> <span class="title">test</span>(<span class="params"></span>) </span>&#123;</span></span><br><span class="line"><span class="javascript">		<span class="keyword">var</span> arr = [];</span></span><br><span class="line"><span class="javascript">		<span class="keyword">for</span>(<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; <span class="number">10</span>; i ++)&#123;</span></span><br><span class="line"><span class="javascript">			(<span class="function"><span class="keyword">function</span> (<span class="params">x</span>) </span>&#123;</span></span><br><span class="line"><span class="javascript">				arr[x] = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span></span><br><span class="line"><span class="javascript">					<span class="built_in">document</span>.write(x + <span class="string">" "</span>);</span></span><br><span class="line"><span class="undefined">				&#125;</span></span><br><span class="line"><span class="undefined">			&#125;(i));</span></span><br><span class="line"><span class="undefined">		&#125;</span></span><br><span class="line"><span class="javascript">		<span class="keyword">return</span> arr;</span></span><br><span class="line"><span class="undefined">	&#125;</span></span><br><span class="line"><span class="undefined"></span></span><br><span class="line"><span class="javascript">	<span class="keyword">var</span> myArr = test();</span></span><br><span class="line"><span class="javascript">	<span class="keyword">for</span>(<span class="keyword">var</span> j = <span class="number">0</span>; j &lt; <span class="number">10</span>; j ++)&#123;</span></span><br><span class="line"><span class="undefined">		myArr[j]();</span></span><br><span class="line"><span class="undefined">	&#125;</span></span><br><span class="line"><span class="xml"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="undefined"></span></span></span><br></pre></td></tr></table></figure></p>
+<p><em>闭包产生的问题实例及其解决  (2)</em><br><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;!DOCTYPE html&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span> <span class="attr">lang</span>=<span class="string">"en"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">"UTF-8"</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">title</span>&gt;</span>Document<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">style</span> <span class="attr">type</span>=<span class="string">"text/css"</span>&gt;</span><span class="undefined"></span></span><br><span class="line"><span class="undefined">		*&#123;</span></span><br><span class="line"><span class="undefined">			margin: 0;</span></span><br><span class="line"><span class="undefined">			padding: 0;</span></span><br><span class="line"><span class="undefined">		&#125;</span></span><br><span class="line"><span class="undefined">		ul&#123;</span></span><br><span class="line"><span class="undefined">			list-style: none;</span></span><br><span class="line"><span class="undefined">		&#125;</span></span><br><span class="line"><span class="css">		<span class="selector-tag">li</span><span class="selector-pseudo">:nth-of-type(2n)</span>&#123;</span></span><br><span class="line"><span class="undefined">			background-color: red;</span></span><br><span class="line"><span class="undefined">		&#125;</span></span><br><span class="line"><span class="css">		<span class="selector-tag">li</span><span class="selector-pseudo">:nth-of-type(2n</span> + 1)&#123;</span></span><br><span class="line"><span class="undefined">			background-color: green;</span></span><br><span class="line"><span class="undefined">		&#125;</span></span><br><span class="line"><span class="undefined">	</span><span class="tag">&lt;/<span class="name">style</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">ul</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">li</span>&gt;</span>a<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">li</span>&gt;</span>a<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">li</span>&gt;</span>a<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">li</span>&gt;</span>a<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;/<span class="name">ul</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">"text/javascript"</span>&gt;</span><span class="undefined"></span></span><br><span class="line"><span class="undefined">		1.闭包产生的索引皆为4</span></span><br><span class="line"><span class="javascript">		<span class="function"><span class="keyword">function</span> <span class="title">test</span>(<span class="params"></span>) </span>&#123;</span></span><br><span class="line"><span class="javascript">			<span class="keyword">var</span> liCollection = <span class="built_in">document</span>.getElementsByTagName(<span class="string">'li'</span>);</span></span><br><span class="line"><span class="undefined"></span></span><br><span class="line"><span class="javascript">			<span class="keyword">for</span>(<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; liCollection.length; i ++)&#123;</span></span><br><span class="line"><span class="javascript">				liCollection[i].onclick = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span></span><br><span class="line"><span class="javascript">					<span class="built_in">console</span>.log(i);</span></span><br><span class="line"><span class="undefined">				&#125;</span></span><br><span class="line"><span class="undefined">			&#125;</span></span><br><span class="line"><span class="undefined">		&#125;</span></span><br><span class="line"><span class="undefined"></span></span><br><span class="line"><span class="undefined">		test();</span></span><br><span class="line"><span class="undefined"></span></span><br><span class="line"><span class="undefined">		2.解决后索引为0 1 2 3</span></span><br><span class="line"><span class="javascript">		<span class="function"><span class="keyword">function</span> <span class="title">test</span>(<span class="params"></span>) </span>&#123;</span></span><br><span class="line"><span class="javascript">			<span class="keyword">var</span> liCollection = <span class="built_in">document</span>.getElementsByTagName(<span class="string">'li'</span>);</span></span><br><span class="line"><span class="undefined"></span></span><br><span class="line"><span class="javascript">			<span class="keyword">for</span>(<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; liCollection.length; i ++)&#123;</span></span><br><span class="line"><span class="javascript">				(<span class="function"><span class="keyword">function</span> (<span class="params">x</span>) </span>&#123;</span></span><br><span class="line"><span class="javascript">					liCollection[x].onclick = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span></span><br><span class="line"><span class="javascript">						<span class="built_in">console</span>.log(x);</span></span><br><span class="line"><span class="undefined">					&#125;</span></span><br><span class="line"><span class="undefined">				&#125;(i))</span></span><br><span class="line"><span class="undefined">			&#125;</span></span><br><span class="line"><span class="undefined">		&#125;</span></span><br><span class="line"><span class="undefined">		</span></span><br><span class="line"><span class="undefined">		test();</span></span><br><span class="line"><span class="undefined">	</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure></p>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/08/07/预编译/"/>
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -594,7 +771,7 @@ window就是全局的域
         
           <a href="/archives/">
         
-          <span class="site-state-item-count">31</span>
+          <span class="site-state-item-count">32</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -694,7 +871,11 @@ window就是全局的域
         
           
         
-        <span class="site-state-item-count">27</span>
+          
+        
+          
+        
+        <span class="site-state-item-count">29</span>
         <span class="site-state-item-name">标签</span>
         </a>
       </div>
