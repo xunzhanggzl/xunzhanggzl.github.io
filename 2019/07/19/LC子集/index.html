@@ -94,7 +94,7 @@
 </script>
 
   <meta name="description" content="子集 这是一道典型的回溯算法的应用 使用 slice注意这段代码里的 res.push(temp.slice())，如果没有 slice() 的话，res 的最后子元素会都是空数组，[ [], [], [], [] ]，原因就是我们传递了一个引用类型值 temp，相当于引用的复制，并且在 dfs 函数中我们对 temp 进行了改变，最后 temp 会变成 []。 在这段代码里 temp.pop()">
-<meta name="keywords" content="函数传参,DFS,回溯">
+<meta name="keywords" content="DFS,函数传参,回溯">
 <meta property="og:type" content="article">
 <meta property="og:title" content="子集">
 <meta property="og:url" content="http://yoursite.com/2019/07/19/LC子集/index.html">
@@ -479,9 +479,9 @@
         
         <div class="post-tags">
           
-            <a href="/tags/函数传参/" rel="tag"># 函数传参</a>
-          
             <a href="/tags/DFS/" rel="tag"># DFS</a>
+          
+            <a href="/tags/函数传参/" rel="tag"># 函数传参</a>
           
             <a href="/tags/回溯/" rel="tag"># 回溯</a>
           
@@ -578,7 +578,7 @@
         
           <a href="/archives/">
         
-          <span class="site-state-item-count">33</span>
+          <span class="site-state-item-count">35</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -682,7 +682,11 @@
         
           
         
-        <span class="site-state-item-count">29</span>
+          
+        
+          
+        
+        <span class="site-state-item-count">31</span>
         <span class="site-state-item-name">标签</span>
         </a>
       </div>
