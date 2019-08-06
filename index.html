@@ -326,6 +326,348 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/08/06/JS类数组对象/"/>
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="gzl"/>
+      <meta itemprop="description" content=""/>
+      <meta itemprop="image" content="/images/avatar.gif"/>
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="gzl的博客"/>
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/2019/08/06/JS类数组对象/" class="post-title-link" itemprop="url">JS类数组对象</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+
+          
+          
+          
+
+          
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2019-08-06 18:41:19 / 修改时间：19:27:39" itemprop="dateCreated datePublished" datetime="2019-08-06T18:41:19+08:00">2019-08-06</time>
+            </span>
+          
+
+          
+            
+
+            
+          
+
+          
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/JavaScript/" itemprop="url" rel="index"><span itemprop="name">JavaScript</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+
+          <br/>
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="类数组对象"><a href="#类数组对象" class="headerlink" title="类数组对象"></a>类数组对象</h1><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 属性要为索引 (数字) 属性，必须有length属性，最好加上push</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">Array</span>.prototype.push = <span class="function"><span class="keyword">function</span> (<span class="params">target</span>) </span>&#123;</span><br><span class="line">    obj[obj.length] = target;</span><br><span class="line">    obj.length ++;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> obj = &#123;</span><br><span class="line">    <span class="string">"0"</span> : <span class="string">'a'</span>,</span><br><span class="line">    <span class="string">"1"</span> : <span class="string">'b'</span>,</span><br><span class="line">    <span class="string">"2"</span> : <span class="string">'c'</span>,</span><br><span class="line">    <span class="string">"length"</span> : <span class="number">3</span>,</span><br><span class="line">    <span class="string">"push"</span> : <span class="built_in">Array</span>.prototype.push,</span><br><span class="line">    <span class="string">"splice"</span> : <span class="built_in">Array</span>.prototype.splice</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> obj = &#123;			</span><br><span class="line">    <span class="string">"2"</span> : <span class="string">'a'</span>,</span><br><span class="line">    <span class="string">"3"</span> : <span class="string">'b'</span>,</span><br><span class="line">    <span class="string">"length"</span> : <span class="number">2</span>,</span><br><span class="line">    <span class="string">"push"</span> : <span class="built_in">Array</span>.prototype.push</span><br><span class="line">&#125;</span><br><span class="line">obj.push(<span class="string">'c'</span>);</span><br><span class="line">obj.push(<span class="string">'d'</span>);</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(obj);</span><br><span class="line"><span class="comment">// &#123;2: "c", 3: "d", length: 4, push: ƒ&#125;</span></span><br></pre></td></tr></table></figure>
+<h1 id="调用数组方法"><a href="#调用数组方法" class="headerlink" title="调用数组方法"></a>调用数组方法</h1><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> arrayLike = &#123;</span><br><span class="line">    <span class="number">0</span>: <span class="string">'name'</span>,</span><br><span class="line">    <span class="number">1</span>: <span class="string">'age'</span>,</span><br><span class="line">    <span class="number">2</span>: <span class="string">'sex'</span>,</span><br><span class="line">    length: <span class="number">3</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="built_in">Array</span>.prototype.join.call(arrayLike, <span class="string">'&amp;'</span>); <span class="comment">// name&amp;age&amp;sex</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">Array</span>.prototype.slice.call(arrayLike, <span class="number">0</span>); <span class="comment">// ["name", "age", "sex"]</span></span><br><span class="line"><span class="comment">// slice可以做到类数组转数组</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">Array</span>.prototype.map.call(arrayLike, (item) =&gt; &#123;</span><br><span class="line">    <span class="keyword">return</span> item.toUpperCase();</span><br><span class="line">&#125;);</span><br><span class="line"><span class="comment">// ["NAME", "AGE", "SEX"]</span></span><br></pre></td></tr></table></figure>
+<p><strong>参考</strong></p>
+<p><a href="https://juejin.im/post/590fd5de44d904007bed2e0c#comment" target="_blank" rel="noopener">JavaScript 深入之类数组对象与 arguments</a></p>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/08/06/JS强制类型转换/"/>
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="gzl"/>
+      <meta itemprop="description" content=""/>
+      <meta itemprop="image" content="/images/avatar.gif"/>
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="gzl的博客"/>
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/2019/08/06/JS强制类型转换/" class="post-title-link" itemprop="url">JS强制类型转换</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+
+          
+          
+          
+
+          
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2019-08-06 14:37:13 / 修改时间：15:17:02" itemprop="dateCreated datePublished" datetime="2019-08-06T14:37:13+08:00">2019-08-06</time>
+            </span>
+          
+
+          
+            
+
+            
+          
+
+          
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/JavaScript/" itemprop="url" rel="index"><span itemprop="name">JavaScript</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+
+          <br/>
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="抽象值操作"><a href="#抽象值操作" class="headerlink" title="抽象值操作"></a>抽象值操作</h1><h2 id="字符串和数字之间的显式转换"><a href="#字符串和数字之间的显式转换" class="headerlink" title="字符串和数字之间的显式转换"></a>字符串和数字之间的显式转换</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> a = <span class="number">42</span>;</span><br><span class="line"><span class="keyword">let</span> b = <span class="built_in">String</span>(a);</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> c = <span class="string">"3.14"</span>;</span><br><span class="line"><span class="keyword">let</span> d = <span class="built_in">Number</span>(c);</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(b);  <span class="comment">// "42"</span></span><br><span class="line"><span class="built_in">console</span>.log(d);  <span class="comment">// 3.14</span></span><br></pre></td></tr></table></figure>
+<p>除了 String() 和 Number() 以外，还有其他方法：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> a = <span class="number">42</span>;</span><br><span class="line"><span class="keyword">let</span> b = a.toString();</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> c = <span class="string">"3.14"</span>;</span><br><span class="line"><span class="keyword">let</span> d = +c;</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(b);  <span class="comment">// "42"</span></span><br><span class="line"><span class="built_in">console</span>.log(d);  <span class="comment">// 3.14</span></span><br></pre></td></tr></table></figure>
+<h3 id="日期显式转换为数字"><a href="#日期显式转换为数字" class="headerlink" title="日期显式转换为数字"></a>日期显式转换为数字</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> d = <span class="keyword">new</span> <span class="built_in">Date</span>();</span><br><span class="line"><span class="built_in">console</span>.log(+d); <span class="comment">// 1565074622713</span></span><br></pre></td></tr></table></figure>
+<p>我们下面的方法获取当前的时间戳：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> timestamp1 = +<span class="keyword">new</span> <span class="built_in">Date</span>();</span><br><span class="line"><span class="keyword">let</span> timestamp2 = <span class="keyword">new</span> <span class="built_in">Date</span>().getTime();</span><br><span class="line"><span class="keyword">let</span> timestamp3 = <span class="built_in">Date</span>.now();</span><br></pre></td></tr></table></figure>
+<h3 id="奇特的-运算符"><a href="#奇特的-运算符" class="headerlink" title="奇特的 ~ 运算符"></a>奇特的 ~ 运算符</h3><p><strong>~ 可以和 indexOf() 一起将结果强制类型转换：</strong>如果 indexOf() 返回 -1，<strong>~</strong> 将其转换为假值0，其他情况一律转换为真值。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> a = <span class="string">"Hello World"</span>;</span><br><span class="line"><span class="built_in">console</span>.log(~a.indexOf(<span class="string">"H"</span>));  <span class="comment">// -1</span></span><br><span class="line"><span class="built_in">console</span>.log(~a.indexOf(<span class="string">"lo"</span>)); <span class="comment">// -4</span></span><br><span class="line"><span class="built_in">console</span>.log(~a.indexOf(<span class="string">"ol"</span>)); <span class="comment">// 0</span></span><br><span class="line"><span class="keyword">if</span> (~a.indexOf(<span class="string">"lo"</span>)) &#123;</span><br><span class="line">    <span class="comment">// 找到匹配</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="显式解析数字字符串"><a href="#显式解析数字字符串" class="headerlink" title="显式解析数字字符串"></a>显式解析数字字符串</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> a = <span class="string">"42"</span>;</span><br><span class="line"><span class="keyword">let</span> b = <span class="string">"42px"</span>;</span><br><span class="line"><span class="built_in">console</span>.log(<span class="built_in">Number</span>(a));   <span class="comment">// 42</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="built_in">parseInt</span>(a)); <span class="comment">// 42</span></span><br></pre></td></tr></table></figure>
+<h2 id="显式转换为布尔值"><a href="#显式转换为布尔值" class="headerlink" title="显式转换为布尔值"></a>显式转换为布尔值</h2>
+          
+        
+      
+    </div>
+
+    
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/08/05/JS函数传参/"/>
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -487,361 +829,11 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/08/05/JS基本包装类型/"/>
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="gzl"/>
-      <meta itemprop="description" content=""/>
-      <meta itemprop="image" content="/images/avatar.gif"/>
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="gzl的博客"/>
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/2019/08/05/JS基本包装类型/" class="post-title-link" itemprop="url">JS基本包装类型</a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-
-          
-          
-          
-
-          
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-
-              
-                
-              
-
-              <time title="创建时间：2019-08-05 10:46:04 / 修改时间：11:09:54" itemprop="dateCreated datePublished" datetime="2019-08-05T10:46:04+08:00">2019-08-05</time>
-            </span>
-          
-
-          
-            
-
-            
-          
-
-          
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/JavaScript/" itemprop="url" rel="index"><span itemprop="name">JavaScript</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-            
-          
-
-          
-          
-
-          
-
-          
-
-          <br/>
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h1 id="基本包装类型"><a href="#基本包装类型" class="headerlink" title="基本包装类型"></a>基本包装类型</h1><p>由于基本类型值没有 <code>.length</code> 和 <code>.toString()</code>  <code>.toFixed()</code>这样的属性和方法，需要通过封装对象才能访问，此时 JavaScript 会自动为基本类型值包装一个封装对象。 </p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> s1 = <span class="string">"some text"</span>;</span><br><span class="line"><span class="keyword">let</span> s2 = s1.substring(<span class="number">2</span>);</span><br><span class="line"><span class="built_in">console</span>.log(s2)  <span class="comment">// me text</span></span><br></pre></td></tr></table></figure>
-<p>上面的代码其实在后台进行了下面的一系列处理：</p>
-<ol>
-<li>创建 String 类型的一个实例；</li>
-<li>在实例上调用指定的方法；</li>
-<li>销毁这个实例。</li>
-</ol>
-<p>可以想象成是执行了下列的 ECMAScript 代码</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> s1 = <span class="keyword">new</span> <span class="built_in">String</span>(<span class="string">"some text"</span>);</span><br><span class="line"><span class="keyword">let</span> s2 = s1.substring(<span class="number">2</span>);</span><br><span class="line">s1 = <span class="literal">null</span>;</span><br></pre></td></tr></table></figure>
-<p>上面的三个步骤也适用于 Boolean 和 Number 类型对应的布尔值和数字值。</p>
-<p>引用类型与基本包装类型的主要区别就是<strong>对象的生存期</strong>。使用 new 操作符创建的引用类型的实例，在执行流离开当前作用域之前都一直保存在内存中。而自动创建的基本包装类型对象，则只存在于一行代码的执行瞬间，然后立即被销毁。<strong>这意味着我们不能在运行时为基本类型值添加属性和方法</strong>。比如下面这个例子：</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> s1 = <span class="string">"some text"</span>;</span><br><span class="line">s1.color = <span class="string">"red"</span>;</span><br><span class="line"><span class="built_in">console</span>.log(s1.color); <span class="comment">// undefined</span></span><br></pre></td></tr></table></figure>
-<p>问题就在于 第二行创建的 String 对象在执行 第三行代码时已经被销毁了，第三行代码又创建自己的 String 对象，而该对象没有 color 属性。</p>
-<p><strong>不推荐主动进行 new String、new Number、new Boolean 的操作</strong>。</p>
-
-          
-        
-      
-    </div>
-
-    
-
-    
-
-    
-    
-    
-
-    
-
-    
-      
-    
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/08/05/JS逗号运算符/"/>
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="gzl"/>
-      <meta itemprop="description" content=""/>
-      <meta itemprop="image" content="/images/avatar.gif"/>
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="gzl的博客"/>
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/2019/08/05/JS逗号运算符/" class="post-title-link" itemprop="url">JS逗号运算符</a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-
-          
-          
-          
-
-          
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-
-              
-                
-              
-
-              <time title="创建时间：2019-08-05 09:00:47 / 修改时间：09:13:53" itemprop="dateCreated datePublished" datetime="2019-08-05T09:00:47+08:00">2019-08-05</time>
-            </span>
-          
-
-          
-            
-
-            
-          
-
-          
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/JavaScript/" itemprop="url" rel="index"><span itemprop="name">JavaScript</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-            
-          
-
-          
-          
-
-          
-
-          
-
-          <br/>
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h1 id="逗号运算符"><a href="#逗号运算符" class="headerlink" title="逗号运算符"></a>逗号运算符</h1><p><em>先看外面的括号(优先级高),然后返回,后面的值</em>，<em>逗号运算符会返回  “()” 中的最后一个</em></p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> a = <span class="number">42</span>, b;</span><br><span class="line">b = (a++, a);</span><br><span class="line"><span class="built_in">console</span>.log(a);  <span class="comment">// 43</span></span><br><span class="line"><span class="built_in">console</span>.log(b);  <span class="comment">// 43</span></span><br></pre></td></tr></table></figure>
-<p>a++, a中的第二个表达式 a 在 a++ 之后执行，结果为 43 ，并被赋值给 b。</p>
-<p>如果去掉 () 会出现什么情况 ？</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> a = <span class="number">42</span>, b;</span><br><span class="line">b = a++, a;</span><br><span class="line"><span class="built_in">console</span>.log(a);  <span class="comment">// 43</span></span><br><span class="line"><span class="built_in">console</span>.log(b);  <span class="comment">// 42</span></span><br></pre></td></tr></table></figure>
-<p>原因是逗号运算符的优先级比 = 低。b = a ++ , a 可以理解为 (b = a ++) , a。</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> x = (<span class="number">1</span>, <span class="number">2</span>);</span><br><span class="line"><span class="built_in">console</span>.log(x); <span class="comment">//   2</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> f = (</span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">f</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="string">"1"</span>;</span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">g</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">2</span>;</span><br><span class="line">    &#125;</span><br><span class="line">)(); <span class="comment">//f是函数g()执行后的返回值,所以f是2</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(<span class="keyword">typeof</span> f); <span class="comment">//   number</span></span><br></pre></td></tr></table></figure>
-
-          
-        
-      
-    </div>
-
-    
-
-    
-
-    
-    
-    
-
-    
-
-    
-      
-    
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
   <nav class="pagination">
-    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><span class="space">&hellip;</span><a class="page-number" href="/page/13/">13</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><span class="space">&hellip;</span><a class="page-number" href="/page/14/">14</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
   </nav>
 
 
@@ -884,7 +876,7 @@
         
           <a href="/archives/">
         
-          <span class="site-state-item-count">38</span>
+          <span class="site-state-item-count">40</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -998,7 +990,13 @@
         
           
         
-        <span class="site-state-item-count">34</span>
+          
+        
+          
+        
+          
+        
+        <span class="site-state-item-count">37</span>
         <span class="site-state-item-name">标签</span>
         </a>
       </div>

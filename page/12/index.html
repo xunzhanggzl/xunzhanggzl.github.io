@@ -326,7 +326,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/08/08/一些js的兼容性方法/"/>
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/08/25/dom结构/"/>
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="gzl"/>
@@ -346,7 +346,357 @@
           <h1 class="post-title" itemprop="name headline">
                 
                 
-                <a href="/2018/08/08/一些js的兼容性方法/" class="post-title-link" itemprop="url">一些js的兼容性方法</a>
+                <a href="/2018/08/25/dom结构/" class="post-title-link" itemprop="url">dom结构</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+
+          
+          
+          
+
+          
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2018-08-25 11:08:33 / 修改时间：12:17:13" itemprop="dateCreated datePublished" datetime="2018-08-25T11:08:33+08:00">2018-08-25</time>
+            </span>
+          
+
+          
+            
+
+            
+          
+
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+
+          <br/>
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h3 id="一、DOM基本操作"><a href="#一、DOM基本操作" class="headerlink" title="一、DOM基本操作"></a>一、DOM基本操作</h3><pre><code>1.getElementById方法定义在Document.prototype上，即Element节点上不能使用。
+
+2.getElementsByName方法定义在HTMLDocument.prototype上，即非html中的document
+不能使用(xml document,Element)
+
+3.getElementsByTagName方法定义在Document.prototype和Element.prototype上
+
+4.HTMLDocument.prototype定义了一些常用属性，body,head分别指代HTML文档中的&lt;body&gt;和
+&lt;head&gt;标签
+
+5.Document.prototype上定义了documentElement属性，指代文档的根元素，在HTML文档中，
+他总是指代&lt;html&gt;元素
+
+6.getElementsByClassName,querySelectorAll,querySelector在Document.prototype,
+Element.prototype类中均有定义
+</code></pre><h3 id="二、DOM结构树"><a href="#二、DOM结构树" class="headerlink" title="二、DOM结构树"></a>二、DOM结构树</h3><pre><code>            1.Document        HTMLDocument
+
+                              1)Text
+            2.CharacterData
+                              2)Comment
+Node
+            3.Element         HTMLElement
+
+
+            4.Attr            
+</code></pre>
+          
+        
+      
+    </div>
+
+    
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/08/08/JS经典题目this/"/>
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="gzl"/>
+      <meta itemprop="description" content=""/>
+      <meta itemprop="image" content="/images/avatar.gif"/>
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="gzl的博客"/>
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/2018/08/08/JS经典题目this/" class="post-title-link" itemprop="url">JS经典题目this</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+
+          
+          
+          
+
+          
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2018-08-08 10:52:34" itemprop="dateCreated datePublished" datetime="2018-08-08T10:52:34+08:00">2018-08-08</time>
+            </span>
+          
+
+          
+            
+
+            
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2019-08-06 18:48:14" itemprop="dateModified" datetime="2019-08-06T18:48:14+08:00">2019-08-06</time>
+              </span>
+            
+          
+
+          
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/JavaScript/" itemprop="url" rel="index"><span itemprop="name">JavaScript</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+
+          <br/>
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="this的经典题目"><a href="#this的经典题目" class="headerlink" title="this的经典题目"></a>this的经典题目</h1><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> name = <span class="number">222</span>;</span><br><span class="line"><span class="keyword">let</span> a = &#123;</span><br><span class="line">    name : <span class="number">111</span>,</span><br><span class="line">    say : <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="keyword">this</span>.name);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">let</span> fun = a.say;</span><br><span class="line">fun(); <span class="comment">//222</span></span><br><span class="line">a.say(); <span class="comment">//111</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> b = &#123;</span><br><span class="line">    name : <span class="string">"333"</span>,</span><br><span class="line">    say : <span class="function"><span class="keyword">function</span> (<span class="params">fun</span>) </span>&#123;</span><br><span class="line">        fun();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">b.say(a.say); <span class="comment">//222</span></span><br><span class="line">b.say = a.say; </span><br><span class="line">b.say();  <span class="comment">//333</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> foo = <span class="number">123</span>;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">print</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="comment">// var this = Object.create(print.prototype)</span></span><br><span class="line">    <span class="keyword">this</span>.foo = <span class="number">234</span>;</span><br><span class="line">    <span class="built_in">console</span>.log(foo); <span class="comment">// 123</span></span><br><span class="line">    <span class="built_in">console</span>.log(<span class="keyword">this</span>.foo); <span class="comment">// 234</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">new</span> print();</span><br><span class="line"><span class="comment">// foo此时指的是全局的foo，函数中的this不是指的全局</span></span><br></pre></td></tr></table></figure>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/08/08/JS兼容性方法/"/>
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="gzl"/>
+      <meta itemprop="description" content=""/>
+      <meta itemprop="image" content="/images/avatar.gif"/>
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="gzl的博客"/>
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/2018/08/08/JS兼容性方法/" class="post-title-link" itemprop="url">JS兼容性方法</a>
               
             
           </h1>
@@ -386,11 +736,26 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2018-08-27 17:39:27" itemprop="dateModified" datetime="2018-08-27T17:39:27+08:00">2018-08-27</time>
+                <time title="修改时间：2019-08-06 18:34:39" itemprop="dateModified" datetime="2019-08-06T18:34:39+08:00">2019-08-06</time>
               </span>
             
           
 
+          
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/JavaScript/" itemprop="url" rel="index"><span itemprop="name">JavaScript</span></a></span>
+
+                
+                
+              
+            </span>
           
 
           
@@ -430,336 +795,16 @@
             <h3 id="一、封装type方法"><a href="#一、封装type方法" class="headerlink" title="一、封装type方法"></a>一、封装type方法</h3><pre><code>1.分两类  原始值  引用值
 
 2.区分引用值
-</code></pre><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">"text/javascript"</span>&gt;</span><span class="undefined"></span></span><br><span class="line"><span class="javascript">	<span class="function"><span class="keyword">function</span> <span class="title">type</span>(<span class="params">target</span>) </span>&#123;</span></span><br><span class="line"><span class="javascript">		<span class="keyword">var</span> ret = <span class="keyword">typeof</span>(target);</span></span><br><span class="line"><span class="javascript">		<span class="keyword">var</span> template = &#123;</span></span><br><span class="line"><span class="javascript">			<span class="string">"[object Array]"</span> : <span class="string">"array"</span>,</span></span><br><span class="line"><span class="javascript">			<span class="string">"[object Object]"</span> : <span class="string">"object"</span>,</span></span><br><span class="line"><span class="javascript">			<span class="string">"[object Number]"</span> : <span class="string">"number - object"</span>,</span></span><br><span class="line"><span class="javascript">			<span class="string">"[object Boolean]"</span> : <span class="string">"boolean - object"</span>,</span></span><br><span class="line"><span class="javascript">			<span class="string">"[object String]"</span> : <span class="string">"string - object"</span></span></span><br><span class="line"><span class="undefined">		&#125;	</span></span><br><span class="line"><span class="undefined"></span></span><br><span class="line"><span class="javascript">		<span class="keyword">if</span>(target === <span class="literal">null</span>)&#123;</span></span><br><span class="line"><span class="javascript">			<span class="keyword">return</span> <span class="string">"null"</span>;</span></span><br><span class="line"><span class="javascript">		&#125;<span class="keyword">else</span> <span class="keyword">if</span>(ret == <span class="string">"object"</span>)&#123;</span></span><br><span class="line"><span class="javascript">			<span class="comment">// 数组  对象  包装类</span></span></span><br><span class="line"><span class="javascript">			<span class="keyword">var</span> str = <span class="built_in">Object</span>.prototype.toString.call(target);</span></span><br><span class="line"><span class="javascript">			<span class="keyword">return</span> template[str];</span></span><br><span class="line"><span class="javascript">		&#125;<span class="keyword">else</span>&#123;</span></span><br><span class="line"><span class="javascript">			<span class="keyword">return</span> ret;</span></span><br><span class="line"><span class="undefined">		&#125;</span></span><br><span class="line"><span class="undefined">	&#125;</span></span><br><span class="line"><span class="xml"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="undefined"></span></span></span><br></pre></td></tr></table></figure>
-<h3 id="二、封装兼容性方法，求滚动轮滚动距离getScrollOffset"><a href="#二、封装兼容性方法，求滚动轮滚动距离getScrollOffset" class="headerlink" title="二、封装兼容性方法，求滚动轮滚动距离getScrollOffset()"></a>二、封装兼容性方法，求滚动轮滚动距离getScrollOffset()</h3><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">"text/javascript"</span>&gt;</span><span class="undefined"></span></span><br><span class="line"><span class="javascript">	<span class="function"><span class="keyword">function</span> <span class="title">getScrollOffset</span>(<span class="params"></span>) </span>&#123;</span></span><br><span class="line"><span class="javascript">		<span class="keyword">if</span> (<span class="number">0</span> &amp;&amp; <span class="built_in">window</span>.pageXOffset) &#123;</span></span><br><span class="line"><span class="javascript">			<span class="keyword">return</span> &#123;</span></span><br><span class="line"><span class="javascript">				x : <span class="built_in">window</span>.pageXOffset,</span></span><br><span class="line"><span class="javascript">				y : <span class="built_in">window</span>.pageYOffset</span></span><br><span class="line"><span class="undefined">			&#125;</span></span><br><span class="line"><span class="javascript">		&#125;<span class="keyword">else</span>&#123;</span></span><br><span class="line"><span class="javascript">			<span class="keyword">return</span> &#123;</span></span><br><span class="line"><span class="javascript">				x : <span class="built_in">document</span>.body.scrollLeft + <span class="built_in">document</span>.documentElement.scrollLeft,</span></span><br><span class="line"><span class="javascript">				y : <span class="built_in">document</span>.body.scrollTop + <span class="built_in">document</span>.documentElement.scrollTop </span></span><br><span class="line"><span class="undefined">			&#125;</span></span><br><span class="line"><span class="undefined">		&#125;</span></span><br><span class="line"><span class="undefined">	&#125;</span></span><br><span class="line"><span class="xml"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="undefined"></span></span></span><br></pre></td></tr></table></figure>
+</code></pre><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">type</span>(<span class="params">target</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> ret = <span class="keyword">typeof</span>(target);</span><br><span class="line">    <span class="keyword">var</span> template = &#123;</span><br><span class="line">        <span class="string">"[object Array]"</span> : <span class="string">"array"</span>,</span><br><span class="line">        <span class="string">"[object Object]"</span> : <span class="string">"object"</span>,</span><br><span class="line">        <span class="string">"[object Number]"</span> : <span class="string">"number - object"</span>,</span><br><span class="line">        <span class="string">"[object Boolean]"</span> : <span class="string">"boolean - object"</span>,</span><br><span class="line">        <span class="string">"[object String]"</span> : <span class="string">"string - object"</span></span><br><span class="line">    &#125;	</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span>(target === <span class="literal">null</span>)&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="string">"null"</span>;</span><br><span class="line">    &#125;<span class="keyword">else</span> <span class="keyword">if</span>(ret == <span class="string">"object"</span>)&#123;</span><br><span class="line">        <span class="comment">// 数组  对象  包装类</span></span><br><span class="line">        <span class="keyword">var</span> str = <span class="built_in">Object</span>.prototype.toString.call(target);</span><br><span class="line">        <span class="keyword">return</span> template[str];</span><br><span class="line">    &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">        <span class="keyword">return</span> ret;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="二、封装兼容性方法，求滚动轮滚动距离getScrollOffset"><a href="#二、封装兼容性方法，求滚动轮滚动距离getScrollOffset" class="headerlink" title="二、封装兼容性方法，求滚动轮滚动距离getScrollOffset()"></a>二、封装兼容性方法，求滚动轮滚动距离getScrollOffset()</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">getScrollOffset</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (<span class="number">0</span> &amp;&amp; <span class="built_in">window</span>.pageXOffset) &#123;</span><br><span class="line">        <span class="keyword">return</span> &#123;</span><br><span class="line">            x : <span class="built_in">window</span>.pageXOffset,</span><br><span class="line">            y : <span class="built_in">window</span>.pageYOffset</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">        <span class="keyword">return</span> &#123;</span><br><span class="line">            x : <span class="built_in">document</span>.body.scrollLeft + <span class="built_in">document</span>.documentElement.scrollLeft,</span><br><span class="line">            y : <span class="built_in">document</span>.body.scrollTop + <span class="built_in">document</span>.documentElement.scrollTop </span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <h3 id="三、封装兼容性方法，返回浏览器视口尺寸getViewportOffset"><a href="#三、封装兼容性方法，返回浏览器视口尺寸getViewportOffset" class="headerlink" title="三、封装兼容性方法，返回浏览器视口尺寸getViewportOffset()"></a>三、封装兼容性方法，返回浏览器视口尺寸getViewportOffset()</h3><pre><code>怪异模式与标准模式
-</code></pre><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">"text/javascript"</span>&gt;</span><span class="undefined"></span></span><br><span class="line"><span class="javascript">	<span class="function"><span class="keyword">function</span> <span class="title">getViewportOffset</span>(<span class="params"></span>) </span>&#123;</span></span><br><span class="line"><span class="javascript">			<span class="keyword">if</span> (<span class="built_in">window</span>.innerWidth) &#123;</span></span><br><span class="line"><span class="javascript">				<span class="keyword">return</span> &#123;</span></span><br><span class="line"><span class="javascript">					w : <span class="built_in">window</span>.innerWidth,</span></span><br><span class="line"><span class="javascript">					h : <span class="built_in">window</span>.innerHeight</span></span><br><span class="line"><span class="undefined">				&#125;</span></span><br><span class="line"><span class="javascript">			&#125;<span class="keyword">else</span>&#123;</span></span><br><span class="line"><span class="javascript">				<span class="keyword">if</span> (<span class="built_in">document</span>.compatMode === <span class="string">"BackCompat"</span>) &#123;</span></span><br><span class="line"><span class="javascript">					<span class="keyword">return</span> &#123;</span></span><br><span class="line"><span class="javascript">						w : <span class="built_in">document</span>.body.clientWidth,</span></span><br><span class="line"><span class="javascript">						h : <span class="built_in">document</span>.body.clientHeight</span></span><br><span class="line"><span class="undefined">					&#125;</span></span><br><span class="line"><span class="javascript">				&#125;<span class="keyword">else</span>&#123;</span></span><br><span class="line"><span class="javascript">					<span class="keyword">return</span> &#123;</span></span><br><span class="line"><span class="javascript">						w : <span class="built_in">document</span>.documentElement.clientWidth,</span></span><br><span class="line"><span class="javascript">						h : <span class="built_in">document</span>.documentElement.clientHeight</span></span><br><span class="line"><span class="undefined">					&#125;</span></span><br><span class="line"><span class="undefined">				&#125;</span></span><br><span class="line"><span class="undefined">			&#125;</span></span><br><span class="line"><span class="undefined">		&#125;</span></span><br><span class="line"><span class="xml"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="undefined"></span></span></span><br></pre></td></tr></table></figure>
-<h3 id="四、封装兼容性方法，获取元素样式"><a href="#四、封装兼容性方法，获取元素样式" class="headerlink" title="四、封装兼容性方法，获取元素样式"></a>四、封装兼容性方法，获取元素样式</h3><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">"text/javascript"</span>&gt;</span><span class="undefined"></span></span><br><span class="line"><span class="javascript">	<span class="function"><span class="keyword">function</span> <span class="title">getStyle</span>(<span class="params">elem, prop</span>) </span>&#123;</span></span><br><span class="line"><span class="javascript">		<span class="keyword">if</span> (<span class="built_in">window</span>.getComputedStyle) &#123;</span></span><br><span class="line"><span class="javascript">			<span class="keyword">return</span> <span class="built_in">window</span>.getComputedStyle(elem, <span class="literal">null</span>)[prop];</span></span><br><span class="line"><span class="javascript">		&#125;<span class="keyword">else</span>&#123;</span></span><br><span class="line"><span class="javascript">			<span class="keyword">return</span> elem.currentStyle[prop];</span></span><br><span class="line"><span class="undefined">		&#125;</span></span><br><span class="line"><span class="undefined">	&#125;</span></span><br><span class="line"><span class="xml"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="undefined"></span></span></span><br></pre></td></tr></table></figure>
+</code></pre><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">getViewportOffset</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (<span class="built_in">window</span>.innerWidth) &#123;</span><br><span class="line">        <span class="keyword">return</span> &#123;</span><br><span class="line">            w : <span class="built_in">window</span>.innerWidth,</span><br><span class="line">            h : <span class="built_in">window</span>.innerHeight</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (<span class="built_in">document</span>.compatMode === <span class="string">"BackCompat"</span>) &#123;</span><br><span class="line">            <span class="keyword">return</span> &#123;</span><br><span class="line">                w : <span class="built_in">document</span>.body.clientWidth,</span><br><span class="line">                h : <span class="built_in">document</span>.body.clientHeight</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">            <span class="keyword">return</span> &#123;</span><br><span class="line">                w : <span class="built_in">document</span>.documentElement.clientWidth,</span><br><span class="line">                h : <span class="built_in">document</span>.documentElement.clientHeight</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="四、封装兼容性方法，获取元素样式"><a href="#四、封装兼容性方法，获取元素样式" class="headerlink" title="四、封装兼容性方法，获取元素样式"></a>四、封装兼容性方法，获取元素样式</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">getStyle</span>(<span class="params">elem, prop</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (<span class="built_in">window</span>.getComputedStyle) &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="built_in">window</span>.getComputedStyle(elem, <span class="literal">null</span>)[prop];</span><br><span class="line">    &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">        <span class="keyword">return</span> elem.currentStyle[prop];</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <h3 id="五、封装兼容性的addEvent事件绑定"><a href="#五、封装兼容性的addEvent事件绑定" class="headerlink" title="五、封装兼容性的addEvent事件绑定"></a>五、封装兼容性的addEvent事件绑定</h3><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">"text/javascript"</span>&gt;</span><span class="undefined"></span></span><br><span class="line"><span class="javascript">	<span class="function"><span class="keyword">function</span> <span class="title">addEvent</span>(<span class="params">elem, type, handle</span>) </span>&#123;</span></span><br><span class="line"><span class="javascript">		<span class="keyword">if</span> (elem.addEventListener) &#123;</span></span><br><span class="line"><span class="javascript">			elem.addEventListener(type, handle, <span class="literal">false</span>);</span></span><br><span class="line"><span class="javascript">		&#125;<span class="keyword">else</span> <span class="keyword">if</span> (elem.attachEvent) &#123;</span></span><br><span class="line"><span class="javascript">			elem.attachEvent(<span class="string">'on'</span> + type, <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span></span><br><span class="line"><span class="undefined">				handle.call(elem);</span></span><br><span class="line"><span class="undefined">			&#125;)</span></span><br><span class="line"><span class="javascript">		&#125;<span class="keyword">else</span>&#123;</span></span><br><span class="line"><span class="javascript">			elem[<span class="string">'on'</span> + type] = handle;</span></span><br><span class="line"><span class="undefined">		&#125;</span></span><br><span class="line"><span class="undefined">	&#125;</span></span><br><span class="line"><span class="xml"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="undefined"></span></span></span><br></pre></td></tr></table></figure>
-<h3 id="六、防止事件冒泡"><a href="#六、防止事件冒泡" class="headerlink" title="六、防止事件冒泡"></a>六、防止事件冒泡</h3><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">"text/javascript"</span>&gt;</span><span class="undefined"></span></span><br><span class="line"><span class="javascript">	<span class="function"><span class="keyword">function</span> <span class="title">stopBubble</span>(<span class="params">event</span>) </span>&#123;</span></span><br><span class="line"><span class="javascript">		<span class="keyword">if</span> (event.stopPropagation) &#123;</span></span><br><span class="line"><span class="undefined">			event.stopPropagation();</span></span><br><span class="line"><span class="javascript">		&#125;<span class="keyword">else</span>&#123;</span></span><br><span class="line"><span class="javascript">			event.cancelBubble = <span class="literal">true</span>;</span></span><br><span class="line"><span class="undefined">		&#125;</span></span><br><span class="line"><span class="undefined">	&#125;</span></span><br><span class="line"><span class="xml"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="undefined"></span></span></span><br></pre></td></tr></table></figure>
-<h3 id="七、阻止默认事件"><a href="#七、阻止默认事件" class="headerlink" title="七、阻止默认事件"></a>七、阻止默认事件</h3><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">"text/javascript"</span>&gt;</span><span class="undefined"></span></span><br><span class="line"><span class="javascript">	<span class="built_in">document</span>.oncontextmenu = <span class="function"><span class="keyword">function</span> (<span class="params">e</span>) </span>&#123;</span></span><br><span class="line"><span class="javascript">		<span class="built_in">console</span>.log(<span class="string">'a'</span>);</span></span><br><span class="line"><span class="undefined">		cancelHandler(e);</span></span><br><span class="line"><span class="undefined">	&#125;</span></span><br><span class="line"><span class="undefined"></span></span><br><span class="line"><span class="javascript">	<span class="function"><span class="keyword">function</span> <span class="title">cancelHandler</span>(<span class="params">event</span>) </span>&#123;</span></span><br><span class="line"><span class="javascript">		<span class="keyword">if</span> (event.preventDefault) &#123;</span></span><br><span class="line"><span class="undefined">			event.preventDefault();</span></span><br><span class="line"><span class="javascript">		&#125;<span class="keyword">else</span>&#123;</span></span><br><span class="line"><span class="javascript">			event.returnValue = <span class="literal">false</span>;</span></span><br><span class="line"><span class="undefined">		&#125;</span></span><br><span class="line"><span class="undefined">	&#125;</span></span><br><span class="line"><span class="xml"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="undefined"></span></span></span><br></pre></td></tr></table></figure>
-<h3 id="八、加载script"><a href="#八、加载script" class="headerlink" title="八、加载script"></a>八、加载script</h3><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">"text/javascript"</span>&gt;</span><span class="undefined"></span></span><br><span class="line"><span class="javascript">	<span class="function"><span class="keyword">function</span> <span class="title">loadScript</span>(<span class="params">url, callback</span>) </span>&#123;</span></span><br><span class="line"><span class="javascript">		<span class="keyword">var</span> script = <span class="built_in">document</span>.createElement(<span class="string">'script'</span>);</span></span><br><span class="line"><span class="javascript">		script.type = <span class="string">"text/javascript"</span>;</span></span><br><span class="line"><span class="undefined">		</span></span><br><span class="line"><span class="javascript">		<span class="keyword">if</span> (script.readyState) &#123;</span></span><br><span class="line"><span class="javascript">			script.onreadystatechange = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;<span class="comment">//IE</span></span></span><br><span class="line"><span class="javascript">				<span class="keyword">if</span> (script.readyState == <span class="string">"loaded"</span> || script.readyState == <span class="string">"complete"</span>) &#123;</span></span><br><span class="line"><span class="undefined">					callback();</span></span><br><span class="line"><span class="undefined">				&#125;</span></span><br><span class="line"><span class="undefined">			&#125;</span></span><br><span class="line"><span class="javascript">		&#125;<span class="keyword">else</span>&#123;</span></span><br><span class="line"><span class="javascript">			script.onload = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span></span><br><span class="line"><span class="undefined">				callback();</span></span><br><span class="line"><span class="undefined">			&#125;</span></span><br><span class="line"><span class="undefined">		&#125;</span></span><br><span class="line"><span class="undefined">		script.src = url;</span></span><br><span class="line"><span class="javascript">		<span class="built_in">document</span>.head.appendChild(script);</span></span><br><span class="line"><span class="undefined">	&#125;</span></span><br><span class="line"><span class="undefined"></span></span><br><span class="line"><span class="undefined"></span></span><br><span class="line"><span class="javascript">	loadScript(<span class="string">'demo.js'</span>, <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span></span><br><span class="line"><span class="undefined">		test();</span></span><br><span class="line"><span class="undefined">	&#125;);</span></span><br><span class="line"><span class="xml"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="undefined"></span></span></span><br></pre></td></tr></table></figure>
-<h3 id="九、拖拽"><a href="#九、拖拽" class="headerlink" title="九、拖拽"></a>九、拖拽</h3><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;!DOCTYPE html&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span> <span class="attr">lang</span>=<span class="string">"en"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">"UTF-8"</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">title</span>&gt;</span>sc<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">style</span> <span class="attr">type</span>=<span class="string">"text/css"</span>&gt;</span><span class="undefined"></span></span><br><span class="line"><span class="undefined">		div&#123;</span></span><br><span class="line"><span class="undefined">			width: 100px;</span></span><br><span class="line"><span class="undefined">			height: 100px;</span></span><br><span class="line"><span class="undefined">			background-color: red;</span></span><br><span class="line"><span class="undefined">			position: absolute;</span></span><br><span class="line"><span class="undefined">			left: 0;</span></span><br><span class="line"><span class="undefined">			top: 0;</span></span><br><span class="line"><span class="undefined">		&#125;</span></span><br><span class="line"><span class="undefined">	</span><span class="tag">&lt;/<span class="name">style</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">div</span> <span class="attr">style</span>=<span class="string">"width: 100px;height: 100px;background: red;position: absolute;top: 0;left: 0;"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">"text/javascript"</span>&gt;</span><span class="undefined"></span></span><br><span class="line"><span class="undefined">	</span></span><br><span class="line"><span class="javascript">		<span class="keyword">var</span> div = <span class="built_in">document</span>.getElementsByTagName(<span class="string">'div'</span>)[<span class="number">0</span>];</span></span><br><span class="line"><span class="undefined"></span></span><br><span class="line"><span class="undefined">		drag(div);</span></span><br><span class="line"><span class="undefined"></span></span><br><span class="line"><span class="undefined"></span></span><br><span class="line"><span class="javascript">		<span class="function"><span class="keyword">function</span> <span class="title">cancelHandler</span>(<span class="params">event</span>) </span>&#123;</span></span><br><span class="line"><span class="javascript">			<span class="keyword">if</span> (event.preventDefault) &#123;</span></span><br><span class="line"><span class="undefined">				event.preventDefault();</span></span><br><span class="line"><span class="javascript">			&#125;<span class="keyword">else</span>&#123;</span></span><br><span class="line"><span class="javascript">				event.returnValue = <span class="literal">false</span>;</span></span><br><span class="line"><span class="undefined">			&#125;</span></span><br><span class="line"><span class="javascript">		&#125; <span class="comment">// 阻止默认事件</span></span></span><br><span class="line"><span class="undefined"></span></span><br><span class="line"><span class="javascript">		<span class="function"><span class="keyword">function</span> <span class="title">stopBubble</span>(<span class="params">event</span>) </span>&#123;</span></span><br><span class="line"><span class="javascript">			<span class="keyword">if</span> (event.stopPropagation) &#123;</span></span><br><span class="line"><span class="undefined">				event.stopPropagation();</span></span><br><span class="line"><span class="javascript">			&#125;<span class="keyword">else</span>&#123;</span></span><br><span class="line"><span class="javascript">				event.cancelBubble = <span class="literal">true</span>;</span></span><br><span class="line"><span class="undefined">			&#125;</span></span><br><span class="line"><span class="javascript">		&#125; <span class="comment">// 阻止事件冒泡</span></span></span><br><span class="line"><span class="undefined"></span></span><br><span class="line"><span class="javascript">		<span class="function"><span class="keyword">function</span> <span class="title">addEvent</span>(<span class="params">elem, type, handle</span>) </span>&#123;</span></span><br><span class="line"><span class="javascript">			<span class="keyword">if</span> (elem.addEventListener) &#123;</span></span><br><span class="line"><span class="javascript">				elem.addEventListener(type, handle, <span class="literal">false</span>);</span></span><br><span class="line"><span class="javascript">			&#125;<span class="keyword">else</span> <span class="keyword">if</span> (elem.attachEvent) &#123;</span></span><br><span class="line"><span class="javascript">				elem.attachEvent(<span class="string">'on'</span> + type, <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span></span><br><span class="line"><span class="undefined">					handle.call(elem);</span></span><br><span class="line"><span class="undefined">				&#125;)</span></span><br><span class="line"><span class="javascript">			&#125;<span class="keyword">else</span>&#123;</span></span><br><span class="line"><span class="javascript">				elem[<span class="string">'on'</span> + type] = handle;</span></span><br><span class="line"><span class="undefined">			&#125;</span></span><br><span class="line"><span class="undefined">		&#125;</span></span><br><span class="line"><span class="undefined"></span></span><br><span class="line"><span class="javascript">		<span class="function"><span class="keyword">function</span> <span class="title">removeEvent</span>(<span class="params">elem, type, handle</span>) </span>&#123;</span></span><br><span class="line"><span class="javascript">			<span class="keyword">if</span> (elem.removeEventListener) &#123;</span></span><br><span class="line"><span class="javascript">				elem.removeEventListener(type, handle, <span class="literal">false</span>);</span></span><br><span class="line"><span class="javascript">			&#125;<span class="keyword">else</span> <span class="keyword">if</span> (elem.detachEvent) &#123;</span></span><br><span class="line"><span class="javascript">				elem.detachEvent(<span class="string">'on'</span> + type, <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span></span><br><span class="line"><span class="undefined">					handle.call(elem);</span></span><br><span class="line"><span class="undefined">				&#125;)</span></span><br><span class="line"><span class="javascript">			&#125;<span class="keyword">else</span>&#123;</span></span><br><span class="line"><span class="javascript">				elem[<span class="string">'on'</span> + type] = <span class="literal">null</span>;</span></span><br><span class="line"><span class="undefined">			&#125;</span></span><br><span class="line"><span class="javascript">		&#125; <span class="comment">// IE低版本不可靠，待修改</span></span></span><br><span class="line"><span class="undefined"></span></span><br><span class="line"><span class="javascript">		<span class="function"><span class="keyword">function</span> <span class="title">drag</span>(<span class="params">elem</span>) </span>&#123;</span></span><br><span class="line"><span class="javascript">			<span class="keyword">var</span> disX, disY;</span></span><br><span class="line"><span class="javascript">			addEvent(elem, <span class="string">'mousedown'</span>, <span class="function"><span class="keyword">function</span> (<span class="params">e</span>) </span>&#123;</span></span><br><span class="line"><span class="javascript">				<span class="keyword">var</span> event = e || <span class="built_in">window</span>.event;</span></span><br><span class="line"><span class="javascript">				disX = event.clientX - <span class="built_in">parseInt</span>(elem.style.left);</span></span><br><span class="line"><span class="javascript">				disY = event.clientY - <span class="built_in">parseInt</span>(elem.style.top);</span></span><br><span class="line"><span class="javascript">				addEvent(<span class="built_in">document</span>, <span class="string">'mousemove'</span>, mouseMove);</span></span><br><span class="line"><span class="javascript">				addEvent(<span class="built_in">document</span>, <span class="string">'mouseup'</span>, mouseUp);</span></span><br><span class="line"><span class="undefined">				stopBubble(event);</span></span><br><span class="line"><span class="undefined">				cancelHandler(event);</span></span><br><span class="line"><span class="undefined"></span></span><br><span class="line"><span class="undefined">			&#125;)</span></span><br><span class="line"><span class="javascript">			<span class="function"><span class="keyword">function</span> <span class="title">mouseMove</span>(<span class="params">e</span>) </span>&#123;</span></span><br><span class="line"><span class="javascript">				<span class="keyword">var</span> event = e || <span class="built_in">window</span>.event;</span></span><br><span class="line"><span class="javascript">				elem.style.left = event.clientX - disX + <span class="string">"px"</span>;</span></span><br><span class="line"><span class="javascript">				elem.style.top = event.clientY - disY + <span class="string">"px"</span>;</span></span><br><span class="line"><span class="undefined"></span></span><br><span class="line"><span class="undefined">			&#125;</span></span><br><span class="line"><span class="javascript">			<span class="function"><span class="keyword">function</span> <span class="title">mouseUp</span>(<span class="params">e</span>) </span>&#123;</span></span><br><span class="line"><span class="javascript">				<span class="keyword">var</span> event = e || <span class="built_in">window</span>.event;</span></span><br><span class="line"><span class="javascript">				removeEvent(<span class="built_in">document</span>, <span class="string">'mousemove'</span>, mouseMove);</span></span><br><span class="line"><span class="javascript">				removeEvent(<span class="built_in">document</span>, <span class="string">'mouseup'</span>, mouseUp);</span></span><br><span class="line"><span class="undefined">			&#125;</span></span><br><span class="line"><span class="undefined">		&#125;</span></span><br><span class="line"><span class="undefined">	</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
-          
-        
-      
-    </div>
-
-    
-
-    
-
-    
-    
-    
-
-    
-
-    
-      
-    
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/08/08/关于原型/"/>
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="gzl"/>
-      <meta itemprop="description" content=""/>
-      <meta itemprop="image" content="/images/avatar.gif"/>
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="gzl的博客"/>
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/2018/08/08/关于原型/" class="post-title-link" itemprop="url">关于原型</a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-
-          
-          
-          
-
-          
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-
-              
-                
-              
-
-              <time title="创建时间：2018-08-08 09:42:47 / 修改时间：10:54:26" itemprop="dateCreated datePublished" datetime="2018-08-08T09:42:47+08:00">2018-08-08</time>
-            </span>
-          
-
-          
-            
-
-            
-          
-
-          
-
-          
-            
-            
-          
-
-          
-          
-
-          
-
-          
-
-          <br/>
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h3 id="一、实例"><a href="#一、实例" class="headerlink" title="一、实例"></a>一、实例</h3><h4 id="1-new-Person-在前"><a href="#1-new-Person-在前" class="headerlink" title="1. new Person()在前"></a>1. new Person()在前</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">Person.prototype.name = <span class="string">'sunny'</span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Person</span>(<span class="params"></span>) </span>&#123;&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> person = <span class="keyword">new</span> Person();</span><br><span class="line"></span><br><span class="line">Person.prototype.name = <span class="string">'cherry'</span>;</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(person.name);  <span class="comment">//cherry</span></span><br></pre></td></tr></table></figure>
-<h4 id="2-new-Person-在后"><a href="#2-new-Person-在后" class="headerlink" title="2. new Person()在后"></a>2. new Person()在后</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">Person.prototype.name = <span class="string">'sunny'</span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Person</span>(<span class="params"></span>) </span>&#123;&#125;</span><br><span class="line"></span><br><span class="line">Person.prototype.name = <span class="string">'cherry'</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> person = <span class="keyword">new</span> Person();</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(person.name);   <span class="comment">//cherry</span></span><br></pre></td></tr></table></figure>
-<h4 id="3-改变写法"><a href="#3-改变写法" class="headerlink" title="3. 改变写法"></a>3. 改变写法</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">Person.prototype.name = <span class="string">'sunny'</span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Person</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">	<span class="comment">//var this = &#123;__proto__ : Person.prototype&#125;</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> person = <span class="keyword">new</span> Person();</span><br><span class="line"></span><br><span class="line">Person.prototype = &#123;</span><br><span class="line">	name : <span class="string">'cherry'</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(person.name);  <span class="comment">//sunny</span></span><br></pre></td></tr></table></figure>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">这样理解</span><br><span class="line"><span class="keyword">var</span> obj = &#123;<span class="attr">name</span> : <span class="string">"a"</span>&#125;;</span><br><span class="line"><span class="keyword">var</span> obj1 = obj;</span><br><span class="line">obj = &#123;<span class="attr">name</span> : <span class="string">"b"</span>&#125;;</span><br><span class="line"></span><br><span class="line">Person.prototype = &#123;<span class="attr">name</span> : <span class="string">"a"</span>&#125;;</span><br><span class="line">__proto__ = Person.prototype;</span><br><span class="line">Person.prototype = &#123;<span class="attr">name</span> : <span class="string">"b"</span>&#125;;</span><br></pre></td></tr></table></figure>
-<h4 id="4-new-Person最后执行"><a href="#4-new-Person最后执行" class="headerlink" title="4. new Person最后执行"></a>4. new Person最后执行</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">Person.prototype.name = <span class="string">'sunny'</span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Person</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">	<span class="comment">// var this = &#123;__proto__ : Person.prototype&#125;</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">Person.prototype = &#123;</span><br><span class="line">	name : <span class="string">'cherry'</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> person = <span class="keyword">new</span> Person();</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(person.name);   <span class="comment">//cherry</span></span><br></pre></td></tr></table></figure>
-<h3 id="二、隐式添加"><a href="#二、隐式添加" class="headerlink" title="二、隐式添加"></a>二、隐式添加</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">Person.prototype.name = <span class="string">'abc'</span>;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Person</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">	<span class="comment">// var this = Object.create(Person.prototype);</span></span><br><span class="line">	<span class="comment">// var this = &#123;</span></span><br><span class="line">	<span class="comment">// 	__proto__ : Person.prototype</span></span><br><span class="line">	<span class="comment">// &#125;</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> person = <span class="keyword">new</span> Person();</span><br></pre></td></tr></table></figure>
-<h3 id="三、继承"><a href="#三、继承" class="headerlink" title="三、继承"></a>三、继承</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 继承  </span></span><br><span class="line"></span><br><span class="line"><span class="comment">//1.圣杯模式</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">inherit</span>(<span class="params">Target, Origin</span>) </span>&#123;</span><br><span class="line">	<span class="function"><span class="keyword">function</span> <span class="title">F</span>(<span class="params"></span>) </span>&#123;&#125;</span><br><span class="line">	F.prototype = Origin.prototype;</span><br><span class="line">	Target.prototype = <span class="keyword">new</span> F();</span><br><span class="line">	Target.prototype.constructor = Target;</span><br><span class="line">	Target.prototype.uber = Origin.prototype;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 2.雅虎写法  闭包</span></span><br><span class="line"><span class="keyword">var</span> inherit = (<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">	<span class="keyword">var</span> F = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;&#125;</span><br><span class="line">	<span class="keyword">return</span> <span class="function"><span class="keyword">function</span> (<span class="params">Target, Origin</span>) </span>&#123;</span><br><span class="line">		F.prototype = Origin.prototype;</span><br><span class="line">		Target.prototype = <span class="keyword">new</span> F();</span><br><span class="line">		Target.prototype.constructor = Target;</span><br><span class="line">		Target.prototype.uber = Origin.prototype;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;());</span><br><span class="line"></span><br><span class="line">Father.prototype.lastName = <span class="string">"G"</span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Father</span>(<span class="params"></span>) </span>&#123;&#125;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Son</span>(<span class="params"></span>) </span>&#123;&#125;</span><br><span class="line"></span><br><span class="line">inherit(Son, Father);</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> son = <span class="keyword">new</span> Son();</span><br><span class="line"><span class="keyword">var</span> father = <span class="keyword">new</span> Father();</span><br></pre></td></tr></table></figure>
-
-          
-        
-      
-    </div>
-
-    
-
-    
-
-    
-    
-    
-
-    
-
-    
-      
-    
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/08/08/Javascript中的-以及立即执行函数实例/"/>
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="gzl"/>
-      <meta itemprop="description" content=""/>
-      <meta itemprop="image" content="/images/avatar.gif"/>
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="gzl的博客"/>
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/2018/08/08/Javascript中的-以及立即执行函数实例/" class="post-title-link" itemprop="url">Javascript中的, 以及立即执行函数实例</a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-
-          
-          
-          
-
-          
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-
-              
-                
-              
-
-              <time title="创建时间：2018-08-08 08:50:33" itemprop="dateCreated datePublished" datetime="2018-08-08T08:50:33+08:00">2018-08-08</time>
-            </span>
-          
-
-          
-            
-
-            
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">更新于</span>
-                
-                <time title="修改时间：2019-08-05 09:05:51" itemprop="dateModified" datetime="2019-08-05T09:05:51+08:00">2019-08-05</time>
-              </span>
-            
-          
-
-          
-
-          
-            
-            
-          
-
-          
-          
-
-          
-
-          
-
-          <br/>
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h3 id="一、”-”运算符"><a href="#一、”-”运算符" class="headerlink" title="一、”,”运算符"></a>一、”,”运算符</h3><pre><code>&quot;,&quot; 运算符会返回&quot;()&quot;中的最后一个，--&gt; 你不知道的js
-</code></pre><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">先看外面的括号(优先级高),然后返回,后面的值</span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">"text/javascript"</span>&gt;</span><span class="undefined"></span></span><br><span class="line"><span class="javascript">	<span class="keyword">var</span> x = (<span class="number">1</span>,<span class="number">2</span>);  </span></span><br><span class="line"><span class="javascript">	<span class="built_in">console</span>.log(x);   <span class="comment">//   2</span></span></span><br><span class="line"><span class="undefined">	</span></span><br><span class="line"><span class="javascript">	<span class="keyword">var</span> f = (</span></span><br><span class="line"><span class="javascript">		<span class="function"><span class="keyword">function</span> <span class="title">f</span>(<span class="params"></span>) </span>&#123;</span></span><br><span class="line"><span class="javascript">			<span class="keyword">return</span> <span class="string">"1"</span>;</span></span><br><span class="line"><span class="undefined">		&#125;,</span></span><br><span class="line"><span class="javascript">		<span class="function"><span class="keyword">function</span> <span class="title">g</span>(<span class="params"></span>) </span>&#123;</span></span><br><span class="line"><span class="javascript">			<span class="keyword">return</span> <span class="number">2</span>;</span></span><br><span class="line"><span class="undefined">		&#125;</span></span><br><span class="line"><span class="javascript">	)();  <span class="comment">//f是函数g()执行后的返回值,所以f是2</span></span></span><br><span class="line"><span class="undefined"></span></span><br><span class="line"><span class="javascript">	<span class="built_in">console</span>.log(<span class="keyword">typeof</span> f); <span class="comment">//   number</span></span></span><br><span class="line"><span class="xml"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="undefined"></span></span></span><br></pre></td></tr></table></figure>
-<h3 id="二、立即执行函数实例"><a href="#二、立即执行函数实例" class="headerlink" title="二、立即执行函数实例"></a>二、立即执行函数实例</h3><p><em>1.</em> 考查知识点<br><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">"text/javascript"</span>&gt;</span><span class="undefined"></span></span><br><span class="line"><span class="javascript">    <span class="keyword">var</span> x = <span class="number">1</span>;</span></span><br><span class="line"><span class="javascript">    <span class="keyword">if</span> (<span class="function"><span class="keyword">function</span> <span class="title">f</span>(<span class="params"></span>) </span>&#123;&#125;) &#123;</span></span><br><span class="line"><span class="javascript">        x += <span class="keyword">typeof</span> f;</span></span><br><span class="line"><span class="undefined">    &#125;</span></span><br><span class="line"><span class="javascript">    <span class="built_in">console</span>.log(x);  <span class="comment">//1undefined</span></span></span><br><span class="line"><span class="xml"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="undefined"></span></span></span><br><span class="line"><span class="javascript"><span class="comment">// f函数外加括号, 已经变成函数表达式, </span></span></span><br><span class="line"><span class="javascript"><span class="comment">// 不再是函数声明, f已经成为undefined;</span></span></span><br></pre></td></tr></table></figure></p>
-<p><em>2.</em> compare<br><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">"text/javascript"</span>&gt;</span><span class="undefined"></span></span><br><span class="line"><span class="undefined">    2.1</span></span><br><span class="line"><span class="javascript">    <span class="function"><span class="keyword">function</span> <span class="title">foo</span>(<span class="params">x</span>) </span>&#123;</span></span><br><span class="line"><span class="javascript">        <span class="built_in">console</span>.log(<span class="built_in">arguments</span>);</span></span><br><span class="line"><span class="undefined">    &#125;()       </span></span><br><span class="line"><span class="undefined"></span></span><br><span class="line"><span class="undefined">    报错语法错误,只有函数表达式才可以被执行</span></span><br><span class="line"><span class="undefined"></span></span><br><span class="line"><span class="undefined">    2.2</span></span><br><span class="line"><span class="javascript">    <span class="function"><span class="keyword">function</span> <span class="title">foo</span>(<span class="params">x</span>) </span>&#123;</span></span><br><span class="line"><span class="javascript">        <span class="built_in">console</span>.log(<span class="built_in">arguments</span>);</span></span><br><span class="line"><span class="undefined">    &#125;(1,2,3,4,5)</span></span><br><span class="line"><span class="undefined"></span></span><br><span class="line"><span class="undefined">    2.2的理解</span></span><br><span class="line"><span class="javascript">    <span class="function"><span class="keyword">function</span> <span class="title">foo</span>(<span class="params">x</span>) </span>&#123;</span></span><br><span class="line"><span class="javascript">        <span class="built_in">console</span>.log(<span class="built_in">arguments</span>);</span></span><br><span class="line"><span class="undefined">    &#125;          </span></span><br><span class="line"><span class="undefined"></span></span><br><span class="line"><span class="undefined">    (1,2,3,4,5)</span></span><br><span class="line"><span class="xml"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="undefined"></span></span></span><br><span class="line"><span class="javascript"><span class="comment">// 可以理解为分家了      不执行也不报错</span></span></span><br></pre></td></tr></table></figure></p>
-<p><em>3.</em> 注意理解<br><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">"text/javascript"</span>&gt;</span><span class="undefined"></span></span><br><span class="line"><span class="javascript">    <span class="keyword">var</span> test = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span></span><br><span class="line"><span class="javascript">        <span class="built_in">console</span>.log(<span class="string">'a'</span>);</span></span><br><span class="line"><span class="undefined">    &#125;();</span></span><br><span class="line"><span class="xml"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="undefined"></span></span></span><br><span class="line"><span class="javascript"><span class="comment">// 在控制台访问test --&gt; undefined，执行完后立即销毁</span></span></span><br></pre></td></tr></table></figure></p>
-
+<h3 id="六、防止事件冒泡"><a href="#六、防止事件冒泡" class="headerlink" title="六、防止事件冒泡"></a>六、防止事件冒泡</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">stopBubble</span>(<span class="params">event</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (event.stopPropagation) &#123;</span><br><span class="line">        event.stopPropagation();</span><br><span class="line">    &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">        event.cancelBubble = <span class="literal">true</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="七、阻止默认事件"><a href="#七、阻止默认事件" class="headerlink" title="七、阻止默认事件"></a>七、阻止默认事件</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">document</span>.oncontextmenu = <span class="function"><span class="keyword">function</span> (<span class="params">e</span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'a'</span>);</span><br><span class="line">    cancelHandler(e);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">cancelHandler</span>(<span class="params">event</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (event.preventDefault) &#123;</span><br><span class="line">    	event.preventDefault();</span><br><span class="line">    &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">    	event.returnValue = <span class="literal">false</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="八、加载script"><a href="#八、加载script" class="headerlink" title="八、加载script"></a>八、加载script</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">loadScript</span>(<span class="params">url, callback</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> script = <span class="built_in">document</span>.createElement(<span class="string">'script'</span>);</span><br><span class="line">    script.type = <span class="string">"text/javascript"</span>;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> (script.readyState) &#123;</span><br><span class="line">        script.onreadystatechange = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;<span class="comment">//IE</span></span><br><span class="line">            <span class="keyword">if</span> (script.readyState == <span class="string">"loaded"</span> || script.readyState == <span class="string">"complete"</span>) &#123;</span><br><span class="line">                callback();</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">        script.onload = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">            callback();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    script.src = url;</span><br><span class="line">    <span class="built_in">document</span>.head.appendChild(script);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">loadScript(<span class="string">'demo.js'</span>, <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">    test();</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<h3 id="九、拖拽"><a href="#九、拖拽" class="headerlink" title="九、拖拽"></a>九、拖拽</h3><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;!DOCTYPE html&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span> <span class="attr">lang</span>=<span class="string">"en"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">"UTF-8"</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">title</span>&gt;</span>sc<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">style</span> <span class="attr">type</span>=<span class="string">"text/css"</span>&gt;</span><span class="undefined"></span></span><br><span class="line"><span class="undefined">            div&#123;</span></span><br><span class="line"><span class="undefined">                width: 100px;</span></span><br><span class="line"><span class="undefined">                height: 100px;</span></span><br><span class="line"><span class="undefined">                background-color: red;</span></span><br><span class="line"><span class="undefined">                position: absolute;</span></span><br><span class="line"><span class="undefined">                left: 0;</span></span><br><span class="line"><span class="undefined">                top: 0;</span></span><br><span class="line"><span class="undefined">            &#125;</span></span><br><span class="line"><span class="undefined">        </span><span class="tag">&lt;/<span class="name">style</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">div</span> <span class="attr">style</span>=<span class="string">"width: 100px;height: 100px;background: red;position: absolute;top: 0;left: 0;"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">"text/javascript"</span>&gt;</span><span class="undefined"></span></span><br><span class="line"><span class="undefined"></span></span><br><span class="line"><span class="javascript">            <span class="keyword">var</span> div = <span class="built_in">document</span>.getElementsByTagName(<span class="string">'div'</span>)[<span class="number">0</span>];</span></span><br><span class="line"><span class="undefined"></span></span><br><span class="line"><span class="undefined">            drag(div);</span></span><br><span class="line"><span class="undefined"></span></span><br><span class="line"><span class="undefined"></span></span><br><span class="line"><span class="javascript">            <span class="function"><span class="keyword">function</span> <span class="title">cancelHandler</span>(<span class="params">event</span>) </span>&#123;</span></span><br><span class="line"><span class="javascript">                <span class="keyword">if</span> (event.preventDefault) &#123;</span></span><br><span class="line"><span class="undefined">                    event.preventDefault();</span></span><br><span class="line"><span class="javascript">                &#125;<span class="keyword">else</span>&#123;</span></span><br><span class="line"><span class="javascript">                    event.returnValue = <span class="literal">false</span>;</span></span><br><span class="line"><span class="undefined">                &#125;</span></span><br><span class="line"><span class="javascript">            &#125; <span class="comment">// 阻止默认事件</span></span></span><br><span class="line"><span class="undefined"></span></span><br><span class="line"><span class="javascript">            <span class="function"><span class="keyword">function</span> <span class="title">stopBubble</span>(<span class="params">event</span>) </span>&#123;</span></span><br><span class="line"><span class="javascript">                <span class="keyword">if</span> (event.stopPropagation) &#123;</span></span><br><span class="line"><span class="undefined">                    event.stopPropagation();</span></span><br><span class="line"><span class="javascript">                &#125;<span class="keyword">else</span>&#123;</span></span><br><span class="line"><span class="javascript">                    event.cancelBubble = <span class="literal">true</span>;</span></span><br><span class="line"><span class="undefined">                &#125;</span></span><br><span class="line"><span class="javascript">            &#125; <span class="comment">// 阻止事件冒泡</span></span></span><br><span class="line"><span class="undefined"></span></span><br><span class="line"><span class="javascript">            <span class="function"><span class="keyword">function</span> <span class="title">addEvent</span>(<span class="params">elem, type, handle</span>) </span>&#123;</span></span><br><span class="line"><span class="javascript">                <span class="keyword">if</span> (elem.addEventListener) &#123;</span></span><br><span class="line"><span class="javascript">                    elem.addEventListener(type, handle, <span class="literal">false</span>);</span></span><br><span class="line"><span class="javascript">                &#125;<span class="keyword">else</span> <span class="keyword">if</span> (elem.attachEvent) &#123;</span></span><br><span class="line"><span class="javascript">                    elem.attachEvent(<span class="string">'on'</span> + type, <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span></span><br><span class="line"><span class="undefined">                        handle.call(elem);</span></span><br><span class="line"><span class="undefined">                    &#125;)</span></span><br><span class="line"><span class="javascript">                &#125;<span class="keyword">else</span>&#123;</span></span><br><span class="line"><span class="javascript">                    elem[<span class="string">'on'</span> + type] = handle;</span></span><br><span class="line"><span class="undefined">                &#125;</span></span><br><span class="line"><span class="undefined">            &#125;</span></span><br><span class="line"><span class="undefined"></span></span><br><span class="line"><span class="javascript">            <span class="function"><span class="keyword">function</span> <span class="title">removeEvent</span>(<span class="params">elem, type, handle</span>) </span>&#123;</span></span><br><span class="line"><span class="javascript">                <span class="keyword">if</span> (elem.removeEventListener) &#123;</span></span><br><span class="line"><span class="javascript">                    elem.removeEventListener(type, handle, <span class="literal">false</span>);</span></span><br><span class="line"><span class="javascript">                &#125;<span class="keyword">else</span> <span class="keyword">if</span> (elem.detachEvent) &#123;</span></span><br><span class="line"><span class="javascript">                    elem.detachEvent(<span class="string">'on'</span> + type, <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span></span><br><span class="line"><span class="undefined">                        handle.call(elem);</span></span><br><span class="line"><span class="undefined">                    &#125;)</span></span><br><span class="line"><span class="javascript">                &#125;<span class="keyword">else</span>&#123;</span></span><br><span class="line"><span class="javascript">                    elem[<span class="string">'on'</span> + type] = <span class="literal">null</span>;</span></span><br><span class="line"><span class="undefined">                &#125;</span></span><br><span class="line"><span class="javascript">            &#125; <span class="comment">// IE低版本不可靠，待修改</span></span></span><br><span class="line"><span class="undefined"></span></span><br><span class="line"><span class="javascript">            <span class="function"><span class="keyword">function</span> <span class="title">drag</span>(<span class="params">elem</span>) </span>&#123;</span></span><br><span class="line"><span class="javascript">                <span class="keyword">var</span> disX, disY;</span></span><br><span class="line"><span class="javascript">                addEvent(elem, <span class="string">'mousedown'</span>, <span class="function"><span class="keyword">function</span> (<span class="params">e</span>) </span>&#123;</span></span><br><span class="line"><span class="javascript">                    <span class="keyword">var</span> event = e || <span class="built_in">window</span>.event;</span></span><br><span class="line"><span class="javascript">                    disX = event.clientX - <span class="built_in">parseInt</span>(elem.style.left);</span></span><br><span class="line"><span class="javascript">                    disY = event.clientY - <span class="built_in">parseInt</span>(elem.style.top);</span></span><br><span class="line"><span class="javascript">                    addEvent(<span class="built_in">document</span>, <span class="string">'mousemove'</span>, mouseMove);</span></span><br><span class="line"><span class="javascript">                    addEvent(<span class="built_in">document</span>, <span class="string">'mouseup'</span>, mouseUp);</span></span><br><span class="line"><span class="undefined">                    stopBubble(event);</span></span><br><span class="line"><span class="undefined">                    cancelHandler(event);</span></span><br><span class="line"><span class="undefined"></span></span><br><span class="line"><span class="undefined">                &#125;)</span></span><br><span class="line"><span class="javascript">                <span class="function"><span class="keyword">function</span> <span class="title">mouseMove</span>(<span class="params">e</span>) </span>&#123;</span></span><br><span class="line"><span class="javascript">                    <span class="keyword">var</span> event = e || <span class="built_in">window</span>.event;</span></span><br><span class="line"><span class="javascript">                    elem.style.left = event.clientX - disX + <span class="string">"px"</span>;</span></span><br><span class="line"><span class="javascript">                    elem.style.top = event.clientY - disY + <span class="string">"px"</span>;</span></span><br><span class="line"><span class="undefined"></span></span><br><span class="line"><span class="undefined">                &#125;</span></span><br><span class="line"><span class="javascript">                <span class="function"><span class="keyword">function</span> <span class="title">mouseUp</span>(<span class="params">e</span>) </span>&#123;</span></span><br><span class="line"><span class="javascript">                    <span class="keyword">var</span> event = e || <span class="built_in">window</span>.event;</span></span><br><span class="line"><span class="javascript">                    removeEvent(<span class="built_in">document</span>, <span class="string">'mousemove'</span>, mouseMove);</span></span><br><span class="line"><span class="javascript">                    removeEvent(<span class="built_in">document</span>, <span class="string">'mouseup'</span>, mouseUp);</span></span><br><span class="line"><span class="undefined">                &#125;</span></span><br><span class="line"><span class="undefined">            &#125;</span></span><br><span class="line"><span class="undefined">        </span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
           
         
       
@@ -806,7 +851,7 @@
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/11/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/11/">11</a><span class="page-number current">12</span><a class="page-number" href="/page/13/">13</a><a class="extend next" rel="next" href="/page/13/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
+    <a class="extend prev" rel="prev" href="/page/11/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/11/">11</a><span class="page-number current">12</span><a class="page-number" href="/page/13/">13</a><a class="page-number" href="/page/14/">14</a><a class="extend next" rel="next" href="/page/13/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
   </nav>
 
 
@@ -849,7 +894,7 @@
         
           <a href="/archives/">
         
-          <span class="site-state-item-count">38</span>
+          <span class="site-state-item-count">40</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -963,7 +1008,13 @@
         
           
         
-        <span class="site-state-item-count">34</span>
+          
+        
+          
+        
+          
+        
+        <span class="site-state-item-count">37</span>
         <span class="site-state-item-name">标签</span>
         </a>
       </div>
