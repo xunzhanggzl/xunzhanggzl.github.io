@@ -93,13 +93,18 @@
   };
 </script>
 
-  <meta property="og:type" content="website">
-<meta property="og:title" content="gzl的博客">
-<meta property="og:url" content="http://yoursite.com/index.html">
+  <meta name="description" content="94. 二叉树的中序遍历 给定一个二叉树，返回它的中序 遍历。 示例: 输入: [1,null,2,3] 输出: [1,3,2] 递归对于中序遍历，就是 左根右，dfs 递归还是很简单的。 1234567891011121314151617181920212223/** * Definition for a binary tree node. * function TreeNode(val) &amp;#">
+<meta name="keywords" content="DFS,BFS,迭代,递归">
+<meta property="og:type" content="article">
+<meta property="og:title" content="二叉树的中序遍历">
+<meta property="og:url" content="http://yoursite.com/2019/08/12/LC二叉树的中序遍历/index.html">
 <meta property="og:site_name" content="gzl的博客">
+<meta property="og:description" content="94. 二叉树的中序遍历 给定一个二叉树，返回它的中序 遍历。 示例: 输入: [1,null,2,3] 输出: [1,3,2] 递归对于中序遍历，就是 左根右，dfs 递归还是很简单的。 1234567891011121314151617181920212223/** * Definition for a binary tree node. * function TreeNode(val) &amp;#">
 <meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2019-08-12T06:22:16.395Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="gzl的博客">
+<meta name="twitter:title" content="二叉树的中序遍历">
+<meta name="twitter:description" content="94. 二叉树的中序遍历 给定一个二叉树，返回它的中序 遍历。 示例: 输入: [1,null,2,3] 输出: [1,3,2] 递归对于中序遍历，就是 左根右，dfs 递归还是很简单的。 1234567891011121314151617181920212223/** * Definition for a binary tree node. * function TreeNode(val) &amp;#">
 
 
 
@@ -107,7 +112,7 @@
 
   
   
-  <link rel="canonical" href="http://yoursite.com/"/>
+  <link rel="canonical" href="http://yoursite.com/2019/08/12/LC二叉树的中序遍历/"/>
 
 
 
@@ -118,7 +123,7 @@
 </script>
 
   
-  <title>gzl的博客</title>
+  <title>二叉树的中序遍历 | gzl的博客</title>
   
 
 
@@ -166,8 +171,7 @@
     
   
 
-  <div class="container sidebar-position-left 
-  page-home">
+  <div class="container sidebar-position-left page-post-detail">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -205,7 +209,7 @@
         
         
           
-          <li class="menu-item menu-item-home menu-item-active">
+          <li class="menu-item menu-item-home">
 
     
     
@@ -309,9 +313,9 @@
           
           <div id="content" class="content">
             
-  <section id="posts" class="posts-expand">
+
+  <div id="posts" class="posts-expand">
     
-      
 
   
 
@@ -343,10 +347,8 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/2019/08/12/LC二叉树的中序遍历/" class="post-title-link" itemprop="url">二叉树的中序遍历</a>
+          <h1 class="post-title" itemprop="name headline">二叉树的中序遍历
+
               
             
           </h1>
@@ -430,9 +432,7 @@
       
 
       
-        
-          
-            <p><a href="https://leetcode-cn.com/problems/binary-tree-inorder-traversal/" target="_blank" rel="noopener">94. 二叉树的中序遍历</a></p>
+        <p><a href="https://leetcode-cn.com/problems/binary-tree-inorder-traversal/" target="_blank" rel="noopener">94. 二叉树的中序遍历</a></p>
 <p>给定一个二叉树，返回它的中序 遍历。</p>
 <p>示例:</p>
 <p>输入: [1,null,2,3]</p>
@@ -445,13 +445,13 @@
 <p>如果 <code>root</code> 存在，那么将它放入 <code>stack</code> 中，并且继续指向左子树。</p>
 <p>如果 <code>root</code> 不存在，那么取出栈顶元素，将其值放入 <code>res</code>，并将 <code>root</code> 指向右子树。</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Definition for a binary tree node.</span></span><br><span class="line"><span class="comment"> * function TreeNode(val) &#123;</span></span><br><span class="line"><span class="comment"> *     this.val = val;</span></span><br><span class="line"><span class="comment"> *     this.left = this.right = null;</span></span><br><span class="line"><span class="comment"> * &#125;</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * @param &#123;TreeNode&#125; root</span></span><br><span class="line"><span class="comment"> * @return &#123;number[]&#125;</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">var</span> inorderTraversal = <span class="function"><span class="keyword">function</span> (<span class="params">root</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">let</span> res = [];</span><br><span class="line">  <span class="keyword">let</span> stack = [];</span><br><span class="line"></span><br><span class="line">  <span class="keyword">while</span> (stack.length || root) &#123;</span><br><span class="line">    <span class="keyword">if</span> (root) &#123;</span><br><span class="line">      stack.push(root);</span><br><span class="line">      root = root.left;</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">      <span class="keyword">let</span> node = stack.pop();</span><br><span class="line">      res.push(node.val);</span><br><span class="line">      root = node.right;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> res;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-          
-        
       
     </div>
 
     
 
+    
+      
     
 
     
@@ -469,363 +469,45 @@
 
     <footer class="post-footer">
       
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/08/11/node-supervisor/"/>
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="gzl"/>
-      <meta itemprop="description" content=""/>
-      <meta itemprop="image" content="/images/avatar.gif"/>
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="gzl的博客"/>
-    </span>
-
-    
-      <header class="post-header">
-
         
+          
         
-          <h1 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/2019/08/11/node-supervisor/" class="post-title-link" itemprop="url">node-supervisor</a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-
+        <div class="post-tags">
           
+            <a href="/tags/DFS/" rel="tag"># DFS</a>
           
+            <a href="/tags/BFS/" rel="tag"># BFS</a>
           
-
+            <a href="/tags/迭代/" rel="tag"># 迭代</a>
           
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-
-              
-                
-              
-
-              <time title="创建时间：2019-08-11 21:27:16 / 修改时间：21:32:21" itemprop="dateCreated datePublished" datetime="2019-08-11T21:27:16+08:00">2019-08-11</time>
-            </span>
+            <a href="/tags/递归/" rel="tag"># 递归</a>
           
-
-          
-            
-
-            
-          
-
-          
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/node/" itemprop="url" rel="index"><span itemprop="name">node</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-            
-          
-
-          
-          
-
-          
-
-          
-
-          <br/>
-          
-
-          
-
-          
-
         </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>在开发过程中，每次修改代码保存后，我们都需要手动重启程序，才能查看改动的效果。使用 <a href="https://www.npmjs.com/package/supervisor" target="_blank" rel="noopener">supervisor</a> 可以解决这个繁琐的问题，全局安装 supervisor：</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm i -g supervisor</span><br></pre></td></tr></table></figure>
-<p>运行 <code>supervisor index.js</code> 启动程序</p>
-<p>supervisor 会监听当前目录下 node 和 js 后缀的文件，当这些文件发生改动时，supervisor 会自动重启程序。</p>
-
-          
-        
-      
-    </div>
-
-    
-
-    
-
-    
-    
-    
-
-    
-
-    
-      
-    
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
       
 
       
       
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
       
 
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/08/11/exports、module.exports 和 export、export default/"/>
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="gzl"/>
-      <meta itemprop="description" content=""/>
-      <meta itemprop="image" content="/images/avatar.gif"/>
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="gzl的博客"/>
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/2019/08/11/exports、module.exports 和 export、export default/" class="post-title-link" itemprop="url">exports、module.exports 和 export、export default</a>
-              
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
             
-          </h1>
-        
-
-        <div class="post-meta">
-
-          
-          
-          
-
-          
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-
-              
-                
-              
-
-              <time title="创建时间：2019-08-11 19:42:19 / 修改时间：20:09:59" itemprop="dateCreated datePublished" datetime="2019-08-11T19:42:19+08:00">2019-08-11</time>
-            </span>
-          
-
-          
+              <a href="/2019/08/11/node-supervisor/" rel="next" title="node-supervisor">
+                <i class="fa fa-chevron-left"></i> node-supervisor
+              </a>
             
+          </div>
 
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
             
-          
-
-          
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/node-js/" itemprop="url" rel="index"><span itemprop="name">node.js</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-            
-          
-
-          
-          
-
-          
-
-          
-
-          <br/>
-          
-
-          
-
-          
-
+          </div>
         </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
       
 
       
-        
-          
-            <blockquote>
-<p><code>require</code> : node 和 es6 都支持的引入<br><code>export / import</code> : 只有 es6 支持的导出引入<br><code>module.exports / exports</code> : 只有 node 支持的导出</p>
-</blockquote>
-<h1 id="node模块"><a href="#node模块" class="headerlink" title="node模块"></a>node模块</h1><p><code>Node</code> 里面的模块系统遵循的是 <code>CommonJS</code> 规范。</p>
-<p><code>CommonJS</code> 定义的模块分为: 模块标识 (<code>module</code>)、模块定义 (<code>exports</code>) 、模块引用 (<code>require</code>)。</p>
-<p>在一个node执行一个文件时，会给这个文件内生成一个 <code>exports</code>和<code>module</code>对象，而<code>module</code>又有一个<code>exports</code>属性。</p>
-<p>它们俩个的关系如下：</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">exports = <span class="built_in">module</span>.exports = &#123;&#125;;</span><br></pre></td></tr></table></figure>
-<p>上面的代码等价于：</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">module</span>.exports = &#123;...&#125;</span><br><span class="line">exports = <span class="built_in">module</span>.exports</span><br></pre></td></tr></table></figure>
-<p><strong><code>require</code> 导入的内容是 <code>module.exports</code> 指向的内存块内容，并不是 <code>exports</code> 的</strong>。简而言之，区分他们之间的区别就是<strong><code>exports</code> 只是 <code>module.exports</code> 的引用</strong>，辅助后者添加内容用的。</p>
-<p>然后呢，为了避免糊涂，<strong>尽量都用 <code>module.exports</code> 导出，然后用<code>require</code>导入</strong>。</p>
-<p>放一段代码：</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// a.js 中的代码</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="built_in">module</span>.exports); <span class="comment">// &#123;&#125;</span></span><br><span class="line"><span class="built_in">console</span>.log(exports);  <span class="comment">// &#123;&#125;</span></span><br><span class="line"></span><br><span class="line">exports.x = <span class="number">200</span>;</span><br><span class="line"></span><br><span class="line">exports = &#123;&#125;;</span><br></pre></td></tr></table></figure>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// b.js 中的代码</span></span><br><span class="line"><span class="keyword">let</span> obj = <span class="built_in">require</span>(<span class="string">'./a.js'</span>);</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(obj); <span class="comment">// &#123; x: 200 &#125;</span></span><br></pre></td></tr></table></figure>
-<p>上面的代码相当于：</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 变量 a 相当于 module.exports，变量 b 相当于 exports，最后导出的还是 module.exports</span></span><br><span class="line"><span class="keyword">let</span> a = &#123;&#125;;</span><br><span class="line"><span class="keyword">let</span> b = a;</span><br><span class="line">b.x = <span class="number">200</span>;</span><br><span class="line"><span class="built_in">console</span>.log(a); <span class="comment">// &#123;x: 200&#125;</span></span><br><span class="line"><span class="built_in">console</span>.log(b); <span class="comment">// &#123;x: 200&#125;</span></span><br><span class="line">b = &#123;&#125;;</span><br><span class="line"><span class="built_in">console</span>.log(b); <span class="comment">// &#123;&#125;</span></span><br><span class="line"><span class="built_in">console</span>.log(a); <span class="comment">// &#123;x: 200&#125;</span></span><br></pre></td></tr></table></figure>
-
-          
-        
-      
-    </div>
-
-    
-
-    
-
-    
-    
-    
-
-    
-
-    
-      
-    
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
       
     </footer>
   </div>
@@ -835,18 +517,15 @@
   </article>
 
 
-    
-  </section>
-
-  
-  <nav class="pagination">
-    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><span class="space">&hellip;</span><a class="page-number" href="/page/15/">15</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
-  </nav>
-
+  </div>
 
 
           </div>
           
+
+  
+
+
 
         </div>
         
@@ -866,8 +545,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <div class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <div class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
 
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1042,6 +730,23 @@
       </div>
 
       
+      <!--noindex-->
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+            
+            
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#递归"><span class="nav-number">1.</span> <span class="nav-text">递归</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#迭代"><span class="nav-number">2.</span> <span class="nav-text">迭代</span></a></li></ol></div>
+            
+
+          </div>
+        </div>
+      <!--/noindex-->
+      
 
       
 
@@ -1173,6 +878,10 @@
 
 
   
+  <script src="/js/scrollspy.js?v=7.2.0"></script>
+<script src="/js/post-details.js?v=7.2.0"></script>
+
+
 
   <script src="/js/next-boot.js?v=7.2.0"></script>
 
@@ -1186,6 +895,8 @@
 
   
 
+
+  
 
 
   
