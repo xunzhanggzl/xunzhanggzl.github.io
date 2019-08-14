@@ -93,18 +93,18 @@
   };
 </script>
 
-  <meta name="description" content="1. 考查知识点123456789&amp;lt;script type=&quot;text/javascript&quot;&amp;gt;    var x = 1;    if (function f() &amp;#123;&amp;#125;) &amp;#123;        x += typeof f;    &amp;#125;    console.log(x);  //1undefined&amp;lt;script&amp;gt;// f函数外加括号,">
-<meta name="keywords" content="javascript">
+  <meta name="description" content="144. 二叉树的前序遍历 递归12345678910111213141516171819202122/** * Definition for a binary tree node. * function TreeNode(val) &amp;#123; *     this.val = val; *     this.left = this.right = null; * &amp;#125; *//** *">
+<meta name="keywords" content="DFS,BFS,迭代">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Javascript立即执行函数">
-<meta property="og:url" content="http://yoursite.com/2018/08/08/Javascript立即执行函数实例/index.html">
+<meta property="og:title" content="二叉树的前序遍历">
+<meta property="og:url" content="http://yoursite.com/2019/08/14/LC二叉树的前序遍历/index.html">
 <meta property="og:site_name" content="gzl的博客">
-<meta property="og:description" content="1. 考查知识点123456789&amp;lt;script type=&quot;text/javascript&quot;&amp;gt;    var x = 1;    if (function f() &amp;#123;&amp;#125;) &amp;#123;        x += typeof f;    &amp;#125;    console.log(x);  //1undefined&amp;lt;script&amp;gt;// f函数外加括号,">
+<meta property="og:description" content="144. 二叉树的前序遍历 递归12345678910111213141516171819202122/** * Definition for a binary tree node. * function TreeNode(val) &amp;#123; *     this.val = val; *     this.left = this.right = null; * &amp;#125; *//** *">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-08-06T12:31:16.394Z">
+<meta property="og:updated_time" content="2019-08-14T00:04:10.057Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Javascript立即执行函数">
-<meta name="twitter:description" content="1. 考查知识点123456789&amp;lt;script type=&quot;text/javascript&quot;&amp;gt;    var x = 1;    if (function f() &amp;#123;&amp;#125;) &amp;#123;        x += typeof f;    &amp;#125;    console.log(x);  //1undefined&amp;lt;script&amp;gt;// f函数外加括号,">
+<meta name="twitter:title" content="二叉树的前序遍历">
+<meta name="twitter:description" content="144. 二叉树的前序遍历 递归12345678910111213141516171819202122/** * Definition for a binary tree node. * function TreeNode(val) &amp;#123; *     this.val = val; *     this.left = this.right = null; * &amp;#125; *//** *">
 
 
 
@@ -112,7 +112,7 @@
 
   
   
-  <link rel="canonical" href="http://yoursite.com/2018/08/08/Javascript立即执行函数实例/"/>
+  <link rel="canonical" href="http://yoursite.com/2019/08/14/LC二叉树的前序遍历/"/>
 
 
 
@@ -123,7 +123,7 @@
 </script>
 
   
-  <title>Javascript立即执行函数 | gzl的博客</title>
+  <title>二叉树的前序遍历 | gzl的博客</title>
   
 
 
@@ -330,7 +330,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/08/08/Javascript立即执行函数实例/"/>
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/08/14/LC二叉树的前序遍历/"/>
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="gzl"/>
@@ -347,7 +347,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">Javascript立即执行函数
+          <h1 class="post-title" itemprop="name headline">二叉树的前序遍历
 
               
             
@@ -373,7 +373,7 @@
                 
               
 
-              <time title="创建时间：2018-08-08 08:50:33" itemprop="dateCreated datePublished" datetime="2018-08-08T08:50:33+08:00">2018-08-08</time>
+              <time title="创建时间：2019-08-14 08:03:28 / 修改时间：08:04:10" itemprop="dateCreated datePublished" datetime="2019-08-14T08:03:28+08:00">2019-08-14</time>
             </span>
           
 
@@ -381,18 +381,23 @@
             
 
             
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">更新于</span>
-                
-                <time title="修改时间：2019-08-06 20:31:16" itemprop="dateModified" datetime="2019-08-06T20:31:16+08:00">2019-08-06</time>
-              </span>
-            
           
 
+          
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/LeetCode/" itemprop="url" rel="index"><span itemprop="name">LeetCode</span></a></span>
+
+                
+                
+              
+            </span>
           
 
           
@@ -427,10 +432,14 @@
       
 
       
-        <p><em>1.</em> 考查知识点<br><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">"text/javascript"</span>&gt;</span><span class="undefined"></span></span><br><span class="line"><span class="javascript">    <span class="keyword">var</span> x = <span class="number">1</span>;</span></span><br><span class="line"><span class="javascript">    <span class="keyword">if</span> (<span class="function"><span class="keyword">function</span> <span class="title">f</span>(<span class="params"></span>) </span>&#123;&#125;) &#123;</span></span><br><span class="line"><span class="javascript">        x += <span class="keyword">typeof</span> f;</span></span><br><span class="line"><span class="undefined">    &#125;</span></span><br><span class="line"><span class="javascript">    <span class="built_in">console</span>.log(x);  <span class="comment">//1undefined</span></span></span><br><span class="line"><span class="xml"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="undefined"></span></span></span><br><span class="line"><span class="javascript"><span class="comment">// f函数外加括号, 已经变成函数表达式, </span></span></span><br><span class="line"><span class="javascript"><span class="comment">// 不再是函数声明, f已经成为undefined;</span></span></span><br></pre></td></tr></table></figure></p>
-<p><em>2.</em> compare<br><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">"text/javascript"</span>&gt;</span><span class="undefined"></span></span><br><span class="line"><span class="undefined">    2.1</span></span><br><span class="line"><span class="javascript">    <span class="function"><span class="keyword">function</span> <span class="title">foo</span>(<span class="params">x</span>) </span>&#123;</span></span><br><span class="line"><span class="javascript">        <span class="built_in">console</span>.log(<span class="built_in">arguments</span>);</span></span><br><span class="line"><span class="undefined">    &#125;()       </span></span><br><span class="line"><span class="undefined"></span></span><br><span class="line"><span class="undefined">    报错语法错误,只有函数表达式才可以被执行</span></span><br><span class="line"><span class="undefined"></span></span><br><span class="line"><span class="undefined">    2.2</span></span><br><span class="line"><span class="javascript">    <span class="function"><span class="keyword">function</span> <span class="title">foo</span>(<span class="params">x</span>) </span>&#123;</span></span><br><span class="line"><span class="javascript">        <span class="built_in">console</span>.log(<span class="built_in">arguments</span>);</span></span><br><span class="line"><span class="undefined">    &#125;(1,2,3,4,5)</span></span><br><span class="line"><span class="undefined"></span></span><br><span class="line"><span class="undefined">    2.2的理解</span></span><br><span class="line"><span class="javascript">    <span class="function"><span class="keyword">function</span> <span class="title">foo</span>(<span class="params">x</span>) </span>&#123;</span></span><br><span class="line"><span class="javascript">        <span class="built_in">console</span>.log(<span class="built_in">arguments</span>);</span></span><br><span class="line"><span class="undefined">    &#125;          </span></span><br><span class="line"><span class="undefined"></span></span><br><span class="line"><span class="undefined">    (1,2,3,4,5)</span></span><br><span class="line"><span class="xml"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="undefined"></span></span></span><br><span class="line"><span class="javascript"><span class="comment">// 可以理解为分家了      不执行也不报错</span></span></span><br></pre></td></tr></table></figure></p>
-<p><em>3.</em> 注意理解<br><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">"text/javascript"</span>&gt;</span><span class="undefined"></span></span><br><span class="line"><span class="javascript">    <span class="keyword">var</span> test = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span></span><br><span class="line"><span class="javascript">        <span class="built_in">console</span>.log(<span class="string">'a'</span>);</span></span><br><span class="line"><span class="undefined">    &#125;();</span></span><br><span class="line"><span class="xml"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="undefined"></span></span></span><br><span class="line"><span class="javascript"><span class="comment">// 在控制台访问test --&gt; undefined，执行完后立即销毁</span></span></span><br></pre></td></tr></table></figure></p>
-
+        <p><a href="https://leetcode-cn.com/problems/binary-tree-preorder-traversal/" target="_blank" rel="noopener">144. 二叉树的前序遍历</a></p>
+<h1 id="递归"><a href="#递归" class="headerlink" title="递归"></a>递归</h1><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Definition for a binary tree node.</span></span><br><span class="line"><span class="comment"> * function TreeNode(val) &#123;</span></span><br><span class="line"><span class="comment"> *     this.val = val;</span></span><br><span class="line"><span class="comment"> *     this.left = this.right = null;</span></span><br><span class="line"><span class="comment"> * &#125;</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * @param &#123;TreeNode&#125; root</span></span><br><span class="line"><span class="comment"> * @return &#123;number[]&#125;</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">var</span> preorderTraversal = <span class="function"><span class="keyword">function</span> (<span class="params">root</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">if</span> (!root) <span class="keyword">return</span> [];</span><br><span class="line">  <span class="keyword">let</span> result = [];</span><br><span class="line">  <span class="function"><span class="keyword">function</span> <span class="title">dfs</span>(<span class="params">root</span>) </span>&#123;</span><br><span class="line">    result.push(root.val);</span><br><span class="line">    root.left &amp;&amp; dfs(root.left);</span><br><span class="line">    root.right &amp;&amp; dfs(root.right);</span><br><span class="line">  &#125;</span><br><span class="line">  dfs(root);</span><br><span class="line">  <span class="keyword">return</span> result;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<h1 id="迭代"><a href="#迭代" class="headerlink" title="迭代"></a>迭代</h1><blockquote>
+<p>Recursive solution is trivial, could you do it iteratively?</p>
+</blockquote>
+<p>在前序后序和中序遍历中，这个的迭代方法应该是最好写的了。</p>
+<p>这里注意要运用栈的原理</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Definition for a binary tree node.</span></span><br><span class="line"><span class="comment"> * function TreeNode(val) &#123;</span></span><br><span class="line"><span class="comment"> *     this.val = val;</span></span><br><span class="line"><span class="comment"> *     this.left = this.right = null;</span></span><br><span class="line"><span class="comment"> * &#125;</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * @param &#123;TreeNode&#125; root</span></span><br><span class="line"><span class="comment"> * @return &#123;number[]&#125;</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">var</span> preorderTraversal = <span class="function"><span class="keyword">function</span> (<span class="params">root</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">if</span> (!root) <span class="keyword">return</span> [];</span><br><span class="line">  <span class="keyword">let</span> result = [];</span><br><span class="line">  <span class="keyword">let</span> stack = [root];</span><br><span class="line">  <span class="keyword">while</span> (stack.length) &#123;</span><br><span class="line">    <span class="keyword">let</span> node = stack.pop();</span><br><span class="line">    result.push(node.val);</span><br><span class="line">    node.right &amp;&amp; stack.push(node.right);</span><br><span class="line">    node.left &amp;&amp; stack.push(node.left);</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> result;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
       
     </div>
 
@@ -460,7 +469,11 @@
         
         <div class="post-tags">
           
-            <a href="/tags/javascript/" rel="tag"># javascript</a>
+            <a href="/tags/DFS/" rel="tag"># DFS</a>
+          
+            <a href="/tags/BFS/" rel="tag"># BFS</a>
+          
+            <a href="/tags/迭代/" rel="tag"># 迭代</a>
           
         </div>
       
@@ -473,8 +486,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/08/08/JS作用域、立即执行函数、闭包/" rel="next" title="JS作用域、立即执行函数、闭包">
-                <i class="fa fa-chevron-left"></i> JS作用域、立即执行函数、闭包
+              <a href="/2019/08/13/LC从前序与中序遍历序列构造二叉树/" rel="next" title="从前序与中序遍历序列构造二叉树">
+                <i class="fa fa-chevron-left"></i> 从前序与中序遍历序列构造二叉树
               </a>
             
           </div>
@@ -482,10 +495,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2018/08/08/JS经典题目prototype/" rel="prev" title="JS关于原型">
-                JS关于原型 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -529,8 +538,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <div class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <div class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
 
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -704,6 +722,23 @@
         </div>
       </div>
 
+      
+      <!--noindex-->
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+            
+            
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#递归"><span class="nav-number">1.</span> <span class="nav-text">递归</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#迭代"><span class="nav-number">2.</span> <span class="nav-text">迭代</span></a></li></ol></div>
+            
+
+          </div>
+        </div>
+      <!--/noindex-->
       
 
       
