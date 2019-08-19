@@ -326,6 +326,191 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/08/19/vue-fund-manage/"/>
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="gzl"/>
+      <meta itemprop="description" content=""/>
+      <meta itemprop="image" content="/images/avatar.gif"/>
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="gzl的博客"/>
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/2019/08/19/vue-fund-manage/" class="post-title-link" itemprop="url">vue-fund-manage</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+
+          
+          
+          
+
+          
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2019-08-19 14:55:20 / 修改时间：17:13:22" itemprop="dateCreated datePublished" datetime="2019-08-19T14:55:20+08:00">2019-08-19</time>
+            </span>
+          
+
+          
+            
+
+            
+          
+
+          
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/vue/" itemprop="url" rel="index"><span itemprop="name">vue</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+
+          <br/>
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="依赖总结"><a href="#依赖总结" class="headerlink" title="依赖总结"></a>依赖总结</h1><h2 id="后端部分"><a href="#后端部分" class="headerlink" title="后端部分"></a>后端部分</h2><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">"dependencies": &#123;</span><br><span class="line">  "bcrypt": "^3.0.6",            // 进行密码的加密</span><br><span class="line">  "body-parser": "^1.19.0",      // post请求</span><br><span class="line">  "concurrently": "^4.1.1",      // 前后端连载</span><br><span class="line">  "express": "^4.17.1",          // express框架</span><br><span class="line">  "jsonwebtoken": "^8.5.1",      // 生成token</span><br><span class="line">  "mongoose": "^5.6.9",          // mongoose框架</span><br><span class="line">  "passport": "^0.4.0",          // passport配合passport-jwt实现token验证</span><br><span class="line">  "passport-jwt": "^4.0.0"</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="前端部分"><a href="#前端部分" class="headerlink" title="前端部分"></a>前端部分</h2><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">"dependencies": &#123;</span><br><span class="line">  "axios": "^0.19.0",             // 进行数据请求</span><br><span class="line">  "core-js": "^2.6.5",</span><br><span class="line">  "element-ui": "^2.11.1",        // elementUI</span><br><span class="line">  "jwt-decode": "^2.2.0",</span><br><span class="line">  "vue": "^2.6.10",</span><br><span class="line">  "vue-router": "^3.0.3",</span><br><span class="line">  "vuex": "^3.0.1"</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h1 id="token"><a href="#token" class="headerlink" title="token"></a>token</h1><h2 id="生成token"><a href="#生成token" class="headerlink" title="生成token"></a>生成token</h2><blockquote>
+<p><a href="https://www.npmjs.com/package/jsonwebtoken" target="_blank" rel="noopener">https://www.npmjs.com/package/jsonwebtoken</a></p>
+</blockquote>
+<p>后端代码 <code>users.js</code>  登录成功部分节选</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> jwt = <span class="built_in">require</span>(<span class="string">'jsonwebtoken'</span>);</span><br><span class="line"><span class="keyword">const</span> keys = <span class="built_in">require</span>(<span class="string">'../../config/keys.js'</span>); <span class="comment">// "secret"</span></span><br><span class="line"><span class="keyword">if</span> (isMatch) &#123;</span><br><span class="line">  <span class="keyword">const</span> rule = &#123;</span><br><span class="line">    id: user.id, </span><br><span class="line">    name: user.name,</span><br><span class="line">    identity: user.identity</span><br><span class="line">  &#125;;</span><br><span class="line">  <span class="comment">// 规则 加密名字 过期时间 箭头函数</span></span><br><span class="line">  jwt.sign(rule, keys.secretOrKey, &#123;<span class="attr">expiresIn</span>: <span class="number">3600</span>&#125;, (err, token) =&gt; &#123;</span><br><span class="line">    <span class="keyword">if</span>(err) <span class="keyword">throw</span> err;</span><br><span class="line">    res.json(&#123;</span><br><span class="line">      success: <span class="literal">true</span>,</span><br><span class="line">      token: <span class="string">"bearer "</span> + token</span><br><span class="line">    &#125;)</span><br><span class="line">  &#125;)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="验证token"><a href="#验证token" class="headerlink" title="验证token"></a>验证token</h2><blockquote>
+<p><a href="https://www.npmjs.com/package/passport" target="_blank" rel="noopener">https://www.npmjs.com/package/passport</a></p>
+<p><a href="https://www.npmjs.com/package/passport-jwt" target="_blank" rel="noopener">https://www.npmjs.com/package/passport-jwt</a></p>
+</blockquote>
+<h3 id="passport初始化"><a href="#passport初始化" class="headerlink" title="passport初始化"></a>passport初始化</h3><p>后端代码 <code>index.js</code> 节选</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> passport = <span class="built_in">require</span>(<span class="string">'passport'</span>);</span><br><span class="line"><span class="comment">// passport初始化</span></span><br><span class="line">app.use(passport.initialize());</span><br><span class="line"><span class="built_in">require</span>(<span class="string">'./config/passport.js'</span>)(passport);</span><br></pre></td></tr></table></figure>
+<p>后端代码 <code>passport.js</code> 节选</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> JwtStrategy = <span class="built_in">require</span>(<span class="string">'passport-jwt'</span>).Strategy,</span><br><span class="line">  ExtractJwt = <span class="built_in">require</span>(<span class="string">'passport-jwt'</span>).ExtractJwt;</span><br><span class="line"><span class="keyword">const</span> mongoose = <span class="built_in">require</span>(<span class="string">'mongoose'</span>);</span><br><span class="line"><span class="keyword">const</span> User = mongoose.model(<span class="string">'users'</span>);</span><br><span class="line"><span class="keyword">const</span> keys = <span class="built_in">require</span>(<span class="string">'../config/keys.js'</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> opts = &#123;&#125;</span><br><span class="line">opts.jwtFromRequest = ExtractJwt.fromAuthHeaderAsBearerToken();</span><br><span class="line">opts.secretOrKey = keys.secretOrKey;</span><br><span class="line"></span><br><span class="line"><span class="built_in">module</span>.exports = <span class="function"><span class="params">passport</span> =&gt;</span> &#123;</span><br><span class="line">  passport.use(<span class="keyword">new</span> JwtStrategy(opts, (jwt_payload, done) =&gt; &#123;</span><br><span class="line">    <span class="comment">// console.log(jwt_payload);</span></span><br><span class="line">    User.findById(jwt_payload.id)</span><br><span class="line">      .then(<span class="function"><span class="params">user</span> =&gt;</span> &#123;</span><br><span class="line">        <span class="keyword">if</span> (user) &#123;</span><br><span class="line">          <span class="keyword">return</span> done(<span class="literal">null</span>, user);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> done(<span class="literal">null</span>, <span class="literal">false</span>);</span><br><span class="line">      &#125;)</span><br><span class="line">      .catch(<span class="function"><span class="params">err</span> =&gt;</span> <span class="built_in">console</span>.log(err))</span><br><span class="line">  &#125;));</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="进行请求"><a href="#进行请求" class="headerlink" title="进行请求"></a>进行请求</h3><p><strong>必须带着 <code>token</code> 才能请求成功</strong>。使用 <code>postman</code> 进行测试时要设置 headers 部分的 <code>Authorization</code> 为登录请求后得到的 <code>token</code> 值，在这个项目中，只有登录和注册是不带 <code>token</code> 验证的。</p>
+<p>后端代码 <code>profiles.js</code> 节选</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// $route POST api/profiles/add</span></span><br><span class="line"><span class="comment">// @desc  添加信息接口</span></span><br><span class="line"><span class="comment">// @access Private</span></span><br><span class="line">router.post(<span class="string">'/add'</span>, passport.authenticate(<span class="string">'jwt'</span>, &#123; <span class="attr">session</span>: <span class="literal">false</span> &#125;),(req, res) =&gt; &#123;</span><br><span class="line">  <span class="keyword">const</span> profileFields = &#123;&#125;;</span><br><span class="line">  <span class="comment">// console.log(req.user);</span></span><br><span class="line"></span><br><span class="line">  <span class="keyword">if</span> (req.body.type) profileFields.type = req.body.type;</span><br><span class="line">  <span class="keyword">if</span> (req.body.describe) profileFields.describe = req.body.describe;</span><br><span class="line">  <span class="keyword">if</span> (req.body.income) profileFields.income = req.body.income;</span><br><span class="line">  <span class="keyword">if</span> (req.body.expend) profileFields.expend = req.body.expend;</span><br><span class="line">  <span class="keyword">if</span> (req.body.cash) profileFields.cash = req.body.cash;</span><br><span class="line">  <span class="keyword">if</span> (req.body.remark) profileFields.remark = req.body.remark;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">new</span> Profile(profileFields)</span><br><span class="line">    .save()</span><br><span class="line">    .then(<span class="function"><span class="params">profile</span> =&gt;</span> &#123;</span><br><span class="line">      res.json(profile)</span><br><span class="line">    &#125;)</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<p>后端代码 <code>users.js</code> 节选</p>
+<p>前端部分并没有使用 <code>current</code> 这个接口，这个接口只是为了了解 <code>token</code> ，特别是下面 <code>req.user</code> 部分，个人觉得 <code>req.user</code> 部分就代表 <code>token</code> 验证成功，表示谁去请求。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// $route GET api/users/current</span></span><br><span class="line"><span class="comment">// @desc  return current user</span></span><br><span class="line"><span class="comment">// @access Private</span></span><br><span class="line">router.get(<span class="string">"/current"</span>, passport.authenticate(<span class="string">'jwt'</span>, &#123; <span class="attr">session</span>: <span class="literal">false</span> &#125;), (req, res) =&gt; &#123;</span><br><span class="line">  <span class="comment">// console.log(req.user.identity);</span></span><br><span class="line">  res.json(&#123;</span><br><span class="line">    id: req.user.id,</span><br><span class="line">    name: req.user.name,</span><br><span class="line">    email: req.user.email,</span><br><span class="line">    identity: req.user.identity,</span><br><span class="line">  &#125;);</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/08/15/node-concurrently/"/>
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -654,176 +839,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/08/13/LC从前序与中序遍历序列构造二叉树/"/>
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="gzl"/>
-      <meta itemprop="description" content=""/>
-      <meta itemprop="image" content="/images/avatar.gif"/>
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="gzl的博客"/>
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/2019/08/13/LC从前序与中序遍历序列构造二叉树/" class="post-title-link" itemprop="url">从前序与中序遍历序列构造二叉树</a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-
-          
-          
-          
-
-          
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-
-              
-                
-              
-
-              <time title="创建时间：2019-08-13 08:33:29 / 修改时间：08:39:08" itemprop="dateCreated datePublished" datetime="2019-08-13T08:33:29+08:00">2019-08-13</time>
-            </span>
-          
-
-          
-            
-
-            
-          
-
-          
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/LeetCode/" itemprop="url" rel="index"><span itemprop="name">LeetCode</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-            
-          
-
-          
-          
-
-          
-
-          
-
-          <br/>
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p><a href="https://leetcode-cn.com/problems/construct-binary-tree-from-preorder-and-inorder-traversal/" target="_blank" rel="noopener">105. 从前序与中序遍历序列构造二叉树</a></p>
-<p>根据一棵树的前序遍历与中序遍历构造二叉树。</p>
-<p>注意:<br>你可以假设树中没有重复的元素。</p>
-<p>例如，给出</p>
-<p>前序遍历 preorder = [3,9,20,15,7] 中序遍历 inorder = [9,3,15,20,7]</p>
-<h1 id="DFS"><a href="#DFS" class="headerlink" title="DFS"></a>DFS</h1><p>这是参考的评论区的一个解法，感觉十分易懂。这里的判断条件就是 <code>l &gt; r</code> 是否成立。</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment">* Definition for a binary tree node.</span></span><br><span class="line"><span class="comment">* function TreeNode(val) &#123;</span></span><br><span class="line"><span class="comment">*     this.val = val;</span></span><br><span class="line"><span class="comment">*     this.left = this.right = null;</span></span><br><span class="line"><span class="comment">* &#125;</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment">* @param &#123;number[]&#125; preorder</span></span><br><span class="line"><span class="comment">* @param &#123;number[]&#125; inorder</span></span><br><span class="line"><span class="comment">* @return &#123;TreeNode&#125;</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"><span class="keyword">var</span> buildTree = <span class="function"><span class="keyword">function</span> (<span class="params">preorder, inorder</span>) </span>&#123;</span><br><span class="line">  <span class="function"><span class="keyword">function</span> <span class="title">dfs</span>(<span class="params">l, r</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (l &gt; r) &#123;</span><br><span class="line">      <span class="keyword">return</span> <span class="literal">null</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">let</span> val = preorder.shift();</span><br><span class="line">    <span class="keyword">let</span> root = <span class="keyword">new</span> TreeNode(val);</span><br><span class="line">    <span class="keyword">let</span> index = inorder.indexOf(val);</span><br><span class="line"></span><br><span class="line">    root.left = dfs(l, index - <span class="number">1</span>);</span><br><span class="line">    root.right = dfs(index + <span class="number">1</span>, r);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> root;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> dfs(<span class="number">0</span>, inorder.length - <span class="number">1</span>)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-          
-        
-      
-    </div>
-
-    
-
-    
-
-    
-    
-    
-
-    
-
-    
-      
-    
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -871,7 +886,7 @@
         
           <a href="/archives/">
         
-          <span class="site-state-item-count">50</span>
+          <span class="site-state-item-count">51</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -904,7 +919,9 @@
         
           
         
-        <span class="site-state-item-count">8</span>
+          
+        
+        <span class="site-state-item-count">9</span>
         <span class="site-state-item-name">分类</span>
         </a>
       </div>
@@ -1005,7 +1022,9 @@
         
           
         
-        <span class="site-state-item-count">42</span>
+          
+        
+        <span class="site-state-item-count">43</span>
         <span class="site-state-item-name">标签</span>
         </a>
       </div>
