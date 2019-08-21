@@ -326,6 +326,450 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/10/14/JS排序算法/"/>
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="gzl"/>
+      <meta itemprop="description" content=""/>
+      <meta itemprop="image" content="/images/avatar.gif"/>
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="gzl的博客"/>
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/2018/10/14/JS排序算法/" class="post-title-link" itemprop="url">排序算法</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+
+          
+          
+          
+
+          
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2018-10-14 22:32:01" itemprop="dateCreated datePublished" datetime="2018-10-14T22:32:01+08:00">2018-10-14</time>
+            </span>
+          
+
+          
+            
+
+            
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2019-07-23 15:28:16" itemprop="dateModified" datetime="2019-07-23T15:28:16+08:00">2019-07-23</time>
+              </span>
+            
+          
+
+          
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/算法/" itemprop="url" rel="index"><span itemprop="name">算法</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+
+          <br/>
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="冒泡排序"><a href="#冒泡排序" class="headerlink" title="冒泡排序"></a>冒泡排序</h1><p>外循环会从数组的第一位迭代至最后一位，它控制了在数组中经过多少轮排序，每一轮比较都会把数组中最大的数放到最后。</p>
+<p>下面的内循环代码中 <strong>减去了 i</strong> 是因为减去外循环中已经跑过的轮数，就可以避免内循环中所有不必要的比较。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 冒泡排序</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">bubbleSort</span>(<span class="params">arr</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">let</span> len = arr.length;</span><br><span class="line">    <span class="built_in">console</span>.time(<span class="string">'冒泡排序耗时'</span>);</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; len; i++) &#123;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">let</span> j = <span class="number">0</span>; j &lt; len - <span class="number">1</span> - i; j++) &#123;</span><br><span class="line">            <span class="keyword">if</span> (arr[j] &gt; arr[j + <span class="number">1</span>]) &#123; <span class="comment">//相邻元素两两对比</span></span><br><span class="line">                [ arr[j + <span class="number">1</span>], arr[j] ] = [ arr[j], arr[j + <span class="number">1</span>] ];</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">console</span>.timeEnd(<span class="string">'冒泡排序耗时'</span>);</span><br><span class="line">    <span class="keyword">return</span> arr;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> arr = [<span class="number">3</span>, <span class="number">44</span>, <span class="number">38</span>, <span class="number">5</span>, <span class="number">47</span>, <span class="number">15</span>, <span class="number">36</span>, <span class="number">26</span>, <span class="number">27</span>, <span class="number">2</span>, <span class="number">46</span>, <span class="number">4</span>, <span class="number">19</span>, <span class="number">50</span>, <span class="number">48</span>];</span><br><span class="line"><span class="built_in">console</span>.log(bubbleSort(arr));</span><br></pre></td></tr></table></figure>
+<h1 id="选择排序"><a href="#选择排序" class="headerlink" title="选择排序"></a>选择排序</h1><p>选择排序算法是一种原址比较排序算法。大致思路是找到数据结构中的最小值并将其放置在第一位，接着找到第二小的值并将其放在第二位，以此类推。</p>
+<p>下面代码中 <code>minIndex</code> 记录的是每一轮最小值的位置，内循环选出 <code>minIndex</code> 后外循环进行交换，一共需要进行 <code>len - 1</code> 轮</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 选择排序</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">selectionSort</span>(<span class="params">arr</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">let</span> len = arr.length;</span><br><span class="line">    <span class="keyword">let</span> minIndex;</span><br><span class="line">    <span class="built_in">console</span>.time(<span class="string">'选择排序耗时'</span>);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; len - <span class="number">1</span>; i ++) &#123;</span><br><span class="line">        minIndex = i;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">let</span> j = i + <span class="number">1</span>; j &lt; len; j ++) &#123;</span><br><span class="line">            <span class="keyword">if</span> (arr[minIndex] &gt; arr[j]) &#123;</span><br><span class="line">                minIndex = j;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        [ arr[i], arr[minIndex] ] = [ arr[minIndex], arr[i] ];</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">console</span>.timeEnd(<span class="string">'选择排序耗时'</span>);</span><br><span class="line">    <span class="keyword">return</span> arr;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> arr = [<span class="number">3</span>, <span class="number">44</span>, <span class="number">38</span>, <span class="number">5</span>, <span class="number">47</span>, <span class="number">15</span>, <span class="number">36</span>, <span class="number">26</span>, <span class="number">27</span>, <span class="number">2</span>, <span class="number">46</span>, <span class="number">4</span>, <span class="number">19</span>, <span class="number">50</span>, <span class="number">48</span>];</span><br><span class="line"><span class="built_in">console</span>.log(selectionSort(arr));</span><br></pre></td></tr></table></figure>
+<h1 id="插入排序"><a href="#插入排序" class="headerlink" title="插入排序"></a>插入排序</h1><p>原理很简单，就像打扑克牌的时候一样按顺序整理牌。如果后一个大于前一个，那么就插入，小于的话就不做交换。</p>
+<ol>
+<li><p>从第一个元素开始，该元素可以认为已经被排序；</p>
+</li>
+<li><p>取出下一个元素，在已经排序的元素序列中从后向前扫描；</p>
+</li>
+<li><p>如果该元素（已排序）大于新元素，将该元素移到下一位置；</p>
+</li>
+<li><p>重复步骤3，直到找到已排序的元素小于或者等于新元素的位置；</p>
+</li>
+<li><p>将新元素插入到该位置后；</p>
+</li>
+<li><p>重复步骤2~5。</p>
+</li>
+</ol>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 插入排序</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">insertionSort</span>(<span class="params">arr</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">let</span> len = arr.length;</span><br><span class="line">    <span class="built_in">console</span>.time(<span class="string">'插入排序耗时'</span>);</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">1</span>; i &lt; len; i++) &#123;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">let</span> j = i; j &gt; <span class="number">0</span>; j--) &#123;</span><br><span class="line">            <span class="keyword">if</span> (arr[j] &lt; arr[j - <span class="number">1</span>]) &#123;</span><br><span class="line">                [ arr[j], arr[j - <span class="number">1</span>] ] = [ arr[j - <span class="number">1</span>], arr[j] ];</span><br><span class="line">            &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                <span class="keyword">continue</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">console</span>.timeEnd(<span class="string">'插入排序耗时'</span>);</span><br><span class="line">    <span class="keyword">return</span> arr;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> arr = [<span class="number">3</span>, <span class="number">44</span>, <span class="number">38</span>, <span class="number">5</span>, <span class="number">47</span>, <span class="number">15</span>, <span class="number">36</span>, <span class="number">26</span>, <span class="number">27</span>, <span class="number">2</span>, <span class="number">46</span>, <span class="number">4</span>, <span class="number">19</span>, <span class="number">50</span>, <span class="number">48</span>];</span><br><span class="line"><span class="built_in">console</span>.log(insertionSort(arr));</span><br></pre></td></tr></table></figure>
+<h1 id="希尔排序"><a href="#希尔排序" class="headerlink" title="希尔排序"></a>希尔排序</h1><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 希尔排序</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">shellSort</span>(<span class="params">arr,gap</span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(arr)<span class="comment">//为了方便观察过程，使用时去除</span></span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">let</span> i = <span class="number">0</span>; i&lt;gap.length; i ++) &#123;  <span class="comment">//最外层循环，一次取不同的步长，步长需要预先给出</span></span><br><span class="line">        <span class="keyword">let</span> n = gap[i]; <span class="comment">//步长为n</span></span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">let</span> j = i + n; j &lt; arr.length; j ++) &#123; <span class="comment">//接下类和插入排序一样，j循环依次取后面的数</span></span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">let</span> k = j; k &gt; <span class="number">0</span>; k-=n) &#123; <span class="comment">//k循环进行比较，和直接插入的唯一区别是1变为了n</span></span><br><span class="line">                <span class="keyword">if</span>(arr[k] &lt; arr[k-n]) &#123;</span><br><span class="line">                    [arr[k],arr[k-n]] = [arr[k-n],arr[k]];</span><br><span class="line">                    <span class="built_in">console</span>.log(<span class="string">`当前序列为[<span class="subst">$&#123;arr&#125;</span>] \n 交换了<span class="subst">$&#123;arr[k]&#125;</span>和<span class="subst">$&#123;arr[k-n]&#125;</span>`</span>)<span class="comment">//为了观察过程</span></span><br><span class="line">                &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                    <span class="keyword">continue</span>;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> arr;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> arr = [<span class="number">3</span>, <span class="number">2</span>, <span class="number">45</span>, <span class="number">6</span>, <span class="number">55</span>, <span class="number">23</span>, <span class="number">5</span>, <span class="number">4</span>, <span class="number">8</span>, <span class="number">9</span>, <span class="number">19</span>, <span class="number">0</span>];</span><br><span class="line"><span class="keyword">let</span> gap = [<span class="number">3</span>,<span class="number">2</span>,<span class="number">1</span>];</span><br><span class="line"><span class="built_in">console</span>.log(shellSort(arr,gap))</span><br></pre></td></tr></table></figure>
+<h1 id="归并排序"><a href="#归并排序" class="headerlink" title="归并排序"></a>归并排序</h1><p>分而治之思想的算法应用：算法首先将原始数组分割直至只有一个元素的子数组，然后开始归并。</p>
+<ol>
+<li><p>把长度为n的输入序列分成两个长度为n/2的子序列；</p>
+</li>
+<li><p>对这两个子序列分别采用归并排序；</p>
+</li>
+<li><p>将两个排序好的子序列合并成一个最终的排序序列。</p>
+</li>
+</ol>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 归并排序</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">mergeSort</span>(<span class="params">arr</span>) </span>&#123;  <span class="comment">//采用自上而下的递归方法</span></span><br><span class="line">    <span class="keyword">var</span> len = arr.length;</span><br><span class="line">    <span class="keyword">if</span> (len &lt; <span class="number">2</span>) &#123;</span><br><span class="line">        <span class="keyword">return</span> arr;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">var</span> middle = <span class="built_in">Math</span>.floor(len / <span class="number">2</span>),</span><br><span class="line">        left = arr.slice(<span class="number">0</span>, middle),</span><br><span class="line">        right = arr.slice(middle);</span><br><span class="line">    <span class="keyword">return</span> merge(mergeSort(left), mergeSort(right));</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">merge</span>(<span class="params">left, right</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">let</span> result = [];</span><br><span class="line"></span><br><span class="line">    <span class="keyword">while</span> (left.length &amp;&amp; right.length) &#123;</span><br><span class="line">        <span class="keyword">if</span> (left[<span class="number">0</span>] &lt;= right[<span class="number">0</span>]) &#123;</span><br><span class="line">            result.push(left.shift());</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            result.push(right.shift());</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">while</span> (left.length) &#123;</span><br><span class="line">        result.push(left.shift())</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">while</span> (right.length) &#123;</span><br><span class="line">        result.push(right.shift());</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> result;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> arr = [<span class="number">3</span>, <span class="number">44</span>, <span class="number">38</span>, <span class="number">5</span>, <span class="number">47</span>, <span class="number">15</span>, <span class="number">36</span>, <span class="number">26</span>, <span class="number">27</span>, <span class="number">2</span>, <span class="number">46</span>, <span class="number">4</span>, <span class="number">19</span>, <span class="number">50</span>, <span class="number">48</span>];</span><br><span class="line"><span class="built_in">console</span>.log(mergeSort(arr));</span><br></pre></td></tr></table></figure>
+<h1 id="快速排序"><a href="#快速排序" class="headerlink" title="快速排序"></a>快速排序</h1><p>分而治之思想在排序算法上的典型应用    </p>
+<ol>
+<li><p>从数列中挑出一个元素，称为 “基准”（pivot）；</p>
+</li>
+<li><p>重新排序数列，所有元素比基准值小的摆放在基准前面，所有元素比基准值大的摆在基准的后面（相同的数可以到任一边）。在这个分区退出之后，该基准就处于数列的中间位置。这个称为分区（partition）操作；</p>
+</li>
+<li><p>递归地（recursive）把小于基准值元素的子数列和大于基准值元素的子数列排序。</p>
+</li>
+</ol>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 快速排序</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">quickSort</span>(<span class="params">arr</span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.time(<span class="string">'2.快速排序耗时'</span>);</span><br><span class="line">    <span class="keyword">if</span> (arr.length &lt;= <span class="number">1</span>) &#123; <span class="keyword">return</span> arr; &#125;</span><br><span class="line">    <span class="keyword">let</span> pivotIndex = <span class="built_in">Math</span>.floor(arr.length / <span class="number">2</span>);</span><br><span class="line">    <span class="keyword">let</span> pivot = arr.splice(pivotIndex, <span class="number">1</span>)[<span class="number">0</span>];</span><br><span class="line">    <span class="keyword">let</span> left = [];</span><br><span class="line">    <span class="keyword">let</span> right = [];</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; arr.length; i++)&#123;</span><br><span class="line">        <span class="keyword">if</span> (arr[i] &lt; pivot) &#123;</span><br><span class="line">            left.push(arr[i]);</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            right.push(arr[i]);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">console</span>.timeEnd(<span class="string">'2.快速排序耗时'</span>);</span><br><span class="line">    <span class="keyword">return</span> quickSort(left).concat([pivot], quickSort(right));</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> arr=[<span class="number">3</span>,<span class="number">44</span>,<span class="number">38</span>,<span class="number">5</span>,<span class="number">47</span>,<span class="number">15</span>,<span class="number">36</span>,<span class="number">26</span>,<span class="number">27</span>,<span class="number">2</span>,<span class="number">46</span>,<span class="number">4</span>,<span class="number">19</span>,<span class="number">50</span>,<span class="number">48</span>];</span><br><span class="line"><span class="built_in">console</span>.log(quickSort(arr));</span><br></pre></td></tr></table></figure>
+<p><strong>参考</strong></p>
+<p><a href="https://juejin.im/post/57dcd394a22b9d00610c5ec8#heading-23" target="_blank" rel="noopener">十大经典排序算法总结（JavaScript描述）</a></p>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/09/28/markdown基础/"/>
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="gzl"/>
+      <meta itemprop="description" content=""/>
+      <meta itemprop="image" content="/images/avatar.gif"/>
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="gzl的博客"/>
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/2018/09/28/markdown基础/" class="post-title-link" itemprop="url">markdown基础</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+
+          
+          
+          
+
+          
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2018-09-28 14:37:53" itemprop="dateCreated datePublished" datetime="2018-09-28T14:37:53+08:00">2018-09-28</time>
+            </span>
+          
+
+          
+            
+
+            
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2019-07-19 13:28:28" itemprop="dateModified" datetime="2019-07-19T13:28:28+08:00">2019-07-19</time>
+              </span>
+            
+          
+
+          
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/markdown/" itemprop="url" rel="index"><span itemprop="name">markdown</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+
+          <br/>
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h3 id="markdown简单语法学习"><a href="#markdown简单语法学习" class="headerlink" title="markdown简单语法学习"></a>markdown简单语法学习</h3><font face="微软雅黑" color="blue" style="background-color: #f7f7f7">上面为效果，下面为写法</font>
+
+<h4 id="超链接写法"><a href="#超链接写法" class="headerlink" title="超链接写法"></a>超链接写法</h4><p><em><a href="http://blog.flyingstudio.online" target="_blank" rel="noopener">翔工作室博客</a></em><br><em><a href="https://xunzhanggzl.github.io/" target="_blank" rel="noopener">gzl’s blog</a></em><br><em><a href="https://blog.csdn.net/guolin_blog" target="_blank" rel="noopener">郭霖</a></em><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[翔工作室博客](http://blog.flyingstudio.online) </span><br><span class="line">[gzl’s blog](https://xunzhanggzl.github.io/)</span><br><span class="line">[郭霖](https://blog.csdn.net/guolin_blog)</span><br></pre></td></tr></table></figure></p>
+<h4 id="在文中突出字体-粗体、斜体、块状"><a href="#在文中突出字体-粗体、斜体、块状" class="headerlink" title="在文中突出字体(粗体、斜体、块状)"></a>在文中突出字体(粗体、斜体、块状)</h4><p>是的，小时候，我们常常把<strong>“亲戚”</strong>看得多么美好和重要。一旦<code>长大成人</code>，开始独立生活，我们便很快知道，亲戚关系常常是<strong>庸俗的</strong>；互相设法沾光，沾不上光就<code>翻白眼</code>；甚至你生活中<strong>最大的困难</strong>也常常是亲戚们造成的；<em>生活同样会告诉你，亲戚往往不如<strong>朋友</strong>对你真诚。</em><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">是的，小时候，我们常常把**“亲戚”**看得多么美好和重要。一旦`长大成人`，</span><br><span class="line">开始独立生活，我们便很快知道，亲戚关系常常是**庸俗的**；互相设法沾光，</span><br><span class="line">沾不上光就`翻白眼`；甚至你生活中**最大的困难**也常常是亲戚们造成的；</span><br><span class="line">*生活同样会告诉你，亲戚往往不如**朋友**对你真诚。*</span><br></pre></td></tr></table></figure></p>
+<h4 id="分割线"><a href="#分割线" class="headerlink" title="分割线"></a>分割线</h4><hr>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">----------</span><br></pre></td></tr></table></figure>
+<h4 id="引用"><a href="#引用" class="headerlink" title="引用"></a>引用</h4><blockquote>
+<p>一个平平常常的日子，细蒙蒙的雨丝夹着一星半点的雪花，正纷纷淋淋地向大地飘洒着。时令已快到惊蛰，雪当然再也不会存留，往往还没等落地，就已经消失得无影无踪了。黄土高原严寒而漫长的冬天看来就要过去，但那真正温暖的春天还远远地没有到来。</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&gt; 一个平平常常的日子，细蒙蒙的雨丝夹着一星半点的雪花，</span><br><span class="line">正纷纷淋淋地向大地飘洒着。时令已快到惊蛰，雪当然再也不会存留，</span><br><span class="line">往往还没等落地，就已经消失得无影无踪了。黄土高原严寒而漫长的</span><br><span class="line">冬天看来就要过去，但那真正温暖的春天还远远地没有到来。</span><br></pre></td></tr></table></figure>
+<h4 id="列表"><a href="#列表" class="headerlink" title="列表"></a>列表</h4><p>有序列表</p>
+<ol>
+<li>我有一个梦想</li>
+<li>我有一个梦想</li>
+<li>我有一个梦想<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">1. 我有一个梦想</span><br><span class="line">2. 我有一个梦想</span><br><span class="line">3. 我有一个梦想</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>无序列表</p>
+<ul>
+<li>我有一个梦想</li>
+<li>我有一个梦想</li>
+<li>我有一个梦想<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">- 我有一个梦想</span><br><span class="line">+ 我有一个梦想</span><br><span class="line">* 我有一个梦想</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h4 id="表格"><a href="#表格" class="headerlink" title="表格"></a>表格</h4><table>
+<thead>
+<tr>
+<th style="text-align:left">language</th>
+<th style="text-align:center">learn</th>
+<th style="text-align:right">Time</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">Javascript</td>
+<td style="text-align:center">first</td>
+<td style="text-align:right">10</td>
+</tr>
+<tr>
+<td style="text-align:left">python</td>
+<td style="text-align:center">second</td>
+<td style="text-align:right">20</td>
+</tr>
+<tr>
+<td style="text-align:left">Java</td>
+<td style="text-align:center">third</td>
+<td style="text-align:right">30</td>
+</tr>
+</tbody>
+</table>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">| language  | learn  | Time|</span><br><span class="line">| :-        | :-:    | -:  |</span><br><span class="line">| Javascript| first  | 10  |</span><br><span class="line">| python    | second | 20  |</span><br><span class="line">| Java      | third  | 30  |</span><br><span class="line"></span><br><span class="line">:- 表示左对齐</span><br><span class="line">:-:表示居中对齐</span><br><span class="line">-: 表示右对齐</span><br></pre></td></tr></table></figure>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/09/27/python-spiderlearning3/"/>
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -592,411 +1036,6 @@ rst = pat.search(&apos;BIT 100081&apos;)
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/09/26/python-spiderlearning2/"/>
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="gzl"/>
-      <meta itemprop="description" content=""/>
-      <meta itemprop="image" content="/images/avatar.gif"/>
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="gzl的博客"/>
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/2018/09/26/python-spiderlearning2/" class="post-title-link" itemprop="url">python BeautifulSoup库入门与实战</a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-
-          
-          
-          
-
-          
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-
-              
-                
-              
-
-              <time title="创建时间：2018-09-26 16:34:36" itemprop="dateCreated datePublished" datetime="2018-09-26T16:34:36+08:00">2018-09-26</time>
-            </span>
-          
-
-          
-            
-
-            
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">更新于</span>
-                
-                <time title="修改时间：2018-09-27 14:45:58" itemprop="dateModified" datetime="2018-09-27T14:45:58+08:00">2018-09-27</time>
-              </span>
-            
-          
-
-          
-
-          
-            
-            
-          
-
-          
-          
-
-          
-
-          
-
-          <br/>
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h3 id="BeautifulSoup库入门"><a href="#BeautifulSoup库入门" class="headerlink" title="BeautifulSoup库入门"></a>BeautifulSoup库入门</h3><h4 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h4><pre><code>以管理员身份运行cmd，试行pip install beautifulsoup4
-</code></pre><h4 id="引入"><a href="#引入" class="headerlink" title="引入"></a>引入</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> bs4 <span class="keyword">import</span> BeautifulSoup</span><br><span class="line"><span class="keyword">import</span> bs4</span><br></pre></td></tr></table></figure>
-<p>约定引用方式如下，即主要是用BeautifulSoup类</p>
-<h4 id="BeautifulSoup库解析器"><a href="#BeautifulSoup库解析器" class="headerlink" title="BeautifulSoup库解析器"></a>BeautifulSoup库解析器</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">soup = BeautifulSoup(<span class="string">'&lt;html&gt;data&lt;/html&gt;'</span>,<span class="string">'html.parser'</span>) <span class="comment"># bs4的HTML解析器 </span></span><br><span class="line">       BeautifulSoup(mk,<span class="string">'lxml'</span>)                         <span class="comment"># lxml的HTML解析器</span></span><br><span class="line">       BeautifulSoup(mk,<span class="string">'xml'</span>)                          <span class="comment"># lxml的XML解析器</span></span><br><span class="line">       BeautifulSoup(mk,<span class="string">'html5lib'</span>)                     <span class="comment"># html5lib的解析器</span></span><br><span class="line">	 <span class="string">"""后面三个需要安装使用条件"""</span></span><br></pre></td></tr></table></figure>
-<h4 id="BeautifulSoup类的基本元素"><a href="#BeautifulSoup类的基本元素" class="headerlink" title="BeautifulSoup类的基本元素"></a>BeautifulSoup类的基本元素</h4><pre><code>1.Tag             标签，最基本的信息组织单元，分别用&lt;&gt;和&lt;/&gt;标明开头和结尾
-
-2.Name            标签的名字，&lt;p&gt;…&lt;/p&gt;的名字是&apos;p&apos;，格式：&lt;tag&gt;.name
-
-3.Attributes      标签的属性，字典形式组织，格式：&lt;tag&gt;.attrs
-
-4.NavigableString 标签内非属性字符串，&lt;&gt;…&lt;/&gt;中字符串，格式：&lt;tag&gt;.string
-
-5.Comment         标签内字符串的注释部分，一种特殊的Comment类型
-</code></pre><h4 id="bs4库的prettify-方法"><a href="#bs4库的prettify-方法" class="headerlink" title="bs4库的prettify()方法"></a>bs4库的prettify()方法</h4><pre><code>.prettify()为HTML文本&lt;&gt;及其内容增加更加&apos;\n&apos;
-
-.prettify()可用于标签，方法：&lt;tag&gt;.prettify()
-</code></pre><h4 id="bs4库的编码"><a href="#bs4库的编码" class="headerlink" title="bs4库的编码"></a>bs4库的编码</h4><pre><code>bs4库将任何HTML输入都变成utf‐8编码
-
-Python 3.x默认支持编码是utf‐8,解析无障碍
-</code></pre><h4 id="基于bs4库的HTML内容遍历方法"><a href="#基于bs4库的HTML内容遍历方法" class="headerlink" title="基于bs4库的HTML内容遍历方法"></a>基于bs4库的HTML内容遍历方法</h4><ul>
-<li><p>标签树的下行遍历<br>.contents 子节点的列表，将<tag>所有儿子节点存入列表<br>.children 子节点的迭代类型，与.contents类似，用于循环遍历儿子节点<br>.descendants 子孙节点的迭代类型，包含所有子孙节点，用于循环遍历</tag></p>
-</li>
-<li><p>标签树的上行遍历<br>.parent 节点的父亲标签<br>.parents 节点先辈标签的迭代类型，用于循环遍历先辈节点</p>
-</li>
-<li><p>标签树的平行遍历<br>.next_sibling 返回按照HTML文本顺序的下一个平行节点标签<br>.previous_sibling 返回按照HTML文本顺序的上一个平行节点标签<br>.next_siblings 迭代类型，返回按照HTML文本顺序的后续所有平行节点标签<br>.previous_siblings 迭代类型，返回按照HTML文本顺序的前续所有平行节点标签</p>
-</li>
-</ul>
-<h4 id="三种信息标记形式的比较"><a href="#三种信息标记形式的比较" class="headerlink" title="三种信息标记形式的比较"></a>三种信息标记形式的比较</h4><pre><code>XML 最早的通用信息标记语言,可扩展性好,但繁琐,Internet上的信息交互与传递
-
-JSON 信息有类型,适合程序处理(js),较XML简洁,移动应用云端和节点的信息通信,无注释
-
-YAML 信息无类型,文本信息比例最高,可读性好,各类系统的配置文件,有注释易读
-</code></pre><p>获取网页全部链接<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> requests</span><br><span class="line"><span class="keyword">from</span> bs4 <span class="keyword">import</span> BeautifulSoup</span><br><span class="line">r = requests.get(<span class="string">"https://www.douyu.com/138243"</span>)</span><br><span class="line">demo = r.text</span><br><span class="line">soup = BeautifulSoup(demo,<span class="string">"html.parser"</span>)</span><br><span class="line"><span class="keyword">for</span> link <span class="keyword">in</span> soup.find_all(<span class="string">'a'</span>):</span><br><span class="line">    print(link.get(<span class="string">'href'</span>))</span><br></pre></td></tr></table></figure></p>
-<h4 id="常见方法"><a href="#常见方法" class="headerlink" title="常见方法"></a>常见方法</h4><pre><code>&lt;&gt;.find_all(name, attrs, recursive, string, **kwargs)
-返回一个列表类型，存储查找的结果
-name : 对标签名称的检索字符串
-attrs: 对标签属性值的检索字符串，可标注属性检索
-recursive: 是否对子孙全部检索，默认True
-string: &lt;&gt;…&lt;/&gt;中字符串区域的检索字符串
-
-&lt;tag&gt;(..) 等价于 &lt;tag&gt;.find_all(..)
-
-soup(..) 等价于 soup.find_all(..)
-</code></pre><h4 id="扩展方法"><a href="#扩展方法" class="headerlink" title="扩展方法"></a>扩展方法</h4><pre><code>&lt;&gt;.find()                    搜索且只返回一个结果，同.find_all()参数
-
-&lt;&gt;.find_parents()            在先辈节点中搜索，返回列表类型，同.find_all()参数
-
-&lt;&gt;.find_parent()             在先辈节点中返回一个结果，同.find()参数
-
-&lt;&gt;.find_next_siblings()      在后续平行节点中搜索，返回列表类型，同.find_all()参数
-
-&lt;&gt;.find_next_sibling()       在后续平行节点中返回一个结果，同.find()参数
-
-&lt;&gt;.find_previous_siblings()  在前序平行节点中搜索，返回列表类型，同.find_all()参数
-
-&lt;&gt;.find_previous_sibling()   在前序平行节点中返回一个结果，同.find()参数
-</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">"""just测试"""</span></span><br><span class="line"><span class="keyword">import</span> requests</span><br><span class="line"><span class="keyword">from</span> bs4 <span class="keyword">import</span> BeautifulSoup</span><br><span class="line">r = requests.get(<span class="string">"https://www.icourse163.org/home.htm?userId=1145095816#/home/course"</span>)</span><br><span class="line">demo = r.text</span><br><span class="line">soup = BeautifulSoup(demo,<span class="string">'html.parser'</span>)</span><br><span class="line">tag = soup.a  <span class="comment"># 获取第一个a标签</span></span><br><span class="line">print(r.text)</span><br><span class="line">print(demo)</span><br><span class="line">print(soup)</span><br><span class="line">print(tag)</span><br><span class="line">print(tag.name)</span><br><span class="line">print(tag.parent.name)</span><br><span class="line">print(tag.parent.parent.name)</span><br><span class="line">print(tag.attrs)</span><br><span class="line">print(type(tag.attrs))</span><br><span class="line">print(soup.title)</span><br><span class="line">print(type(tag))</span><br><span class="line">print(tag.attrs[<span class="string">'href'</span>])</span><br><span class="line">print(tag.string)</span><br><span class="line">print(type(soup.p.string))</span><br></pre></td></tr></table></figure>
-<h3 id="BeautifulSoup实战：中国大学排名爬虫"><a href="#BeautifulSoup实战：中国大学排名爬虫" class="headerlink" title="BeautifulSoup实战：中国大学排名爬虫"></a>BeautifulSoup实战：中国大学排名爬虫</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> requests</span><br><span class="line"><span class="keyword">from</span> bs4 <span class="keyword">import</span> BeautifulSoup</span><br><span class="line"><span class="keyword">import</span> bs4</span><br><span class="line"><span class="keyword">import</span> re</span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">getHTMLText</span><span class="params">(url)</span>:</span></span><br><span class="line">    <span class="keyword">try</span>:</span><br><span class="line">        r = requests.get(url)</span><br><span class="line">        r.raise_for_status()</span><br><span class="line">        r.encoding = r.apparent_encoding</span><br><span class="line">        <span class="keyword">return</span> r.text</span><br><span class="line">    <span class="keyword">except</span>:</span><br><span class="line">        <span class="keyword">return</span> <span class="string">""</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">fillUnivList</span><span class="params">(ulist, html)</span>:</span></span><br><span class="line">    soup = BeautifulSoup(html, <span class="string">"html.parser"</span>)</span><br><span class="line">    <span class="keyword">for</span> tr <span class="keyword">in</span> soup.find(<span class="string">'tbody'</span>).children:</span><br><span class="line">        <span class="keyword">if</span> isinstance(tr, bs4.element.Tag):</span><br><span class="line">            tds = tr(<span class="string">'td'</span>)</span><br><span class="line">            ulist.append([tds[<span class="number">0</span>].string, tds[<span class="number">1</span>].string, tds[<span class="number">3</span>].string])</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">printUnivList</span><span class="params">(ulist, num)</span>:</span></span><br><span class="line">    tplt = <span class="string">"&#123;0:^8&#125;\t&#123;1:&#123;3&#125;^8&#125;\t&#123;2:^8&#125;"</span></span><br><span class="line">    print(tplt.format(<span class="string">"排名"</span>, <span class="string">"学校名称"</span>, <span class="string">"总分"</span>, chr(<span class="number">12288</span>)))</span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(num):</span><br><span class="line">        u = ulist[i]</span><br><span class="line">        print(tplt.format(u[<span class="number">0</span>], u[<span class="number">1</span>], u[<span class="number">2</span>], chr(<span class="number">12288</span>)))</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">main</span><span class="params">()</span>:</span></span><br><span class="line">    uinfo = []</span><br><span class="line">    url = <span class="string">'http://www.zuihaodaxue.com/zuihaodaxuepaiming2018.html'</span></span><br><span class="line">    html = getHTMLText(url)</span><br><span class="line">    fillUnivList(uinfo, html)</span><br><span class="line">    printUnivList(uinfo, <span class="number">20</span>)  <span class="comment"># 20 univs</span></span><br><span class="line"></span><br><span class="line">main()</span><br></pre></td></tr></table></figure>
-
-          
-        
-      
-    </div>
-
-    
-
-    
-
-    
-    
-    
-
-    
-
-    
-      
-    
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/09/26/python-spiderlearning/"/>
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="gzl"/>
-      <meta itemprop="description" content=""/>
-      <meta itemprop="image" content="/images/avatar.gif"/>
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="gzl的博客"/>
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/2018/09/26/python-spiderlearning/" class="post-title-link" itemprop="url">python Requests库入门与实战</a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-
-          
-          
-          
-
-          
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-
-              
-                
-              
-
-              <time title="创建时间：2018-09-26 14:17:52" itemprop="dateCreated datePublished" datetime="2018-09-26T14:17:52+08:00">2018-09-26</time>
-            </span>
-          
-
-          
-            
-
-            
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">更新于</span>
-                
-                <time title="修改时间：2018-09-27 14:45:44" itemprop="dateModified" datetime="2018-09-27T14:45:44+08:00">2018-09-27</time>
-              </span>
-            
-          
-
-          
-
-          
-            
-            
-          
-
-          
-          
-
-          
-
-          
-
-          <br/>
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <blockquote>
-<p>  我也不知道为什么，本来对爬虫这个名词不是太了解，就想多了解一下，于是刷知乎，有人推荐中国大学MOOC上的北京理工大学开的一门《python》网络爬虫与信息提取这门课，看了一下，觉得老师讲的非常清晰，也就有了兴趣，记录一下学习的东西。</p>
-</blockquote>
-<h3 id="Requests库入门"><a href="#Requests库入门" class="headerlink" title="Requests库入门"></a>Requests库入门</h3><h4 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h4><pre><code>以管理员身份运行cmd，试行pip install requests
-</code></pre><h4 id="基本知识"><a href="#基本知识" class="headerlink" title="基本知识"></a>基本知识</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> requests</span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">getHTMLText</span><span class="params">(url)</span>:</span></span><br><span class="line">    <span class="keyword">try</span>:</span><br><span class="line">        r = requests.get(url, timeout = <span class="number">30</span>)</span><br><span class="line">        r.raise_for_status()</span><br><span class="line">        r.encoding = r.apparent_encoding</span><br><span class="line">        <span class="keyword">return</span> r.text</span><br><span class="line">    <span class="keyword">except</span>:</span><br><span class="line">        <span class="keyword">return</span> <span class="string">"产生异常"</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">"__main__"</span>:</span><br><span class="line">    url = <span class="string">"http://www.baidu.com"</span></span><br><span class="line">    print(getHTMLText(url))</span><br></pre></td></tr></table></figure>
-<pre><code>此段代码为爬取网页的通用代码框架
-
-Requests库有7个主要方法，分别为
-requests.request(),requests.get(),requests.head(),requests.post(),requests.put(),
-requests.patch(),requests.delete()
-
-其中requests.get()方法构造一个向服务器请求资源的Request对象，
-并返回一个包含服务器资源的Response对象
-
-Response对象有五个属性，分别是
-r.status_code, r.text, r.encoding, r.apparent_encoding, r.content
-
-网络连接有风险，异常处理很重要(try,except语句)
-</code></pre><p><a href="https://blog.csdn.net/yjk13703623757/article/details/77918633" target="_blank" rel="noopener">如何简单地理解Python中的if <strong>name</strong>==”<strong>main</strong>“:</a></p>
-<h4 id="Robots协议"><a href="#Robots协议" class="headerlink" title="Robots协议"></a>Robots协议</h4><pre><code>作用：网站告知网络爬虫哪些页面可以抓取，哪些不可以
-</code></pre><p>形式：<a href="https://www.jd.com/robots.txt" target="_blank" rel="noopener">京东的Robots协议</a></p>
-<h3 id="Requests实战"><a href="#Requests实战" class="headerlink" title="Requests实战"></a>Requests实战</h3><h4 id="爬取京东商品"><a href="#爬取京东商品" class="headerlink" title="爬取京东商品"></a>爬取京东商品</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> requests</span><br><span class="line">url = <span class="string">"https://item.jd.com/5089253.html"</span></span><br><span class="line"><span class="keyword">try</span>:</span><br><span class="line">    r = requests.get(url)</span><br><span class="line">    r.raise_for_status()</span><br><span class="line">    r.encoding = r.apparent_encoding</span><br><span class="line">    print(r.text)</span><br><span class="line"><span class="keyword">except</span>:</span><br><span class="line">    print(<span class="string">"爬取失败"</span>)</span><br></pre></td></tr></table></figure>
-<h4 id="爬取亚马逊图书"><a href="#爬取亚马逊图书" class="headerlink" title="爬取亚马逊图书"></a>爬取亚马逊图书</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> requests</span><br><span class="line">url = <span class="string">"https://www.amazon.cn/dp/B007OQQVMY/ref=sr_1_1?ie=UTF8&amp;qid=1537605244&amp;sr=8-1&amp;keywords=javascript"</span></span><br><span class="line"><span class="keyword">try</span>:</span><br><span class="line">    kv = &#123;<span class="string">'user-agent'</span>:<span class="string">'Mozilla/5.0'</span>&#125;</span><br><span class="line">    r = requests.get(url,headers = kv)</span><br><span class="line">    r.raise_for_status()</span><br><span class="line">    r.encoding = r.apparent_encoding</span><br><span class="line">    print(r.text[<span class="number">1000</span>:<span class="number">2000</span>])</span><br><span class="line"><span class="keyword">except</span>:</span><br><span class="line">    print(<span class="string">"爬取失败"</span>)</span><br></pre></td></tr></table></figure>
-<p>直接爬取时会产生错误信息，此时更改一下user-agent便可</p>
-<h4 id="百度360搜索关键词提交"><a href="#百度360搜索关键词提交" class="headerlink" title="百度360搜索关键词提交"></a>百度360搜索关键词提交</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> requests</span><br><span class="line">keyword = <span class="string">"Python"</span></span><br><span class="line"><span class="keyword">try</span>:</span><br><span class="line">    kv = &#123;<span class="string">'wd'</span>: keyword&#125;</span><br><span class="line">    r = requests.get(<span class="string">"http://www.baidu.com/s"</span>,params=kv)</span><br><span class="line">    print(r.request.url)</span><br><span class="line">    r.raise_for_status()</span><br><span class="line">    print(len(r.text))</span><br><span class="line"><span class="keyword">except</span>:</span><br><span class="line">    print(<span class="string">"爬取失败"</span>)</span><br></pre></td></tr></table></figure>
-<p>百度关键词接口：<a href="https://www.baidu.com/s?wd=keyword" target="_blank" rel="noopener">https://www.baidu.com/s?wd=keyword</a><br>360关键词接口：<a href="https://www.so.com/s?q=keyword" target="_blank" rel="noopener">https://www.so.com/s?q=keyword</a><br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> requests</span><br><span class="line">keyword = <span class="string">"Python"</span></span><br><span class="line"><span class="keyword">try</span>:</span><br><span class="line">    kv = &#123;<span class="string">"q"</span>: keyword&#125;</span><br><span class="line">    r = requests.get(<span class="string">"http://www.so.com/s"</span>,params=kv)</span><br><span class="line">    print(r.request.url)</span><br><span class="line">    r.raise_for_status()</span><br><span class="line">    print(len(r.text))</span><br><span class="line"><span class="keyword">except</span>:</span><br><span class="line">    print(<span class="string">"爬取失败"</span>)</span><br></pre></td></tr></table></figure></p>
-<h4 id="网络图片的爬取和存储"><a href="#网络图片的爬取和存储" class="headerlink" title="网络图片的爬取和存储"></a>网络图片的爬取和存储</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> requests</span><br><span class="line"><span class="keyword">import</span> os</span><br><span class="line">url = <span class="string">"http://image.ngchina.com.cn/2018/0926/20180926031035591.jpg"</span></span><br><span class="line">root = <span class="string">"D://pics//"</span></span><br><span class="line">path = root + url.split(<span class="string">'/'</span>)[<span class="number">-1</span>]</span><br><span class="line"><span class="keyword">try</span>:</span><br><span class="line">    <span class="keyword">if</span> <span class="keyword">not</span> os.path.exists(root):</span><br><span class="line">        os.mkdir(root)</span><br><span class="line">    <span class="keyword">if</span> <span class="keyword">not</span> os.path.exists(path):</span><br><span class="line">        r = requests.get(url)</span><br><span class="line">        <span class="keyword">with</span> open(path,<span class="string">'wb'</span>) <span class="keyword">as</span> f:</span><br><span class="line">            f.write(r.content)</span><br><span class="line">            f.close()</span><br><span class="line">            print(<span class="string">"文件保存成功"</span>)</span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        print(<span class="string">"文件已存在"</span>)</span><br><span class="line"><span class="keyword">except</span>:</span><br><span class="line">    print(<span class="string">"爬取失败"</span>)</span><br></pre></td></tr></table></figure>
-<p>D盘下确实出来了一个图片…</p>
-<h4 id="IP地址查询全代码"><a href="#IP地址查询全代码" class="headerlink" title="IP地址查询全代码"></a>IP地址查询全代码</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> requests</span><br><span class="line">url = <span class="string">"http://www.ip138.com/ips138.asp?ip="</span></span><br><span class="line"><span class="keyword">try</span>:</span><br><span class="line">    r = requests.get(url + <span class="string">'122.192.21.237'</span>)</span><br><span class="line">    r.raise_for_status()</span><br><span class="line">    r.encoding = r.apparent_encoding</span><br><span class="line">    print(r.text)</span><br><span class="line"><span class="keyword">except</span>:</span><br><span class="line">    print(<span class="string">"爬取失败"</span>)</span><br></pre></td></tr></table></figure>
-
-          
-        
-      
-    </div>
-
-    
-
-    
-
-    
-    
-    
-
-    
-
-    
-      
-    
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -1044,7 +1083,7 @@ r.status_code, r.text, r.encoding, r.apparent_encoding, r.content
         
           <a href="/archives/">
         
-          <span class="site-state-item-count">52</span>
+          <span class="site-state-item-count">54</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -1079,9 +1118,7 @@ r.status_code, r.text, r.encoding, r.apparent_encoding, r.content
         
           
         
-          
-        
-        <span class="site-state-item-count">10</span>
+        <span class="site-state-item-count">9</span>
         <span class="site-state-item-name">分类</span>
         </a>
       </div>
@@ -1190,7 +1227,9 @@ r.status_code, r.text, r.encoding, r.apparent_encoding, r.content
         
           
         
-        <span class="site-state-item-count">46</span>
+          
+        
+        <span class="site-state-item-count">47</span>
         <span class="site-state-item-name">标签</span>
         </a>
       </div>
