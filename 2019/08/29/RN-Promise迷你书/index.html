@@ -93,13 +93,18 @@
   };
 </script>
 
-  <meta property="og:type" content="website">
-<meta property="og:title" content="gzl的博客">
-<meta property="og:url" content="http://yoursite.com/index.html">
+  <meta name="description" content="Promise workflow12345678910111213function asyncFunction() &amp;#123;  return new Promise(function (resolve, reject) &amp;#123;    setTimeout(function () &amp;#123;      resolve(&apos;Async Hello world&apos;);    &amp;#125;, 16">
+<meta name="keywords" content="读书笔记">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Promise">
+<meta property="og:url" content="http://yoursite.com/2019/08/29/RN-Promise迷你书/index.html">
 <meta property="og:site_name" content="gzl的博客">
+<meta property="og:description" content="Promise workflow12345678910111213function asyncFunction() &amp;#123;  return new Promise(function (resolve, reject) &amp;#123;    setTimeout(function () &amp;#123;      resolve(&apos;Async Hello world&apos;);    &amp;#125;, 16">
 <meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2019-08-30T12:24:23.315Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="gzl的博客">
+<meta name="twitter:title" content="Promise">
+<meta name="twitter:description" content="Promise workflow12345678910111213function asyncFunction() &amp;#123;  return new Promise(function (resolve, reject) &amp;#123;    setTimeout(function () &amp;#123;      resolve(&apos;Async Hello world&apos;);    &amp;#125;, 16">
 
 
 
@@ -107,7 +112,7 @@
 
   
   
-  <link rel="canonical" href="http://yoursite.com/"/>
+  <link rel="canonical" href="http://yoursite.com/2019/08/29/RN-Promise迷你书/"/>
 
 
 
@@ -118,7 +123,7 @@
 </script>
 
   
-  <title>gzl的博客</title>
+  <title>Promise | gzl的博客</title>
   
 
 
@@ -166,8 +171,7 @@
     
   
 
-  <div class="container sidebar-position-left 
-  page-home">
+  <div class="container sidebar-position-left page-post-detail">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -205,7 +209,7 @@
         
         
           
-          <li class="menu-item menu-item-home menu-item-active">
+          <li class="menu-item menu-item-home">
 
     
     
@@ -309,9 +313,9 @@
           
           <div id="content" class="content">
             
-  <section id="posts" class="posts-expand">
+
+  <div id="posts" class="posts-expand">
     
-      
 
   
 
@@ -343,10 +347,8 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/2019/08/29/RN-Promise迷你书/" class="post-title-link" itemprop="url">Promise</a>
+          <h1 class="post-title" itemprop="name headline">Promise
+
               
             
           </h1>
@@ -440,9 +442,7 @@
       
 
       
-        
-          
-            <h1 id="Promise-workflow"><a href="#Promise-workflow" class="headerlink" title="Promise workflow"></a>Promise workflow</h1><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">asyncFunction</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function"><span class="keyword">function</span> (<span class="params">resolve, reject</span>) </span>&#123;</span><br><span class="line">    setTimeout(<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">      resolve(<span class="string">'Async Hello world'</span>);</span><br><span class="line">    &#125;, <span class="number">16</span>);</span><br><span class="line">  &#125;);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">asyncFunction().then(<span class="function"><span class="keyword">function</span> (<span class="params">value</span>) </span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(value); <span class="comment">// =&gt; 'Async Hello world'</span></span><br><span class="line">&#125;).catch(<span class="function"><span class="keyword">function</span> (<span class="params">error</span>) </span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(error);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+        <h1 id="Promise-workflow"><a href="#Promise-workflow" class="headerlink" title="Promise workflow"></a>Promise workflow</h1><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">asyncFunction</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function"><span class="keyword">function</span> (<span class="params">resolve, reject</span>) </span>&#123;</span><br><span class="line">    setTimeout(<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">      resolve(<span class="string">'Async Hello world'</span>);</span><br><span class="line">    &#125;, <span class="number">16</span>);</span><br><span class="line">  &#125;);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">asyncFunction().then(<span class="function"><span class="keyword">function</span> (<span class="params">value</span>) </span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(value); <span class="comment">// =&gt; 'Async Hello world'</span></span><br><span class="line">&#125;).catch(<span class="function"><span class="keyword">function</span> (<span class="params">error</span>) </span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(error);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
 <p><code>asyncFunction</code> 这个函数会返回promise对象， 对于这个promise对象，我们调用它的 <code>then</code> 方法来设置resolve后的回调函数， <code>catch</code>方法来设置发生错误时的回调函数。</p>
 <p>该promise对象会在setTimeout之后的 16ms 时被resolve, 这时 <code>then</code> 的回调函数会被调用，并输出 <code>&#39;Async Hello world&#39;</code> 。</p>
 <p>在这种情况下 <code>catch</code> 的回调函数并不会被执行（因为promise返回了resolve）， 不过如果运行环境没有提供 <code>setTimeout</code> 函数的话，那么上面代码在执行中就会产生异常，在 <code>catch</code> 中设置的回调函数就会被执行。</p>
@@ -545,13 +545,13 @@
 <p>生成并返回一个新的promise对象。</p>
 <p>参数 promise 数组中的任何一个promise对象如果变为resolve或者reject的话， 该函数就会返回，并使用这个promise对象的值进行resolve或者reject。</p>
 
-          
-        
       
     </div>
 
     
 
+    
+      
     
 
     
@@ -569,405 +569,39 @@
 
     <footer class="post-footer">
       
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/08/21/node-中间件/"/>
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="gzl"/>
-      <meta itemprop="description" content=""/>
-      <meta itemprop="image" content="/images/avatar.gif"/>
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="gzl的博客"/>
-    </span>
-
-    
-      <header class="post-header">
-
         
+          
         
-          <h1 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/2019/08/21/node-中间件/" class="post-title-link" itemprop="url">中间件</a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-
+        <div class="post-tags">
           
+            <a href="/tags/读书笔记/" rel="tag"># 读书笔记</a>
           
-          
-
-          
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-
-              
-                
-              
-
-              <time title="创建时间：2019-08-21 21:48:19" itemprop="dateCreated datePublished" datetime="2019-08-21T21:48:19+08:00">2019-08-21</time>
-            </span>
-          
-
-          
-            
-
-            
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">更新于</span>
-                
-                <time title="修改时间：2019-08-22 09:48:26" itemprop="dateModified" datetime="2019-08-22T09:48:26+08:00">2019-08-22</time>
-              </span>
-            
-          
-
-          
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/node-js/" itemprop="url" rel="index"><span itemprop="name">node.js</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-            
-          
-
-          
-          
-
-          
-
-          
-
-          <br/>
-          
-
-          
-
-          
-
         </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h1 id="koa中的中间件"><a href="#koa中的中间件" class="headerlink" title="koa中的中间件"></a>koa中的中间件</h1><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> Koa = <span class="built_in">require</span>(<span class="string">'koa'</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> app = <span class="keyword">new</span> Koa();</span><br><span class="line"></span><br><span class="line">app.use(<span class="function">(<span class="params">ctx, next</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="comment">// console.log(ctx); 上下文</span></span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">'first'</span>);</span><br><span class="line">  next(); <span class="comment">// 调用下一个中间件</span></span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line">app.use(<span class="function">(<span class="params">ctx, next</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">'second'</span>);</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line">app.listen(<span class="number">3000</span>, () =&gt; &#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">`127.0.0.1:3000`</span>)</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
-<p>执行下面的代码，然后在浏览器中输入127.0.0.1:3000，终端依次打印出 <code>first second</code>。</p>
-<h2 id="洋葱模型"><a href="#洋葱模型" class="headerlink" title="洋葱模型"></a>洋葱模型</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> Koa = <span class="built_in">require</span>(<span class="string">'koa'</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> app = <span class="keyword">new</span> Koa();</span><br><span class="line"></span><br><span class="line">app.use(<span class="function">(<span class="params">ctx, next</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="number">1</span>);</span><br><span class="line">  next();</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="number">2</span>)</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line">app.use(<span class="function">(<span class="params">ctx, next</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="number">3</span>);</span><br><span class="line">  next();</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="number">4</span>);</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line">app.listen(<span class="number">3000</span>, () =&gt; &#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">`127.0.0.1:3000`</span>)</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
-<p>执行上面的代码，然后在浏览器中输入127.0.0.1:3000，终端会依次打印出 <code>1 3 4 2</code>。</p>
-<h2 id="next返回值"><a href="#next返回值" class="headerlink" title="next返回值"></a>next返回值</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> Koa = <span class="built_in">require</span>(<span class="string">'koa'</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> app = <span class="keyword">new</span> Koa();</span><br><span class="line"></span><br><span class="line">app.use(<span class="function">(<span class="params">ctx, next</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="number">1</span>);</span><br><span class="line">  <span class="keyword">const</span> a = next();</span><br><span class="line">  <span class="built_in">console</span>.log(a);</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="number">2</span>);</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line">app.use(<span class="function">(<span class="params">ctx, next</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="number">3</span>);</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="number">4</span>);</span><br><span class="line">  <span class="keyword">return</span> <span class="string">"abc"</span>;</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line">app.listen(<span class="number">3000</span>, () =&gt; &#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">`127.0.0.1:3000`</span>)</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
-<p>执行上面的代码，然后在浏览器中输入127.0.0.1:3000，终端会依次打印 <code>1 3 4 Promise { &#39;abc&#39; } 2</code>，如果没有 <code>return &quot;abc&quot;;</code>，那么 a 为 <code>Promise { undefined }</code>，可以看到，next() 的返回值就是 <code>Promise</code>。</p>
-<h2 id="await-async"><a href="#await-async" class="headerlink" title="await async"></a>await async</h2><h3 id="求值"><a href="#求值" class="headerlink" title="求值"></a>求值</h3><p><strong>加上 <code>await</code> 和 <code>async</code> 确保按洋葱顺序执行，如果不加上，很难保证按洋葱顺序执行</strong>。</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> Koa = <span class="built_in">require</span>(<span class="string">'koa'</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> app = <span class="keyword">new</span> Koa();</span><br><span class="line"></span><br><span class="line">app.use(<span class="keyword">async</span> (ctx, next) =&gt; &#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="number">1</span>);</span><br><span class="line">  <span class="keyword">const</span> a = <span class="keyword">await</span> next(); <span class="comment">// 进行求值得到 'abc'</span></span><br><span class="line">  <span class="built_in">console</span>.log(a);</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="number">2</span>);</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line">app.use(<span class="function">(<span class="params">ctx, next</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="number">3</span>);</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="number">4</span>);</span><br><span class="line">  <span class="keyword">return</span> <span class="string">"abc"</span>;</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line">app.listen(<span class="number">3000</span>, () =&gt; &#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">`127.0.0.1:3000`</span>)</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
-<p>执行上面的代码，然后在浏览器中输入127.0.0.1:3000，终端会依次打印 <code>1 3 4 abc 2</code>。</p>
-<p>如果使用 <code>.then</code>，那么结果就不一样了，如下：</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> Koa = <span class="built_in">require</span>(<span class="string">'koa'</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> app = <span class="keyword">new</span> Koa();</span><br><span class="line"></span><br><span class="line">app.use(<span class="keyword">async</span> (ctx, next) =&gt; &#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="number">1</span>);</span><br><span class="line">  <span class="keyword">const</span> a = next();</span><br><span class="line">  a.then(<span class="function">(<span class="params">res</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(res);</span><br><span class="line">  &#125;)</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="number">2</span>);</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line">app.use(<span class="function">(<span class="params">ctx, next</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="number">3</span>);</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="number">4</span>);</span><br><span class="line">  <span class="keyword">return</span> <span class="string">"abc"</span>;</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line">app.listen(<span class="number">3000</span>, () =&gt; &#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">`127.0.0.1:3000`</span>)</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
-<p>执行上面的代码，在浏览器中输入127.0.0.1:3000，终端会依次打印 <code>1 3 4 2 abc</code></p>
-<h3 id="阻塞"><a href="#阻塞" class="headerlink" title="阻塞"></a>阻塞</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> Koa = <span class="built_in">require</span>(<span class="string">'koa'</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> app = <span class="keyword">new</span> Koa();</span><br><span class="line"></span><br><span class="line">app.use(<span class="function">(<span class="params">ctx, next</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">const</span> axios = <span class="built_in">require</span>(<span class="string">'axios'</span>);</span><br><span class="line">  <span class="keyword">const</span> start = <span class="built_in">Date</span>.now();</span><br><span class="line">  <span class="keyword">const</span> res = axios.get(<span class="string">`https://www.baidu.com`</span>);</span><br><span class="line">  <span class="keyword">const</span> end = <span class="built_in">Date</span>.now();</span><br><span class="line">  <span class="built_in">console</span>.log(end-start);  <span class="comment">// 0</span></span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line">app.listen(<span class="number">3000</span>, () =&gt; &#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">`127.0.0.1:3000`</span>)</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> Koa = <span class="built_in">require</span>(<span class="string">'koa'</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> app = <span class="keyword">new</span> Koa();</span><br><span class="line"></span><br><span class="line">app.use(<span class="keyword">async</span> (ctx, next) =&gt; &#123;</span><br><span class="line">  <span class="keyword">const</span> axios = <span class="built_in">require</span>(<span class="string">'axios'</span>);</span><br><span class="line">  <span class="keyword">const</span> start = <span class="built_in">Date</span>.now();</span><br><span class="line">  <span class="keyword">const</span> res = <span class="keyword">await</span> axios.get(<span class="string">`https://www.baidu.com`</span>);</span><br><span class="line">  <span class="keyword">const</span> end = <span class="built_in">Date</span>.now();</span><br><span class="line">  <span class="built_in">console</span>.log(end-start);  <span class="comment">// 79</span></span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line">app.listen(<span class="number">3000</span>, () =&gt; &#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">`127.0.0.1:3000`</span>)</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
-<p>比较上面的代码，第二段代码把<strong>异步变成了同步</strong>，所以 <code>end-start</code> 会变得很大</p>
-<h2 id="ctx"><a href="#ctx" class="headerlink" title="ctx"></a>ctx</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> Koa = <span class="built_in">require</span>(<span class="string">'koa'</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> app = <span class="keyword">new</span> Koa();</span><br><span class="line"></span><br><span class="line">app.use(<span class="keyword">async</span> (ctx, next) =&gt; &#123;</span><br><span class="line">  <span class="keyword">await</span> next();</span><br><span class="line">  <span class="comment">// 按照洋葱模型才能保证 r 是有值的，如果不加 await async，那么不一定是按照洋葱模型来执行</span></span><br><span class="line">  <span class="keyword">const</span> r = ctx.r;</span><br><span class="line">  <span class="built_in">console</span>.log(r);</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line">app.use(<span class="keyword">async</span> (ctx, next) =&gt; &#123;</span><br><span class="line">  <span class="keyword">const</span> axios = <span class="built_in">require</span>(<span class="string">'axios'</span>);</span><br><span class="line">  <span class="keyword">const</span> res = <span class="keyword">await</span> axios.get(<span class="string">"https://www.baidu.com"</span>);</span><br><span class="line">  ctx.r = res;</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line">app.listen(<span class="number">3000</span>, () =&gt; &#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">`127.0.0.1:3000`</span>)</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
-<h1 id="express中的中间件"><a href="#express中的中间件" class="headerlink" title="express中的中间件"></a>express中的中间件</h1><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> express = <span class="built_in">require</span>(<span class="string">'express'</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> app = express();</span><br><span class="line"></span><br><span class="line">app.use(<span class="function">(<span class="params">req, res, next</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">'1'</span>);</span><br><span class="line">  next();</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line">app.use(<span class="function">(<span class="params">req, res, next</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">'2'</span>);</span><br><span class="line">  next();</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line">app.use(<span class="function">(<span class="params">req, res, next</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">'3'</span>);</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line">app.listen(<span class="number">3000</span>, () =&gt; &#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">`127.0.0.1:3000`</span>);</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
-<p>执行上面的代码，然后在浏览器中输入127.0.0.1:3000，终端会依次打印出 <code>1 2 3</code>。</p>
-<h2 id="分类"><a href="#分类" class="headerlink" title="分类"></a>分类</h2><blockquote>
-<p>应用级中间件<br>路由级中间件<br>错误处理中间件<br>内置中间件<br>第三方中间件</p>
-</blockquote>
-<h2 id="举例"><a href="#举例" class="headerlink" title="举例"></a>举例</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> express = <span class="built_in">require</span>(<span class="string">'express'</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> app = express();</span><br><span class="line"></span><br><span class="line">app.use(<span class="function">(<span class="params">req, res, next</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">'1'</span>);</span><br><span class="line">  next();</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line">app.use(<span class="string">'/a'</span>, (req, res, next) =&gt; &#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">'2'</span>);</span><br><span class="line">  next();</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line">app.get(<span class="string">'/a'</span>, (req, res, next) =&gt; &#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">'a'</span>);</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line">app.use(<span class="string">'/b'</span>, (req, res, next) =&gt; &#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">'3'</span>);</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line">app.listen(<span class="number">3000</span>, () =&gt; &#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">`127.0.0.1:3000`</span>);</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
-<p>上面这段代码，在浏览器中输入 <code>http://127.0.0.1:3000</code> 只会打印出 1，输入 <code>http://127.0.0.1:3000/a</code> 会依次打印出 1 2 a，输入 <code>http://127.0.0.1:3000/b</code> 回依次打印出 1 3。</p>
-
-          
-        
-      
-    </div>
-
-    
-
-    
-
-    
-    
-    
-
-    
-
-    
-      
-    
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
       
 
       
       
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
       
 
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/08/21/进阶命令/"/>
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="gzl"/>
-      <meta itemprop="description" content=""/>
-      <meta itemprop="image" content="/images/avatar.gif"/>
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="gzl的博客"/>
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/2019/08/21/进阶命令/" class="post-title-link" itemprop="url">进阶命令</a>
-              
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
             
-          </h1>
-        
-
-        <div class="post-meta">
-
-          
-          
-          
-
-          
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-
-              
-                
-              
-
-              <time title="创建时间：2019-08-21 14:28:54 / 修改时间：15:19:01" itemprop="dateCreated datePublished" datetime="2019-08-21T14:28:54+08:00">2019-08-21</time>
-            </span>
-          
-
-          
+              <a href="/2019/08/21/node-中间件/" rel="next" title="中间件">
+                <i class="fa fa-chevron-left"></i> 中间件
+              </a>
             
+          </div>
 
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
             
-          
-
-          
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/linux/" itemprop="url" rel="index"><span itemprop="name">linux</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-            
-          
-
-          
-          
-
-          
-
-          
-
-          <br/>
-          
-
-          
-
-          
-
+          </div>
         </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
       
 
       
-        
-          
-            <h1 id="df"><a href="#df" class="headerlink" title="df"></a>df</h1><p>查看磁盘空间，<strong>-h表示以可读性较高的形式展示大小</strong></p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span> df -h</span><br><span class="line">文件系统        容量  已用  可用 已用% 挂载点</span><br><span class="line">udev            964M     0  964M    0% /dev</span><br><span class="line">tmpfs           198M  6.5M  191M    4% /run</span><br><span class="line">/dev/sda1        18G   11G  6.5G   62% /</span><br></pre></td></tr></table></figure>
-<h1 id="free"><a href="#free" class="headerlink" title="free"></a>free</h1><p>查看内存的使用情况，<strong>-m 表示以 MB 为单位查看</strong></p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span> free -m</span><br><span class="line">              total        used        free      shared  buff/cache   available</span><br><span class="line">Mem:           1971         841         260          18         870         957</span><br><span class="line">Swap:          2044           0        2044</span><br></pre></td></tr></table></figure>
-<h1 id="date"><a href="#date" class="headerlink" title="date"></a>date</h1><ol>
-<li><p>%F：表示完整的年月日</p>
-</li>
-<li><p>%T：表示完整的时分秒</p>
-</li>
-<li><p>%Y：表示四位年份</p>
-</li>
-<li><p>%m：表示两位月份（带前导0）</p>
-</li>
-<li><p>%d：表示日期（带前导0）</p>
-</li>
-<li><p>%H：表示小时（带前导0）</p>
-</li>
-<li><p>%M：表示分钟（带前导0）</p>
-</li>
-<li><p>%S：表示秒数（带前导0）</p>
-</li>
-</ol>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span> date</span><br><span class="line">2019年 08月 21日 星期三 14:38:32 CST</span><br><span class="line"></span><br><span class="line"><span class="meta">$</span> date +%F    # 等价于date "+%Y-%m-%d"</span><br><span class="line">2019-08-21</span><br><span class="line"></span><br><span class="line"><span class="meta">$</span> date "+%F %T"  # 等价于 date "+%Y-%m-%d %H:%M:%S"</span><br><span class="line">2019-08-21 14:48:31</span><br></pre></td></tr></table></figure>
-<h1 id="cal"><a href="#cal" class="headerlink" title="cal"></a>cal</h1><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span> cal # 等价于 cal -1 直接输出当前月份的日历</span><br><span class="line">      八月 2019         </span><br><span class="line">日 一 二 三 四 五 六  </span><br><span class="line">             1  2  3  </span><br><span class="line"> 4  5  6  7  8  9 10  </span><br><span class="line">11 12 13 14 15 16 17  </span><br><span class="line">18 19 20 21 22 23 24  </span><br><span class="line">25 26 27 28 29 30 31</span><br></pre></td></tr></table></figure>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span> cal -3 # 表示输出上一月+本月+下个月的日历</span><br><span class="line">                            2019</span><br><span class="line">         七月                    八月                    九月           </span><br><span class="line">日 一 二 三 四 五 六  日 一 二 三 四 五 六  日 一 二 三 四 五 六  </span><br><span class="line">    1  2  3  4  5  6               1  2  3   1  2  3  4  5  6  7  </span><br><span class="line"> 7  8  9 10 11 12 13   4  5  6  7  8  9 10   8  9 10 11 12 13 14  </span><br><span class="line">14 15 16 17 18 19 20  11 12 13 14 15 16 17  15 16 17 18 19 20 21  </span><br><span class="line">21 22 23 24 25 26 27  18 19 20 21 22 23 24  22 23 24 25 26 27 28  </span><br><span class="line">28 29 30 31           25 26 27 28 29 30 31  29 30</span><br></pre></td></tr></table></figure>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span> cal -y # 输出这一年的日历</span><br></pre></td></tr></table></figure>
-<h1 id="clear"><a href="#clear" class="headerlink" title="clear"></a>clear</h1><p>清屏</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span> clear</span><br></pre></td></tr></table></figure>
-<h1 id=""><a href="#" class="headerlink" title="|"></a>|</h1><p>管道号|，不能单独使用，必须配合指令一起使用，起辅助作用。</p>
-<p>过滤根目录下包含 y 的文件，<code>grey</code> 用于过滤，以管道为分界线，管道前面的输出就是后面指令的输入</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span> ls /|grep y</span><br><span class="line">sys</span><br></pre></td></tr></table></figure>
-          
-        
-      
-    </div>
-
-    
-
-    
-
-    
-    
-    
-
-    
-
-    
-      
-    
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
       
     </footer>
   </div>
@@ -977,18 +611,15 @@
   </article>
 
 
-    
-  </section>
-
-  
-  <nav class="pagination">
-    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><span class="space">&hellip;</span><a class="page-number" href="/page/19/">19</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
-  </nav>
-
+  </div>
 
 
           </div>
           
+
+  
+
+
 
         </div>
         
@@ -1008,8 +639,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <div class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <div class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
 
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1196,6 +836,23 @@
       </div>
 
       
+      <!--noindex-->
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+            
+            
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Promise-workflow"><span class="nav-number">1.</span> <span class="nav-text">Promise workflow</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#new-Promise"><span class="nav-number">2.</span> <span class="nav-text">new Promise</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Promise-resolve"><span class="nav-number">3.</span> <span class="nav-text">Promise.resolve</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Promise-reject"><span class="nav-number">4.</span> <span class="nav-text">Promise.reject</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Promise只能进行异步操作？"><span class="nav-number">5.</span> <span class="nav-text">Promise只能进行异步操作？</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#promise-chain-中传递参数"><span class="nav-number">6.</span> <span class="nav-text">promise chain 中传递参数</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#每次调用then都会返回一个新创建的promise对象"><span class="nav-number">7.</span> <span class="nav-text">每次调用then都会返回一个新创建的promise对象</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Promise-API"><span class="nav-number">8.</span> <span class="nav-text">Promise API</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Promise-then"><span class="nav-number">8.1.</span> <span class="nav-text">Promise.then</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Promise-catch"><span class="nav-number">8.2.</span> <span class="nav-text">Promise.catch</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Promise-resolve-1"><span class="nav-number">8.3.</span> <span class="nav-text">Promise.resolve</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Promise-reject-1"><span class="nav-number">8.4.</span> <span class="nav-text">Promise.reject</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Promise-all"><span class="nav-number">8.5.</span> <span class="nav-text">Promise.all</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Promise-race"><span class="nav-number">8.6.</span> <span class="nav-text">Promise.race</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </div>
+      <!--/noindex-->
+      
 
       
 
@@ -1327,6 +984,10 @@
 
 
   
+  <script src="/js/scrollspy.js?v=7.2.0"></script>
+<script src="/js/post-details.js?v=7.2.0"></script>
+
+
 
   <script src="/js/next-boot.js?v=7.2.0"></script>
 
@@ -1340,6 +1001,8 @@
 
   
 
+
+  
 
 
   
