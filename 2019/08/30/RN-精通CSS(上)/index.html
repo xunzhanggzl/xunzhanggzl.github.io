@@ -1,0 +1,1028 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2"/>
+<meta name="theme-color" content="#222"/>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.7.0"/>
+
+<link rel="stylesheet" href="/css/main.css?v=7.2.0"/>
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=7.2.0">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=7.2.0">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=7.2.0">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=7.2.0" color="#222">
+
+
+
+
+
+
+
+<script id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '7.2.0',
+    sidebar: {"position":"left","display":"post","offset":12,"onmobile":false},
+    back2top: {"enable":true,"sidebar":false,"scrollpercent":false},
+    copycode: {"enable":false,"show_result":false,"style":null},
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    },
+    translation: {
+      copy_button: '复制',
+      copy_success: '复制成功',
+      copy_failure: '复制失败'
+    }
+  };
+</script>
+
+  <meta name="description" content="第一章 基础知识创建结构化、语义化富HTML 123456&amp;lt;article class=&quot;post&quot;&amp;gt;  &amp;lt;header class=&quot;post-header&quot;&amp;gt;    &amp;lt;h1&amp;gt;How I became a CSS Master&amp;lt;/h1&amp;gt;  &amp;lt;/header&amp;gt;  &amp;lt;p&amp;gt;Ten-thousand hours&amp;lt;/p&amp;gt;&amp;">
+<meta name="keywords" content="读书笔记">
+<meta property="og:type" content="article">
+<meta property="og:title" content="RN-精通CSS(上)">
+<meta property="og:url" content="http://yoursite.com/2019/08/30/RN-精通CSS(上)/index.html">
+<meta property="og:site_name" content="gzl的博客">
+<meta property="og:description" content="第一章 基础知识创建结构化、语义化富HTML 123456&amp;lt;article class=&quot;post&quot;&amp;gt;  &amp;lt;header class=&quot;post-header&quot;&amp;gt;    &amp;lt;h1&amp;gt;How I became a CSS Master&amp;lt;/h1&amp;gt;  &amp;lt;/header&amp;gt;  &amp;lt;p&amp;gt;Ten-thousand hours&amp;lt;/p&amp;gt;&amp;">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2019-08-31T08:53:18.929Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="RN-精通CSS(上)">
+<meta name="twitter:description" content="第一章 基础知识创建结构化、语义化富HTML 123456&amp;lt;article class=&quot;post&quot;&amp;gt;  &amp;lt;header class=&quot;post-header&quot;&amp;gt;    &amp;lt;h1&amp;gt;How I became a CSS Master&amp;lt;/h1&amp;gt;  &amp;lt;/header&amp;gt;  &amp;lt;p&amp;gt;Ten-thousand hours&amp;lt;/p&amp;gt;&amp;">
+
+
+
+
+
+  
+  
+  <link rel="canonical" href="http://yoursite.com/2019/08/30/RN-精通CSS(上)/"/>
+
+
+
+<script id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  
+  <title>RN-精通CSS(上) | gzl的博客</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .motion-element,
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-title { opacity: initial; }
+
+  .use-motion .logo,
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">gzl的博客</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+    
+    
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="切换导航栏">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+          
+          <li class="menu-item menu-item-home">
+
+    
+    
+      
+    
+
+    
+
+    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br/>首页</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-about">
+
+    
+    
+      
+    
+
+    
+
+    <a href="/about/" rel="section"><i class="menu-item-icon fa fa-fw fa-user"></i> <br/>关于</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-tags">
+
+    
+    
+      
+    
+
+    
+
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br/>标签</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-categories">
+
+    
+    
+      
+    
+
+    
+
+    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br/>分类</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+
+    
+    
+      
+    
+
+    
+
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br/>归档</a>
+
+  </li>
+
+      
+      
+    </ul>
+  
+
+  
+
+  
+</nav>
+
+
+
+</div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+            
+
+          
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/08/30/RN-精通CSS(上)/"/>
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="gzl"/>
+      <meta itemprop="description" content=""/>
+      <meta itemprop="image" content="/images/avatar.gif"/>
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="gzl的博客"/>
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">RN-精通CSS(上)
+
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+
+          
+          
+          
+
+          
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2019-08-30 20:42:18" itemprop="dateCreated datePublished" datetime="2019-08-30T20:42:18+08:00">2019-08-30</time>
+            </span>
+          
+
+          
+            
+
+            
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2019-08-31 16:53:18" itemprop="dateModified" datetime="2019-08-31T16:53:18+08:00">2019-08-31</time>
+              </span>
+            
+          
+
+          
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/CSS/" itemprop="url" rel="index"><span itemprop="name">CSS</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+
+          <br/>
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="第一章-基础知识"><a href="#第一章-基础知识" class="headerlink" title="第一章 基础知识"></a>第一章 基础知识</h1><p><strong>创建结构化、语义化富HTML</strong></p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">article</span> <span class="attr">class</span>=<span class="string">"post"</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">header</span> <span class="attr">class</span>=<span class="string">"post-header"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">h1</span>&gt;</span>How I became a CSS Master<span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">header</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">p</span>&gt;</span>Ten-thousand hours<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">article</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.post</span> &#123;</span><br><span class="line">  <span class="comment">/* 样式 */</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-class">.post-header</span> &#123;</span><br><span class="line">  <span class="comment">/* 其他样式 */</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h1 id="第二章-添加样式"><a href="#第二章-添加样式" class="headerlink" title="第二章 添加样式"></a>第二章 添加样式</h1><h2 id="CSS选择符"><a href="#CSS选择符" class="headerlink" title="CSS选择符"></a>CSS选择符</h2><h3 id="相邻同辈选择符"><a href="#相邻同辈选择符" class="headerlink" title="相邻同辈选择符"></a>相邻同辈选择符</h3><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"container"</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">p</span>&gt;</span>这是第一个段落<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">h2</span>&gt;</span>This is h2<span class="tag">&lt;/<span class="name">h2</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">p</span>&gt;</span>这是第二个段落<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">p</span>&gt;</span>这是第三个段落<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">h2</span> + <span class="selector-tag">p</span> &#123;</span><br><span class="line">  <span class="attribute">font-size</span>: <span class="number">2em</span>;</span><br><span class="line">  <span class="attribute">font-weight</span>: bold;</span><br><span class="line">  <span class="attribute">color</span>: <span class="number">#777</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>使用相邻同辈选择符，就可以选择位于某个元素后面，并与该元素拥有共同父元素的元素，可以看到只有 <code>这是第二个段落</code> 应用上了 CSS 样式。</p>
+<h3 id="一般同辈选择符"><a href="#一般同辈选择符" class="headerlink" title="一般同辈选择符"></a>一般同辈选择符</h3><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"container"</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">p</span>&gt;</span>这是第一个段落<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">h2</span>&gt;</span>This is h2<span class="tag">&lt;/<span class="name">h2</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">p</span>&gt;</span>这是第二个段落<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">p</span>&gt;</span>这是第三个段落<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">h2</span> ~ <span class="selector-tag">p</span> &#123;</span><br><span class="line">  <span class="attribute">font-size</span>: <span class="number">2em</span>;</span><br><span class="line">  <span class="attribute">font-weight</span>: bold;</span><br><span class="line">  <span class="attribute">color</span>: <span class="number">#777</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>使用一般同辈选择符可以选择 h2 元素后面的所有段落，可以看到 <code>这是第二个段落</code> 和 <code>这是第三个段落</code> 都应用上了 CSS 样式。</p>
+<p><strong>相邻同辈选择符和一般同辈选择符都不会选择前面的同辈元素，浏览器之所以不支持向前选择同辈元素，主要跟网页渲染性能有关。</strong></p>
+<h3 id="通用选择符"><a href="#通用选择符" class="headerlink" title="通用选择符"></a>通用选择符</h3><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">*&#123;</span><br><span class="line">  <span class="attribute">margin</span>: <span class="number">0</span>;</span><br><span class="line">  <span class="attribute">padding</span>: <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>简单的应用就像上面这样，只不过现在有很多现成的库可以重设样式并且比上面的简单地把一切都设为0要好一点。</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.container</span> &gt; * &#123;</span><br><span class="line">  <span class="attribute">margin</span>: <span class="number">20px</span>;</span><br><span class="line">  <span class="attribute">font-size</span>: <span class="number">2em</span>;</span><br><span class="line">  <span class="attribute">font-weight</span>: bold;</span><br><span class="line">  <span class="attribute">color</span>: <span class="number">#777</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>上面这样组合，可以选择 <code>.container</code> 的元素的所有<strong>直接</strong>后代。</p>
+<h3 id="伪元素"><a href="#伪元素" class="headerlink" title="伪元素"></a>伪元素</h3><p>可以使用 <code>::first-letter</code> 伪元素来选择一段文本的第一个字符。若要选择一段文本的第一行，可以使用 <code>::first-line</code>。</p>
+<p><code>::before</code> 和 <code>::after</code> 这两个伪元素非常适合用来<strong>插入小图标及版面装饰符号</strong>。</p>
+<p>伪元素应该使用双冒号语法，与伪类区别开，伪类使用单冒号语法。</p>
+<h3 id="伪类"><a href="#伪类" class="headerlink" title="伪类"></a>伪类</h3><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"https://www.baidu.com"</span>&gt;</span>百度一下<span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* 未访问过的链接为蓝色 */</span></span><br><span class="line"><span class="selector-tag">a</span><span class="selector-pseudo">:link</span> &#123;</span><br><span class="line">  <span class="attribute">color</span>: blue;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">/* 访问过的链接为绿色 */</span></span><br><span class="line"><span class="selector-tag">a</span><span class="selector-pseudo">:visited</span> &#123;</span><br><span class="line">  <span class="attribute">color</span>: green;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">/* 链接在鼠标悬停及获取键盘焦点时为红色 */</span></span><br><span class="line"><span class="selector-tag">a</span><span class="selector-pseudo">:hover</span>,</span><br><span class="line"><span class="selector-tag">a</span><span class="selector-pseudo">:focus</span> &#123;</span><br><span class="line">  <span class="attribute">color</span>: red;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">/* 活动状态时为紫色 */</span></span><br><span class="line"><span class="selector-tag">a</span><span class="selector-pseudo">:active</span> &#123;</span><br><span class="line">  <span class="attribute">color</span>: purple;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><code>:link</code> 和 <code>:visited</code> 应该排在前面，然后才是与用户交互相关的那些，在触摸屏和键盘等输入方式下不一定真的有悬停状态。因此，不要在重要的交互功能中使用 <code>:hover</code>。</p>
+<h3 id="结构化伪类"><a href="#结构化伪类" class="headerlink" title="结构化伪类"></a>结构化伪类</h3><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">ul</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">li</span>&gt;</span>1<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">li</span>&gt;</span>2<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">li</span>&gt;</span>3<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">li</span>&gt;</span>4<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">li</span>&gt;</span>5<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">li</span>&gt;</span>6<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">ul</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* 奇数行的背景变为黄色 */</span></span><br><span class="line"><span class="selector-tag">li</span><span class="selector-pseudo">:nth-child(odd)</span> &#123;</span><br><span class="line">  <span class="attribute">background</span>: yellow;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><code>nth-child</code> 选择符可以用来交替地为表格行应用样式。</p>
+<p><code>nth-child</code> 的参数可以是 <code>odd</code> 或者 <code>even</code>，还可以是数值，表示目标元素的序数位置</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* 第三行背景变黄 */</span></span><br><span class="line"><span class="selector-tag">li</span><span class="selector-pseudo">:nth-child(3)</span> &#123;</span><br><span class="line">  <span class="attribute">background</span>: yellow;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>如果参数是数值表达式，如：</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* 第一行和第四行变黄。n 首先等于 0 ，然后逐次递增 1。 */</span></span><br><span class="line"><span class="selector-tag">li</span><span class="selector-pseudo">:nth-child(3n+1)</span> &#123;</span><br><span class="line">  <span class="attribute">background</span>: yellow;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* 前三行会变黄 */</span></span><br><span class="line"><span class="selector-tag">li</span><span class="selector-pseudo">:nth-child(-n+3)</span> &#123;</span><br><span class="line">  <span class="attribute">background</span>: yellow;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><code>:nth-last-child</code> 选择符与 <code>:nth-child</code> 类似，只不过是从最后一个元素倒序计算（而不是从第一个元素正序计算）。</p>
+<p><code>:first-child</code> 相当于 <code>:nth-child(1)</code> ，<code>:last-child</code> 对应于 <code>:nth-last-child(1)</code>。</p>
+<h2 id="层叠"><a href="#层叠" class="headerlink" title="层叠"></a>层叠</h2><p>稍微复杂的样式表中都可能存在两条甚至多条规则同时选择一个元素的情况，CSS通过一种叫作<strong>层叠（cascade）</strong>的机制来处理这种冲突。</p>
+<p>层叠机制的重要性级别从高到低如下所示：</p>
+<ul>
+<li>标注为 <code>!important</code> 的用户样式；</li>
+<li>标注为 <code>!important</code> 的作者样式；</li>
+<li>作者样式</li>
+<li>用户样式</li>
+<li>浏览器的默认样式</li>
+</ul>
+<p>在此基础上，规则再按选择符的特殊性排序。<strong>特殊性高的选择符会覆盖特殊性低的选择符。如果两条规则的特殊性相等，则后定义的规则优先</strong>。</p>
+<p>!important &gt; 行间样式 &gt; id &gt; class | 属性选择器 &gt; 标签选择器 &gt; 通配符选择器</p>
+<p><strong>CSS权重（特殊性）</strong></p>
+<ul>
+<li>!important                   Infinity</li>
+<li>行间样式                        1000</li>
+<li>id                                     100</li>
+<li>class | 属性 | 伪类         10</li>
+<li>标签  | 伪元素                  1</li>
+<li>通配符                               0</li>
+</ul>
+<p>1000 100 这些不是十进制，是 256 进制</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">h1</span> <span class="attr">class</span>=<span class="string">"title"</span>&gt;</span>这是一个h1<span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">h1</span> &#123;</span><br><span class="line">  <span class="attribute">color</span>: red;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-class">.title</span> &#123;</span><br><span class="line">  <span class="attribute">color</span>: blue;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-class">.title</span> &#123;</span><br><span class="line">  <span class="attribute">color</span>: green;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>h1 中文字最终会变成 <code>green</code>。</p>
+<h2 id="继承"><a href="#继承" class="headerlink" title="继承"></a>继承</h2><p>继承和层叠看起来有点类似，但实际上他们有着本质上的不同。</p>
+<p>有些属性，像颜色或字体大小，会被应用它们的元素的后代所继承。比如，我把 <code>body</code> 元素的文本颜色设置为黑色，那么 <code>body</code> 所有后代元素的文本颜色都会继承这个黑色，字号也一样。</p>
+<p>如果在 <code>body</code> 上设置了一个字号，就会发现页面中标题并不会变成同样的字号。实际上，标题大小是浏览器默认样式表中设定的。任何直接应用给元素的样式都会覆盖继承的样式，因为继承的样式<strong>没有任何特殊性</strong>。</p>
+<p>继承的属性没有任何特殊性，连0都说不上。这意味着使用特殊性为0的通用选择符设置的样式都可以覆盖继承的样式。</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">h1</span> <span class="attr">class</span>=<span class="string">"title"</span>&gt;</span></span><br><span class="line">  h1</span><br><span class="line">  <span class="tag">&lt;<span class="name">em</span>&gt;</span>这是一个em<span class="tag">&lt;/<span class="name">em</span>&gt;</span></span><br><span class="line">  h1</span><br><span class="line"><span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">* &#123;</span><br><span class="line">  <span class="attribute">color</span>: black;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-tag">h1</span> &#123;</span><br><span class="line">  <span class="attribute">color</span>: red;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>在上面这段代码中，表面上看 em 会继承 h1 的红色，但通用选择符给所有元素设置的黑色会覆盖它所继承的红色。</p>
+<h1 id="第三章-可见格式化模型"><a href="#第三章-可见格式化模型" class="headerlink" title="第三章 可见格式化模型"></a>第三章 可见格式化模型</h1><h2 id="盒模型"><a href="#盒模型" class="headerlink" title="盒模型"></a>盒模型</h2><h3 id="百分比问题"><a href="#百分比问题" class="headerlink" title="百分比问题"></a>百分比问题</h3><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"group"</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">article</span> <span class="attr">class</span>=<span class="string">"block"</span>&gt;</span><span class="tag">&lt;/<span class="name">article</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.group</span> &#123;</span><br><span class="line">  <span class="attribute">width</span>: <span class="number">300px</span>;</span><br><span class="line">  <span class="attribute">height</span>: <span class="number">200px</span>;</span><br><span class="line">  <span class="attribute">margin</span>: <span class="number">0</span> auto;</span><br><span class="line">  <span class="attribute">border</span>: <span class="number">1px</span> solid black;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-class">.block</span> &#123;</span><br><span class="line">  <span class="attribute">width</span>: <span class="number">100px</span>;</span><br><span class="line">  <span class="attribute">height</span>: <span class="number">100px</span>;</span><br><span class="line">  <span class="attribute">border</span>: <span class="number">1px</span> solid red;</span><br><span class="line">  <span class="attribute">margin-left</span>: <span class="number">5%</span>;</span><br><span class="line">  <span class="attribute">margin-top</span>: <span class="number">5%</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>上面的代码中，5% 指的是父元素 <code>.group</code> 宽度的 5%，<code>.group</code> 宽度是在这里是 300px，那么 <code>margin-left</code> 为 15px。注意，CSS规定，上、下方位的内外边距，仍然基于包含块的<strong>宽度</strong>，来计算，因此 <code>margin-top</code> 也为 15px。原因就是<strong>元素的高度常常不会被声明</strong>，而且会因内容多少而差距很大，如果要明确设定默认高度，也最好使用 <code>min-height</code>，因为这个属性允许<strong>盒子随内容扩展</strong>。</p>
+<h3 id="匿名盒子"><a href="#匿名盒子" class="headerlink" title="匿名盒子"></a>匿名盒子</h3><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">section</span>&gt;</span></span><br><span class="line">  some text</span><br><span class="line">  <span class="tag">&lt;<span class="name">p</span>&gt;</span>Some more text<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">section</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>此时，<code>some text</code> 就算没有定义为块级元素，也会被当成块级元素，这种情况下，这个盒子被称为<strong>匿名块盒子</strong>。</p>
+<h2 id="浮动模型"><a href="#浮动模型" class="headerlink" title="浮动模型"></a>浮动模型</h2><p>浮动盒子可以向左或向右移动，直到其外边沿接触包含块的外边沿，或接触另一个浮动盒子的外边沿。浮动盒子也会脱离常规文档流，因此常规流中的其他块级盒子的表现，几乎当浮动盒子根本不存在一样。</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"container"</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"first"</span>&gt;</span>1234567891231231315135<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"second"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"third"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.container</span> &gt; <span class="selector-tag">div</span> &#123;</span><br><span class="line">  <span class="attribute">width</span>: <span class="number">100px</span>;</span><br><span class="line">  <span class="attribute">height</span>: <span class="number">100px</span>;</span><br><span class="line">  <span class="attribute">border</span>: <span class="number">1px</span> solid black;</span><br><span class="line">  <span class="attribute">margin-bottom</span>: <span class="number">20px</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-class">.container</span> <span class="selector-class">.first</span> &#123;</span><br><span class="line">  <span class="attribute">width</span>: auto;</span><br><span class="line">  <span class="attribute">float</span>: right;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>上面的代码可以看出，<code>.first</code> 会脱离文档流并向右移动，直至其右边接触包含块的有边沿。同时，<code>.first</code> 的宽度也会<strong>收缩为适应于其中内容的最小宽度</strong>，除非通过 <code>width</code> 或 <code>min-width/max-width</code> 明确设置其宽度。</p>
+<p>修改 <code>.first</code> 为向左浮动：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">.container &gt; div &#123;</span><br><span class="line">  width: <span class="number">100</span>px;</span><br><span class="line">  height: <span class="number">100</span>px;</span><br><span class="line">  border: <span class="number">1</span>px solid black;</span><br><span class="line">  margin-bottom: <span class="number">20</span>px;</span><br><span class="line">&#125;</span><br><span class="line">.container .first &#123;</span><br><span class="line">  width: auto;</span><br><span class="line">  float: left;</span><br><span class="line">&#125;</span><br><span class="line">.container .second &#123;</span><br><span class="line">  background: green;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>可以看出 <code>.first</code> 已经不在文档流中，因此不会再占空间，这导致它浮于上方，遮住了 <code>.second</code> 。</p>
+<h2 id="块级格式化上下文"><a href="#块级格式化上下文" class="headerlink" title="块级格式化上下文"></a>块级格式化上下文</h2><ul>
+<li>display 属性值设置为 <code>inline-block</code> 或 <code>table-cell</code> 之类的元素，可以为内容创建类似块级的上下文</li>
+<li>float 属性值不是 <code>none</code> 的元素</li>
+<li>绝对定位的元素</li>
+<li>overflow 属性值不是 <code>visible</code> 的元素。</li>
+</ul>
+<p>最常见的就是<code>overflow:hidden</code>、<code>float:left/right</code>、<code>position:absolute</code>。也就是说，每次看到这些属性的时候，就代表了该元素以及创建了一个BFC了。</p>
+<p><a href="https://juejin.im/post/59b73d5bf265da064618731d" target="_blank" rel="noopener">学习 BFC (Block Formatting Context)</a></p>
+<h1 id="第四章-网页排版"><a href="#第四章-网页排版" class="headerlink" title="第四章 网页排版"></a>第四章 网页排版</h1><h2 id="字形大小"><a href="#字形大小" class="headerlink" title="字形大小"></a>字形大小</h2><p>几乎所有的浏览器中 <code>font-size</code> 的默认大小都是 16 像素，我们不修改默认的 <code>font-size</code> ，而是选择使用 <code>em</code> 单位调整特定元素的大小。</p>
+<p>对于 <code>font-size</code> 属性，可用百分比替代 <code>em</code> 。133.3% 和 <code>1.333em</code> 没有区别。</p>
+<p>最灵活的方式是使用 <code>rem</code> 单位，它始终基于根元素 <code>html</code> 元素的 <code>font-size</code> 缩放。</p>
+<p>当 <code>em</code> <strong>用于计算盒模型大小</strong>时，它不是基于继承的 <code>font-size</code> ，而是基于元素自身计算的 <code>font-size</code>。因此，不同级别的标题对应的 <code>font-size</code> 是不一样的。所以下面的代码推荐使用 <code>rem</code>。</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">h1</span>,<span class="selector-tag">h2</span>,<span class="selector-tag">h3</span>,<span class="selector-tag">h4</span>,<span class="selector-tag">h5</span>,<span class="selector-tag">h6</span> &#123;</span><br><span class="line">  <span class="attribute">margin-top</span>: <span class="number">1.5rem</span>; </span><br><span class="line">  <span class="comment">/* 24px = 16px * 1.5 */</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>不推荐使用绝对物理长度，如<code>mm cm in pt</code>。</p>
+
+      
+    </div>
+
+    
+
+    
+      
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+        
+          
+        
+        <div class="post-tags">
+          
+            <a href="/tags/读书笔记/" rel="tag"># 读书笔记</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/08/29/RN-Promise迷你书/" rel="next" title="RN-Promise迷你书">
+                <i class="fa fa-chevron-left"></i> RN-Promise迷你书
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+  </div>
+
+
+          </div>
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  
+  <p class="site-author-name" itemprop="name">gzl</p>
+  <div class="site-description motion-element" itemprop="description"></div>
+</div>
+
+
+  <nav class="site-state motion-element">
+    
+      <div class="site-state-item site-state-posts">
+        
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">56</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+    
+
+    
+      
+      
+      <div class="site-state-item site-state-categories">
+        
+          
+            <a href="/categories/">
+          
+        
+        
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+        <span class="site-state-item-count">9</span>
+        <span class="site-state-item-name">分类</span>
+        </a>
+      </div>
+    
+
+    
+      
+      
+      <div class="site-state-item site-state-tags">
+        
+          
+            <a href="/tags/">
+          
+        
+        
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+        <span class="site-state-item-count">47</span>
+        <span class="site-state-item-name">标签</span>
+        </a>
+      </div>
+    
+  </nav>
+
+
+
+
+
+
+
+
+
+
+
+
+
+          
+          
+        </div>
+      </div>
+
+      
+      <!--noindex-->
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+            
+            
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#第一章-基础知识"><span class="nav-number">1.</span> <span class="nav-text">第一章 基础知识</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#第二章-添加样式"><span class="nav-number">2.</span> <span class="nav-text">第二章 添加样式</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#CSS选择符"><span class="nav-number">2.1.</span> <span class="nav-text">CSS选择符</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#相邻同辈选择符"><span class="nav-number">2.1.1.</span> <span class="nav-text">相邻同辈选择符</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#一般同辈选择符"><span class="nav-number">2.1.2.</span> <span class="nav-text">一般同辈选择符</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#通用选择符"><span class="nav-number">2.1.3.</span> <span class="nav-text">通用选择符</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#伪元素"><span class="nav-number">2.1.4.</span> <span class="nav-text">伪元素</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#伪类"><span class="nav-number">2.1.5.</span> <span class="nav-text">伪类</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#结构化伪类"><span class="nav-number">2.1.6.</span> <span class="nav-text">结构化伪类</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#层叠"><span class="nav-number">2.2.</span> <span class="nav-text">层叠</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#继承"><span class="nav-number">2.3.</span> <span class="nav-text">继承</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#第三章-可见格式化模型"><span class="nav-number">3.</span> <span class="nav-text">第三章 可见格式化模型</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#盒模型"><span class="nav-number">3.1.</span> <span class="nav-text">盒模型</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#百分比问题"><span class="nav-number">3.1.1.</span> <span class="nav-text">百分比问题</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#匿名盒子"><span class="nav-number">3.1.2.</span> <span class="nav-text">匿名盒子</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#浮动模型"><span class="nav-number">3.2.</span> <span class="nav-text">浮动模型</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#块级格式化上下文"><span class="nav-number">3.3.</span> <span class="nav-text">块级格式化上下文</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#第四章-网页排版"><span class="nav-number">4.</span> <span class="nav-text">第四章 网页排版</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#字形大小"><span class="nav-number">4.1.</span> <span class="nav-text">字形大小</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </div>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">gzl</span>
+
+  
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动 v3.7.1</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> v7.2.0</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+    
+  </div>
+
+  
+
+<script>
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+  
+  
+
+
+
+
+
+  
+    
+    
+  
+  <script color='0,0,255' opacity='0.5' zIndex='-1' count='99' src="/lib/canvas-nest/canvas-nest.min.js"></script>
+
+
+
+
+
+
+
+
+
+  
+  <script src="/lib/jquery/index.js?v=3.4.1"></script>
+
+  
+  <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+
+
+
+  <script src="/js/utils.js?v=7.2.0"></script>
+
+  <script src="/js/motion.js?v=7.2.0"></script>
+
+
+
+  
+  
+
+
+  <script src="/js/affix.js?v=7.2.0"></script>
+
+  <script src="/js/schemes/pisces.js?v=7.2.0"></script>
+
+
+
+  
+  <script src="/js/scrollspy.js?v=7.2.0"></script>
+<script src="/js/post-details.js?v=7.2.0"></script>
+
+
+
+  <script src="/js/next-boot.js?v=7.2.0"></script>
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+  
+
+
+  
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+  
+
+</body>
+</html>
