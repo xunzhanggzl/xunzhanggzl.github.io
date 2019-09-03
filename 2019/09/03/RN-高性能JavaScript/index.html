@@ -96,14 +96,14 @@
   <meta name="description" content="第一章 加载和执行脚本位置当浏览器遇到 &amp;lt;script&amp;gt; 标签时，浏览器会停止处理页面，先执行 JavaScript 代码，然后继续解析和渲染页面，同样的情况也发生在使用 src 属性加载 JavaScript 的过程中，浏览器必须先花时间下载外链文件中代码，然后解析并执行，在这个过程中，页面渲染和用户交互是完全被阻塞的。 浏览器在解析到 &amp;lt;body&amp;gt; 标签之前，不会渲染页">
 <meta name="keywords" content="读书笔记">
 <meta property="og:type" content="article">
-<meta property="og:title" content="高性能JavaScript">
+<meta property="og:title" content="RN-高性能JavaScript">
 <meta property="og:url" content="http://yoursite.com/2019/09/03/RN-高性能JavaScript/index.html">
 <meta property="og:site_name" content="gzl的博客">
 <meta property="og:description" content="第一章 加载和执行脚本位置当浏览器遇到 &amp;lt;script&amp;gt; 标签时，浏览器会停止处理页面，先执行 JavaScript 代码，然后继续解析和渲染页面，同样的情况也发生在使用 src 属性加载 JavaScript 的过程中，浏览器必须先花时间下载外链文件中代码，然后解析并执行，在这个过程中，页面渲染和用户交互是完全被阻塞的。 浏览器在解析到 &amp;lt;body&amp;gt; 标签之前，不会渲染页">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-09-03T09:20:57.469Z">
+<meta property="og:updated_time" content="2019-09-03T14:09:58.983Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="高性能JavaScript">
+<meta name="twitter:title" content="RN-高性能JavaScript">
 <meta name="twitter:description" content="第一章 加载和执行脚本位置当浏览器遇到 &amp;lt;script&amp;gt; 标签时，浏览器会停止处理页面，先执行 JavaScript 代码，然后继续解析和渲染页面，同样的情况也发生在使用 src 属性加载 JavaScript 的过程中，浏览器必须先花时间下载外链文件中代码，然后解析并执行，在这个过程中，页面渲染和用户交互是完全被阻塞的。 浏览器在解析到 &amp;lt;body&amp;gt; 标签之前，不会渲染页">
 
 
@@ -123,7 +123,7 @@
 </script>
 
   
-  <title>高性能JavaScript | gzl的博客</title>
+  <title>RN-高性能JavaScript | gzl的博客</title>
   
 
 
@@ -347,7 +347,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">高性能JavaScript
+          <h1 class="post-title" itemprop="name headline">RN-高性能JavaScript
 
               
             
@@ -373,7 +373,7 @@
                 
               
 
-              <time title="创建时间：2019-09-03 14:13:41 / 修改时间：17:20:57" itemprop="dateCreated datePublished" datetime="2019-09-03T14:13:41+08:00">2019-09-03</time>
+              <time title="创建时间：2019-09-03 14:13:41 / 修改时间：22:09:58" itemprop="dateCreated datePublished" datetime="2019-09-03T14:13:41+08:00">2019-09-03</time>
             </span>
           
 
@@ -464,7 +464,20 @@
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">innerHTMLLoop</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">let</span> content = <span class="string">""</span>;</span><br><span class="line">  <span class="keyword">for</span>(<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; <span class="number">10000</span>; i ++) &#123;</span><br><span class="line">    content += <span class="string">"a"</span>;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="built_in">document</span>.getElementById(<span class="string">'here'</span>).innerHTML += content;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>可以很直观地体验到速度的变快。</p>
 <p>通用的经验法则是：<strong>减少访问DOM的次数，把运算尽量留在ECMAScript这一端处理</strong>。</p>
-<h1 id="第八章-编程实践"><a href="#第八章-编程实践" class="headerlink" title="第八章 编程实践"></a>第八章 编程实践</h1><h2 id="位操作"><a href="#位操作" class="headerlink" title="位操作"></a>位操作</h2>
+<h1 id="第八章-编程实践"><a href="#第八章-编程实践" class="headerlink" title="第八章 编程实践"></a>第八章 编程实践</h1><h2 id="延时加载"><a href="#延时加载" class="headerlink" title="延时加载"></a>延时加载</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 未改进之前</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">addHandler</span>(<span class="params">target, eventType, handler</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">if</span> (target.addEventListener) &#123;</span><br><span class="line">    target.addEventListener(eventType, handler, <span class="literal">false</span>);</span><br><span class="line">  &#125; <span class="keyword">else</span> &#123; <span class="comment">// IE</span></span><br><span class="line">    target.attachEvent(<span class="string">"on"</span> + eventType, handler);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>上面代码的问题就是：如果第一次调用 <code>addHandler()</code> 时就确定 <code>addEventListener()</code> 是存在的，那么随后每次调用时它应该也都存在，每次调用一个函数都重复相同的工作是一种浪费，有几种方法可以避免它。</p>
+ <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">addHandler</span>(<span class="params">target, eventType, handler</span>) </span>&#123;</span><br><span class="line">  <span class="comment">// 复写现有函数</span></span><br><span class="line">  <span class="keyword">if</span> (target.addEventListener) &#123;</span><br><span class="line">    addHandler = <span class="function"><span class="keyword">function</span> (<span class="params">target, eventType, handler</span>) </span>&#123;</span><br><span class="line">      target.addEventListener(eventType, handler, <span class="literal">false</span>);</span><br><span class="line">    &#125;</span><br><span class="line">  &#125; <span class="keyword">else</span> &#123; <span class="comment">// IE</span></span><br><span class="line">    addHandler = <span class="function"><span class="keyword">function</span> (<span class="params">target, eventType, handler</span>) </span>&#123;</span><br><span class="line">      target.attachEvent(<span class="string">"on"</span> + eventType, handler);</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="comment">// 调用新函数</span></span><br><span class="line">  addHandler(target, eventType, handler);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>上面这种方法就是<strong>延时加载</strong>，第一次调用时，会先检测并决定使用哪种方法去绑定事件处理器，然后原始函数被包含正确操作的新函数覆盖，最后一步调用新的函数，<strong>随后每次调用 <code>addHandler()</code> 都不会再做检测，因为检测代码已经被新的函数覆盖。</strong></p>
+<p>当一个函数在页面中不会立即调用时，延时加载是最好的选择。</p>
+<h2 id="条件预加载"><a href="#条件预加载" class="headerlink" title="条件预加载"></a>条件预加载</h2><p>这种方式会在脚本加载期间提前检测，而不会等到函数被调用。检测的操作依然只有一次，只是它在过程中来得更早，例如：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> addHandler = <span class="built_in">document</span>.body.addEventListener ? </span><br><span class="line">  <span class="function"><span class="keyword">function</span> (<span class="params">target, eventType, handler</span>) </span>&#123;</span><br><span class="line">    target.addEventListener(eventType, handler, <span class="literal">false</span>);</span><br><span class="line">  &#125;:</span><br><span class="line">  <span class="function"><span class="keyword">function</span> (<span class="params">target, eventType, handler</span>) </span>&#123;</span><br><span class="line">    target.attachEvent(<span class="string">"on"</span> + eventType, handler);</span><br><span class="line">  &#125;;</span><br></pre></td></tr></table></figure>
+<p>条件预加载确保所有函数调用消耗的时间相同。其代价是需要在脚本加载时就检测，而不是加载后。预加载适用于一个函数马上就要被用到，并且在整个页面的生命周期中频繁出现的场合。</p>
+<h2 id="位操作"><a href="#位操作" class="headerlink" title="位操作"></a>位操作</h2><p>有好几种方法来<strong>利用位操作符提升JavaScript的速度</strong>。首先是使用位运算代替纯数学操作。比如通常采用对 2 取模运算实现表格行颜色交替，例如：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span>(<span class="keyword">let</span> i = <span class="number">0</span>, len = rows.length; i &lt; len; i ++) &#123;</span><br><span class="line">  <span class="keyword">if</span> (i % <span class="number">2</span>) &#123;</span><br><span class="line">    className = <span class="string">"even"</span>;</span><br><span class="line">  &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    className = <span class="string">"odd"</span>;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="comment">// 增加class</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>如果你看到 32 位数字的二进制底层表示，会发现偶数的最低位是 0，奇数的最低位是 1。让给定数与数字 1 进行按位与运算，如果此数为偶数，那么它和 1 进行按位与运算的结果是 0，如果此数为奇数，那么它和 1 进行按位与运算的结果就是 1。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span>(<span class="keyword">let</span> i = <span class="number">0</span>, len = rows.length; i &lt; len; i ++) &#123;</span><br><span class="line">  <span class="keyword">if</span> (i &amp; <span class="number">1</span>) &#123;</span><br><span class="line">    className = <span class="string">"even"</span>;</span><br><span class="line">  &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    className = <span class="string">"odd"</span>;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="comment">// 增加class</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="原生方法"><a href="#原生方法" class="headerlink" title="原生方法"></a>原生方法</h2><p>当原生方法可用时，尽量使用它们。特别是数学运算（Math）和DOM操作。这样用编译后的代码做越多的事情，你的代码就会越快。 </p>
+
       
     </div>
 
@@ -516,6 +529,10 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/09/03/JS加载时间线/" rel="prev" title="JS加载时间线">
+                JS加载时间线 <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -585,7 +602,7 @@
         
           <a href="/archives/">
         
-          <span class="site-state-item-count">57</span>
+          <span class="site-state-item-count">58</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -762,7 +779,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#第一章-加载和执行"><span class="nav-number">1.</span> <span class="nav-text">第一章 加载和执行</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#脚本位置"><span class="nav-number">1.1.</span> <span class="nav-text">脚本位置</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#组织脚本"><span class="nav-number">1.2.</span> <span class="nav-text">组织脚本</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#异步加载js"><span class="nav-number">1.3.</span> <span class="nav-text">异步加载js</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#三种方式"><span class="nav-number">1.3.1.</span> <span class="nav-text">三种方式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#动态加载"><span class="nav-number">1.3.2.</span> <span class="nav-text">动态加载</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#第二章-数据存取"><span class="nav-number">2.</span> <span class="nav-text">第二章 数据存取</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#第三章-DOM编程"><span class="nav-number">3.</span> <span class="nav-text">第三章 DOM编程</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#第八章-编程实践"><span class="nav-number">4.</span> <span class="nav-text">第八章 编程实践</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#位操作"><span class="nav-number">4.1.</span> <span class="nav-text">位操作</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#第一章-加载和执行"><span class="nav-number">1.</span> <span class="nav-text">第一章 加载和执行</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#脚本位置"><span class="nav-number">1.1.</span> <span class="nav-text">脚本位置</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#组织脚本"><span class="nav-number">1.2.</span> <span class="nav-text">组织脚本</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#异步加载js"><span class="nav-number">1.3.</span> <span class="nav-text">异步加载js</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#三种方式"><span class="nav-number">1.3.1.</span> <span class="nav-text">三种方式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#动态加载"><span class="nav-number">1.3.2.</span> <span class="nav-text">动态加载</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#第二章-数据存取"><span class="nav-number">2.</span> <span class="nav-text">第二章 数据存取</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#第三章-DOM编程"><span class="nav-number">3.</span> <span class="nav-text">第三章 DOM编程</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#第八章-编程实践"><span class="nav-number">4.</span> <span class="nav-text">第八章 编程实践</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#延时加载"><span class="nav-number">4.1.</span> <span class="nav-text">延时加载</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#条件预加载"><span class="nav-number">4.2.</span> <span class="nav-text">条件预加载</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#位操作"><span class="nav-number">4.3.</span> <span class="nav-text">位操作</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#原生方法"><span class="nav-number">4.4.</span> <span class="nav-text">原生方法</span></a></li></ol></li></ol></div>
             
 
           </div>
