@@ -326,6 +326,382 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/08/06/JS强制类型转换/"/>
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="gzl"/>
+      <meta itemprop="description" content=""/>
+      <meta itemprop="image" content="/images/avatar.gif"/>
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="gzl的博客"/>
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/2019/08/06/JS强制类型转换/" class="post-title-link" itemprop="url">JS强制类型转换</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+
+          
+          
+          
+
+          
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2019-08-06 14:37:13" itemprop="dateCreated datePublished" datetime="2019-08-06T14:37:13+08:00">2019-08-06</time>
+            </span>
+          
+
+          
+            
+
+            
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2019-08-07 13:38:19" itemprop="dateModified" datetime="2019-08-07T13:38:19+08:00">2019-08-07</time>
+              </span>
+            
+          
+
+          
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/JavaScript/" itemprop="url" rel="index"><span itemprop="name">JavaScript</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+
+          <br/>
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="显式强制类型转换"><a href="#显式强制类型转换" class="headerlink" title="显式强制类型转换"></a>显式强制类型转换</h1><h2 id="字符串和数字之间的显式转换"><a href="#字符串和数字之间的显式转换" class="headerlink" title="字符串和数字之间的显式转换"></a>字符串和数字之间的显式转换</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> a = <span class="number">42</span>;</span><br><span class="line"><span class="keyword">let</span> b = <span class="built_in">String</span>(a);</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> c = <span class="string">"3.14"</span>;</span><br><span class="line"><span class="keyword">let</span> d = <span class="built_in">Number</span>(c);</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(b);  <span class="comment">// "42"</span></span><br><span class="line"><span class="built_in">console</span>.log(d);  <span class="comment">// 3.14</span></span><br></pre></td></tr></table></figure>
+<p>除了 String() 和 Number() 以外，还有其他方法：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> a = <span class="number">42</span>;</span><br><span class="line"><span class="keyword">let</span> b = a.toString();</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> c = <span class="string">"3.14"</span>;</span><br><span class="line"><span class="keyword">let</span> d = +c;</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(b);  <span class="comment">// "42"</span></span><br><span class="line"><span class="built_in">console</span>.log(d);  <span class="comment">// 3.14</span></span><br></pre></td></tr></table></figure>
+<h3 id="日期显式转换为数字"><a href="#日期显式转换为数字" class="headerlink" title="日期显式转换为数字"></a>日期显式转换为数字</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> d = <span class="keyword">new</span> <span class="built_in">Date</span>();</span><br><span class="line"><span class="built_in">console</span>.log(+d); <span class="comment">// 1565074622713</span></span><br></pre></td></tr></table></figure>
+<p>我们下面的方法获取当前的时间戳：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> timestamp1 = +<span class="keyword">new</span> <span class="built_in">Date</span>();</span><br><span class="line"><span class="keyword">let</span> timestamp2 = <span class="keyword">new</span> <span class="built_in">Date</span>().getTime();</span><br><span class="line"><span class="keyword">let</span> timestamp3 = <span class="built_in">Date</span>.now();</span><br></pre></td></tr></table></figure>
+<h3 id="奇特的-运算符"><a href="#奇特的-运算符" class="headerlink" title="奇特的 ~ 运算符"></a>奇特的 ~ 运算符</h3><p><strong>~ 可以和 indexOf() 一起将结果强制类型转换：</strong>如果 indexOf() 返回 -1，<strong>~</strong> 将其转换为假值0，其他情况一律转换为真值。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> a = <span class="string">"Hello World"</span>;</span><br><span class="line"><span class="built_in">console</span>.log(~a.indexOf(<span class="string">"H"</span>));  <span class="comment">// -1</span></span><br><span class="line"><span class="built_in">console</span>.log(~a.indexOf(<span class="string">"lo"</span>)); <span class="comment">// -4</span></span><br><span class="line"><span class="built_in">console</span>.log(~a.indexOf(<span class="string">"ol"</span>)); <span class="comment">// 0</span></span><br><span class="line"><span class="keyword">if</span> (~a.indexOf(<span class="string">"lo"</span>)) &#123;</span><br><span class="line">    <span class="comment">// 找到匹配</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="显式解析数字字符串"><a href="#显式解析数字字符串" class="headerlink" title="显式解析数字字符串"></a>显式解析数字字符串</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> a = <span class="string">"42"</span>;</span><br><span class="line"><span class="keyword">let</span> b = <span class="string">"42px"</span>;</span><br><span class="line"><span class="built_in">console</span>.log(<span class="built_in">Number</span>(a));   <span class="comment">// 42</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="built_in">parseInt</span>(a)); <span class="comment">// 42</span></span><br></pre></td></tr></table></figure>
+<h2 id="显式转换为布尔值"><a href="#显式转换为布尔值" class="headerlink" title="显式转换为布尔值"></a>显式转换为布尔值</h2><p>虽然Boolean是显式的，但并不常用。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> a = <span class="string">"0"</span>;</span><br><span class="line"><span class="keyword">let</span> b = [];</span><br><span class="line"><span class="keyword">let</span> c = &#123;&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> d = <span class="string">""</span>;</span><br><span class="line"><span class="keyword">let</span> e = <span class="number">0</span>;</span><br><span class="line"><span class="keyword">let</span> f = <span class="literal">null</span>;</span><br><span class="line"><span class="keyword">let</span> g;</span><br><span class="line"></span><br><span class="line"><span class="built_in">Boolean</span>(a) <span class="comment">// true</span></span><br><span class="line"><span class="built_in">Boolean</span>(b) <span class="comment">// true</span></span><br><span class="line"><span class="built_in">Boolean</span>(c) <span class="comment">// true</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">Boolean</span>(d) <span class="comment">// false</span></span><br><span class="line"><span class="built_in">Boolean</span>(e) <span class="comment">// false</span></span><br><span class="line"><span class="built_in">Boolean</span>(f) <span class="comment">// false</span></span><br><span class="line"><span class="built_in">Boolean</span>(g) <span class="comment">// false</span></span><br></pre></td></tr></table></figure>
+<p>常用的是 ！</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> a = <span class="string">"0"</span>;</span><br><span class="line"><span class="keyword">let</span> b = [];</span><br><span class="line"><span class="keyword">let</span> c = &#123;&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> d = <span class="string">""</span>;</span><br><span class="line"><span class="keyword">let</span> e = <span class="number">0</span>;</span><br><span class="line"><span class="keyword">let</span> f = <span class="literal">null</span>;</span><br><span class="line"><span class="keyword">let</span> g;</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(!!a) <span class="comment">// true</span></span><br><span class="line"><span class="built_in">console</span>.log(!!b) <span class="comment">// true</span></span><br><span class="line"><span class="built_in">console</span>.log(!!c) <span class="comment">// true</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(!!d) <span class="comment">// false</span></span><br><span class="line"><span class="built_in">console</span>.log(!!e) <span class="comment">// false</span></span><br><span class="line"><span class="built_in">console</span>.log(!!f) <span class="comment">// false</span></span><br><span class="line"><span class="built_in">console</span>.log(!!g) <span class="comment">// false</span></span><br></pre></td></tr></table></figure>
+<h1 id="隐式强制类型转换"><a href="#隐式强制类型转换" class="headerlink" title="隐式强制类型转换"></a>隐式强制类型转换</h1><h2 id="字符串和数字之间的隐式转换"><a href="#字符串和数字之间的隐式转换" class="headerlink" title="字符串和数字之间的隐式转换"></a>字符串和数字之间的隐式转换</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> a = <span class="string">"42"</span>;</span><br><span class="line"><span class="keyword">let</span> b = <span class="string">"0"</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> c = <span class="number">42</span>;</span><br><span class="line"><span class="keyword">let</span> d = <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(a + b);  <span class="comment">// "420"</span></span><br><span class="line"><span class="built_in">console</span>.log(c + d);  <span class="comment">// 42</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> a = [<span class="number">1</span>,<span class="number">2</span>];</span><br><span class="line"><span class="keyword">let</span> b = [<span class="number">3</span>,<span class="number">4</span>];</span><br><span class="line"><span class="built_in">console</span>.log(a + b); <span class="comment">// "1,23,4"</span></span><br></pre></td></tr></table></figure>
+<p>简单来说，如果 + 的其中一个操作数是字符串（或者经过一系列操作得到字符串），则执行字符串的拼接，否则执行数字加法。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> a = <span class="string">"3.14"</span>;</span><br><span class="line"><span class="keyword">let</span> b = a - <span class="number">0</span>;</span><br><span class="line"><span class="built_in">console</span>.log(b); <span class="comment">// 3.14</span></span><br></pre></td></tr></table></figure>
+<p>a - 0 会将 a 强制类型转换为数字。执行减法运算，a 和 b 都需要转换为数字。</p>
+<h2 id="隐式转换为布尔值"><a href="#隐式转换为布尔值" class="headerlink" title="隐式转换为布尔值"></a>隐式转换为布尔值</h2><ol>
+<li>if() 语句中的条件判断表达式</li>
+<li>for() 语句中的条件判断表达式（第二个）</li>
+<li>while() 和 do.while() 中的条件判断表达式</li>
+<li>? : 中的条件判断表达式</li>
+<li>逻辑运算符 || 和 &amp;&amp; 左边的操作数</li>
+</ol>
+<p>在以上情况中，非布尔值会被隐式强制类型转换为布尔值。</p>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/08/05/JS函数传参/"/>
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="gzl"/>
+      <meta itemprop="description" content=""/>
+      <meta itemprop="image" content="/images/avatar.gif"/>
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="gzl的博客"/>
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/2019/08/05/JS函数传参/" class="post-title-link" itemprop="url">JS函数传参</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+
+          
+          
+          
+
+          
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2019-08-05 12:22:29 / 修改时间：13:29:28" itemprop="dateCreated datePublished" datetime="2019-08-05T12:22:29+08:00">2019-08-05</time>
+            </span>
+          
+
+          
+            
+
+            
+          
+
+          
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/JavaScript/" itemprop="url" rel="index"><span itemprop="name">JavaScript</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+
+          <br/>
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>首先，函数传参不论是传递基本类型值还是引用类型值，都相当于最基本的赋值语句 x = a </p>
+<h1 id="函数传参-基本类型值"><a href="#函数传参-基本类型值" class="headerlink" title="函数传参-基本类型值"></a>函数传参-基本类型值</h1><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">foo</span>(<span class="params">x</span>) </span>&#123;</span><br><span class="line">    x = x + <span class="number">1</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">let</span> a = <span class="number">2</span>;</span><br><span class="line">foo(a);</span><br><span class="line"><span class="built_in">console</span>.log(a);   <span class="comment">// 2</span></span><br></pre></td></tr></table></figure>
+<p>上面的传参过程就相当于基本的赋值 x = a，然后 x ++，a 不会随之改变。</p>
+<p>如果想要改变基本类型值，需要这样借助引用类型值：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">foo</span>(<span class="params">wrapper</span>) </span>&#123;</span><br><span class="line">    wrapper.a = <span class="number">42</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">let</span> obj = &#123;</span><br><span class="line">    a: <span class="number">2</span></span><br><span class="line">&#125;</span><br><span class="line">foo(obj);</span><br><span class="line"><span class="built_in">console</span>.log(obj);    <span class="comment">// &#123;a: 42&#125;</span></span><br></pre></td></tr></table></figure>
+<h1 id="函数传参-引用类型值"><a href="#函数传参-引用类型值" class="headerlink" title="函数传参-引用类型值"></a>函数传参-引用类型值</h1><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">foo</span>(<span class="params">x</span>) </span>&#123;</span><br><span class="line">    x.push(<span class="number">4</span>);</span><br><span class="line">    <span class="built_in">console</span>.log(x);  <span class="comment">// [1, 2, 3, 4]</span></span><br><span class="line">    x = [<span class="number">4</span>,<span class="number">5</span>,<span class="number">6</span>];     <span class="comment">// 赋值新数组改变了 x 的引用</span></span><br><span class="line">    x.push(<span class="number">7</span>);</span><br><span class="line">    <span class="built_in">console</span>.log(x);  <span class="comment">// [4, 5, 6, 7]</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">let</span> a = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>];</span><br><span class="line">foo(a);</span><br><span class="line"><span class="built_in">console</span>.log(a);      <span class="comment">// [1, 2, 3, 4]</span></span><br><span class="line"><span class="comment">// 这段代码相当于 x = a 然后 x.push(4)，然后 x = b</span></span><br></pre></td></tr></table></figure>
+<p>观察上面的代码可以看到，a 在 x.push(4) 之后变为 [1,2,3,4] 。 x = [4,5,6] 并不能影响 a 的指向，所以 a 仍然指向 [1,2,3,4]。相当于下面这样（其实就是引用类型的赋值操作）：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> a = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>];</span><br><span class="line"><span class="keyword">let</span> x = a;</span><br><span class="line">x.push(<span class="number">4</span>);</span><br><span class="line"><span class="built_in">console</span>.log(x); <span class="comment">// [1, 2, 3, 4]</span></span><br><span class="line"><span class="built_in">console</span>.log(a); <span class="comment">// [1, 2, 3, 4]</span></span><br><span class="line">x = [<span class="number">4</span>,<span class="number">5</span>,<span class="number">6</span>];    <span class="comment">// 这里的重新赋值改变了 x 的指向</span></span><br><span class="line">x.push(<span class="number">7</span>);</span><br><span class="line"><span class="built_in">console</span>.log(x); <span class="comment">// [4, 5, 6, 7]</span></span><br><span class="line"><span class="built_in">console</span>.log(a); <span class="comment">// [1, 2, 3, 4]</span></span><br></pre></td></tr></table></figure>
+<p>如果要将 a 的值变为[4,5,6,7]，必须更改 x 原本指向的数组，而不是为 x （更改指向）赋值一个新的数组。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">foo</span>(<span class="params">x</span>) </span>&#123;</span><br><span class="line">    x.length = <span class="number">0</span>;    <span class="comment">// 清空数组 没有赋值新数组所以没有改变 x 的引用，x 和 a 的指向相同</span></span><br><span class="line">    x.push(<span class="number">4</span>,<span class="number">5</span>,<span class="number">6</span>,<span class="number">7</span>);</span><br><span class="line">    <span class="built_in">console</span>.log(x);  <span class="comment">// [4, 5, 6, 7]</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">let</span> a = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>];</span><br><span class="line">foo(a);</span><br><span class="line"><span class="built_in">console</span>.log(a);      <span class="comment">// [4, 5, 6, 7]</span></span><br><span class="line"><span class="comment">// 这段代码相当于 x = a 然后的操作并未将 x 指向新的引用</span></span><br></pre></td></tr></table></figure>
+<p>如果我们传递一个 a.slice()，那么这个过程就相当于 x = a.slice()，即进行了一次浅拷贝。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">foo</span>(<span class="params">x</span>) </span>&#123;</span><br><span class="line">    x[<span class="number">1</span>] = <span class="number">4</span>;</span><br><span class="line">    x[<span class="number">3</span>].name = <span class="string">"JS"</span>;</span><br><span class="line">    <span class="built_in">console</span>.log(x);     <span class="comment">// [1, 4, 3, &#123;name: "JS"&#125;]</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">let</span> a = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,&#123;<span class="attr">name</span>:<span class="string">"gzl"</span>&#125;];</span><br><span class="line">foo(a.slice());</span><br><span class="line"><span class="built_in">console</span>.log(a);         <span class="comment">// [1, 2, 3, &#123;name: "JS"&#125;]</span></span><br><span class="line"><span class="comment">// 这段代码中使用了slice</span></span><br></pre></td></tr></table></figure>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/08/05/JS基本包装类型/"/>
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -500,422 +876,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/08/05/JS逗号运算符/"/>
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="gzl"/>
-      <meta itemprop="description" content=""/>
-      <meta itemprop="image" content="/images/avatar.gif"/>
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="gzl的博客"/>
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/2019/08/05/JS逗号运算符/" class="post-title-link" itemprop="url">JS逗号运算符</a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-
-          
-          
-          
-
-          
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-
-              
-                
-              
-
-              <time title="创建时间：2019-08-05 09:00:47 / 修改时间：09:13:53" itemprop="dateCreated datePublished" datetime="2019-08-05T09:00:47+08:00">2019-08-05</time>
-            </span>
-          
-
-          
-            
-
-            
-          
-
-          
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/JavaScript/" itemprop="url" rel="index"><span itemprop="name">JavaScript</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-            
-          
-
-          
-          
-
-          
-
-          
-
-          <br/>
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h1 id="逗号运算符"><a href="#逗号运算符" class="headerlink" title="逗号运算符"></a>逗号运算符</h1><p><em>先看外面的括号(优先级高),然后返回,后面的值</em>，<em>逗号运算符会返回  “()” 中的最后一个</em></p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> a = <span class="number">42</span>, b;</span><br><span class="line">b = (a++, a);</span><br><span class="line"><span class="built_in">console</span>.log(a);  <span class="comment">// 43</span></span><br><span class="line"><span class="built_in">console</span>.log(b);  <span class="comment">// 43</span></span><br></pre></td></tr></table></figure>
-<p>a++, a中的第二个表达式 a 在 a++ 之后执行，结果为 43 ，并被赋值给 b。</p>
-<p>如果去掉 () 会出现什么情况 ？</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> a = <span class="number">42</span>, b;</span><br><span class="line">b = a++, a;</span><br><span class="line"><span class="built_in">console</span>.log(a);  <span class="comment">// 43</span></span><br><span class="line"><span class="built_in">console</span>.log(b);  <span class="comment">// 42</span></span><br></pre></td></tr></table></figure>
-<p>原因是逗号运算符的优先级比 = 低。b = a ++ , a 可以理解为 (b = a ++) , a。</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> x = (<span class="number">1</span>, <span class="number">2</span>);</span><br><span class="line"><span class="built_in">console</span>.log(x); <span class="comment">//   2</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> f = (</span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">f</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="string">"1"</span>;</span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">g</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">2</span>;</span><br><span class="line">    &#125;</span><br><span class="line">)(); <span class="comment">//f是函数g()执行后的返回值,所以f是2</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(<span class="keyword">typeof</span> f); <span class="comment">//   number</span></span><br></pre></td></tr></table></figure>
-
-          
-        
-      
-    </div>
-
-    
-
-    
-
-    
-    
-    
-
-    
-
-    
-      
-    
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/08/03/JS赋值、浅拷贝与深拷贝/"/>
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="gzl"/>
-      <meta itemprop="description" content=""/>
-      <meta itemprop="image" content="/images/avatar.gif"/>
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="gzl的博客"/>
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/2019/08/03/JS赋值、浅拷贝与深拷贝/" class="post-title-link" itemprop="url">JS赋值、浅拷贝与深拷贝</a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-
-          
-          
-          
-
-          
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-
-              
-                
-              
-
-              <time title="创建时间：2019-08-03 20:24:28" itemprop="dateCreated datePublished" datetime="2019-08-03T20:24:28+08:00">2019-08-03</time>
-            </span>
-          
-
-          
-            
-
-            
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">更新于</span>
-                
-                <time title="修改时间：2019-08-12 20:59:04" itemprop="dateModified" datetime="2019-08-12T20:59:04+08:00">2019-08-12</time>
-              </span>
-            
-          
-
-          
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/JavaScript/" itemprop="url" rel="index"><span itemprop="name">JavaScript</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-            
-          
-
-          
-          
-
-          
-
-          
-
-          <br/>
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h1 id="赋值"><a href="#赋值" class="headerlink" title="赋值"></a>赋值</h1><blockquote>
-<p>b = a</p>
-</blockquote>
-<p>赋值 = 是将某一数值或对象赋给某个变量的过程，分为下面 2 部分</p>
-<ul>
-<li>基本数据类型：赋值，赋值之后两个变量互不影响</li>
-<li>引用数据类型：赋<strong>址</strong>，两个变量具有相同的引用，指向同一个对象，相互之间有影响</li>
-</ul>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> c = <span class="number">1</span>;</span><br><span class="line"><span class="keyword">let</span> d = c;</span><br><span class="line">d ++;</span><br><span class="line"><span class="built_in">console</span>.log(d); <span class="comment">// 2 </span></span><br><span class="line"><span class="built_in">console</span>.log(c); <span class="comment">// 1</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> a = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>];</span><br><span class="line"><span class="keyword">let</span> b = a;</span><br><span class="line">b[<span class="number">2</span>] = <span class="number">4</span>;</span><br><span class="line"><span class="built_in">console</span>.log(a); <span class="comment">// [1, 2, 4]</span></span><br><span class="line"><span class="built_in">console</span>.log(b); <span class="comment">// [1, 2, 4]</span></span><br></pre></td></tr></table></figure>
-<p>因为基本类型值不会随之改变，因此下面的浅拷贝和深拷贝是针对对象类型的。</p>
-<h1 id="浅拷贝"><a href="#浅拷贝" class="headerlink" title="浅拷贝"></a>浅拷贝</h1><blockquote>
-<p>b = a.slice()</p>
-</blockquote>
-<p>浅拷贝即创建一个新对象，<strong>改变新对象的基本类型值，原对象不会随之改变</strong>，但如果<strong>改变新对象中引用类型内的值</strong>，原对象也会随之改变。<code>Object.assign()</code> 就是浅拷贝，用于将所有可枚举属性的值从一个或多个源对象复制到目标对象。它将返回目标对象。</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> a = &#123;</span><br><span class="line">    name: <span class="string">"muyiy"</span>,</span><br><span class="line">    book: &#123;</span><br><span class="line">        title: <span class="string">"You Don't Know JS"</span>,</span><br><span class="line">        price: <span class="string">"45"</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">let</span> b = <span class="built_in">Object</span>.assign(&#123;&#125;, a);</span><br><span class="line">b.name = <span class="string">"change"</span>;</span><br><span class="line">b.book.price = <span class="string">"55"</span>;</span><br><span class="line"><span class="built_in">console</span>.log(b);</span><br><span class="line"><span class="comment">// &#123;</span></span><br><span class="line"><span class="comment">//   name: "change",</span></span><br><span class="line"><span class="comment">//   book: &#123;title: "You Don't Know JS", price: "55"&#125;</span></span><br><span class="line"><span class="comment">// &#125;</span></span><br><span class="line"><span class="built_in">console</span>.log(a);</span><br><span class="line"><span class="comment">// &#123;</span></span><br><span class="line"><span class="comment">//   name: "muyiy",</span></span><br><span class="line"><span class="comment">//   book: &#123;title: "You Don't Know JS", price: "55"&#125;</span></span><br><span class="line"><span class="comment">// &#125;</span></span><br></pre></td></tr></table></figure>
-<p>同理，对于对象类型下的数组，<code>slice()</code>、<code>concat()</code>、<code>...运算符</code> 经过测试后发现都是浅拷贝</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> arr1 = [<span class="number">1</span> , <span class="number">2</span> , <span class="number">3</span> , &#123;<span class="string">"name"</span> : <span class="string">"张一"</span>&#125; , &#123;<span class="string">"sex"</span> : <span class="string">"male"</span>&#125;];</span><br><span class="line"><span class="keyword">let</span> arr2 = arr1.slice();</span><br><span class="line">arr2[<span class="number">0</span>] = <span class="number">2</span>;</span><br><span class="line">arr2[<span class="number">3</span>].name = <span class="string">"张三"</span>;</span><br><span class="line"><span class="built_in">console</span>.table(arr1) <span class="comment">// 1 2 3 &#123; name: "张三" &#125; &#123; sex: "male" &#125;</span></span><br><span class="line"><span class="built_in">console</span>.table(arr2) <span class="comment">// 2 2 3 &#123; name: "张三" &#125; &#123; sex: "male" &#125;</span></span><br></pre></td></tr></table></figure>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> arr2 = arr1.slice();</span><br><span class="line"><span class="keyword">let</span> arr2 = [].concat(arr1);</span><br><span class="line"><span class="keyword">let</span> arr2 = <span class="built_in">Array</span>.from(arr1);</span><br><span class="line"><span class="keyword">let</span> arr2 = <span class="built_in">Array</span>.of(...arr1);</span><br><span class="line"><span class="keyword">let</span> arr2 = [...arr1];</span><br></pre></td></tr></table></figure>
-<p><strong>这里推荐使用扩展运算符…来进行浅拷贝（{}、[]都推荐…），而不是Object.assign，详情请看下面的代码</strong></p>
-<p>Prefer the object spread operator over <a href="https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/Object/assign" target="_blank" rel="noopener"><code>Object.assign</code></a> to shallow-copy objects. Use the object rest operator to get a new object with certain properties omitted.</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// very bad</span></span><br><span class="line"><span class="keyword">const</span> original = &#123; <span class="attr">a</span>: <span class="number">1</span>, <span class="attr">b</span>: <span class="number">2</span> &#125;;</span><br><span class="line"><span class="keyword">const</span> copy = <span class="built_in">Object</span>.assign(original, &#123; <span class="attr">c</span>: <span class="number">3</span> &#125;); <span class="comment">// this mutates `original` ಠ_ಠ</span></span><br><span class="line"><span class="keyword">delete</span> copy.a; <span class="comment">// so does this</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// bad</span></span><br><span class="line"><span class="keyword">const</span> original = &#123; <span class="attr">a</span>: <span class="number">1</span>, <span class="attr">b</span>: <span class="number">2</span> &#125;;</span><br><span class="line"><span class="keyword">const</span> copy = <span class="built_in">Object</span>.assign(&#123;&#125;, original, &#123; <span class="attr">c</span>: <span class="number">3</span> &#125;); <span class="comment">// copy =&gt; &#123; a: 1, b: 2, c: 3 &#125;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// good</span></span><br><span class="line"><span class="keyword">const</span> original = &#123; <span class="attr">a</span>: <span class="number">1</span>, <span class="attr">b</span>: <span class="number">2</span> &#125;;</span><br><span class="line"><span class="keyword">const</span> copy = &#123; ...original, <span class="attr">c</span>: <span class="number">3</span> &#125;; <span class="comment">// copy =&gt; &#123; a: 1, b: 2, c: 3 &#125;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> &#123; a, ...noA &#125; = copy; <span class="comment">// noA =&gt; &#123; b: 2, c: 3 &#125;</span></span><br></pre></td></tr></table></figure>
-<h1 id="深拷贝"><a href="#深拷贝" class="headerlink" title="深拷贝"></a>深拷贝</h1><blockquote>
-<p>b = cloneDeep(a)</p>
-</blockquote>
-<p>深拷贝即完全改变变量 b 之后对 a 没有任何影响。深拷贝相比于浅拷贝速度较慢并且花销较大。</p>
-<h2 id="JSON-parse-JSON-stringify"><a href="#JSON-parse-JSON-stringify" class="headerlink" title="JSON.parse+JSON.stringify"></a>JSON.parse+JSON.stringify</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> a = &#123;</span><br><span class="line">    name: <span class="string">"muyiy"</span>,</span><br><span class="line">    book: &#123;</span><br><span class="line">        title: <span class="string">"You Don't Know JS"</span>,</span><br><span class="line">        price: <span class="string">"45"</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">let</span> b = <span class="built_in">JSON</span>.parse(<span class="built_in">JSON</span>.stringify(a));</span><br><span class="line">b.name = <span class="string">"change"</span>;</span><br><span class="line">b.book.price = <span class="string">"55"</span>;</span><br><span class="line"><span class="built_in">console</span>.log(b);</span><br><span class="line"><span class="comment">// &#123;</span></span><br><span class="line"><span class="comment">//   name: "change",</span></span><br><span class="line"><span class="comment">//   book: &#123;title: "You Don't Know JS", price: "55"&#125;</span></span><br><span class="line"><span class="comment">// &#125;</span></span><br><span class="line"><span class="built_in">console</span>.log(a);</span><br><span class="line"><span class="comment">// &#123;</span></span><br><span class="line"><span class="comment">//   name: "muyiy",</span></span><br><span class="line"><span class="comment">//   book: &#123;title: "You Don't Know JS", price: "45"&#125;</span></span><br><span class="line"><span class="comment">// &#125;</span></span><br></pre></td></tr></table></figure>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> arr1 = [<span class="number">1</span> , <span class="number">2</span> , <span class="number">3</span> , &#123;<span class="string">"name"</span> : <span class="string">"张一"</span>&#125; , &#123;<span class="string">"sex"</span> : <span class="string">"male"</span>&#125;];</span><br><span class="line"><span class="keyword">let</span> arr2 = <span class="built_in">JSON</span>.parse(<span class="built_in">JSON</span>.stringify(arr1));</span><br><span class="line">arr2[<span class="number">0</span>] = <span class="number">2</span>;</span><br><span class="line">arr2[<span class="number">3</span>].name = <span class="string">"张三"</span>;</span><br><span class="line"><span class="built_in">console</span>.table(arr1) <span class="comment">// 1 2 3 &#123; name: "张一" &#125; &#123; sex: "male" &#125;</span></span><br><span class="line"><span class="built_in">console</span>.table(arr2) <span class="comment">// 2 2 3 &#123; name: "张三" &#125; &#123; sex: "male" &#125;</span></span><br></pre></td></tr></table></figure>
-<p>这个方法很简便，但是有以下几个问题。</p>
-<p>1、会忽略 <code>undefined</code></p>
-<p>2、会忽略 <code>symbol</code></p>
-<p>3、不能序列化函数</p>
-<p>4、不能解决循环引用的对象</p>
-<p>5、不能正确处理<code>new Date()</code></p>
-<p>6、不能处理正则</p>
-<h2 id="DFS"><a href="#DFS" class="headerlink" title="DFS"></a>DFS</h2><p>浅拷贝 + 递归</p>
-<p>这里呢只实现最简单的深拷贝，只考虑 <code>数组</code>和<code>{}</code> 的情况，并且没有循环引用</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">typeof</span> <span class="literal">null</span> <span class="comment">//"object"</span></span><br><span class="line"><span class="keyword">typeof</span> &#123;&#125; <span class="comment">//"object"</span></span><br><span class="line"><span class="keyword">typeof</span> [] <span class="comment">//"object"</span></span><br><span class="line"><span class="keyword">typeof</span> <span class="function"><span class="keyword">function</span> <span class="title">foo</span>(<span class="params"></span>)</span>&#123;&#125; <span class="comment">//"function" (特殊情况)</span></span><br></pre></td></tr></table></figure>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">isObject</span>(<span class="params">obj</span>) </span>&#123;</span><br><span class="line">	<span class="keyword">return</span> <span class="keyword">typeof</span> obj === <span class="string">'object'</span> &amp;&amp; obj != <span class="literal">null</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 对 null 做一下判断</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">cloneDeep</span>(<span class="params">source</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">if</span> (!isObject(source)) <span class="keyword">return</span> source;</span><br><span class="line">  <span class="comment">// 非对象、null 或者 function 的话返回自身</span></span><br><span class="line">  <span class="keyword">let</span> target = <span class="built_in">Array</span>.isArray(source) ? [] : &#123;&#125;;</span><br><span class="line">  <span class="comment">// 直接使用Array.isArray方法进行判断：克隆 [] 或者 &#123;&#125;</span></span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">let</span> key <span class="keyword">in</span> source) &#123;</span><br><span class="line">    <span class="keyword">if</span> (<span class="built_in">Object</span>.prototype.hasOwnProperty.call(source, key)) &#123;</span><br><span class="line">      <span class="keyword">if</span> (isObject(source[key])) &#123;</span><br><span class="line">        target[key] = cloneDeep(source[key]); <span class="comment">// 注意这里</span></span><br><span class="line">      &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        target[key] = source[key];</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> target;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p><strong>小结</strong></p>
-<table>
-<thead>
-<tr>
-<th>–</th>
-<th>和原数据是否指向同一对象</th>
-<th>第一层数据为基本数据类型</th>
-<th>原数据中包含子对象</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>赋值</td>
-<td>是</td>
-<td>改变会使原数据一同改变</td>
-<td>改变会使原数据一同改变</td>
-</tr>
-<tr>
-<td>浅拷贝</td>
-<td>否</td>
-<td>改变<strong>不</strong>会使原数据一同改变</td>
-<td>改变会使原数据一同改变</td>
-</tr>
-<tr>
-<td>深拷贝</td>
-<td>否</td>
-<td>改变<strong>不</strong>会使原数据一同改变</td>
-<td>改变<strong>不</strong>会使原数据一同改变</td>
-</tr>
-</tbody>
-</table>
-<p><strong>参考</strong></p>
-<p><a href="https://github.com/airbnb/javascript" target="_blank" rel="noopener">https://github.com/airbnb/javascript</a></p>
-
-          
-        
-      
-    </div>
-
-    
-
-    
-
-    
-    
-    
-
-    
-
-    
-      
-    
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -963,7 +923,7 @@
         
           <a href="/archives/">
         
-          <span class="site-state-item-count">58</span>
+          <span class="site-state-item-count">60</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>

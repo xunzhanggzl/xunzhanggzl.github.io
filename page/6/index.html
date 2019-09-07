@@ -326,6 +326,370 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/08/12/LC二叉树的中序遍历/"/>
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="gzl"/>
+      <meta itemprop="description" content=""/>
+      <meta itemprop="image" content="/images/avatar.gif"/>
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="gzl的博客"/>
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/2019/08/12/LC二叉树的中序遍历/" class="post-title-link" itemprop="url">二叉树的中序遍历</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+
+          
+          
+          
+
+          
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2019-08-12 14:21:24" itemprop="dateCreated datePublished" datetime="2019-08-12T14:21:24+08:00">2019-08-12</time>
+            </span>
+          
+
+          
+            
+
+            
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2019-08-13 08:37:04" itemprop="dateModified" datetime="2019-08-13T08:37:04+08:00">2019-08-13</time>
+              </span>
+            
+          
+
+          
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/LeetCode/" itemprop="url" rel="index"><span itemprop="name">LeetCode</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+
+          <br/>
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p><a href="https://leetcode-cn.com/problems/binary-tree-inorder-traversal/" target="_blank" rel="noopener">94. 二叉树的中序遍历</a></p>
+<p>给定一个二叉树，返回它的中序 遍历。</p>
+<p>示例:</p>
+<p>输入: [1,null,2,3]</p>
+<p>输出: [1,3,2]</p>
+<h1 id="递归"><a href="#递归" class="headerlink" title="递归"></a>递归</h1><p>对于中序遍历，就是 <code>左根右</code>，<code>dfs</code> 递归还是很简单的。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Definition for a binary tree node.</span></span><br><span class="line"><span class="comment"> * function TreeNode(val) &#123;</span></span><br><span class="line"><span class="comment"> *     this.val = val;</span></span><br><span class="line"><span class="comment"> *     this.left = this.right = null;</span></span><br><span class="line"><span class="comment"> * &#125;</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * @param &#123;TreeNode&#125; root</span></span><br><span class="line"><span class="comment"> * @return &#123;number[]&#125;</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">var</span> inorderTraversal = <span class="function"><span class="keyword">function</span> (<span class="params">root</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">let</span> res = [];</span><br><span class="line">  <span class="function"><span class="keyword">function</span> <span class="title">dfs</span>(<span class="params">root</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (root) &#123;</span><br><span class="line">      dfs(root.left);</span><br><span class="line">      res.push(root.val);</span><br><span class="line">      dfs(root.right);</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  dfs(root);</span><br><span class="line">  <span class="keyword">return</span> res;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<h1 id="迭代"><a href="#迭代" class="headerlink" title="迭代"></a>迭代</h1><blockquote>
+<p>Recursive solution is trivial, could you do it iteratively?</p>
+</blockquote>
+<p>如果 <code>root</code> 存在，那么将它放入 <code>stack</code> 中，并且继续指向左子树。</p>
+<p>如果 <code>root</code> 不存在，那么取出栈顶元素，将其值放入 <code>res</code>，并将 <code>root</code> 指向右子树。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Definition for a binary tree node.</span></span><br><span class="line"><span class="comment"> * function TreeNode(val) &#123;</span></span><br><span class="line"><span class="comment"> *     this.val = val;</span></span><br><span class="line"><span class="comment"> *     this.left = this.right = null;</span></span><br><span class="line"><span class="comment"> * &#125;</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * @param &#123;TreeNode&#125; root</span></span><br><span class="line"><span class="comment"> * @return &#123;number[]&#125;</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">var</span> inorderTraversal = <span class="function"><span class="keyword">function</span> (<span class="params">root</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">let</span> res = [];</span><br><span class="line">  <span class="keyword">let</span> stack = [];</span><br><span class="line"></span><br><span class="line">  <span class="keyword">while</span> (stack.length || root) &#123;</span><br><span class="line">    <span class="keyword">if</span> (root) &#123;</span><br><span class="line">      stack.push(root);</span><br><span class="line">      root = root.left;</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">      <span class="keyword">let</span> node = stack.pop();</span><br><span class="line">      res.push(node.val);</span><br><span class="line">      root = node.right;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> res;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+          
+        
+      
+    </div>
+
+    
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/08/11/node-supervisor/"/>
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="gzl"/>
+      <meta itemprop="description" content=""/>
+      <meta itemprop="image" content="/images/avatar.gif"/>
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="gzl的博客"/>
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/2019/08/11/node-supervisor/" class="post-title-link" itemprop="url">node-supervisor</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+
+          
+          
+          
+
+          
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2019-08-11 21:27:16" itemprop="dateCreated datePublished" datetime="2019-08-11T21:27:16+08:00">2019-08-11</time>
+            </span>
+          
+
+          
+            
+
+            
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2019-08-21 21:49:41" itemprop="dateModified" datetime="2019-08-21T21:49:41+08:00">2019-08-21</time>
+              </span>
+            
+          
+
+          
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/node-js/" itemprop="url" rel="index"><span itemprop="name">node.js</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+
+          <br/>
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>在开发过程中，每次修改代码保存后，我们都需要手动重启程序，才能查看改动的效果。使用 <a href="https://www.npmjs.com/package/supervisor" target="_blank" rel="noopener">supervisor</a> 可以解决这个繁琐的问题，全局安装 supervisor：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm i -g supervisor</span><br></pre></td></tr></table></figure>
+<p>运行 <code>supervisor index.js</code> 启动程序</p>
+<p>supervisor 会监听当前目录下 node 和 js 后缀的文件，当这些文件发生改动时，supervisor 会自动重启程序。</p>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/08/11/exports、module.exports 和 export、export default/"/>
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -492,382 +856,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/08/11/LC最大子序和/"/>
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="gzl"/>
-      <meta itemprop="description" content=""/>
-      <meta itemprop="image" content="/images/avatar.gif"/>
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="gzl的博客"/>
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/2019/08/11/LC最大子序和/" class="post-title-link" itemprop="url">最大子序和</a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-
-          
-          
-          
-
-          
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-
-              
-                
-              
-
-              <time title="创建时间：2019-08-11 10:14:49 / 修改时间：10:23:13" itemprop="dateCreated datePublished" datetime="2019-08-11T10:14:49+08:00">2019-08-11</time>
-            </span>
-          
-
-          
-            
-
-            
-          
-
-          
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/LeetCode/" itemprop="url" rel="index"><span itemprop="name">LeetCode</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-            
-          
-
-          
-          
-
-          
-
-          
-
-          <br/>
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p><a href="https://leetcode-cn.com/problems/maximum-subarray/" target="_blank" rel="noopener">53. 最大子序和</a></p>
-<p>给定一个整数数组 <code>nums</code> ，找到一个具有最大和的连续子数组（子数组最少包含一个元素），返回其最大和。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">输入: [-2,1,-3,4,-1,2,1,-5,4],</span><br><span class="line">输出: 6</span><br><span class="line">解释: 连续子数组 [4,-1,2,1] 的和最大，为 6。</span><br></pre></td></tr></table></figure>
-<h1 id="动态规划"><a href="#动态规划" class="headerlink" title="动态规划"></a>动态规划</h1><p>下面这个解法的思想就是从一开始就求出到该位置的最大子序和，然后直接返回其中的最大值。</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * @param &#123;number[]&#125; nums</span></span><br><span class="line"><span class="comment"> * @return &#123;number&#125;</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">var</span> maxSubArray = <span class="function"><span class="keyword">function</span> (<span class="params">nums</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">1</span>; i &lt; nums.length; i++) &#123;</span><br><span class="line">    nums[i] = <span class="built_in">Math</span>.max(nums[i<span class="number">-1</span>] + nums[i], nums[i]);</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="built_in">console</span>.log(nums); <span class="comment">// [-2, 1, -2, 4, 3, 5, 6, 1, 5]</span></span><br><span class="line">  <span class="keyword">return</span> <span class="built_in">Math</span>.max(...nums);</span><br><span class="line">&#125;;</span><br><span class="line">maxSubArray([<span class="number">-2</span>,<span class="number">1</span>,<span class="number">-3</span>,<span class="number">4</span>,<span class="number">-1</span>,<span class="number">2</span>,<span class="number">1</span>,<span class="number">-5</span>,<span class="number">4</span>]);</span><br></pre></td></tr></table></figure>
-          
-        
-      
-    </div>
-
-    
-
-    
-
-    
-    
-    
-
-    
-
-    
-      
-    
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/08/07/RN-JS红宝书第六章创建对象/"/>
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="gzl"/>
-      <meta itemprop="description" content=""/>
-      <meta itemprop="image" content="/images/avatar.gif"/>
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="gzl的博客"/>
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/2019/08/07/RN-JS红宝书第六章创建对象/" class="post-title-link" itemprop="url">RN-JS红宝书第六章创建对象</a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-
-          
-          
-          
-
-          
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-
-              
-                
-              
-
-              <time title="创建时间：2019-08-07 13:46:25" itemprop="dateCreated datePublished" datetime="2019-08-07T13:46:25+08:00">2019-08-07</time>
-            </span>
-          
-
-          
-            
-
-            
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">更新于</span>
-                
-                <time title="修改时间：2019-09-03 14:55:58" itemprop="dateModified" datetime="2019-09-03T14:55:58+08:00">2019-09-03</time>
-              </span>
-            
-          
-
-          
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/JavaScript/" itemprop="url" rel="index"><span itemprop="name">JavaScript</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-            
-          
-
-          
-          
-
-          
-
-          
-
-          <br/>
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 字面量方式创建对象</span></span><br><span class="line"><span class="keyword">let</span> person1 = &#123;</span><br><span class="line">    name: <span class="string">"abc"</span>,</span><br><span class="line">    age: <span class="number">23</span>,</span><br><span class="line">    sayHi: <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">        <span class="built_in">console</span>.log(name);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">// Object方式创建对象</span></span><br><span class="line"><span class="keyword">let</span> person2 = <span class="keyword">new</span> <span class="built_in">Object</span>();</span><br><span class="line">person2.name = <span class="string">"def"</span>;</span><br><span class="line">person2.age = <span class="number">18</span>;</span><br><span class="line">person2.sayHi = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(person2.name);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>虽然Object构造函数或对象字面量都可以用来创建单个对象，但这些方式有个明显的缺点：<strong>使用同一个接口创建很多对象，会产生大量的重复代码</strong>，如上面的代码，每创建一个类似的person对象，就会重复上面的写法，代码较为冗余。</p>
-<h1 id="工厂模式"><a href="#工厂模式" class="headerlink" title="工厂模式"></a>工厂模式</h1><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">createPerson</span>(<span class="params">name, age, job</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">let</span> o = <span class="keyword">new</span> <span class="built_in">Object</span>();</span><br><span class="line">    o.name = name;</span><br><span class="line">    o.age = age;</span><br><span class="line">    o.job = job;</span><br><span class="line">    o.sayName = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">        alert(<span class="keyword">this</span>.name);</span><br><span class="line">    &#125;;</span><br><span class="line">    <span class="keyword">return</span> o;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">let</span> person1 = createPerson(<span class="string">"Nicholas"</span>, <span class="number">29</span>, <span class="string">"Software Engineer"</span>);</span><br><span class="line"><span class="keyword">let</span> person2 = createPerson(<span class="string">"Greg"</span>, <span class="number">27</span>, <span class="string">"Doctor"</span>);</span><br></pre></td></tr></table></figure>
-<p>工厂模式虽然解决了创建多个相似对象的问题，但却<strong>没有解决对象识别的问题（即怎样知道一个对象的类型）</strong>。</p>
-<h1 id="构造函数模式"><a href="#构造函数模式" class="headerlink" title="构造函数模式"></a>构造函数模式</h1><p>使用构造函数模式将前面的例子重写如下：</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Person</span>(<span class="params">name, age, job</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">this</span>.name = name;</span><br><span class="line">    <span class="keyword">this</span>.age = age;</span><br><span class="line">    <span class="keyword">this</span>.job = job;</span><br><span class="line">    <span class="keyword">this</span>.sayName = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">        alert(<span class="keyword">this</span>.name);</span><br><span class="line">    &#125;;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">let</span> person1 = <span class="keyword">new</span> Person(<span class="string">"Nicholas"</span>, <span class="number">29</span>, <span class="string">"Software Engineer"</span>);</span><br><span class="line"><span class="keyword">let</span> person2 = <span class="keyword">new</span> Person(<span class="string">"Greg"</span>, <span class="number">27</span>, <span class="string">"Doctor"</span>);</span><br></pre></td></tr></table></figure>
-<p>要创建 Person 的新实例，<strong>必须使用 new 操作符</strong>。以这种方式调用构造函数实际上会经历以下 4个步骤：</p>
-<ol>
-<li>创建一个新对象</li>
-<li>将构造函数的作用域赋给新对象（因此 this 就指向了这个新对象）</li>
-<li>执行构造函数中的代码（为这个新对象添加属性）</li>
-<li>返回新对象（构造函数在不返回值的情况下，默认会返回新对象实例）</li>
-</ol>
-<p>在前面例子的最后，person1 和 person2 分别保存着 Person 的一个不同的实例。这两个对象都有一个<code>constructor（构造函数）</code>属性，该属性指向 Person，如下所示。</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">console</span>.log(person1.constructor == Person); <span class="comment">//true</span></span><br><span class="line"><span class="built_in">console</span>.log(person2.constructor == Person); <span class="comment">//true</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(person1 <span class="keyword">instanceof</span> <span class="built_in">Object</span>); <span class="comment">//true</span></span><br><span class="line"><span class="built_in">console</span>.log(person1 <span class="keyword">instanceof</span> Person); <span class="comment">//true</span></span><br><span class="line"><span class="built_in">console</span>.log(person2 <span class="keyword">instanceof</span> <span class="built_in">Object</span>); <span class="comment">//true</span></span><br><span class="line"><span class="built_in">console</span>.log(person2 <span class="keyword">instanceof</span> Person); <span class="comment">//true</span></span><br></pre></td></tr></table></figure>
-<p>创建自定义的构造函数意味着将来可以将它的实例标识为一种特定的类型；而这正是构造函数模式胜过工厂模式的地方。在这个例子中，person1 和 person2 之所以同时是 Object 的实例，是因为所有对象均继承自 Object。</p>
-<p>使用构造函数的主要问题，就是<strong>每个方法（这里是sayname）都要在每个实例上重新创建一遍</strong>。</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">console</span>.log(person1.sayName == person2.sayName) <span class="comment">// false</span></span><br></pre></td></tr></table></figure>
-<h1 id="原型模式"><a href="#原型模式" class="headerlink" title="原型模式"></a>原型模式</h1><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Person</span>(<span class="params"></span>) </span>&#123;&#125;</span><br><span class="line">Person.prototype.name = <span class="string">"Nicholas"</span>;</span><br><span class="line">Person.prototype.age = <span class="number">29</span>;</span><br><span class="line">Person.prototype.job = <span class="string">"Software Engineer"</span>;</span><br><span class="line">Person.prototype.sayName = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="keyword">this</span>.name);</span><br><span class="line">&#125;;</span><br><span class="line"><span class="keyword">let</span> person1 = <span class="keyword">new</span> Person();</span><br><span class="line">person1.sayName(); <span class="comment">//"Nicholas"</span></span><br><span class="line"><span class="keyword">let</span> person2 = <span class="keyword">new</span> Person();</span><br><span class="line">person2.sayName(); <span class="comment">//"Nicholas"</span></span><br><span class="line"><span class="built_in">console</span>.log(person1.sayName == person2.sayName); <span class="comment">//true</span></span><br></pre></td></tr></table></figure>
-<p>与构造函数模式不同的是，新对象的这些属性和方法是由所有实例共享的。换句话说，person1 和 person2 访问的都是同一组属性和同一个 sayName()函数。</p>
-<h2 id="更简单的原型语法"><a href="#更简单的原型语法" class="headerlink" title="更简单的原型语法"></a>更简单的原型语法</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Person</span>(<span class="params"></span>) </span>&#123;&#125;</span><br><span class="line">Person.prototype = &#123;</span><br><span class="line">    name: <span class="string">"Nicholas"</span>,</span><br><span class="line">    age: <span class="number">29</span>,</span><br><span class="line">    job: <span class="string">"Software Engineer"</span>,</span><br><span class="line">    sayName: <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="keyword">this</span>.name);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> friend = <span class="keyword">new</span> Person();</span><br><span class="line"><span class="built_in">console</span>.log(friend <span class="keyword">instanceof</span> <span class="built_in">Object</span>); <span class="comment">//true</span></span><br><span class="line"><span class="built_in">console</span>.log(friend <span class="keyword">instanceof</span> Person); <span class="comment">//true</span></span><br><span class="line"><span class="built_in">console</span>.log(friend.constructor == Person); <span class="comment">//false</span></span><br><span class="line"><span class="built_in">console</span>.log(friend.constructor == <span class="built_in">Object</span>); <span class="comment">//true</span></span><br></pre></td></tr></table></figure>
-<p>在上面的代码中，我们将 Person.prototype 设置为等于一个以对象字面量形式创建的新对象。最终结果相同，但有一个例外：<strong>constructor 属性不再指向 Person 了</strong>。前面曾经介绍过，每创建一个函数，就会同时创建它的prototype 对象，这个对象也会自动获得 constructor 属性。而我们在这里使用的语法，<strong>本质上完全重写了默认的 prototype 对象</strong>，因此 constructor 属性也就变成了新对象的 constructor 属性（指向 Object 构造函数），不再指向 Person 函数。此时，尽管 instanceof 操作符还能返回正确的结果，但通过 constructor 已经无法确定对象的类型了。</p>
-<p>如果 constructor 的值真的很重要，可以像下面这样特意将它设置回适当的值。</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Person</span>(<span class="params"></span>) </span>&#123;&#125;</span><br><span class="line">Person.prototype = &#123;</span><br><span class="line">    <span class="keyword">constructor</span>: Person,</span><br><span class="line">    name: "Nicholas",</span><br><span class="line">    age: 29,</span><br><span class="line">    job: "Software Engineer",</span><br><span class="line">    sayName: function () &#123;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="keyword">this</span>.name);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-<p>调用构造函数时会为实例添加一个指向最初原型的 <code>[[Prototype]]</code> 指针，而把原型修改为另外一个对象就等于切断了构造函数与最初原型之间的联系。</p>
-<p>请记住：<strong>实例中的指针仅指向原型，而不指向构造函数</strong>。</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Person</span>(<span class="params"></span>) </span>&#123;&#125;</span><br><span class="line"><span class="keyword">let</span> friend = <span class="keyword">new</span> Person();</span><br><span class="line"></span><br><span class="line">Person.prototype = &#123;</span><br><span class="line">    <span class="keyword">constructor</span>: Person,</span><br><span class="line">    name: "Nicholas",</span><br><span class="line">    age: 29,</span><br><span class="line">    job: "Software Engineer",</span><br><span class="line">    sayName: function () &#123;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="keyword">this</span>.name);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line">friend.sayName();  <span class="comment">// Uncaught TypeError: friend.sayName is not a function</span></span><br></pre></td></tr></table></figure>
-<p>在上面的代码中，我们先创建了 Person 的一个实例，然后又重写了其原型对象。然后在调用 friend.sayName()时发生了错误，因为 friend 指向的原型中不包含以该名字命名的属性。</p>
-<p><img src="/img/JS红宝书/prototype.png" alt="新地球"></p>
-<h2 id="原型对象的问题"><a href="#原型对象的问题" class="headerlink" title="原型对象的问题"></a>原型对象的问题</h2><p>原型中所有属性是被很多实例共享的，这种共享对于函数非常合适。对于包含引用类型值的属性来说，问题就比较突出了。而这个问题正是我们很少看到有人单独使用原型模式的原因所在。</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Person</span>(<span class="params"></span>) </span>&#123;&#125;</span><br><span class="line">Person.prototype = &#123;</span><br><span class="line">    <span class="keyword">constructor</span>: Person,</span><br><span class="line">    name: "Nicholas",</span><br><span class="line">    age: 29,</span><br><span class="line">    job: "Software Engineer",</span><br><span class="line">    friends: ["Shelby", "Court"],</span><br><span class="line">    sayName: function () &#123;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="keyword">this</span>.name);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="keyword">let</span> person1 = <span class="keyword">new</span> Person();</span><br><span class="line"><span class="keyword">let</span> person2 = <span class="keyword">new</span> Person();</span><br><span class="line">person1.friends.push(<span class="string">"Van"</span>);</span><br><span class="line"><span class="built_in">console</span>.log(person1.friends); <span class="comment">// ["Shelby", "Court", "Van"]</span></span><br><span class="line"><span class="built_in">console</span>.log(person2.friends); <span class="comment">// ["Shelby", "Court", "Van"]</span></span><br><span class="line"><span class="built_in">console</span>.log(person1.friends === person2.friends); <span class="comment">//true</span></span><br></pre></td></tr></table></figure>
-<h1 id="组合使用构造函数模式和原型模式"><a href="#组合使用构造函数模式和原型模式" class="headerlink" title="组合使用构造函数模式和原型模式"></a>组合使用构造函数模式和原型模式</h1><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Person</span>(<span class="params">name, age, job</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">this</span>.name = name;</span><br><span class="line">    <span class="keyword">this</span>.age = age;</span><br><span class="line">    <span class="keyword">this</span>.job = job;</span><br><span class="line">    <span class="keyword">this</span>.friends = [<span class="string">"Shelby"</span>, <span class="string">"Court"</span>];</span><br><span class="line">&#125;</span><br><span class="line">Person.prototype = &#123;</span><br><span class="line">    <span class="keyword">constructor</span>: Person,</span><br><span class="line">    sayName: function () &#123;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="keyword">this</span>.name);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">let</span> person1 = <span class="keyword">new</span> Person(<span class="string">"Nicholas"</span>, <span class="number">29</span>, <span class="string">"Software Engineer"</span>);</span><br><span class="line"><span class="keyword">let</span> person2 = <span class="keyword">new</span> Person(<span class="string">"Greg"</span>, <span class="number">27</span>, <span class="string">"Doctor"</span>);</span><br><span class="line">person1.friends.push(<span class="string">"Van"</span>);</span><br><span class="line"><span class="built_in">console</span>.log(person1.friends); <span class="comment">// ["Shelby", "Court", "Van"]</span></span><br><span class="line"><span class="built_in">console</span>.log(person2.friends); <span class="comment">// ["Shelby", "Court"]</span></span><br><span class="line"><span class="built_in">console</span>.log(person1.friends === person2.friends); <span class="comment">//false</span></span><br><span class="line"><span class="built_in">console</span>.log(person1.sayName === person2.sayName); <span class="comment">//true</span></span><br></pre></td></tr></table></figure>
-<p>在这个例子中，实例属性都是在构造函数中定义的，而由所有实例共享的属性 constructor 和方法 sayName()则是在原型中定义的。而修改了 person1.friends（向其中添加一个新字符串），并不会影响到 person2.friends，因为它们分别引用了不同的数组。</p>
-<p>这种构造函数与原型混成的模式，是目前在 ECMAScript 中使用最广泛、认同度最高的一种创建自定义类型的方法。可以说，这是用来定义引用类型的一种默认模式。</p>
-
-          
-        
-      
-    </div>
-
-    
-
-    
-
-    
-    
-    
-
-    
-
-    
-      
-    
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -915,7 +903,7 @@
         
           <a href="/archives/">
         
-          <span class="site-state-item-count">58</span>
+          <span class="site-state-item-count">60</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
