@@ -93,18 +93,17 @@
   };
 </script>
 
-  <meta name="description" content="爬楼梯 假设你正在爬楼梯。需要 n 阶你才能到达楼顶。 每次你可以爬 1 或 2 个台阶。你有多少种不同的方法可以爬到楼顶呢？ 注意：给定 n 是一个正整数。 示例 1： 输入： 2  输出： 2  解释： 有两种方法可以爬到楼顶。  1 阶 + 1 阶 2 阶  示例 2： 输入： 3  输出： 3  解释： 有三种方法可以爬到楼顶。  1 阶 + 1 阶 + 1 阶 1 阶 + 2 阶 2 阶">
-<meta name="keywords" content="动态规划,递归,哈希表">
+  <meta name="description" content="什么是异步JS 为何会有异步 JS 是单线程的语言，所谓“单线程”就是一根筋，对于拿到的程序，一行一行的执行，上面的执行为完成，就傻傻的等着。例如： 123let i, t = Date.now();for (i = 0; i &amp;lt; 100000000; i++) &amp;#123;&amp;#125;console.log(Date.now() - t) // 261 （chrome浏览器） 上面的程序花">
 <meta property="og:type" content="article">
-<meta property="og:title" content="爬楼梯">
-<meta property="og:url" content="http://yoursite.com/2019/07/22/LC爬楼梯/index.html">
+<meta property="og:title" content="JS深入理解异步">
+<meta property="og:url" content="http://yoursite.com/2019/09/07/JS深入理解异步/index.html">
 <meta property="og:site_name" content="gzl的博客">
-<meta property="og:description" content="爬楼梯 假设你正在爬楼梯。需要 n 阶你才能到达楼顶。 每次你可以爬 1 或 2 个台阶。你有多少种不同的方法可以爬到楼顶呢？ 注意：给定 n 是一个正整数。 示例 1： 输入： 2  输出： 2  解释： 有两种方法可以爬到楼顶。  1 阶 + 1 阶 2 阶  示例 2： 输入： 3  输出： 3  解释： 有三种方法可以爬到楼顶。  1 阶 + 1 阶 + 1 阶 1 阶 + 2 阶 2 阶">
+<meta property="og:description" content="什么是异步JS 为何会有异步 JS 是单线程的语言，所谓“单线程”就是一根筋，对于拿到的程序，一行一行的执行，上面的执行为完成，就傻傻的等着。例如： 123let i, t = Date.now();for (i = 0; i &amp;lt; 100000000; i++) &amp;#123;&amp;#125;console.log(Date.now() - t) // 261 （chrome浏览器） 上面的程序花">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-08-12T06:56:10.432Z">
+<meta property="og:updated_time" content="2019-09-07T12:50:41.149Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="爬楼梯">
-<meta name="twitter:description" content="爬楼梯 假设你正在爬楼梯。需要 n 阶你才能到达楼顶。 每次你可以爬 1 或 2 个台阶。你有多少种不同的方法可以爬到楼顶呢？ 注意：给定 n 是一个正整数。 示例 1： 输入： 2  输出： 2  解释： 有两种方法可以爬到楼顶。  1 阶 + 1 阶 2 阶  示例 2： 输入： 3  输出： 3  解释： 有三种方法可以爬到楼顶。  1 阶 + 1 阶 + 1 阶 1 阶 + 2 阶 2 阶">
+<meta name="twitter:title" content="JS深入理解异步">
+<meta name="twitter:description" content="什么是异步JS 为何会有异步 JS 是单线程的语言，所谓“单线程”就是一根筋，对于拿到的程序，一行一行的执行，上面的执行为完成，就傻傻的等着。例如： 123let i, t = Date.now();for (i = 0; i &amp;lt; 100000000; i++) &amp;#123;&amp;#125;console.log(Date.now() - t) // 261 （chrome浏览器） 上面的程序花">
 
 
 
@@ -112,7 +111,7 @@
 
   
   
-  <link rel="canonical" href="http://yoursite.com/2019/07/22/LC爬楼梯/"/>
+  <link rel="canonical" href="http://yoursite.com/2019/09/07/JS深入理解异步/"/>
 
 
 
@@ -123,7 +122,7 @@
 </script>
 
   
-  <title>爬楼梯 | gzl的博客</title>
+  <title>JS深入理解异步 | gzl的博客</title>
   
 
 
@@ -330,7 +329,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/07/22/LC爬楼梯/"/>
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/09/07/JS深入理解异步/"/>
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="gzl"/>
@@ -347,7 +346,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">爬楼梯
+          <h1 class="post-title" itemprop="name headline">JS深入理解异步
 
               
             
@@ -373,23 +372,13 @@
                 
               
 
-              <time title="创建时间：2019-07-22 10:07:37" itemprop="dateCreated datePublished" datetime="2019-07-22T10:07:37+08:00">2019-07-22</time>
+              <time title="创建时间：2019-09-07 20:05:01 / 修改时间：20:50:41" itemprop="dateCreated datePublished" datetime="2019-09-07T20:05:01+08:00">2019-09-07</time>
             </span>
           
 
           
             
 
-            
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">更新于</span>
-                
-                <time title="修改时间：2019-08-12 14:56:10" itemprop="dateModified" datetime="2019-08-12T14:56:10+08:00">2019-08-12</time>
-              </span>
             
           
 
@@ -402,7 +391,7 @@
                 <span class="post-meta-item-text">分类于</span>
               
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/LeetCode/" itemprop="url" rel="index"><span itemprop="name">LeetCode</span></a></span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/JavaScript/" itemprop="url" rel="index"><span itemprop="name">JavaScript</span></a></span>
 
                 
                 
@@ -442,29 +431,32 @@
       
 
       
-        <p><a href="https://leetcode-cn.com/problems/climbing-stairs/" target="_blank" rel="noopener">爬楼梯</a></p>
-<p>假设你正在爬楼梯。需要 <em>n</em> 阶你才能到达楼顶。</p>
-<p>每次你可以爬 1 或 2 个台阶。你有多少种不同的方法可以爬到楼顶呢？</p>
-<p><strong>注意：</strong>给定 <em>n</em> 是一个正整数。</p>
-<p>示例 1：</p>
-<p>输入： 2  输出： 2  解释： 有两种方法可以爬到楼顶。</p>
-<ol>
-<li>1 阶 + 1 阶</li>
-<li>2 阶</li>
-</ol>
-<p>示例 2：</p>
-<p>输入： 3  输出： 3  解释： 有三种方法可以爬到楼顶。</p>
-<ol>
-<li>1 阶 + 1 阶 + 1 阶</li>
-<li>1 阶 + 2 阶</li>
-<li>2 阶 + 1 阶</li>
-</ol>
-<h1 id="递归"><a href="#递归" class="headerlink" title="递归"></a>递归</h1><p>自上而下的递归，n 变大以后会超出时间限制</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * @param &#123;number&#125; n</span></span><br><span class="line"><span class="comment"> * @return &#123;number&#125;</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">var</span> climbStairs = <span class="function"><span class="keyword">function</span> (<span class="params">n</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (n === <span class="number">1</span>) &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span> (n === <span class="number">2</span>) &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">2</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> climbStairs(n<span class="number">-1</span>) + climbStairs(n<span class="number">-2</span>);</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-<h1 id="备忘录哈希表"><a href="#备忘录哈希表" class="headerlink" title="备忘录哈希表"></a>备忘录哈希表</h1><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * @param &#123;number&#125; n</span></span><br><span class="line"><span class="comment"> * @return &#123;number&#125;</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">var</span> climbStairs = <span class="function"><span class="keyword">function</span> (<span class="params">n</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">let</span> map = [<span class="number">1</span>, <span class="number">2</span>];</span><br><span class="line">    <span class="keyword">if</span> (n === <span class="number">1</span> || n === <span class="number">2</span>) &#123;</span><br><span class="line">        <span class="keyword">return</span> map[n<span class="number">-1</span>];</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">let</span> i = <span class="number">2</span>; i &lt; n; i ++) &#123;</span><br><span class="line">        map[i] = map[i<span class="number">-1</span>] + map[i<span class="number">-2</span>];</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> map[n<span class="number">-1</span>];</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-<h1 id="动态规划"><a href="#动态规划" class="headerlink" title="动态规划"></a>动态规划</h1><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment">* @param &#123;number&#125; n</span></span><br><span class="line"><span class="comment">* @return &#123;number&#125;</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"><span class="keyword">var</span> climbStairs = <span class="function"><span class="keyword">function</span> (<span class="params">n</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">let</span> a = <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">let</span> b = <span class="number">2</span>;</span><br><span class="line">    <span class="keyword">if</span> (n === <span class="number">1</span> || n === <span class="number">2</span>) &#123;</span><br><span class="line">        <span class="keyword">return</span> n;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">let</span> i = <span class="number">2</span>; i &lt; n; i ++) &#123;</span><br><span class="line">        [a, b] = [b, a + b];</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> b;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-<p><strong>参考</strong></p>
-<p><a href="https://juejin.im/post/5a29d52cf265da43333e4da7" target="_blank" rel="noopener">漫画：什么是动态规划？</a></p>
+        <h1 id="什么是异步"><a href="#什么是异步" class="headerlink" title="什么是异步"></a>什么是异步</h1><h2 id="JS-为何会有异步"><a href="#JS-为何会有异步" class="headerlink" title="JS 为何会有异步"></a>JS 为何会有异步</h2><p> <strong>JS 是单线程的语言</strong>，所谓“单线程”就是一根筋，对于拿到的程序，一行一行的执行，上面的执行为完成，就傻傻的等着。例如：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> i, t = <span class="built_in">Date</span>.now();</span><br><span class="line"><span class="keyword">for</span> (i = <span class="number">0</span>; i &lt; <span class="number">100000000</span>; i++) &#123;&#125;</span><br><span class="line"><span class="built_in">console</span>.log(<span class="built_in">Date</span>.now() - t) <span class="comment">// 261 （chrome浏览器）</span></span><br></pre></td></tr></table></figure>
+<p>上面的程序花费 261ms 的时间执行完成，执行过程中就会有卡顿，其他的事儿就先撂一边不管了。</p>
+<p>执行程序这样没有问题，但是对于 JS 最初使用的环境 ———— 浏览器客户端 ———— 就不一样了。因此在浏览器端运行的 js ，可能会有大量的网络请求，<strong>而一个网络资源啥时候返回，这个时间是不可预估的。这种情况也要傻傻的等着、卡顿着、啥都不做吗？</strong>———— 那肯定不行。</p>
+<p>因此，JS 对于这种场景就设计了异步 ———— 即，发起一个网络请求，就先不管这边了，先干其他事儿，网络请求啥时候返回结果，到时候再说。这样就能保证一个网页的流程运行。</p>
+<h2 id="异步的实现原理"><a href="#异步的实现原理" class="headerlink" title="异步的实现原理"></a>异步的实现原理</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> ajax = $.ajax(&#123;</span><br><span class="line">  url: <span class="string">'/data/data1.json'</span>,</span><br><span class="line">  success: <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'success'</span>)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<p>上面代码中<code>$.ajax()</code>需要传入两个参数进去，<code>url</code>和<code>success</code>，其中<code>url</code>是请求的路由，<code>success</code>是一个函数。这个函数传递过去不会立即执行，而是等着请求成功之后才能执行。<strong>对于这种传递过去不执行，等出来结果之后再执行的函数，叫做callback，即回调函数</strong>，所谓”回调函数”（callback），就是那些会被主线程挂起来的代码。异步任务必须指定回调函数，当主线程开始执行异步任务，就是执行对应的回调函数。</p>
+<p>再看一段更加能说明回调函数的 nodejs 代码。和上面代码基本一样，唯一区别就是：上面代码时网络请求，而下面代码时 IO 操作。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> fs = <span class="built_in">require</span>(<span class="string">'fs'</span>)</span><br><span class="line">fs.readFile(<span class="string">'data1.json'</span>, (err, data) =&gt; &#123;</span><br><span class="line">  <span class="built_in">console</span>.log(data.toString())</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<p>从上面两个 demo 看来，<strong>实现异步的最核心原理，就是将callback作为参数传递给异步执行函数，当有结果返回之后再触发 callback执行</strong>，就是如此简单！</p>
+<h2 id="常用的异步操作"><a href="#常用的异步操作" class="headerlink" title="常用的异步操作"></a>常用的异步操作</h2><ul>
+<li>网络请求，如<code>ajax</code> <code>http.get</code></li>
+<li>IO 操作，如<code>readFile</code> <code>readdir</code></li>
+<li>定时函数，如<code>setTimeout</code> <code>setInterval</code></li>
+</ul>
+<p><strong>事件绑定是不是也是异步操作</strong>？</p>
+<h1 id="异步和-event-loop"><a href="#异步和-event-loop" class="headerlink" title="异步和 event-loop"></a>异步和 event-loop</h1><p><a href="http://www.ruanyifeng.com/blog/2014/10/event-loop.html" target="_blank" rel="noopener">JavaScript 运行机制详解：再谈Event Loop</a></p>
+<p><a href="https://juejin.im/post/59e85eebf265da430d571f89" target="_blank" rel="noopener">这一次，彻底弄懂 JavaScript 执行机制</a></p>
+<h1 id="事件绑定算不算异步？"><a href="#事件绑定算不算异步？" class="headerlink" title="事件绑定算不算异步？"></a>事件绑定算不算异步？</h1><p>事件绑定和异步操作的实现机制是一样的，那么事件绑定是不是就是异步操作呢？（声明一下，这里说的事件绑定是如下代码的形式）</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$btn.on(<span class="string">'click'</span>, <span class="function"><span class="keyword">function</span> (<span class="params">e</span>) </span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">'你点击了按钮'</span>)</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<h2 id="相同"><a href="#相同" class="headerlink" title="相同"></a>相同</h2><p>从技术实现以及书写方法上来讲，他们是一样的。例如事件绑定和 IO 操作的写法基本相同。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">$btn.on(<span class="string">'click'</span>, <span class="function"><span class="keyword">function</span> (<span class="params">e</span>) </span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">'你点击了按钮'</span>)</span><br><span class="line">&#125;)</span><br><span class="line">fs.readFile(<span class="string">'data1.json'</span>, <span class="function"><span class="keyword">function</span> (<span class="params">err, data</span>) </span>&#123;</span><br><span class="line">  <span class="comment">// 获取数据</span></span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<p>最终执行的方式也基本一样，都会被放在 <strong>call-stack</strong> 中通过 event-loop 来调用。</p>
+<h2 id="不同"><a href="#不同" class="headerlink" title="不同"></a>不同</h2><p>第一，event-loop 执行时，调用的源不一样。异步操作是系统自动调用，无论是<code>setTimeout</code>时间到了还是<code>$.ajax</code>请求返回了，系统会自动调用。而事件绑定就需要用户手动触发</p>
+<p>第二，从设计上来将，事件绑定有着明显的“订阅-发布”的设计模式，而异步操作却没有。</p>
+<p>其实，事件绑定在 js 中扮演着非常重要的角色，各个地方都会用到事件绑定的形式。例如 web 页面监控鼠标、键盘，以及 nodejs 中的 <code>EventEmitter</code> 应用非常广泛（特别是涉及到数据流时）。事件绑定被应用到非常广泛，却没有发生像异步操作带来的程序逻辑问题。</p>
 
       
     </div>
@@ -490,19 +482,6 @@
 
     <footer class="post-footer">
       
-        
-          
-        
-        <div class="post-tags">
-          
-            <a href="/tags/动态规划/" rel="tag"># 动态规划</a>
-          
-            <a href="/tags/递归/" rel="tag"># 递归</a>
-          
-            <a href="/tags/哈希表/" rel="tag"># 哈希表</a>
-          
-        </div>
-      
 
       
       
@@ -512,8 +491,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/07/22/LC对称二叉树/" rel="next" title="对称二叉树">
-                <i class="fa fa-chevron-left"></i> 对称二叉树
+              <a href="/2019/09/07/JS执行机制/" rel="next" title="JS-EventLoop">
+                <i class="fa fa-chevron-left"></i> JS-EventLoop
               </a>
             
           </div>
@@ -521,10 +500,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2019/07/23/CSS编码技巧/" rel="prev" title="CSS编码技巧">
-                CSS编码技巧 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -771,7 +746,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#递归"><span class="nav-number">1.</span> <span class="nav-text">递归</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#备忘录哈希表"><span class="nav-number">2.</span> <span class="nav-text">备忘录哈希表</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#动态规划"><span class="nav-number">3.</span> <span class="nav-text">动态规划</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#什么是异步"><span class="nav-number">1.</span> <span class="nav-text">什么是异步</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#JS-为何会有异步"><span class="nav-number">1.1.</span> <span class="nav-text">JS 为何会有异步</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#异步的实现原理"><span class="nav-number">1.2.</span> <span class="nav-text">异步的实现原理</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#常用的异步操作"><span class="nav-number">1.3.</span> <span class="nav-text">常用的异步操作</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#异步和-event-loop"><span class="nav-number">2.</span> <span class="nav-text">异步和 event-loop</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#事件绑定算不算异步？"><span class="nav-number">3.</span> <span class="nav-text">事件绑定算不算异步？</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#相同"><span class="nav-number">3.1.</span> <span class="nav-text">相同</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#不同"><span class="nav-number">3.2.</span> <span class="nav-text">不同</span></a></li></ol></li></ol></div>
             
 
           </div>
