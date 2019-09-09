@@ -576,7 +576,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2019-09-08 11:15:06" itemprop="dateModified" datetime="2019-09-08T11:15:06+08:00">2019-09-08</time>
+                <time title="修改时间：2019-09-08 12:19:31" itemprop="dateModified" datetime="2019-09-08T12:19:31+08:00">2019-09-08</time>
               </span>
             
           
@@ -668,6 +668,7 @@
 <p>当遇到上面这种问题时，仅仅依靠上面的知识还是不够的。因为 <code>setTimeout</code>和<code>Promise.then</code> 都是异步的，怎么判断他们的执行顺序呢？</p>
 <p>这就引出了宏任务与微任务。</p>
 <p>这两个概念属于对异步任务的分类，不同的API注册的异步任务会依次进入自身对应的队列(Event Queue)中，然后等待<strong>Event Loop</strong>将它们依次压入执行栈中执行。比如<code>setTimeout</code>和<code>setInterval</code>会进入相同的Event Queue。</p>
+<p>特别的：script代码执行到底部就相当于一次宏任务。第一次执行栈执行的代码就是script代码执行到底部。这样就能理解下面的<strong>“每次执行栈执行的代码就是一个宏任务”</strong>这个说法了。</p>
 <p><img src="/img/JavaScript/queue.png" alt="EventLoop"></p>
 <h2 id="宏任务"><a href="#宏任务" class="headerlink" title="宏任务"></a>宏任务</h2><p>(macro)task（又称之为宏任务），<strong>可以理解是每次执行栈执行的代码就是一个宏任务（包括每次从事件队列中获取一个事件回调并放到执行栈中执行）</strong>。</p>
 <p>浏览器为了能够使得JS内部(macro)task与DOM任务能够有序的执行，<strong>会在一个(macro)task执行结束后，在下一个(macro)task 执行开始前，对页面进行重新渲染</strong>，流程如下：</p>
