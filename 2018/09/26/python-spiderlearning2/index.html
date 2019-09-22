@@ -94,14 +94,14 @@
 </script>
 
   <meta name="description" content="BeautifulSoup库入门安装以管理员身份运行cmd，试行pip install beautifulsoup4 引入12from bs4 import BeautifulSoupimport bs4 约定引用方式如下，即主要是用BeautifulSoup类 BeautifulSoup库解析器12345soup = BeautifulSoup(&apos;&amp;lt;html&amp;gt;data&amp;lt;/htm">
-<meta name="keywords" content="python">
+<meta name="keywords" content="flask">
 <meta property="og:type" content="article">
 <meta property="og:title" content="python BeautifulSoup库入门与实战">
 <meta property="og:url" content="http://yoursite.com/2018/09/26/python-spiderlearning2/index.html">
 <meta property="og:site_name" content="gzl的博客">
 <meta property="og:description" content="BeautifulSoup库入门安装以管理员身份运行cmd，试行pip install beautifulsoup4 引入12from bs4 import BeautifulSoupimport bs4 约定引用方式如下，即主要是用BeautifulSoup类 BeautifulSoup库解析器12345soup = BeautifulSoup(&apos;&amp;lt;html&amp;gt;data&amp;lt;/htm">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-09-27T06:45:58.290Z">
+<meta property="og:updated_time" content="2019-09-22T04:59:03.757Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="python BeautifulSoup库入门与实战">
 <meta name="twitter:description" content="BeautifulSoup库入门安装以管理员身份运行cmd，试行pip install beautifulsoup4 引入12from bs4 import BeautifulSoupimport bs4 约定引用方式如下，即主要是用BeautifulSoup类 BeautifulSoup库解析器12345soup = BeautifulSoup(&apos;&amp;lt;html&amp;gt;data&amp;lt;/htm">
@@ -388,11 +388,26 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2018-09-27 14:45:58" itemprop="dateModified" datetime="2018-09-27T14:45:58+08:00">2018-09-27</time>
+                <time title="修改时间：2019-09-22 12:59:03" itemprop="dateModified" datetime="2019-09-22T12:59:03+08:00">2019-09-22</time>
               </span>
             
           
 
+          
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/python/" itemprop="url" rel="index"><span itemprop="name">python</span></a></span>
+
+                
+                
+              
+            </span>
           
 
           
@@ -449,9 +464,11 @@ Python 3.x默认支持编码是utf‐8,解析无障碍
 </code></pre><h4 id="基于bs4库的HTML内容遍历方法"><a href="#基于bs4库的HTML内容遍历方法" class="headerlink" title="基于bs4库的HTML内容遍历方法"></a>基于bs4库的HTML内容遍历方法</h4><ul>
 <li><p>标签树的下行遍历<br>.contents 子节点的列表，将<tag>所有儿子节点存入列表<br>.children 子节点的迭代类型，与.contents类似，用于循环遍历儿子节点<br>.descendants 子孙节点的迭代类型，包含所有子孙节点，用于循环遍历</tag></p>
 </li>
-<li><p>标签树的上行遍历<br>.parent 节点的父亲标签<br>.parents 节点先辈标签的迭代类型，用于循环遍历先辈节点</p>
+<li><p>标签树的上行遍历</p>
+<p>.parent 节点的父亲标签<br>.parents 节点先辈标签的迭代类型，用于循环遍历先辈节点</p>
 </li>
-<li><p>标签树的平行遍历<br>.next_sibling 返回按照HTML文本顺序的下一个平行节点标签<br>.previous_sibling 返回按照HTML文本顺序的上一个平行节点标签<br>.next_siblings 迭代类型，返回按照HTML文本顺序的后续所有平行节点标签<br>.previous_siblings 迭代类型，返回按照HTML文本顺序的前续所有平行节点标签</p>
+<li><p>标签树的平行遍历</p>
+<p>.next_sibling 返回按照HTML文本顺序的下一个平行节点标签<br>.previous_sibling 返回按照HTML文本顺序的上一个平行节点标签<br>.next_siblings 迭代类型，返回按照HTML文本顺序的后续所有平行节点标签<br>.previous_siblings 迭代类型，返回按照HTML文本顺序的前续所有平行节点标签</p>
 </li>
 </ul>
 <h4 id="三种信息标记形式的比较"><a href="#三种信息标记形式的比较" class="headerlink" title="三种信息标记形式的比较"></a>三种信息标记形式的比较</h4><pre><code>XML 最早的通用信息标记语言,可扩展性好,但繁琐,Internet上的信息交互与传递
@@ -515,7 +532,7 @@ soup(..) 等价于 soup.find_all(..)
         
         <div class="post-tags">
           
-            <a href="/tags/python/" rel="tag"># python</a>
+            <a href="/tags/flask/" rel="tag"># flask</a>
           
         </div>
       
@@ -610,7 +627,7 @@ soup(..) 等价于 soup.find_all(..)
         
           <a href="/archives/">
         
-          <span class="site-state-item-count">65</span>
+          <span class="site-state-item-count">66</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -645,7 +662,11 @@ soup(..) 等价于 soup.find_all(..)
         
           
         
-        <span class="site-state-item-count">9</span>
+          
+        
+          
+        
+        <span class="site-state-item-count">11</span>
         <span class="site-state-item-name">分类</span>
         </a>
       </div>
