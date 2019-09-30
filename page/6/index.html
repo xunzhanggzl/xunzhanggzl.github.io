@@ -326,6 +326,200 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/08/21/进阶命令/"/>
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="gzl"/>
+      <meta itemprop="description" content=""/>
+      <meta itemprop="image" content="/images/avatar.gif"/>
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="gzl的博客"/>
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/2019/08/21/进阶命令/" class="post-title-link" itemprop="url">进阶命令</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+
+          
+          
+          
+
+          
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2019-08-21 14:28:54 / 修改时间：15:19:01" itemprop="dateCreated datePublished" datetime="2019-08-21T14:28:54+08:00">2019-08-21</time>
+            </span>
+          
+
+          
+            
+
+            
+          
+
+          
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/linux/" itemprop="url" rel="index"><span itemprop="name">linux</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+
+          <br/>
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="df"><a href="#df" class="headerlink" title="df"></a>df</h1><p>查看磁盘空间，<strong>-h表示以可读性较高的形式展示大小</strong></p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span> df -h</span><br><span class="line">文件系统        容量  已用  可用 已用% 挂载点</span><br><span class="line">udev            964M     0  964M    0% /dev</span><br><span class="line">tmpfs           198M  6.5M  191M    4% /run</span><br><span class="line">/dev/sda1        18G   11G  6.5G   62% /</span><br></pre></td></tr></table></figure>
+<h1 id="free"><a href="#free" class="headerlink" title="free"></a>free</h1><p>查看内存的使用情况，<strong>-m 表示以 MB 为单位查看</strong></p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span> free -m</span><br><span class="line">              total        used        free      shared  buff/cache   available</span><br><span class="line">Mem:           1971         841         260          18         870         957</span><br><span class="line">Swap:          2044           0        2044</span><br></pre></td></tr></table></figure>
+<h1 id="date"><a href="#date" class="headerlink" title="date"></a>date</h1><ol>
+<li><p>%F：表示完整的年月日</p>
+</li>
+<li><p>%T：表示完整的时分秒</p>
+</li>
+<li><p>%Y：表示四位年份</p>
+</li>
+<li><p>%m：表示两位月份（带前导0）</p>
+</li>
+<li><p>%d：表示日期（带前导0）</p>
+</li>
+<li><p>%H：表示小时（带前导0）</p>
+</li>
+<li><p>%M：表示分钟（带前导0）</p>
+</li>
+<li><p>%S：表示秒数（带前导0）</p>
+</li>
+</ol>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span> date</span><br><span class="line">2019年 08月 21日 星期三 14:38:32 CST</span><br><span class="line"></span><br><span class="line"><span class="meta">$</span> date +%F    # 等价于date "+%Y-%m-%d"</span><br><span class="line">2019-08-21</span><br><span class="line"></span><br><span class="line"><span class="meta">$</span> date "+%F %T"  # 等价于 date "+%Y-%m-%d %H:%M:%S"</span><br><span class="line">2019-08-21 14:48:31</span><br></pre></td></tr></table></figure>
+<h1 id="cal"><a href="#cal" class="headerlink" title="cal"></a>cal</h1><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span> cal # 等价于 cal -1 直接输出当前月份的日历</span><br><span class="line">      八月 2019         </span><br><span class="line">日 一 二 三 四 五 六  </span><br><span class="line">             1  2  3  </span><br><span class="line"> 4  5  6  7  8  9 10  </span><br><span class="line">11 12 13 14 15 16 17  </span><br><span class="line">18 19 20 21 22 23 24  </span><br><span class="line">25 26 27 28 29 30 31</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span> cal -3 # 表示输出上一月+本月+下个月的日历</span><br><span class="line">                            2019</span><br><span class="line">         七月                    八月                    九月           </span><br><span class="line">日 一 二 三 四 五 六  日 一 二 三 四 五 六  日 一 二 三 四 五 六  </span><br><span class="line">    1  2  3  4  5  6               1  2  3   1  2  3  4  5  6  7  </span><br><span class="line"> 7  8  9 10 11 12 13   4  5  6  7  8  9 10   8  9 10 11 12 13 14  </span><br><span class="line">14 15 16 17 18 19 20  11 12 13 14 15 16 17  15 16 17 18 19 20 21  </span><br><span class="line">21 22 23 24 25 26 27  18 19 20 21 22 23 24  22 23 24 25 26 27 28  </span><br><span class="line">28 29 30 31           25 26 27 28 29 30 31  29 30</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span> cal -y # 输出这一年的日历</span><br></pre></td></tr></table></figure>
+<h1 id="clear"><a href="#clear" class="headerlink" title="clear"></a>clear</h1><p>清屏</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span> clear</span><br></pre></td></tr></table></figure>
+<h1 id=""><a href="#" class="headerlink" title="|"></a>|</h1><p>管道号|，不能单独使用，必须配合指令一起使用，起辅助作用。</p>
+<p>过滤根目录下包含 y 的文件，<code>grey</code> 用于过滤，以管道为分界线，管道前面的输出就是后面指令的输入</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span> ls /|grep y</span><br><span class="line">sys</span><br></pre></td></tr></table></figure>
+          
+        
+      
+    </div>
+
+    
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/08/21/基础命令/"/>
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -683,188 +877,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/08/15/node-concurrently/"/>
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="gzl"/>
-      <meta itemprop="description" content=""/>
-      <meta itemprop="image" content="/images/avatar.gif"/>
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="gzl的博客"/>
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/2019/08/15/node-concurrently/" class="post-title-link" itemprop="url">concurrently</a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-
-          
-          
-          
-
-          
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-
-              
-                
-              
-
-              <time title="创建时间：2019-08-15 07:33:28" itemprop="dateCreated datePublished" datetime="2019-08-15T07:33:28+08:00">2019-08-15</time>
-            </span>
-          
-
-          
-            
-
-            
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">更新于</span>
-                
-                <time title="修改时间：2019-08-21 21:49:37" itemprop="dateModified" datetime="2019-08-21T21:49:37+08:00">2019-08-21</time>
-              </span>
-            
-          
-
-          
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/node-js/" itemprop="url" rel="index"><span itemprop="name">node.js</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-            
-          
-
-          
-          
-
-          
-
-          
-
-          <br/>
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>使用 <code>concurrently</code> 可以实现前后端用一个命令启动</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install concurrently</span><br></pre></td></tr></table></figure>
-<p>目录结构为后端文件中包含一个 <code>client</code> 文件夹为前端代码。详情看 <code>vue-fund-manage</code> 项目结构。</p>
-<p>后端 <code>package.json</code> 文件下配置 <code>script</code></p>
-<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">"scripts": &#123;</span><br><span class="line">    "client-install": "npm intall --prefix client",</span><br><span class="line">    "client": "npm start --prefix client",</span><br><span class="line">    "start": "node server.js",</span><br><span class="line">    "server": "supervisor server.js",</span><br><span class="line">    "dev": "concurrent \"npm run server\" \"npm run client\""</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>前端 <code>package.json</code> 文件下配置 <code>script</code></p>
-<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">"scripts": &#123;</span><br><span class="line">    "serve": "vue-cli-service serve",</span><br><span class="line">    "build": "vue-cli-service build",</span><br><span class="line">    "start": "npm run serve"</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>最后使用 <code>npm run dev</code> 就可以一起启动前后端。</p>
-
-          
-        
-      
-    </div>
-
-    
-
-    
-
-    
-    
-    
-
-    
-
-    
-      
-    
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -912,7 +924,7 @@
         
           <a href="/archives/">
         
-          <span class="site-state-item-count">67</span>
+          <span class="site-state-item-count">68</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
