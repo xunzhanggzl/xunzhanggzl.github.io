@@ -93,18 +93,18 @@
   };
 </script>
 
-  <meta name="description" content="使用 concurrently 可以实现前后端用一个命令启动 1npm install concurrently 目录结构为后端文件中包含一个 client 文件夹为前端代码。详情看 vue-fund-manage 项目结构。 后端 package.json 文件下配置 script 1234567&quot;scripts&quot;: &amp;#123;    &quot;client-install&quot;: &quot;npm intall">
+  <meta name="description" content="https://www.npmjs.com/package/concurrently  使用 concurrently 可以实现前后端用一个命令启动 1npm install concurrently 目录结构为后端文件中包含一个 client 文件夹为前端代码。详情看 vue-fund-manage 项目结构。 后端 package.json 文件下配置 script 1234567&quot;scri">
 <meta name="keywords" content="前端工具">
 <meta property="og:type" content="article">
-<meta property="og:title" content="concurrently">
+<meta property="og:title" content="node-concurrently">
 <meta property="og:url" content="http://yoursite.com/2019/08/15/node-concurrently/index.html">
 <meta property="og:site_name" content="gzl的博客">
-<meta property="og:description" content="使用 concurrently 可以实现前后端用一个命令启动 1npm install concurrently 目录结构为后端文件中包含一个 client 文件夹为前端代码。详情看 vue-fund-manage 项目结构。 后端 package.json 文件下配置 script 1234567&quot;scripts&quot;: &amp;#123;    &quot;client-install&quot;: &quot;npm intall">
+<meta property="og:description" content="https://www.npmjs.com/package/concurrently  使用 concurrently 可以实现前后端用一个命令启动 1npm install concurrently 目录结构为后端文件中包含一个 client 文件夹为前端代码。详情看 vue-fund-manage 项目结构。 后端 package.json 文件下配置 script 1234567&quot;scri">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-08-21T13:49:37.480Z">
+<meta property="og:updated_time" content="2019-10-14T07:21:42.945Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="concurrently">
-<meta name="twitter:description" content="使用 concurrently 可以实现前后端用一个命令启动 1npm install concurrently 目录结构为后端文件中包含一个 client 文件夹为前端代码。详情看 vue-fund-manage 项目结构。 后端 package.json 文件下配置 script 1234567&quot;scripts&quot;: &amp;#123;    &quot;client-install&quot;: &quot;npm intall">
+<meta name="twitter:title" content="node-concurrently">
+<meta name="twitter:description" content="https://www.npmjs.com/package/concurrently  使用 concurrently 可以实现前后端用一个命令启动 1npm install concurrently 目录结构为后端文件中包含一个 client 文件夹为前端代码。详情看 vue-fund-manage 项目结构。 后端 package.json 文件下配置 script 1234567&quot;scri">
 
 
 
@@ -123,7 +123,7 @@
 </script>
 
   
-  <title>concurrently | gzl的博客</title>
+  <title>node-concurrently | gzl的博客</title>
   
 
 
@@ -347,7 +347,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">concurrently
+          <h1 class="post-title" itemprop="name headline">node-concurrently
 
               
             
@@ -388,7 +388,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2019-08-21 21:49:37" itemprop="dateModified" datetime="2019-08-21T21:49:37+08:00">2019-08-21</time>
+                <time title="修改时间：2019-10-14 15:21:42" itemprop="dateModified" datetime="2019-10-14T15:21:42+08:00">2019-10-14</time>
               </span>
             
           
@@ -442,14 +442,18 @@
       
 
       
-        <p>使用 <code>concurrently</code> 可以实现前后端用一个命令启动</p>
+        <blockquote>
+<p><a href="https://www.npmjs.com/package/concurrently" target="_blank" rel="noopener">https://www.npmjs.com/package/concurrently</a></p>
+</blockquote>
+<p>使用 <code>concurrently</code> 可以实现前后端用一个命令启动</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install concurrently</span><br></pre></td></tr></table></figure>
 <p>目录结构为后端文件中包含一个 <code>client</code> 文件夹为前端代码。详情看 <code>vue-fund-manage</code> 项目结构。</p>
 <p>后端 <code>package.json</code> 文件下配置 <code>script</code></p>
 <figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">"scripts": &#123;</span><br><span class="line">    "client-install": "npm intall --prefix client",</span><br><span class="line">    "client": "npm start --prefix client",</span><br><span class="line">    "start": "node server.js",</span><br><span class="line">    "server": "supervisor server.js",</span><br><span class="line">    "dev": "concurrent \"npm run server\" \"npm run client\""</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>前端 <code>package.json</code> 文件下配置 <code>script</code></p>
 <figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">"scripts": &#123;</span><br><span class="line">    "serve": "vue-cli-service serve",</span><br><span class="line">    "build": "vue-cli-service build",</span><br><span class="line">    "start": "npm run serve"</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>最后使用 <code>npm run dev</code> 就可以一起启动前后端。</p>
+<p>最后使用下面的命令就可以一起启动前后端。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm run dev</span><br></pre></td></tr></table></figure>
 
       
     </div>
@@ -566,7 +570,7 @@
         
           <a href="/archives/">
         
-          <span class="site-state-item-count">71</span>
+          <span class="site-state-item-count">74</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -605,7 +609,9 @@
         
           
         
-        <span class="site-state-item-count">11</span>
+          
+        
+        <span class="site-state-item-count">12</span>
         <span class="site-state-item-name">分类</span>
         </a>
       </div>
@@ -712,13 +718,7 @@
         
           
         
-          
-        
-          
-        
-          
-        
-        <span class="site-state-item-count">48</span>
+        <span class="site-state-item-count">45</span>
         <span class="site-state-item-name">标签</span>
         </a>
       </div>

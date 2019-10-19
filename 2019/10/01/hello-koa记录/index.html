@@ -492,7 +492,7 @@
 <p>请看下面的例子</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// demos/09.js</span></span><br><span class="line"><span class="keyword">const</span> one = <span class="function">(<span class="params">ctx, next</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">'&gt;&gt; one'</span>);</span><br><span class="line">  next();</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">'&lt;&lt; one'</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> two = <span class="function">(<span class="params">ctx, next</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">'&gt;&gt; two'</span>);</span><br><span class="line">  next(); </span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">'&lt;&lt; two'</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> three = <span class="function">(<span class="params">ctx, next</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">'&gt;&gt; three'</span>);</span><br><span class="line">  next();</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">'&lt;&lt; three'</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">app.use(one);</span><br><span class="line">app.use(two);</span><br><span class="line">app.use(three);</span><br></pre></td></tr></table></figure>
 <p>访问 <a href="http://127.0.0.1:3000" target="_blank" rel="noopener">http://127.0.0.1:3000</a> ，命令行窗口会有如下输出。</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;</span>&gt; one</span><br><span class="line"><span class="meta">&gt;</span>&gt; two</span><br><span class="line"><span class="meta">&gt;</span>&gt; three</span><br><span class="line">&lt;&lt; three</span><br><span class="line">&lt;&lt; two</span><br><span class="line">&lt;&lt; one</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;</span><span class="bash">&gt; one</span></span><br><span class="line"><span class="meta">&gt;</span><span class="bash">&gt; two</span></span><br><span class="line"><span class="meta">&gt;</span><span class="bash">&gt; three</span></span><br><span class="line">&lt;&lt; three</span><br><span class="line">&lt;&lt; two</span><br><span class="line">&lt;&lt; one</span><br></pre></td></tr></table></figure>
 <p>如果中间件内部没有调用<code>next</code>函数，那么执行权就不会传递下去。作为练习，你可以将<code>two</code>函数里面<code>next()</code>这一行注释掉再执行，看看会有什么结果。</p>
 <h2 id="异步中间件"><a href="#异步中间件" class="headerlink" title="异步中间件"></a>异步中间件</h2><p><a href="https://github.com/xunzhanggzl/hello-koa/blob/master/demos/10.js" target="_blank" rel="noopener">完整代码</a></p>
 <p>迄今为止，所有例子的中间件都是同步的，不包含异步操作。如果有异步操作（比如读取数据库），中间件就必须写成 <a href="http://es6.ruanyifeng.com/#docs/async" target="_blank" rel="noopener">async 函数</a>。</p>
@@ -666,7 +666,7 @@
         
           <a href="/archives/">
         
-          <span class="site-state-item-count">71</span>
+          <span class="site-state-item-count">74</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -705,7 +705,9 @@
         
           
         
-        <span class="site-state-item-count">11</span>
+          
+        
+        <span class="site-state-item-count">12</span>
         <span class="site-state-item-name">分类</span>
         </a>
       </div>
@@ -812,13 +814,7 @@
         
           
         
-          
-        
-          
-        
-          
-        
-        <span class="site-state-item-count">48</span>
+        <span class="site-state-item-count">45</span>
         <span class="site-state-item-name">标签</span>
         </a>
       </div>

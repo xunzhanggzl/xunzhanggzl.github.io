@@ -326,7 +326,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/10/02/dbmovie记录/"/>
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/10/19/git-常用操作小结/"/>
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="gzl"/>
@@ -346,7 +346,7 @@
           <h1 class="post-title" itemprop="name headline">
                 
                 
-                <a href="/2019/10/02/dbmovie记录/" class="post-title-link" itemprop="url">dbmovie记录</a>
+                <a href="/2019/10/19/git-常用操作小结/" class="post-title-link" itemprop="url">git-常用操作小结</a>
               
             
           </h1>
@@ -371,7 +371,180 @@
                 
               
 
-              <time title="创建时间：2019-10-02 08:58:27 / 修改时间：19:41:31" itemprop="dateCreated datePublished" datetime="2019-10-02T08:58:27+08:00">2019-10-02</time>
+              <time title="创建时间：2019-10-19 16:11:24 / 修改时间：16:26:13" itemprop="dateCreated datePublished" datetime="2019-10-19T16:11:24+08:00">2019-10-19</time>
+            </span>
+          
+
+          
+            
+
+            
+          
+
+          
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/git/" itemprop="url" rel="index"><span itemprop="name">git</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+
+          <br/>
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="git-log退出"><a href="#git-log退出" class="headerlink" title="git log退出"></a>git log退出</h1><p>在英文状态下按 q</p>
+<h1 id="git-clone重命名"><a href="#git-clone重命名" class="headerlink" title="git clone重命名"></a>git clone重命名</h1><p>如何重命名仓库，对当前文件夹已经存在同名仓库的时候会很有用：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git <span class="built_in">clone</span> git@github.com:muwenzi/repo.git new-repo-name</span><br></pre></td></tr></table></figure>
+<h1 id="git-rm"><a href="#git-rm" class="headerlink" title="git rm"></a>git rm</h1><p>有时候在项目开发过程中，把某些目录或文件加入<code>.gitignore</code>后发现并未生效，原因是<code>.gitignore</code><strong>只能忽略那些原来没有被track的文件</strong>，如果某些文件已经被纳入了版本管理中，则修改<code>.gitignore</code>是无效的。那么解决方法就是先把本地缓存删除（改变成未track状态），然后再提交：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">git rm -r --cached .</span><br><span class="line">git add .</span><br><span class="line">git commit -m <span class="string">'update .gitignore</span></span><br></pre></td></tr></table></figure>
+<p><code>.gitignore</code> 的匹配规则：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">.a       <span class="comment"># 忽略所有 .a 结尾的文件</span></span><br><span class="line">!lib.a    <span class="comment"># 但 lib.a 除外</span></span><br><span class="line">/TODO     <span class="comment"># 仅仅忽略项目根目录下的 TODO 文件，不包括 subdir/TODO</span></span><br><span class="line">build/    <span class="comment"># 忽略 build/ 目录下的所有文件</span></span><br><span class="line">doc/.txt <span class="comment"># 会忽略 doc/notes.txt 但不包括 doc/server/arch.txt</span></span><br></pre></td></tr></table></figure>
+<p><strong>参考</strong></p>
+<p><a href="https://github.com/muwenzi/Program-Blog/issues/13" target="_blank" rel="noopener">Git常用操作小结</a></p>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/10/14/node-http-server/"/>
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="gzl"/>
+      <meta itemprop="description" content=""/>
+      <meta itemprop="image" content="/images/avatar.gif"/>
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="gzl的博客"/>
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/2019/10/14/node-http-server/" class="post-title-link" itemprop="url">node-http-server</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+
+          
+          
+          
+
+          
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2019-10-14 15:13:53 / 修改时间：15:20:34" itemprop="dateCreated datePublished" datetime="2019-10-14T15:13:53+08:00">2019-10-14</time>
             </span>
           
 
@@ -432,37 +605,13 @@
       
         
           
-            <h1 id="流程"><a href="#流程" class="headerlink" title="流程"></a>流程</h1><ol>
-<li>抓取数据</li>
-<li>数据入库</li>
-<li>启动服务</li>
-<li>渲染数据</li>
-</ol>
-<h1 id="依赖"><a href="#依赖" class="headerlink" title="依赖"></a>依赖</h1><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">"dependencies": &#123;</span><br><span class="line">    "bluebird": "^3.5.5",       // 这个项目中将数据库的query方法promisify</span><br><span class="line">    "cheerio": "^1.0.0-rc.3",   // 像jquery一样操作</span><br><span class="line">    "debug": "^4.1.1",          // cmd可以打印相关信息，简洁明了</span><br><span class="line">    "ejs": "^2.7.1",            // 前端渲染页面</span><br><span class="line">    "express": "^4.17.1",       // 开启后端服务器</span><br><span class="line">    "mysql": "^2.17.1",         // 使用mysql数据库</span><br><span class="line">    "request": "^2.88.0",       // 进行html爬取</span><br><span class="line">    "request-promise": "^4.2.4" // request的小弟</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h1 id="爬取导入库"><a href="#爬取导入库" class="headerlink" title="爬取导入库"></a>爬取导入库</h1><p>read.js进行读取操作 </p>
-<ul>
-<li>通过<strong>request</strong>抓取了html代码</li>
-<li><strong>cheerio</strong>将html转成了dom</li>
-<li>将需要的内容<strong>存在数组</strong>(名称|评分|地址|图片|id)</li>
-<li>返回结果数组并<strong>导出read方法</strong></li>
-</ul>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> rp = <span class="built_in">require</span>(<span class="string">'request-promise'</span>);</span><br><span class="line"><span class="keyword">const</span> cheerio = <span class="built_in">require</span>(<span class="string">'cheerio'</span>);</span><br><span class="line"><span class="keyword">const</span> debug = <span class="built_in">require</span>(<span class="string">'debug'</span>)(<span class="string">'movie:read'</span>);</span><br><span class="line"><span class="keyword">const</span> read = <span class="keyword">async</span> (url) =&gt; &#123;</span><br><span class="line">  debug(<span class="string">'开始读取最近上映的电影'</span>);</span><br><span class="line"></span><br><span class="line">  <span class="keyword">const</span> opts = &#123;</span><br><span class="line">    url,</span><br><span class="line">    transform: <span class="function"><span class="params">body</span> =&gt;</span> &#123;</span><br><span class="line">      <span class="keyword">return</span> cheerio.load(body);</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">return</span> rp(opts).then(<span class="function"><span class="params">$</span> =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">let</span> result = []; <span class="comment">// 结果数组</span></span><br><span class="line"></span><br><span class="line">    $(<span class="string">'#screening li.ui-slide-item'</span>).each(<span class="function">(<span class="params">index, item</span>) =&gt;</span> &#123;</span><br><span class="line">      <span class="comment">// ...</span></span><br><span class="line">    &#125;);</span><br><span class="line">    <span class="keyword">return</span> result;</span><br><span class="line">  &#125;);</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="built_in">module</span>.exports = read;</span><br></pre></td></tr></table></figure>
-<p>db.js 连接数据库，导出promisify query 方法</p>
-<p>write.js 将数据写入数据库</p>
-<p>index.js为入口函数</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">(<span class="keyword">async</span> () =&gt; &#123;</span><br><span class="line">  <span class="comment">// 异步抓取目标页面</span></span><br><span class="line">  <span class="keyword">const</span> movies = <span class="keyword">await</span> read(url); <span class="comment">// 这里要用await，因为read()函数是async式的，返回的是promise，如下</span></span><br><span class="line">  <span class="comment">// const movies = read(url);</span></span><br><span class="line">  <span class="comment">// console.log(movies);   Promise &#123; &lt;pending&gt; &#125;</span></span><br><span class="line"></span><br><span class="line">  <span class="comment">// 写入数据到数据库</span></span><br><span class="line">  <span class="keyword">await</span> write(movies); <span class="comment">// 这里也要添加await关键字，等到写完再关闭程序</span></span><br><span class="line">  <span class="comment">// 完毕后退出程序</span></span><br><span class="line">  process.exit();</span><br><span class="line">&#125;)();</span><br></pre></td></tr></table></figure>
-<h1 id="前端展示"><a href="#前端展示" class="headerlink" title="前端展示"></a>前端展示</h1><p>使用 ejs 模板，查询到数据后渲染到 index.html 页面。</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 首页路由</span></span><br><span class="line">app.get(<span class="string">'/'</span>, <span class="keyword">async</span> (req, res) =&gt; &#123;</span><br><span class="line">  <span class="comment">// 通过SQL查询语句拿到库里的movies表数据</span></span><br><span class="line">  <span class="keyword">const</span> movies = <span class="keyword">await</span> query(<span class="string">'SELECT * FROM movies'</span>);</span><br><span class="line">  <span class="comment">// 渲染首页模板并把movies数据传过去</span></span><br><span class="line">  res.render(<span class="string">'index'</span>, &#123;</span><br><span class="line">    movies</span><br><span class="line">  &#125;);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
-<h1 id="DEBUG"><a href="#DEBUG" class="headerlink" title="DEBUG"></a>DEBUG</h1><p><a href="https://www.npmjs.com/package/debug" target="_blank" rel="noopener">https://www.npmjs.com/package/debug</a></p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">set DEBUG=movie:* # debug模块需要先设置</span><br></pre></td></tr></table></figure>
-<h1 id="项目启动"><a href="#项目启动" class="headerlink" title="项目启动"></a>项目启动</h1><p>在 README.md 里</p>
-<h1 id="bug"><a href="#bug" class="headerlink" title="bug"></a>bug</h1><p>注意这个项目中 async 和 await 的使用，个人觉得非常巧妙，还有下面的 promisify，值得好好学习。</p>
-<p>mysql 的 query 方法 <strong>promisify</strong> 后进行 bind 绑定，以免 this 混乱。</p>
-<p><a href="https://stackoverflow.com/questions/44004418/node-js-async-await-using-with-mysql/51690276#51690276" target="_blank" rel="noopener">https://stackoverflow.com/questions/44004418/node-js-async-await-using-with-mysql/51690276#51690276</a></p>
-<p><strong>参考</strong></p>
-<blockquote>
-<p><a href="https://juejin.im/post/5ac9bc56f265da238c3af18f#heading-11" target="_blank" rel="noopener">https://juejin.im/post/5ac9bc56f265da238c3af18f#heading-11</a></p>
+            <blockquote>
+<p><a href="https://www.npmjs.com/package/http-server" target="_blank" rel="noopener">https://www.npmjs.com/package/http-server</a></p>
 </blockquote>
+<p>使用 <code>http-server</code> 可以快速开启一个小型的node静态服务</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install http-server -g</span><br></pre></td></tr></table></figure>
+<p>开启</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">http-server</span><br><span class="line"></span><br><span class="line">hs <span class="comment"># 快捷方式</span></span><br><span class="line"></span><br><span class="line">usage: http-server [path] [options]</span><br></pre></td></tr></table></figure>
 
           
         
@@ -521,7 +670,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/10/01/hello-koa记录/"/>
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/10/13/快捷键/"/>
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="gzl"/>
@@ -541,7 +690,7 @@
           <h1 class="post-title" itemprop="name headline">
                 
                 
-                <a href="/2019/10/01/hello-koa记录/" class="post-title-link" itemprop="url">hello-koa记录</a>
+                <a href="/2019/10/13/快捷键/" class="post-title-link" itemprop="url">快捷键</a>
               
             
           </h1>
@@ -566,7 +715,7 @@
                 
               
 
-              <time title="创建时间：2019-10-01 15:28:48" itemprop="dateCreated datePublished" datetime="2019-10-01T15:28:48+08:00">2019-10-01</time>
+              <time title="创建时间：2019-10-13 17:22:56" itemprop="dateCreated datePublished" datetime="2019-10-13T17:22:56+08:00">2019-10-13</time>
             </span>
           
 
@@ -581,7 +730,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2019-10-02 14:20:35" itemprop="dateModified" datetime="2019-10-02T14:20:35+08:00">2019-10-02</time>
+                <time title="修改时间：2019-10-19 15:58:37" itemprop="dateModified" datetime="2019-10-19T15:58:37+08:00">2019-10-19</time>
               </span>
             
           
@@ -595,7 +744,7 @@
                 <span class="post-meta-item-text">分类于</span>
               
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/node-js/" itemprop="url" rel="index"><span itemprop="name">node.js</span></a></span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/快捷键/" itemprop="url" rel="index"><span itemprop="name">快捷键</span></a></span>
 
                 
                 
@@ -637,280 +786,23 @@
       
         
           
-            <h1 id="基础用法"><a href="#基础用法" class="headerlink" title="基础用法"></a>基础用法</h1><h2 id="架设-HTTP-服务"><a href="#架设-HTTP-服务" class="headerlink" title="架设 HTTP 服务"></a>架设 HTTP 服务</h2><p><a href="https://github.com/xunzhanggzl/hello-koa/blob/master/demos/01.js" target="_blank" rel="noopener">完整代码</a></p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// demos/01.js</span></span><br><span class="line"><span class="keyword">const</span> Koa = <span class="built_in">require</span>(<span class="string">'koa'</span>);</span><br><span class="line"><span class="keyword">const</span> app = <span class="keyword">new</span> Koa();</span><br><span class="line"></span><br><span class="line">app.listen(<span class="number">3000</span>);</span><br></pre></td></tr></table></figure>
-<p>打开浏览器，访问 <a href="http://127.0.0.1:3000" target="_blank" rel="noopener">http://127.0.0.1:3000</a> 。你会看到页面显示”Not Found”，表示没有发现任何内容。这是因为我们并没有告诉 Koa 应该显示什么内容。</p>
-<h2 id="Context-对象"><a href="#Context-对象" class="headerlink" title="Context 对象"></a>Context 对象</h2><p><a href="https://github.com/xunzhanggzl/hello-koa/blob/master/demos/02.js" target="_blank" rel="noopener">完整代码</a></p>
-<p>Koa 提供一个 Context 对象，表示一次对话的上下文（包括 HTTP 请求和 HTTP 回复）。通过加工这个对象，就可以控制返回给用户的内容。</p>
-<p><code>Context.response.body</code>属性就是发送给用户的内容。</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// demos/02.js</span></span><br><span class="line"><span class="keyword">const</span> Koa = <span class="built_in">require</span>(<span class="string">'koa'</span>);</span><br><span class="line"><span class="keyword">const</span> app = <span class="keyword">new</span> Koa();</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> main = <span class="function"><span class="params">ctx</span> =&gt;</span> &#123;</span><br><span class="line">  ctx.response.body = <span class="string">'Hello World'</span>;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">app.use(main);</span><br><span class="line">app.listen(<span class="number">3000</span>);</span><br></pre></td></tr></table></figure>
-<p>上面代码中，<code>main</code>函数用来设置<code>ctx.response.body</code>。然后，使用<code>app.use</code>方法加载<code>main</code>函数。</p>
-<p>你可能已经猜到了，<code>ctx.response</code>代表 HTTP Response。同样地，<code>ctx.request</code>代表 HTTP Request。</p>
-<p>访问 <a href="http://127.0.0.1:3000" target="_blank" rel="noopener">http://127.0.0.1:3000</a> ，现在就可以看到”Hello World”了。</p>
-<h2 id="HTTP-Response-的类型"><a href="#HTTP-Response-的类型" class="headerlink" title="HTTP Response 的类型"></a>HTTP Response 的类型</h2><p><a href="https://github.com/xunzhanggzl/hello-koa/blob/master/demos/03.js" target="_blank" rel="noopener">完整代码</a></p>
-<p>Koa 默认的返回类型是<code>text/plain</code>，如果想返回其他类型的内容，可以先用<code>ctx.request.accepts</code>判断一下，客户端希望接受什么数据（根据 HTTP Request 的<code>Accept</code>字段），然后使用<code>ctx.response.type</code>指定返回类型。</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// demos/03.js</span></span><br><span class="line"><span class="keyword">const</span> main = <span class="function"><span class="params">ctx</span> =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">if</span> (ctx.request.accepts(<span class="string">'xml'</span>)) &#123;</span><br><span class="line">    ctx.response.type = <span class="string">'xml'</span>;</span><br><span class="line">    ctx.response.body = <span class="string">'&lt;data&gt;Hello World&lt;/data&gt;'</span>;</span><br><span class="line">  &#125; <span class="keyword">else</span> <span class="keyword">if</span> (ctx.request.accepts(<span class="string">'json'</span>)) &#123;</span><br><span class="line">    ctx.response.type = <span class="string">'json'</span>;</span><br><span class="line">    ctx.response.body = &#123; <span class="attr">data</span>: <span class="string">'Hello World'</span> &#125;;</span><br><span class="line">  &#125; <span class="keyword">else</span> <span class="keyword">if</span> (ctx.request.accepts(<span class="string">'html'</span>)) &#123;</span><br><span class="line">    ctx.response.type = <span class="string">'html'</span>;</span><br><span class="line">    ctx.response.body = <span class="string">'&lt;p&gt;Hello World&lt;/p&gt;'</span>;</span><br><span class="line">  &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    ctx.response.type = <span class="string">'text'</span>;</span><br><span class="line">    ctx.response.body = <span class="string">'Hello World'</span>;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-<p>访问 <a href="http://127.0.0.1:3000" target="_blank" rel="noopener">http://127.0.0.1:3000</a> ，现在看到的就是一个 XML 文档了。</p>
-<h2 id="网页模板"><a href="#网页模板" class="headerlink" title="网页模板"></a>网页模板</h2><p><a href="https://github.com/xunzhanggzl/hello-koa/blob/master/demos/04.js" target="_blank" rel="noopener">完整代码</a></p>
-<p>实际开发中，返回给用户的网页往往都写成模板文件。我们可以让 Koa 先读取模板文件，然后将这个模板返回给用户。</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// demos/04.js</span></span><br><span class="line"><span class="keyword">const</span> fs = <span class="built_in">require</span>(<span class="string">'fs'</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> main = <span class="function"><span class="params">ctx</span> =&gt;</span> &#123;</span><br><span class="line">  ctx.response.type = <span class="string">'html'</span>;</span><br><span class="line">  ctx.response.body = fs.createReadStream(<span class="string">'./demos/template.html'</span>);</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-<p>访问 <a href="http://127.0.0.1:3000" target="_blank" rel="noopener">http://127.0.0.1:3000</a> ，看到的就是<a href="https://github.com/xunzhanggzl/hello-koa/blob/master/demos/template.html" target="_blank" rel="noopener">模板文件</a>的内容了。</p>
-<h1 id="路由"><a href="#路由" class="headerlink" title="路由"></a>路由</h1><h2 id="原生路由"><a href="#原生路由" class="headerlink" title="原生路由"></a>原生路由</h2><p><a href="https://github.com/xunzhanggzl/hello-koa/blob/master/demos/05.js" target="_blank" rel="noopener">完整代码</a></p>
-<p>网站一般都有多个页面。通过<code>ctx.request.path</code>可以获取用户请求的路径，由此实现简单的路由。</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// demos/05.js</span></span><br><span class="line"><span class="keyword">const</span> main = <span class="function"><span class="params">ctx</span> =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">if</span> (ctx.request.path !== <span class="string">'/'</span>) &#123;</span><br><span class="line">    ctx.response.type = <span class="string">'html'</span>;</span><br><span class="line">    ctx.response.body = <span class="string">'&lt;a href="/"&gt;Index Page&lt;/a&gt;'</span>;</span><br><span class="line">  &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    ctx.response.body = <span class="string">'Hello World'</span>;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-<p>访问 <a href="http://127.0.0.1:3000/about" target="_blank" rel="noopener">http://127.0.0.1:3000/about</a> ，可以看到一个链接，点击后就跳到首页。</p>
-<h2 id="koa-route-模块"><a href="#koa-route-模块" class="headerlink" title="koa-route 模块"></a>koa-route 模块</h2><p><a href="https://github.com/xunzhanggzl/hello-koa/blob/master/demos/06.js" target="_blank" rel="noopener">完整代码</a></p>
-<p>原生路由用起来不太方便，我们可以使用封装好的<a href="https://www.npmjs.com/package/koa-route" target="_blank" rel="noopener"><code>koa-route</code></a>模块。</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// demos/06.js</span></span><br><span class="line"><span class="keyword">const</span> route = <span class="built_in">require</span>(<span class="string">'koa-route'</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> about = <span class="function"><span class="params">ctx</span> =&gt;</span> &#123;</span><br><span class="line">  ctx.response.type = <span class="string">'html'</span>;</span><br><span class="line">  ctx.response.body = <span class="string">'&lt;a href="/"&gt;Index Page&lt;/a&gt;'</span>;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> main = <span class="function"><span class="params">ctx</span> =&gt;</span> &#123;</span><br><span class="line">  ctx.response.body = <span class="string">'Hello World'</span>;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">app.use(route.get(<span class="string">'/'</span>, main));</span><br><span class="line">app.use(route.get(<span class="string">'/about'</span>, about));</span><br></pre></td></tr></table></figure>
-<p>上面代码中，根路径<code>/</code>的处理函数是<code>main</code>，<code>/about</code>路径的处理函数是<code>about</code>。</p>
-<p>访问 <a href="http://127.0.0.1:3000/about" target="_blank" rel="noopener">http://127.0.0.1:3000/about</a> ，效果与上一个例子完全相同。</p>
-<h2 id="静态资源"><a href="#静态资源" class="headerlink" title="静态资源"></a>静态资源</h2><p><a href="https://github.com/xunzhanggzl/hello-koa/blob/master/demos/12.js" target="_blank" rel="noopener">完整代码</a></p>
-<p>如果网站提供静态资源（图片、字体、样式表、脚本……），为它们一个个写路由就很麻烦，也没必要。<a href="https://www.npmjs.com/package/koa-static" target="_blank" rel="noopener"><code>koa-static</code></a>模块封装了这部分的请求。</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// demos/12.js</span></span><br><span class="line"><span class="keyword">const</span> path = <span class="built_in">require</span>(<span class="string">'path'</span>);</span><br><span class="line"><span class="keyword">const</span> serve = <span class="built_in">require</span>(<span class="string">'koa-static'</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> main = serve(path.join(__dirname));</span><br><span class="line">app.use(main);</span><br></pre></td></tr></table></figure>
-<p>访问 <a href="http://127.0.0.1:3000/12.js，在浏览器里就可以看到这个脚本的内容。" target="_blank" rel="noopener">http://127.0.0.1:3000/12.js，在浏览器里就可以看到这个脚本的内容。</a></p>
-<h2 id="重定向"><a href="#重定向" class="headerlink" title="重定向"></a>重定向</h2><p><a href="https://github.com/xunzhanggzl/hello-koa/blob/master/demos/13.js" target="_blank" rel="noopener">完整代码</a></p>
-<p>有些场合，服务器需要重定向（redirect）访问请求。比如，用户登陆以后，将他重定向到登陆前的页面。<code>ctx.response.redirect()</code>方法可以发出一个302跳转，将用户导向另一个路由。</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// demos/13.js</span></span><br><span class="line"><span class="keyword">const</span> redirect = <span class="function"><span class="params">ctx</span> =&gt;</span> &#123;</span><br><span class="line">  ctx.response.redirect(<span class="string">'/'</span>);</span><br><span class="line">  ctx.response.body = <span class="string">'&lt;a href="/"&gt;Index Page&lt;/a&gt;'</span>;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">app.use(route.get(<span class="string">'/redirect'</span>, redirect));</span><br></pre></td></tr></table></figure>
-<p>访问 <a href="http://127.0.0.1:3000/redirect" target="_blank" rel="noopener">http://127.0.0.1:3000/redirect</a> ，浏览器会将用户导向根路由。</p>
-<h1 id="中间件"><a href="#中间件" class="headerlink" title="中间件"></a>中间件</h1><h2 id="Logger-功能"><a href="#Logger-功能" class="headerlink" title="Logger 功能"></a>Logger 功能</h2><p><a href="https://github.com/xunzhanggzl/hello-koa/blob/master/demos/07.js" target="_blank" rel="noopener">完整代码</a></p>
-<p>Koa 的最大特色，也是最重要的一个设计，就是中间件（middleware）。为了理解中间件，我们先看一下 Logger （打印日志）功能的实现。</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// demos/07.js</span></span><br><span class="line"><span class="keyword">const</span> main = <span class="function"><span class="params">ctx</span> =&gt;</span> &#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">`<span class="subst">$&#123;<span class="built_in">Date</span>.now()&#125;</span> <span class="subst">$&#123;ctx.request.method&#125;</span> <span class="subst">$&#123;ctx.request.url&#125;</span>`</span>);</span><br><span class="line">  ctx.response.body = <span class="string">'Hello World'</span>;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-<p>访问 <a href="http://127.0.0.1:3000" target="_blank" rel="noopener">http://127.0.0.1:3000</a> ，命令行就会输出日志。</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">1569916749773 GET /</span><br></pre></td></tr></table></figure>
-<h2 id="中间件的概念"><a href="#中间件的概念" class="headerlink" title="中间件的概念"></a>中间件的概念</h2><p><a href="https://github.com/xunzhanggzl/hello-koa/blob/master/demos/08.js" target="_blank" rel="noopener">完整代码</a></p>
-<p>上一个例子里面的 Logger 功能，可以拆分成一个独立函数</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// demos/08.js</span></span><br><span class="line"><span class="keyword">const</span> logger = <span class="function">(<span class="params">ctx, next</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">`<span class="subst">$&#123;<span class="built_in">Date</span>.now()&#125;</span> <span class="subst">$&#123;ctx.request.method&#125;</span> <span class="subst">$&#123;ctx.request.url&#125;</span>`</span>);</span><br><span class="line">  next();</span><br><span class="line">&#125;</span><br><span class="line">app.use(logger);</span><br></pre></td></tr></table></figure>
-<p>像上面代码中的<code>logger</code>函数就叫做”中间件”（middleware），因为它处在 HTTP Request 和 HTTP Response 中间，用来实现某种中间功能。<code>app.use()</code>用来加载中间件。</p>
-<p>基本上，Koa 所有的功能都是通过中间件实现的，前面例子里面的<code>main</code>也是中间件。每个中间件默认接受两个参数，第一个参数是 Context 对象，第二个参数是<code>next</code>函数。只要调用<code>next</code>函数，就可以把执行权转交给下一个中间件。</p>
-<p>访问 <a href="http://127.0.0.1:3000" target="_blank" rel="noopener">http://127.0.0.1:3000</a> ，命令行窗口会显示与上一个例子相同的日志输出。</p>
-<h2 id="中间件栈"><a href="#中间件栈" class="headerlink" title="中间件栈"></a>中间件栈</h2><p><a href="https://github.com/xunzhanggzl/hello-koa/blob/master/demos/09.js" target="_blank" rel="noopener">完整代码</a></p>
-<p>请看下面的例子</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// demos/09.js</span></span><br><span class="line"><span class="keyword">const</span> one = <span class="function">(<span class="params">ctx, next</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">'&gt;&gt; one'</span>);</span><br><span class="line">  next();</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">'&lt;&lt; one'</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> two = <span class="function">(<span class="params">ctx, next</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">'&gt;&gt; two'</span>);</span><br><span class="line">  next(); </span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">'&lt;&lt; two'</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> three = <span class="function">(<span class="params">ctx, next</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">'&gt;&gt; three'</span>);</span><br><span class="line">  next();</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">'&lt;&lt; three'</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">app.use(one);</span><br><span class="line">app.use(two);</span><br><span class="line">app.use(three);</span><br></pre></td></tr></table></figure>
-<p>访问 <a href="http://127.0.0.1:3000" target="_blank" rel="noopener">http://127.0.0.1:3000</a> ，命令行窗口会有如下输出。</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;</span>&gt; one</span><br><span class="line"><span class="meta">&gt;</span>&gt; two</span><br><span class="line"><span class="meta">&gt;</span>&gt; three</span><br><span class="line">&lt;&lt; three</span><br><span class="line">&lt;&lt; two</span><br><span class="line">&lt;&lt; one</span><br></pre></td></tr></table></figure>
-<p>如果中间件内部没有调用<code>next</code>函数，那么执行权就不会传递下去。作为练习，你可以将<code>two</code>函数里面<code>next()</code>这一行注释掉再执行，看看会有什么结果。</p>
-<h2 id="异步中间件"><a href="#异步中间件" class="headerlink" title="异步中间件"></a>异步中间件</h2><p><a href="https://github.com/xunzhanggzl/hello-koa/blob/master/demos/10.js" target="_blank" rel="noopener">完整代码</a></p>
-<p>迄今为止，所有例子的中间件都是同步的，不包含异步操作。如果有异步操作（比如读取数据库），中间件就必须写成 <a href="http://es6.ruanyifeng.com/#docs/async" target="_blank" rel="noopener">async 函数</a>。</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// demos/10.js</span></span><br><span class="line"><span class="keyword">const</span> fs = <span class="built_in">require</span>(<span class="string">'fs.promised'</span>);</span><br><span class="line"><span class="keyword">const</span> Koa = <span class="built_in">require</span>(<span class="string">'koa'</span>);</span><br><span class="line"><span class="keyword">const</span> app = <span class="keyword">new</span> Koa();</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> main = <span class="keyword">async</span> <span class="function"><span class="keyword">function</span> (<span class="params">ctx, next</span>) </span>&#123;</span><br><span class="line">  ctx.response.type = <span class="string">'html'</span>;</span><br><span class="line">  ctx.response.body = <span class="keyword">await</span> fs.readFile(<span class="string">'./demos/template.html'</span>, <span class="string">'utf8'</span>);</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">app.use(main);</span><br><span class="line">app.listen(<span class="number">3000</span>);</span><br></pre></td></tr></table></figure>
-<p>上面代码中，<code>fs.readFile</code>是一个异步操作，必须写成<code>await fs.readFile()</code>，然后中间件必须写成 async 函数。</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">node demos/10.js</span><br></pre></td></tr></table></figure>
-<p>访问 <a href="http://127.0.0.1:3000" target="_blank" rel="noopener">http://127.0.0.1:3000</a> ，就可以看到模板文件的内容。</p>
-<h2 id="中间件的合成"><a href="#中间件的合成" class="headerlink" title="中间件的合成"></a>中间件的合成</h2><p><a href="https://github.com/xunzhanggzl/hello-koa/blob/master/demos/11.js" target="_blank" rel="noopener">完整代码</a></p>
-<p><a href="https://www.npmjs.com/package/koa-compose" target="_blank" rel="noopener"><code>koa-compose</code></a>模块可以将多个中间件合成为一个。</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// demos/11.js</span></span><br><span class="line"><span class="keyword">const</span> compose = <span class="built_in">require</span>(<span class="string">'koa-compose'</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> logger = <span class="function">(<span class="params">ctx, next</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">`<span class="subst">$&#123;<span class="built_in">Date</span>.now()&#125;</span> <span class="subst">$&#123;ctx.request.method&#125;</span> <span class="subst">$&#123;ctx.request.url&#125;</span>`</span>);</span><br><span class="line">  next();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> main = <span class="function"><span class="params">ctx</span> =&gt;</span> &#123;</span><br><span class="line">  ctx.response.body = <span class="string">'Hello World'</span>;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> middlewares = compose([logger, main]);</span><br><span class="line">app.use(middlewares);</span><br></pre></td></tr></table></figure>
-<p>访问 <a href="http://127.0.0.1:3000" target="_blank" rel="noopener">http://127.0.0.1:3000</a> ，就可以在命令行窗口看到日志信息。</p>
-<h1 id="错误处理"><a href="#错误处理" class="headerlink" title="错误处理"></a>错误处理</h1><h2 id="500错误"><a href="#500错误" class="headerlink" title="500错误"></a>500错误</h2><p><a href="https://github.com/ruanyf/koa-demos/blob/master/demos/14.js" target="_blank" rel="noopener">完整代码</a></p>
-<p>如果代码运行过程中发生错误，我们需要把错误信息返回给用户。HTTP 协定约定这时要返回500状态码。Koa 提供了<code>ctx.throw()</code>方法，用来抛出错误，<code>ctx.throw(500)</code>就是抛出500错误。</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// demos/14.js</span></span><br><span class="line"><span class="keyword">const</span> main = <span class="function"><span class="params">ctx</span> =&gt;</span> &#123;</span><br><span class="line">  ctx.throw(<span class="number">500</span>);</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-<p>访问 <a href="http://127.0.0.1:3000，你会看到一个500错误页&quot;Internal" target="_blank" rel="noopener">http://127.0.0.1:3000，你会看到一个500错误页&quot;Internal</a> Server Error”。</p>
-<h2 id="404错误"><a href="#404错误" class="headerlink" title="404错误"></a>404错误</h2><p><a href="https://github.com/xunzhanggzl/hello-koa/blob/master/demos/15.js" target="_blank" rel="noopener">完整代码</a></p>
-<p>如果将<code>ctx.response.status</code>设置成404，就相当于<code>ctx.throw(404)</code>，返回404错误。</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// demos/15.js</span></span><br><span class="line"><span class="keyword">const</span> main = <span class="function"><span class="params">ctx</span> =&gt;</span> &#123;</span><br><span class="line">  ctx.response.status = <span class="number">404</span>;</span><br><span class="line">  ctx.response.body = <span class="string">'Page Not Found'</span>;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-<p>访问 <a href="http://127.0.0.1:3000" target="_blank" rel="noopener">http://127.0.0.1:3000</a> ，你就看到一个404页面”Page Not Found”。</p>
-<h2 id="处理错误的中间件"><a href="#处理错误的中间件" class="headerlink" title="处理错误的中间件"></a>处理错误的中间件</h2><p><a href="https://github.com/xunzhanggzl/hello-koa/blob/master/demos/16.js" target="_blank" rel="noopener">完整代码</a></p>
-<p>为了方便处理错误，最好使用<code>try...catch</code>将其捕获。但是，为每个中间件都写<code>try...catch</code>太麻烦，我们可以让最外层的中间件，负责所有中间件的错误处理。</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// demos/16.js</span></span><br><span class="line"><span class="keyword">const</span> handler = <span class="keyword">async</span> (ctx, next) =&gt; &#123;</span><br><span class="line">  <span class="keyword">try</span> &#123;</span><br><span class="line">    <span class="keyword">await</span> next();</span><br><span class="line">  &#125; <span class="keyword">catch</span> (err) &#123;</span><br><span class="line">    ctx.response.status = err.statusCode || err.status || <span class="number">500</span>;</span><br><span class="line">    ctx.response.body = &#123;</span><br><span class="line">      message: err.message</span><br><span class="line">    &#125;;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> main = <span class="function"><span class="params">ctx</span> =&gt;</span> &#123;</span><br><span class="line">  ctx.throw(<span class="number">500</span>);</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">app.use(handler);</span><br><span class="line">app.use(main);</span><br></pre></td></tr></table></figure>
-<p>访问 <a href="http://127.0.0.1:3000" target="_blank" rel="noopener">http://127.0.0.1:3000</a> ，你会看到一个500页，里面有报错提示 <code>{&quot;message&quot;:&quot;Internal Server Error&quot;}</code>。</p>
-<h2 id="error-事件的监听"><a href="#error-事件的监听" class="headerlink" title="error 事件的监听"></a>error 事件的监听</h2><p><a href="https://github.com/xunzhanggzl/hello-koa/blob/master/demos/17.js" target="_blank" rel="noopener">完整代码</a></p>
-<p>运行过程中一旦出错，Koa 会触发一个<code>error</code>事件。监听这个事件，也可以处理错误。</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// demos/17.js</span></span><br><span class="line"><span class="keyword">const</span> main = <span class="function"><span class="params">ctx</span> =&gt;</span> &#123;</span><br><span class="line">  ctx.throw(<span class="number">500</span>);</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">app.on(<span class="string">'error'</span>, (err, ctx) =&gt;</span><br><span class="line">  <span class="built_in">console</span>.error(<span class="string">'server error'</span>, err);</span><br><span class="line">);</span><br></pre></td></tr></table></figure>
-<p>访问 <a href="http://127.0.0.1:3000" target="_blank" rel="noopener">http://127.0.0.1:3000</a> ，你会在命令行窗口看到”server error xxx”。</p>
-<h2 id="释放-error-事件"><a href="#释放-error-事件" class="headerlink" title="释放 error 事件"></a>释放 error 事件</h2><p><a href="https://github.com/xunzhanggzl/hello-koa/blob/master/demos/18.js" target="_blank" rel="noopener">完整代码</a></p>
-<p>需要注意的是，如果错误被<code>try...catch</code>捕获，就不会触发<code>error</code>事件。这时，必须调用<code>ctx.app.emit()</code>，手动释放<code>error</code>事件，才能让监听函数生效。</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// demos/18.js`</span></span><br><span class="line"><span class="keyword">const</span> handler = <span class="keyword">async</span> (ctx, next) =&gt; &#123;</span><br><span class="line">  <span class="keyword">try</span> &#123;</span><br><span class="line">    <span class="keyword">await</span> next();</span><br><span class="line">  &#125; <span class="keyword">catch</span> (err) &#123;</span><br><span class="line">    ctx.response.status = err.statusCode || err.status || <span class="number">500</span>;</span><br><span class="line">    ctx.response.type = <span class="string">'html'</span>;</span><br><span class="line">    ctx.response.body = <span class="string">'&lt;p&gt;Something wrong, please contact administrator.&lt;/p&gt;'</span>;</span><br><span class="line">    ctx.app.emit(<span class="string">'error'</span>, err, ctx);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> main = <span class="function"><span class="params">ctx</span> =&gt;</span> &#123;</span><br><span class="line">  ctx.throw(<span class="number">500</span>);</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">app.on(<span class="string">'error'</span>, <span class="function"><span class="keyword">function</span>(<span class="params">err</span>) </span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">'logging error '</span>, err.message);</span><br><span class="line">  <span class="built_in">console</span>.log(err);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
-<p>上面代码中，<code>main</code>函数抛出错误，被<code>handler</code>函数捕获。<code>catch</code>代码块里面使用<code>ctx.app.emit()</code>手动释放<code>error</code>事件，才能让监听函数监听到。</p>
-<p>访问 <a href="http://127.0.0.1:3000" target="_blank" rel="noopener">http://127.0.0.1:3000</a> ，你会在命令行窗口看到<code>logging error</code>。</p>
-<h1 id="Web-App-的功能"><a href="#Web-App-的功能" class="headerlink" title="Web App 的功能"></a>Web App 的功能</h1><h2 id="Cookies"><a href="#Cookies" class="headerlink" title="Cookies"></a>Cookies</h2><p><a href="https://github.com/xunzhanggzl/hello-koa/blob/master/demos/19.js" target="_blank" rel="noopener">完整代码</a></p>
-<p><code>ctx.cookies</code>用来读写 Cookie。</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// demos/19.js</span></span><br><span class="line"><span class="keyword">const</span> main = <span class="function"><span class="keyword">function</span>(<span class="params">ctx</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">const</span> n = <span class="built_in">Number</span>(ctx.cookies.get(<span class="string">'view'</span>) || <span class="number">0</span>) + <span class="number">1</span>;</span><br><span class="line">  ctx.cookies.set(<span class="string">'view'</span>, n);</span><br><span class="line">  ctx.response.body = n + <span class="string">' views'</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>访问 <a href="http://127.0.0.1:3000" target="_blank" rel="noopener">http://127.0.0.1:3000</a> ，你会看到<code>1 views</code>。刷新一次页面，就变成了<code>2 views</code>。再刷新，每次都会计数增加1。</p>
-<h2 id="表单"><a href="#表单" class="headerlink" title="表单"></a>表单</h2><p><a href="https://github.com/xunzhanggzl/hello-koa/blob/master/demos/20.js" target="_blank" rel="noopener">完整代码</a></p>
-<p>Web 应用离不开处理表单。本质上，表单就是 POST 方法发送到服务器的键值对。<a href="https://www.npmjs.com/package/koa-body" target="_blank" rel="noopener"><code>koa-body</code></a>模块可以用来从 POST 请求的数据体里面提取键值对。</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// demos/20.js</span></span><br><span class="line"><span class="keyword">const</span> koaBody = <span class="built_in">require</span>(<span class="string">'koa-body'</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> main = <span class="keyword">async</span> <span class="function"><span class="keyword">function</span>(<span class="params">ctx</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">const</span> body = ctx.request.body;</span><br><span class="line">  <span class="keyword">if</span> (!body.name) ctx.throw(<span class="number">400</span>, <span class="string">'.name required'</span>);</span><br><span class="line">  ctx.body = &#123; <span class="attr">name</span>: body.name &#125;;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">app.use(koaBody());</span><br></pre></td></tr></table></figure>
-<p>打开另一个命令行窗口，运行下面的命令。</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">$ curl -X POST --data <span class="string">"name=Jack"</span> 127.0.0.1:3000</span><br><span class="line">&#123;<span class="string">"name"</span>:<span class="string">"Jack"</span>&#125;</span><br><span class="line"></span><br><span class="line">$ curl -X POST --data <span class="string">"name"</span> 127.0.0.1:3000</span><br><span class="line">name required</span><br></pre></td></tr></table></figure>
-<p>上面代码使用 POST 方法向服务器发送一个键值对，会被正确解析。如果发送的数据不正确，就会收到错误提示。</p>
-<h2 id="文件上传"><a href="#文件上传" class="headerlink" title="文件上传"></a>文件上传</h2><p><a href="https://github.com/xunzhanggzl/hello-koa/blob/master/demos/21.js" target="_blank" rel="noopener">完整代码</a></p>
-<p><a href="https://www.npmjs.com/package/koa-body" target="_blank" rel="noopener"><code>koa-body</code></a>模块还可以用来处理文件上传。</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// demos/21.js</span></span><br><span class="line"><span class="keyword">const</span> os = <span class="built_in">require</span>(<span class="string">'os'</span>);</span><br><span class="line"><span class="keyword">const</span> path = <span class="built_in">require</span>(<span class="string">'path'</span>);</span><br><span class="line"><span class="keyword">const</span> koaBody = <span class="built_in">require</span>(<span class="string">'koa-body'</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> main = <span class="keyword">async</span> <span class="function"><span class="keyword">function</span>(<span class="params">ctx</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">const</span> tmpdir = os.tmpdir();</span><br><span class="line">  <span class="keyword">const</span> filePaths = [];</span><br><span class="line">  <span class="keyword">const</span> files = ctx.request.body.files || &#123;&#125;;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">let</span> key <span class="keyword">in</span> files) &#123;</span><br><span class="line">    <span class="keyword">const</span> file = files[key];</span><br><span class="line">    <span class="keyword">const</span> filePath = path.join(tmpdir, file.name);</span><br><span class="line">    <span class="keyword">const</span> reader = fs.createReadStream(file.path);</span><br><span class="line">    <span class="keyword">const</span> writer = fs.createWriteStream(filePath);</span><br><span class="line">    reader.pipe(writer);</span><br><span class="line">    filePaths.push(filePath);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  ctx.body = filePaths;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">app.use(koaBody(&#123; <span class="attr">multipart</span>: <span class="literal">true</span> &#125;));</span><br></pre></td></tr></table></figure>
-<p>打开另一个命令行窗口，运行下面的命令，上传一个文件。注意，<code>/path/to/file</code>要更换为真实的文件路径。</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ curl --form upload=@/path/to/file http://127.0.0.1:3000</span><br><span class="line">[<span class="string">"/tmp/file"</span>]</span><br></pre></td></tr></table></figure>
-          
-        
-      
-    </div>
-
-    
-
-    
-
-    
-    
-    
-
-    
-
-    
-      
-    
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/10/01/curl/"/>
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="gzl"/>
-      <meta itemprop="description" content=""/>
-      <meta itemprop="image" content="/images/avatar.gif"/>
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="gzl的博客"/>
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/2019/10/01/curl/" class="post-title-link" itemprop="url">curl</a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-
-          
-          
-          
-
-          
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-
-              
-                
-              
-
-              <time title="创建时间：2019-10-01 13:16:06 / 修改时间：14:21:55" itemprop="dateCreated datePublished" datetime="2019-10-01T13:16:06+08:00">2019-10-01</time>
-            </span>
-          
-
-          
-            
-
-            
-          
-
-          
-
-          
-            
-            
-          
-
-          
-          
-
-          
-
-          
-
-          <br/>
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h1 id="查看网页源码"><a href="#查看网页源码" class="headerlink" title="查看网页源码"></a>查看网页源码</h1><p>直接在curl命令后加上网址，就可以看到网页源码。我们以网址<a href="http://www.sina.com为例（选择该网址，主要因为它的网页代码较短）：" target="_blank" rel="noopener">www.sina.com为例（选择该网址，主要因为它的网页代码较短）：</a></p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span> curl www.sina.com</span><br></pre></td></tr></table></figure>
-<p>如果要把这个网页保存下来，可以使用<code>-o</code>参数，这就相当于使用wget命令了。这样在当前目录下就会有一个sina.txt的文件存放网页源码。</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span> curl -o sina.txt www.sina.com</span><br><span class="line"><span class="meta">  %</span> Total    % Received % Xferd  Average Speed   Time    Time     Time  Current</span><br><span class="line">                                 Dload  Upload   Total   Spent    Left  Speed</span><br><span class="line">100   178  100   178    0     0   2825      0 --:--:-- --:--:-- --:--:--  2825</span><br></pre></td></tr></table></figure>
-<h1 id="自动跳转"><a href="#自动跳转" class="headerlink" title="自动跳转"></a>自动跳转</h1><p>有的网址是自动跳转的。使用<code>-L</code>参数，curl就会跳转到新的网址。</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span> curl -L www.sina.com</span><br></pre></td></tr></table></figure>
-<p>键入上面的命令，结果就自动跳转为<a href="http://www.sina.com.cn。" target="_blank" rel="noopener">www.sina.com.cn。</a></p>
-<h1 id="显示头信息"><a href="#显示头信息" class="headerlink" title="显示头信息"></a>显示头信息</h1><p><code>-i</code>参数可以显示http response的头信息，连同网页代码一起。<code>-I</code>参数则是只显示http response的头信息。</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span> curl -i www.sina.com</span><br></pre></td></tr></table></figure>
-<h1 id="显示通信过程"><a href="#显示通信过程" class="headerlink" title="显示通信过程"></a>显示通信过程</h1><p><code>-v</code>参数可以显示一次http通信的整个过程，包括端口连接和http request头信息。</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span> curl -v www.sina.com</span><br></pre></td></tr></table></figure>
-<p>如果你觉得上面的信息还不够，那么下面的命令可以查看更详细的通信过程。</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span> curl --trace output.txt www.sina.com</span><br></pre></td></tr></table></figure>
-<p>或者</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span> curl --trace-ascii output.txt www.sina.com</span><br></pre></td></tr></table></figure>
-<p>运行后，请打开output.txt文件查看。</p>
-<h1 id="发送表单信息"><a href="#发送表单信息" class="headerlink" title="发送表单信息"></a>发送表单信息</h1><p>发送表单信息有GET和POST两种方法。GET方法相对简单，只要把数据附在网址后面就行。</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span> curl example.com/form.cgi?data=xxx</span><br></pre></td></tr></table></figure>
-<p>POST方法必须把数据和网址分开，curl就要用到–data参数。</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span> curl -X POST --data "data=xxx" example.com/form.cgi</span><br></pre></td></tr></table></figure>
-<p>如果你的数据没有经过表单编码，还可以让curl为你编码，参数是<code>--data-urlencode</code>。</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span> curl -X POST--data-urlencode "date=April 1" example.com/form.cgi</span><br></pre></td></tr></table></figure>
-<h1 id="HTTP动词"><a href="#HTTP动词" class="headerlink" title="HTTP动词"></a>HTTP动词</h1><p>curl默认的HTTP动词是GET，使用<code>-X</code>参数可以支持其他动词。</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span> curl -X POST www.example.com</span><br></pre></td></tr></table></figure>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span> curl -X DELETE www.example.com</span><br></pre></td></tr></table></figure>
-<p><strong>参考</strong></p>
-<p><a href="http://www.ruanyifeng.com/blog/2011/09/curl.html" target="_blank" rel="noopener">http://www.ruanyifeng.com/blog/2011/09/curl.html</a></p>
-<p><a href="http://www.ruanyifeng.com/blog/2019/09/curl-reference.html" target="_blank" rel="noopener">http://www.ruanyifeng.com/blog/2019/09/curl-reference.html</a></p>
+            <blockquote>
+<p>快捷键总结</p>
+</blockquote>
+<h1 id="chrome"><a href="#chrome" class="headerlink" title="chrome"></a>chrome</h1><h2 id="打开新标签页"><a href="#打开新标签页" class="headerlink" title="打开新标签页"></a>打开新标签页</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Ctrl + T</span><br></pre></td></tr></table></figure>
+<h2 id="关闭当前页"><a href="#关闭当前页" class="headerlink" title="关闭当前页"></a>关闭当前页</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Ctrl + W</span><br></pre></td></tr></table></figure>
+<h1 id="金山词霸"><a href="#金山词霸" class="headerlink" title="金山词霸"></a>金山词霸</h1><h2 id="打开-关闭"><a href="#打开-关闭" class="headerlink" title="打开/关闭"></a>打开/关闭</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Alt + M</span><br></pre></td></tr></table></figure>
+<h1 id="win10"><a href="#win10" class="headerlink" title="win10"></a>win10</h1><h2 id="返回桌面"><a href="#返回桌面" class="headerlink" title="返回桌面"></a>返回桌面</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">win + D</span><br></pre></td></tr></table></figure>
+<h2 id="打开文件资源管理器"><a href="#打开文件资源管理器" class="headerlink" title="打开文件资源管理器"></a>打开文件资源管理器</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">win + E</span><br></pre></td></tr></table></figure>
+<h2 id="快速锁屏"><a href="#快速锁屏" class="headerlink" title="快速锁屏"></a>快速锁屏</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">win + L</span><br></pre></td></tr></table></figure>
+<h2 id="窗口最小化-最大化切换"><a href="#窗口最小化-最大化切换" class="headerlink" title="窗口最小化\最大化切换"></a>窗口最小化\最大化切换</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">win + ↓\↑</span><br></pre></td></tr></table></figure>
+<h2 id="切换输入法"><a href="#切换输入法" class="headerlink" title="切换输入法"></a>切换输入法</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">win + 空格</span><br></pre></td></tr></table></figure>
+<h2 id="打开任务栏上第n个程序"><a href="#打开任务栏上第n个程序" class="headerlink" title="打开任务栏上第n个程序"></a>打开任务栏上第n个程序</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">win + 数字键</span><br></pre></td></tr></table></figure>
+<h2 id="打开任务管理器"><a href="#打开任务管理器" class="headerlink" title="打开任务管理器"></a>打开任务管理器</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Ctrl + Shift + Esc</span><br></pre></td></tr></table></figure>
+<h2 id="关闭当前窗口"><a href="#关闭当前窗口" class="headerlink" title="关闭当前窗口"></a>关闭当前窗口</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Ctrl + W</span><br></pre></td></tr></table></figure>
+<h2 id="搜索"><a href="#搜索" class="headerlink" title="搜索"></a>搜索</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">win + Q</span><br></pre></td></tr></table></figure>
+<h1 id="VSCode"><a href="#VSCode" class="headerlink" title="VSCode"></a>VSCode</h1><h2 id="打开项目所在目录"><a href="#打开项目所在目录" class="headerlink" title="打开项目所在目录"></a>打开项目所在目录</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Shift + Alt + R</span><br></pre></td></tr></table></figure>
+<h2 id="格式化代码"><a href="#格式化代码" class="headerlink" title="格式化代码"></a>格式化代码</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Shift + Alt + F</span><br></pre></td></tr></table></figure>
 
           
         
@@ -958,7 +850,7 @@
 
   
   <nav class="pagination">
-    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><span class="space">&hellip;</span><a class="page-number" href="/page/24/">24</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><span class="space">&hellip;</span><a class="page-number" href="/page/25/">25</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
   </nav>
 
 
@@ -1001,7 +893,7 @@
         
           <a href="/archives/">
         
-          <span class="site-state-item-count">71</span>
+          <span class="site-state-item-count">74</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -1040,7 +932,9 @@
         
           
         
-        <span class="site-state-item-count">11</span>
+          
+        
+        <span class="site-state-item-count">12</span>
         <span class="site-state-item-name">分类</span>
         </a>
       </div>
@@ -1147,13 +1041,7 @@
         
           
         
-          
-        
-          
-        
-          
-        
-        <span class="site-state-item-count">48</span>
+        <span class="site-state-item-count">45</span>
         <span class="site-state-item-name">标签</span>
         </a>
       </div>
