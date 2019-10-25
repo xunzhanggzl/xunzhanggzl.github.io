@@ -418,30 +418,30 @@
 
       
         <h1 id="查看网页源码"><a href="#查看网页源码" class="headerlink" title="查看网页源码"></a>查看网页源码</h1><p>直接在curl命令后加上网址，就可以看到网页源码。我们以网址<a href="http://www.sina.com为例（选择该网址，主要因为它的网页代码较短）：" target="_blank" rel="noopener">www.sina.com为例（选择该网址，主要因为它的网页代码较短）：</a></p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span> curl www.sina.com</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> curl www.sina.com</span></span><br></pre></td></tr></table></figure>
 <p>如果要把这个网页保存下来，可以使用<code>-o</code>参数，这就相当于使用wget命令了。这样在当前目录下就会有一个sina.txt的文件存放网页源码。</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span> curl -o sina.txt www.sina.com</span><br><span class="line"><span class="meta">  %</span> Total    % Received % Xferd  Average Speed   Time    Time     Time  Current</span><br><span class="line">                                 Dload  Upload   Total   Spent    Left  Speed</span><br><span class="line">100   178  100   178    0     0   2825      0 --:--:-- --:--:-- --:--:--  2825</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> curl -o sina.txt www.sina.com</span></span><br><span class="line"><span class="meta">  %</span><span class="bash"> Total    % Received % Xferd  Average Speed   Time    Time     Time  Current</span></span><br><span class="line">                                 Dload  Upload   Total   Spent    Left  Speed</span><br><span class="line">100   178  100   178    0     0   2825      0 --:--:-- --:--:-- --:--:--  2825</span><br></pre></td></tr></table></figure>
 <h1 id="自动跳转"><a href="#自动跳转" class="headerlink" title="自动跳转"></a>自动跳转</h1><p>有的网址是自动跳转的。使用<code>-L</code>参数，curl就会跳转到新的网址。</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span> curl -L www.sina.com</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> curl -L www.sina.com</span></span><br></pre></td></tr></table></figure>
 <p>键入上面的命令，结果就自动跳转为<a href="http://www.sina.com.cn。" target="_blank" rel="noopener">www.sina.com.cn。</a></p>
 <h1 id="显示头信息"><a href="#显示头信息" class="headerlink" title="显示头信息"></a>显示头信息</h1><p><code>-i</code>参数可以显示http response的头信息，连同网页代码一起。<code>-I</code>参数则是只显示http response的头信息。</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span> curl -i www.sina.com</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> curl -i www.sina.com</span></span><br></pre></td></tr></table></figure>
 <h1 id="显示通信过程"><a href="#显示通信过程" class="headerlink" title="显示通信过程"></a>显示通信过程</h1><p><code>-v</code>参数可以显示一次http通信的整个过程，包括端口连接和http request头信息。</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span> curl -v www.sina.com</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> curl -v www.sina.com</span></span><br></pre></td></tr></table></figure>
 <p>如果你觉得上面的信息还不够，那么下面的命令可以查看更详细的通信过程。</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span> curl --trace output.txt www.sina.com</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> curl --trace output.txt www.sina.com</span></span><br></pre></td></tr></table></figure>
 <p>或者</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span> curl --trace-ascii output.txt www.sina.com</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> curl --trace-ascii output.txt www.sina.com</span></span><br></pre></td></tr></table></figure>
 <p>运行后，请打开output.txt文件查看。</p>
 <h1 id="发送表单信息"><a href="#发送表单信息" class="headerlink" title="发送表单信息"></a>发送表单信息</h1><p>发送表单信息有GET和POST两种方法。GET方法相对简单，只要把数据附在网址后面就行。</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span> curl example.com/form.cgi?data=xxx</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> curl example.com/form.cgi?data=xxx</span></span><br></pre></td></tr></table></figure>
 <p>POST方法必须把数据和网址分开，curl就要用到–data参数。</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span> curl -X POST --data "data=xxx" example.com/form.cgi</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> curl -X POST --data <span class="string">"data=xxx"</span> example.com/form.cgi</span></span><br></pre></td></tr></table></figure>
 <p>如果你的数据没有经过表单编码，还可以让curl为你编码，参数是<code>--data-urlencode</code>。</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span> curl -X POST--data-urlencode "date=April 1" example.com/form.cgi</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> curl -X POST--data-urlencode <span class="string">"date=April 1"</span> example.com/form.cgi</span></span><br></pre></td></tr></table></figure>
 <h1 id="HTTP动词"><a href="#HTTP动词" class="headerlink" title="HTTP动词"></a>HTTP动词</h1><p>curl默认的HTTP动词是GET，使用<code>-X</code>参数可以支持其他动词。</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span> curl -X POST www.example.com</span><br></pre></td></tr></table></figure>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span> curl -X DELETE www.example.com</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> curl -X POST www.example.com</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> curl -X DELETE www.example.com</span></span><br></pre></td></tr></table></figure>
 <p><strong>参考</strong></p>
 <p><a href="http://www.ruanyifeng.com/blog/2011/09/curl.html" target="_blank" rel="noopener">http://www.ruanyifeng.com/blog/2011/09/curl.html</a></p>
 <p><a href="http://www.ruanyifeng.com/blog/2019/09/curl-reference.html" target="_blank" rel="noopener">http://www.ruanyifeng.com/blog/2019/09/curl-reference.html</a></p>
@@ -570,7 +570,7 @@
         
           <a href="/archives/">
         
-          <span class="site-state-item-count">75</span>
+          <span class="site-state-item-count">77</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -720,7 +720,9 @@
         
           
         
-        <span class="site-state-item-count">45</span>
+          
+        
+        <span class="site-state-item-count">46</span>
         <span class="site-state-item-name">标签</span>
         </a>
       </div>
