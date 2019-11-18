@@ -326,7 +326,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/10/19/git-常用操作小结/"/>
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/10/25/CSS-stylus/"/>
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="gzl"/>
@@ -346,7 +346,7 @@
           <h1 class="post-title" itemprop="name headline">
                 
                 
-                <a href="/2019/10/19/git-常用操作小结/" class="post-title-link" itemprop="url">git-常用操作小结</a>
+                <a href="/2019/10/25/CSS-stylus/" class="post-title-link" itemprop="url">CSS-stylus</a>
               
             
           </h1>
@@ -371,7 +371,7 @@
                 
               
 
-              <time title="创建时间：2019-10-19 16:11:24 / 修改时间：16:26:13" itemprop="dateCreated datePublished" datetime="2019-10-19T16:11:24+08:00">2019-10-19</time>
+              <time title="创建时间：2019-10-25 08:33:21 / 修改时间：09:35:15" itemprop="dateCreated datePublished" datetime="2019-10-25T08:33:21+08:00">2019-10-25</time>
             </span>
           
 
@@ -390,7 +390,7 @@
                 <span class="post-meta-item-text">分类于</span>
               
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/git/" itemprop="url" rel="index"><span itemprop="name">git</span></a></span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/CSS/" itemprop="url" rel="index"><span itemprop="name">CSS</span></a></span>
 
                 
                 
@@ -432,15 +432,20 @@
       
         
           
-            <h1 id="git-log退出"><a href="#git-log退出" class="headerlink" title="git log退出"></a>git log退出</h1><p>在英文状态下按 q</p>
-<h1 id="git-clone重命名"><a href="#git-clone重命名" class="headerlink" title="git clone重命名"></a>git clone重命名</h1><p>如何重命名仓库，对当前文件夹已经存在同名仓库的时候会很有用：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git <span class="built_in">clone</span> git@github.com:muwenzi/repo.git new-repo-name</span><br></pre></td></tr></table></figure>
-<h1 id="git-rm"><a href="#git-rm" class="headerlink" title="git rm"></a>git rm</h1><p>有时候在项目开发过程中，把某些目录或文件加入<code>.gitignore</code>后发现并未生效，原因是<code>.gitignore</code><strong>只能忽略那些原来没有被track的文件</strong>，如果某些文件已经被纳入了版本管理中，则修改<code>.gitignore</code>是无效的。那么解决方法就是先把本地缓存删除（改变成未track状态），然后再提交：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">git rm -r --cached .</span><br><span class="line">git add .</span><br><span class="line">git commit -m <span class="string">'update .gitignore</span></span><br></pre></td></tr></table></figure>
-<p><code>.gitignore</code> 的匹配规则：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">.a       <span class="comment"># 忽略所有 .a 结尾的文件</span></span><br><span class="line">!lib.a    <span class="comment"># 但 lib.a 除外</span></span><br><span class="line">/TODO     <span class="comment"># 仅仅忽略项目根目录下的 TODO 文件，不包括 subdir/TODO</span></span><br><span class="line">build/    <span class="comment"># 忽略 build/ 目录下的所有文件</span></span><br><span class="line">doc/.txt <span class="comment"># 会忽略 doc/notes.txt 但不包括 doc/server/arch.txt</span></span><br></pre></td></tr></table></figure>
-<p><strong>参考</strong></p>
-<p><a href="https://github.com/muwenzi/Program-Blog/issues/13" target="_blank" rel="noopener">Git常用操作小结</a></p>
+            <h1 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h1><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install stylus -g</span><br></pre></td></tr></table></figure>
+<h1 id="编译命令"><a href="#编译命令" class="headerlink" title="编译命令"></a>编译命令</h1><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">stylus index.styl -o index.css   //index是创建的文件名  -o 的意思是-out 输出css文件</span><br></pre></td></tr></table></figure>
+<p>你会发现stylus自动帮我们在本目录下编译并生成好了index.css文件</p>
+<p>每修改一次stylus文件就要再输入一次stylus命令进行重新编译，这样对于我们开发者来说极大的不便。<br>所以stylus提供了解决的方法，就是在原有基础上加上-w</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">stylus -w index.styl -o index.css   //在原有的基础上加了-w  w的意思是watch，也就是监听</span><br></pre></td></tr></table></figure>
+<p>这样就可以实时监听修改，并实时编译。</p>
+<p>这是写好的 stylus 代码</p>
+<figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">*</span><br><span class="line">  <span class="attribute">margin</span> <span class="number">0</span></span><br><span class="line">  <span class="attribute">padding</span> <span class="number">0</span></span><br><span class="line">.tab</span><br><span class="line">  <span class="attribute">display</span> flex</span><br><span class="line">  <span class="attribute">width</span> <span class="number">100%</span></span><br><span class="line">  <span class="attribute">height</span> <span class="number">40px</span></span><br><span class="line">  <span class="attribute">line-height</span> <span class="number">40px</span></span><br><span class="line">  .tab-item</span><br><span class="line">    <span class="attribute">flex</span> <span class="number">1</span></span><br><span class="line">    <span class="attribute">text-align</span> center</span><br><span class="line">    &amp; &gt; a</span><br><span class="line">      <span class="attribute">display</span> block</span><br><span class="line">      <span class="attribute">font-size</span> <span class="number">14px</span></span><br><span class="line">      <span class="attribute">color</span> rgb(<span class="number">77</span>, <span class="number">85</span>, <span class="number">93</span>)</span><br><span class="line">      <span class="attribute">text-decoration</span> none</span><br></pre></td></tr></table></figure>
+<p>这是编译生成后的 css 代码</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">* &#123;</span><br><span class="line">  <span class="attribute">margin</span>: <span class="number">0</span>;</span><br><span class="line">  <span class="attribute">padding</span>: <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-class">.tab</span> &#123;</span><br><span class="line">  <span class="attribute">display</span>: flex;</span><br><span class="line">  <span class="attribute">width</span>: <span class="number">100%</span>;</span><br><span class="line">  <span class="attribute">height</span>: <span class="number">40px</span>;</span><br><span class="line">  <span class="attribute">line-height</span>: <span class="number">40px</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-class">.tab</span> <span class="selector-class">.tab-item</span> &#123;</span><br><span class="line">  <span class="attribute">flex</span>: <span class="number">1</span>;</span><br><span class="line">  <span class="attribute">text-align</span>: center;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-class">.tab</span> <span class="selector-class">.tab-item</span> &gt; <span class="selector-tag">a</span> &#123;</span><br><span class="line">  <span class="attribute">display</span>: block;</span><br><span class="line">  <span class="attribute">font-size</span>: <span class="number">14px</span>;</span><br><span class="line">  <span class="attribute">color</span>: <span class="number">#4d555d</span>;</span><br><span class="line">  <span class="attribute">text-decoration</span>: none;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h1 id="注释"><a href="#注释" class="headerlink" title="注释"></a>注释</h1><blockquote>
+<p><a href="https://www.zhangxinxu.com/jq/stylus/comments.php" target="_blank" rel="noopener">https://www.zhangxinxu.com/jq/stylus/comments.php</a></p>
+</blockquote>
+<p>在 stylus 中的单行注释不会写入编译后的 css 中，多行注释在<code>compress</code>选项未启用的时候才会被输出</p>
 
           
         
@@ -499,7 +504,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/10/14/node-http-server/"/>
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/10/22/node-git-open/"/>
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="gzl"/>
@@ -519,7 +524,7 @@
           <h1 class="post-title" itemprop="name headline">
                 
                 
-                <a href="/2019/10/14/node-http-server/" class="post-title-link" itemprop="url">node-http-server</a>
+                <a href="/2019/10/22/node-git-open/" class="post-title-link" itemprop="url">node-git-open</a>
               
             
           </h1>
@@ -544,7 +549,7 @@
                 
               
 
-              <time title="创建时间：2019-10-14 15:13:53 / 修改时间：15:20:34" itemprop="dateCreated datePublished" datetime="2019-10-14T15:13:53+08:00">2019-10-14</time>
+              <time title="创建时间：2019-10-22 14:31:28 / 修改时间：14:35:08" itemprop="dateCreated datePublished" datetime="2019-10-22T14:31:28+08:00">2019-10-22</time>
             </span>
           
 
@@ -606,12 +611,13 @@
         
           
             <blockquote>
-<p><a href="https://www.npmjs.com/package/http-server" target="_blank" rel="noopener">https://www.npmjs.com/package/http-server</a></p>
+<p><a href="https://www.npmjs.com/package/git-open" target="_blank" rel="noopener">https://www.npmjs.com/package/git-open</a></p>
 </blockquote>
-<p>使用 <code>http-server</code> 可以快速开启一个小型的node静态服务</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install http-server -g</span><br></pre></td></tr></table></figure>
-<p>开启</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">http-server</span><br><span class="line"></span><br><span class="line">hs <span class="comment"># 快捷方式</span></span><br><span class="line"></span><br><span class="line">usage: http-server [path] [options]</span><br></pre></td></tr></table></figure>
+<p>安装</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install --global git-open</span><br></pre></td></tr></table></figure>
+<p>使用：在一次git push之后，运行</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git open</span><br></pre></td></tr></table></figure>
+<p>即可打开该项目的网页地址</p>
 
           
         
@@ -670,7 +676,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/10/13/快捷键/"/>
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/10/22/node-fanyi/"/>
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="gzl"/>
@@ -690,7 +696,7 @@
           <h1 class="post-title" itemprop="name headline">
                 
                 
-                <a href="/2019/10/13/快捷键/" class="post-title-link" itemprop="url">快捷键</a>
+                <a href="/2019/10/22/node-fanyi/" class="post-title-link" itemprop="url">node-fanyi</a>
               
             
           </h1>
@@ -715,23 +721,13 @@
                 
               
 
-              <time title="创建时间：2019-10-13 17:22:56" itemprop="dateCreated datePublished" datetime="2019-10-13T17:22:56+08:00">2019-10-13</time>
+              <time title="创建时间：2019-10-22 09:48:40 / 修改时间：09:55:22" itemprop="dateCreated datePublished" datetime="2019-10-22T09:48:40+08:00">2019-10-22</time>
             </span>
           
 
           
             
 
-            
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">更新于</span>
-                
-                <time title="修改时间：2019-10-25 09:13:02" itemprop="dateModified" datetime="2019-10-25T09:13:02+08:00">2019-10-25</time>
-              </span>
             
           
 
@@ -744,7 +740,7 @@
                 <span class="post-meta-item-text">分类于</span>
               
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/快捷键/" itemprop="url" rel="index"><span itemprop="name">快捷键</span></a></span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/英语/" itemprop="url" rel="index"><span itemprop="name">英语</span></a></span>
 
                 
                 
@@ -787,25 +783,12 @@
         
           
             <blockquote>
-<p>快捷键总结</p>
+<p><a href="https://www.npmjs.com/package/fanyi" target="_blank" rel="noopener">https://www.npmjs.com/package/fanyi</a></p>
 </blockquote>
-<h1 id="chrome"><a href="#chrome" class="headerlink" title="chrome"></a>chrome</h1><h2 id="打开新标签页"><a href="#打开新标签页" class="headerlink" title="打开新标签页"></a>打开新标签页</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Ctrl + T</span><br></pre></td></tr></table></figure>
-<h2 id="关闭当前页"><a href="#关闭当前页" class="headerlink" title="关闭当前页"></a>关闭当前页</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Ctrl + W</span><br></pre></td></tr></table></figure>
-<h1 id="金山词霸"><a href="#金山词霸" class="headerlink" title="金山词霸"></a>金山词霸</h1><h2 id="打开-关闭"><a href="#打开-关闭" class="headerlink" title="打开/关闭"></a>打开/关闭</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Alt + M</span><br></pre></td></tr></table></figure>
-<h1 id="win10"><a href="#win10" class="headerlink" title="win10"></a>win10</h1><h2 id="返回桌面"><a href="#返回桌面" class="headerlink" title="返回桌面"></a>返回桌面</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">win + D</span><br></pre></td></tr></table></figure>
-<h2 id="打开文件资源管理器"><a href="#打开文件资源管理器" class="headerlink" title="打开文件资源管理器"></a>打开文件资源管理器</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">win + E</span><br></pre></td></tr></table></figure>
-<h2 id="快速锁屏"><a href="#快速锁屏" class="headerlink" title="快速锁屏"></a>快速锁屏</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">win + L</span><br></pre></td></tr></table></figure>
-<h2 id="窗口最小化-最大化切换"><a href="#窗口最小化-最大化切换" class="headerlink" title="窗口最小化\最大化切换"></a>窗口最小化\最大化切换</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">win + ↓\↑</span><br></pre></td></tr></table></figure>
-<h2 id="切换输入法"><a href="#切换输入法" class="headerlink" title="切换输入法"></a>切换输入法</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">win + 空格</span><br></pre></td></tr></table></figure>
-<h2 id="打开任务栏上第n个程序"><a href="#打开任务栏上第n个程序" class="headerlink" title="打开任务栏上第n个程序"></a>打开任务栏上第n个程序</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">win + 数字键</span><br></pre></td></tr></table></figure>
-<h2 id="打开任务管理器"><a href="#打开任务管理器" class="headerlink" title="打开任务管理器"></a>打开任务管理器</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Ctrl + Shift + Esc</span><br></pre></td></tr></table></figure>
-<h2 id="关闭当前窗口"><a href="#关闭当前窗口" class="headerlink" title="关闭当前窗口"></a>关闭当前窗口</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Ctrl + W</span><br></pre></td></tr></table></figure>
-<h2 id="搜索"><a href="#搜索" class="headerlink" title="搜索"></a>搜索</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">win + Q</span><br></pre></td></tr></table></figure>
-<h1 id="VSCode"><a href="#VSCode" class="headerlink" title="VSCode"></a>VSCode</h1><h2 id="打开项目所在目录"><a href="#打开项目所在目录" class="headerlink" title="打开项目所在目录"></a>打开项目所在目录</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Shift + Alt + R</span><br></pre></td></tr></table></figure>
-<h2 id="格式化代码"><a href="#格式化代码" class="headerlink" title="格式化代码"></a>格式化代码</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Shift + Alt + F</span><br></pre></td></tr></table></figure>
-<h2 id="多行注释"><a href="#多行注释" class="headerlink" title="多行注释"></a>多行注释</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Shift + Alt + A</span><br></pre></td></tr></table></figure>
-<h1 id="terminal"><a href="#terminal" class="headerlink" title="terminal"></a>terminal</h1><p>打开 testforgit 文件</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">E:\&gt;start testforgit</span><br></pre></td></tr></table></figure>
+<p>安装</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install fanyi -g</span><br></pre></td></tr></table></figure>
+<p>使用：直接在命令行里输入想翻译的词即可 <code>fy</code> 是简写，完整写法是 <code>fanyi</code>。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ fy love</span><br></pre></td></tr></table></figure>
 
           
         
@@ -853,7 +836,7 @@
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/2/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/">4</a><span class="space">&hellip;</span><a class="page-number" href="/page/27/">27</a><a class="extend next" rel="next" href="/page/4/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
+    <a class="extend prev" rel="prev" href="/page/2/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/">4</a><span class="space">&hellip;</span><a class="page-number" href="/page/28/">28</a><a class="extend next" rel="next" href="/page/4/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
   </nav>
 
 
@@ -896,7 +879,7 @@
         
           <a href="/archives/">
         
-          <span class="site-state-item-count">80</span>
+          <span class="site-state-item-count">83</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -955,8 +938,6 @@
           
         
         
-        
-          
         
           
         
