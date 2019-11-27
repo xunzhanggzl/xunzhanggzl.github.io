@@ -566,13 +566,23 @@
                 
               
 
-              <time title="创建时间：2018-08-25 11:08:33 / 修改时间：12:17:13" itemprop="dateCreated datePublished" datetime="2018-08-25T11:08:33+08:00">2018-08-25</time>
+              <time title="创建时间：2018-08-25 11:08:33" itemprop="dateCreated datePublished" datetime="2018-08-25T11:08:33+08:00">2018-08-25</time>
             </span>
           
 
           
             
 
+            
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2019-11-27 09:39:17" itemprop="dateModified" datetime="2019-11-27T09:39:17+08:00">2019-11-27</time>
+              </span>
             
           
 
@@ -612,22 +622,21 @@
       
         
           
-            <h3 id="一、DOM基本操作"><a href="#一、DOM基本操作" class="headerlink" title="一、DOM基本操作"></a>一、DOM基本操作</h3><pre><code>1.getElementById方法定义在Document.prototype上，即Element节点上不能使用。
-
-2.getElementsByName方法定义在HTMLDocument.prototype上，即非html中的document
-不能使用(xml document,Element)
-
-3.getElementsByTagName方法定义在Document.prototype和Element.prototype上
-
-4.HTMLDocument.prototype定义了一些常用属性，body,head分别指代HTML文档中的&lt;body&gt;和
-&lt;head&gt;标签
-
-5.Document.prototype上定义了documentElement属性，指代文档的根元素，在HTML文档中，
-他总是指代&lt;html&gt;元素
-
-6.getElementsByClassName,querySelectorAll,querySelector在Document.prototype,
-Element.prototype类中均有定义
-</code></pre><h3 id="二、DOM结构树"><a href="#二、DOM结构树" class="headerlink" title="二、DOM结构树"></a>二、DOM结构树</h3><pre><code>            1.Document        HTMLDocument
+            <h3 id="一、DOM基本操作"><a href="#一、DOM基本操作" class="headerlink" title="一、DOM基本操作"></a>一、DOM基本操作</h3><ol>
+<li><p>getElementById方法定义在Document.prototype上，即Element节点上不能使用。</p>
+</li>
+<li><p>getElementsByName方法定义在HTMLDocument.prototype上，即非html中的document<br>不能使用(xml document,Element)</p>
+</li>
+<li><p>getElementsByTagName方法定义在Document.prototype和Element.prototype上</p>
+</li>
+<li><p>HTMLDocument.prototype定义了一些常用属性，body,head分别指代HTML文档中的<body>和<head>标签</head></body></p>
+</li>
+<li><p>Document.prototype上定义了documentElement属性，指代文档的根元素，在HTML文档中，<br>他总是指代<code>&lt;html&gt;</code>元素</p>
+</li>
+<li><p>getElementsByClassName,querySelectorAll,querySelector在Document.prototype,<br>Element.prototype类中均有定义</p>
+</li>
+</ol>
+<h3 id="二、DOM结构树"><a href="#二、DOM结构树" class="headerlink" title="二、DOM结构树"></a>二、DOM结构树</h3><pre><code>            1.Document        HTMLDocument
 
                               1)Text
             2.CharacterData
