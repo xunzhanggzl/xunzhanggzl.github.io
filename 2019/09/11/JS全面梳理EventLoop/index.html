@@ -101,7 +101,7 @@
 <meta property="og:description" content="https://juejin.im/post/5d5b4c2df265da03dd3d73e5  CPU、进程、线程之间的关系计算机的核心是CPU，它承担了所有的计算任务。 它就像一座工厂，时刻在运行。 假定工厂的电力有限，一次只能供给一个车间使用。 也就是说，一个车间开工的时候，其他车间都必须停工。 背后的含义就是，单个CPU一次只能运行一个任务。 进程就好比工厂的车间，它代表CPU所能处理的">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://yoursite.com/img/JavaScript/task2.png">
-<meta property="og:updated_time" content="2019-12-03T01:16:55.064Z">
+<meta property="og:updated_time" content="2019-12-03T07:15:36.559Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="JS全面梳理EventLoop">
 <meta name="twitter:description" content="https://juejin.im/post/5d5b4c2df265da03dd3d73e5  CPU、进程、线程之间的关系计算机的核心是CPU，它承担了所有的计算任务。 它就像一座工厂，时刻在运行。 假定工厂的电力有限，一次只能供给一个车间使用。 也就是说，一个车间开工的时候，其他车间都必须停工。 背后的含义就是，单个CPU一次只能运行一个任务。 进程就好比工厂的车间，它代表CPU所能处理的">
@@ -389,7 +389,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2019-12-03 09:16:55" itemprop="dateModified" datetime="2019-12-03T09:16:55+08:00">2019-12-03</time>
+                <time title="修改时间：2019-12-03 15:15:36" itemprop="dateModified" datetime="2019-12-03T15:15:36+08:00">2019-12-03</time>
               </span>
             
           
@@ -480,7 +480,7 @@
 <ul>
 <li>用于3D绘制等</li>
 </ul>
-<p><strong>渲染进程</strong>，就是我们说的<strong>浏览器内核</strong></p>
+<p>渲染进程，就是我们说的<strong>浏览器内核</strong></p>
 <ul>
 <li>负责页面渲染，脚本执行，事件处理等</li>
 <li>每个tab页一个渲染进程</li>
@@ -490,20 +490,23 @@
 <h1 id="浏览器内核（渲染进程）"><a href="#浏览器内核（渲染进程）" class="headerlink" title="浏览器内核（渲染进程）"></a>浏览器内核（渲染进程）</h1><p>进程和线程是一对多的关系，也就是说一个进程包含了多条线程。</p>
 <p>而对于<strong>渲染进程</strong>来说，它当然也是多线程的了，接下来我们来看一下渲染进程包含哪些线程。</p>
 <ul>
-<li>GUI渲染线程<ul>
+<li><p>GUI渲染线程</p>
+<ul>
 <li>负责渲染页面，布局和绘制</li>
 <li>页面需要重绘和回流时，该线程就会执行</li>
 </ul>
-</li>
-<li><p>与js引擎线程互斥，防止渲染结果不可预期</p>
+<ul>
+<li>与js引擎线程互斥，防止渲染结果不可预期</li>
+</ul>
 </li>
 <li><p>JS引擎线程</p>
 <ul>
 <li>负责处理解析和执行javascript脚本程序</li>
 <li>只有一个JS引擎线程（单线程）</li>
 </ul>
-</li>
-<li><p>与GUI渲染线程互斥，防止渲染结果不可预期</p>
+<ul>
+<li>与GUI渲染线程互斥，防止渲染结果不可预期</li>
+</ul>
 </li>
 <li><p>事件触发线程</p>
 <ul>
@@ -516,21 +519,16 @@
 <li>setInterval与setTimeout所在的线程</li>
 <li>定时任务并不是由JS引擎计时的，是由定时触发线程来计时的</li>
 </ul>
-</li>
-<li><p>计时完毕后，通知事件触发线程</p>
-</li>
-<li><p>异步http请求线程</p>
 <ul>
+<li>计时完毕后，通知事件触发线程</li>
+</ul>
+</li>
+<li>异步http请求线程<ul>
 <li>浏览器有一个单独的线程用于处理AJAX请求</li>
 <li>当请求完成时，若有回调函数，通知事件触发线程</li>
 </ul>
 </li>
 </ul>
-<p>当我们了解了渲染进程包含的这些线程后，我们思考两个问题：</p>
-<ol>
-<li>为什么 javascript 是单线程的</li>
-<li>为什么 GUI 渲染线程为什么与 JS 引擎线程互斥</li>
-</ol>
 <h2 id="为什么-javascript-是单线程的"><a href="#为什么-javascript-是单线程的" class="headerlink" title="为什么 javascript 是单线程的"></a>为什么 javascript 是单线程的</h2><p>首先是历史原因，在创建 javascript 这门语言时，多进程多线程的架构并不流行，硬件支持并不好。</p>
 <p>其次是因为多线程的复杂性，多线程操作需要加锁，编码的复杂性会增高。</p>
 <p>而且，如果同时操作 DOM ，在多线程不加锁的情况下，最终会导致 DOM 渲染的结果不可预期。</p>
@@ -674,7 +672,7 @@
         
           <a href="/archives/">
         
-          <span class="site-state-item-count">83</span>
+          <span class="site-state-item-count">84</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -733,8 +731,6 @@
           
         
         
-        
-          
         
           
         
