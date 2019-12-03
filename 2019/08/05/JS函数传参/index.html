@@ -93,18 +93,18 @@
   };
 </script>
 
-  <meta name="description" content="首先，函数传参不论是传递基本类型值还是引用类型值，都相当于最基本的赋值语句 x = a  函数传参-基本类型值123456function foo(x) &amp;#123;    x = x + 1;&amp;#125;let a = 2;foo(a);console.log(a);   // 2 上面的传参过程就相当于基本的赋值 x = a，然后 x ++，a 不会随之改变。 如果想要改变基本类型值，需要这样">
+  <meta name="description" content="首先，函数传参不论是传递基本类型值还是引用类型值，都相当于最基本的赋值语句 x = a  When we pass primitive values into a function, the function copies the values into its parameters. It’s effectively the same as using =. 函数传参-基本类型值123456fu">
 <meta name="keywords" content="函数传参,值和引用">
 <meta property="og:type" content="article">
 <meta property="og:title" content="JS函数传参">
 <meta property="og:url" content="http://yoursite.com/2019/08/05/JS函数传参/index.html">
 <meta property="og:site_name" content="gzl的博客">
-<meta property="og:description" content="首先，函数传参不论是传递基本类型值还是引用类型值，都相当于最基本的赋值语句 x = a  函数传参-基本类型值123456function foo(x) &amp;#123;    x = x + 1;&amp;#125;let a = 2;foo(a);console.log(a);   // 2 上面的传参过程就相当于基本的赋值 x = a，然后 x ++，a 不会随之改变。 如果想要改变基本类型值，需要这样">
+<meta property="og:description" content="首先，函数传参不论是传递基本类型值还是引用类型值，都相当于最基本的赋值语句 x = a  When we pass primitive values into a function, the function copies the values into its parameters. It’s effectively the same as using =. 函数传参-基本类型值123456fu">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-08-05T05:29:28.783Z">
+<meta property="og:updated_time" content="2019-11-30T02:48:52.419Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="JS函数传参">
-<meta name="twitter:description" content="首先，函数传参不论是传递基本类型值还是引用类型值，都相当于最基本的赋值语句 x = a  函数传参-基本类型值123456function foo(x) &amp;#123;    x = x + 1;&amp;#125;let a = 2;foo(a);console.log(a);   // 2 上面的传参过程就相当于基本的赋值 x = a，然后 x ++，a 不会随之改变。 如果想要改变基本类型值，需要这样">
+<meta name="twitter:description" content="首先，函数传参不论是传递基本类型值还是引用类型值，都相当于最基本的赋值语句 x = a  When we pass primitive values into a function, the function copies the values into its parameters. It’s effectively the same as using =. 函数传参-基本类型值123456fu">
 
 
 
@@ -373,13 +373,23 @@
                 
               
 
-              <time title="创建时间：2019-08-05 12:22:29 / 修改时间：13:29:28" itemprop="dateCreated datePublished" datetime="2019-08-05T12:22:29+08:00">2019-08-05</time>
+              <time title="创建时间：2019-08-05 12:22:29" itemprop="dateCreated datePublished" datetime="2019-08-05T12:22:29+08:00">2019-08-05</time>
             </span>
           
 
           
             
 
+            
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2019-11-30 10:48:52" itemprop="dateModified" datetime="2019-11-30T10:48:52+08:00">2019-11-30</time>
+              </span>
             
           
 
@@ -433,6 +443,7 @@
 
       
         <p>首先，函数传参不论是传递基本类型值还是引用类型值，都相当于最基本的赋值语句 x = a </p>
+<p>When we pass primitive values into a function, the function copies the values into its parameters. It’s effectively the same as using <code>=</code>.</p>
 <h1 id="函数传参-基本类型值"><a href="#函数传参-基本类型值" class="headerlink" title="函数传参-基本类型值"></a>函数传参-基本类型值</h1><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">foo</span>(<span class="params">x</span>) </span>&#123;</span><br><span class="line">    x = x + <span class="number">1</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">let</span> a = <span class="number">2</span>;</span><br><span class="line">foo(a);</span><br><span class="line"><span class="built_in">console</span>.log(a);   <span class="comment">// 2</span></span><br></pre></td></tr></table></figure>
 <p>上面的传参过程就相当于基本的赋值 x = a，然后 x ++，a 不会随之改变。</p>
 <p>如果想要改变基本类型值，需要这样借助引用类型值：</p>
@@ -717,7 +728,7 @@
         
           
         
-        <span class="site-state-item-count">43</span>
+        <span class="site-state-item-count">42</span>
         <span class="site-state-item-name">标签</span>
         </a>
       </div>
