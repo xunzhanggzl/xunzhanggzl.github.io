@@ -100,7 +100,7 @@
 <meta property="og:site_name" content="gzl的博客">
 <meta property="og:description" content="官网：https://pipenv.kennethreitz.org/en/latest/ 安装1pip install pipenv 查看版本1pipenv --version 第一个工程项目 12mkdir mywebcd myweb 初始化python3虚拟环境1234567891011121314myweb&amp;gt;pipenv --python 3Creating a virtualenv">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-11-24T13:49:52.952Z">
+<meta property="og:updated_time" content="2019-12-04T14:05:30.086Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="pipenv常用命令">
 <meta name="twitter:description" content="官网：https://pipenv.kennethreitz.org/en/latest/ 安装1pip install pipenv 查看版本1pipenv --version 第一个工程项目 12mkdir mywebcd myweb 初始化python3虚拟环境1234567891011121314myweb&amp;gt;pipenv --python 3Creating a virtualenv">
@@ -387,7 +387,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2019-11-24 21:49:52" itemprop="dateModified" datetime="2019-11-24T21:49:52+08:00">2019-11-24</time>
+                <time title="修改时间：2019-12-04 22:05:30" itemprop="dateModified" datetime="2019-12-04T22:05:30+08:00">2019-12-04</time>
               </span>
             
           
@@ -474,7 +474,7 @@
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">[scripts]</span><br><span class="line">start = <span class="string">"python main.py"</span></span><br><span class="line"><span class="built_in">test</span> = <span class="string">"pytest"</span></span><br><span class="line">list = <span class="string">"pip list"</span></span><br></pre></td></tr></table></figure>
 <h1 id="导入-requirements-txt"><a href="#导入-requirements-txt" class="headerlink" title="导入 requirements.txt"></a>导入 requirements.txt</h1><p>If you only have a <code>requirements.txt</code> file available when running <code>pipenv install</code>, pipenv will automatically import the contents of this file and create a <code>Pipfile</code> for you.</p>
 <p>You can also specify <code>$ pipenv install -r path/to/requirements.txt</code> to import a requirements file.</p>
-<p>只要目录下有 requirements.txt 这个文件，直接可以执行 <code>pipenv install</code> 会自动创建虚拟环境（如果没有的话）</p>
+<p>上面的文档还是要读的仔细一点，如果已经有了 Pipfile 和 requirements.txt 的话，命令应该是 <code>pipenv install -r requirements.txt</code> ，如果没有 Pipfile 的话（即尚未初始化虚拟环境），可以使用 <code>pipenv install</code>。</p>
 <h1 id="生成-requirements-txt"><a href="#生成-requirements-txt" class="headerlink" title="生成 requirements.txt"></a>生成 requirements.txt</h1><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 生成requirements.txt文件 generate a requirements.txt out of it:</span></span><br><span class="line">$ pipenv lock -r</span><br><span class="line"></span><br><span class="line"><span class="comment"># 生成dev-packages的requirements.txt文件</span></span><br><span class="line"><span class="comment"># If you wish to generate a requirements.txt with only the development requirements you can do that too!</span></span><br><span class="line">$ pipenv lock -r -d</span><br></pre></td></tr></table></figure>
 
       
@@ -592,7 +592,7 @@
         
           <a href="/archives/">
         
-          <span class="site-state-item-count">84</span>
+          <span class="site-state-item-count">85</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -736,7 +736,9 @@
         
           
         
-        <span class="site-state-item-count">42</span>
+          
+        
+        <span class="site-state-item-count">43</span>
         <span class="site-state-item-name">标签</span>
         </a>
       </div>
