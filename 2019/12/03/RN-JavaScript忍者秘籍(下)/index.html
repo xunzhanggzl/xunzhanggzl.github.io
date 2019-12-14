@@ -1,0 +1,1000 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2"/>
+<meta name="theme-color" content="#222"/>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.7.0"/>
+
+<link rel="stylesheet" href="/css/main.css?v=7.2.0"/>
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=7.2.0">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=7.2.0">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=7.2.0">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=7.2.0" color="#222">
+
+
+
+
+
+
+
+<script id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '7.2.0',
+    sidebar: {"position":"left","display":"post","offset":12,"onmobile":false},
+    back2top: {"enable":true,"sidebar":false,"scrollpercent":false},
+    copycode: {"enable":false,"show_result":false,"style":null},
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    },
+    translation: {
+      copy_button: '复制',
+      copy_success: '复制成功',
+      copy_failure: '复制失败'
+    }
+  };
+</script>
+
+  <meta name="description" content="第十二章DOM 的特性和属性当访问元素的特性值时，我们可以使用 DOM 方法： setAttribute getAttribute，或使用 DOM 对象上与之相对应的属性（div.id）。 下面的代码说明并非所有的元素特性都能被属性表示，自定义的特性并不能被元素属性表示，必须通过 setAttribute getAttribute 才能访问。 123456789101112131415161718">
+<meta name="keywords" content="读书笔记">
+<meta property="og:type" content="article">
+<meta property="og:title" content="RN-JavaScript忍者秘籍(下)">
+<meta property="og:url" content="http://yoursite.com/2019/12/03/RN-JavaScript忍者秘籍(下)/index.html">
+<meta property="og:site_name" content="gzl的博客">
+<meta property="og:description" content="第十二章DOM 的特性和属性当访问元素的特性值时，我们可以使用 DOM 方法： setAttribute getAttribute，或使用 DOM 对象上与之相对应的属性（div.id）。 下面的代码说明并非所有的元素特性都能被属性表示，自定义的特性并不能被元素属性表示，必须通过 setAttribute getAttribute 才能访问。 123456789101112131415161718">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://yoursite.com/img/JS忍者/13_1.png">
+<meta property="og:image" content="http://yoursite.com/img/JS忍者/13_2.png">
+<meta property="og:image" content="http://yoursite.com/img/JS忍者/13_3.png">
+<meta property="og:image" content="http://yoursite.com/img/JS忍者/13_4.png">
+<meta property="og:updated_time" content="2019-12-14T09:18:41.068Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="RN-JavaScript忍者秘籍(下)">
+<meta name="twitter:description" content="第十二章DOM 的特性和属性当访问元素的特性值时，我们可以使用 DOM 方法： setAttribute getAttribute，或使用 DOM 对象上与之相对应的属性（div.id）。 下面的代码说明并非所有的元素特性都能被属性表示，自定义的特性并不能被元素属性表示，必须通过 setAttribute getAttribute 才能访问。 123456789101112131415161718">
+<meta name="twitter:image" content="http://yoursite.com/img/JS忍者/13_1.png">
+
+
+
+
+
+  
+  
+  <link rel="canonical" href="http://yoursite.com/2019/12/03/RN-JavaScript忍者秘籍(下)/"/>
+
+
+
+<script id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  
+  <title>RN-JavaScript忍者秘籍(下) | gzl的博客</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .motion-element,
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-title { opacity: initial; }
+
+  .use-motion .logo,
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">gzl的博客</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+    
+    
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="切换导航栏">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+          
+          <li class="menu-item menu-item-home">
+
+    
+    
+      
+    
+
+    
+
+    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br/>首页</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-about">
+
+    
+    
+      
+    
+
+    
+
+    <a href="/about/" rel="section"><i class="menu-item-icon fa fa-fw fa-user"></i> <br/>关于</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-tags">
+
+    
+    
+      
+    
+
+    
+
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br/>标签</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-categories">
+
+    
+    
+      
+    
+
+    
+
+    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br/>分类</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+
+    
+    
+      
+    
+
+    
+
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br/>归档</a>
+
+  </li>
+
+      
+      
+    </ul>
+  
+
+  
+
+  
+</nav>
+
+
+
+</div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+            
+
+          
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/12/03/RN-JavaScript忍者秘籍(下)/"/>
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="gzl"/>
+      <meta itemprop="description" content=""/>
+      <meta itemprop="image" content="/images/avatar.gif"/>
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="gzl的博客"/>
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">RN-JavaScript忍者秘籍(下)
+
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+
+          
+          
+          
+
+          
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2019-12-03 15:17:59" itemprop="dateCreated datePublished" datetime="2019-12-03T15:17:59+08:00">2019-12-03</time>
+            </span>
+          
+
+          
+            
+
+            
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2019-12-14 17:18:41" itemprop="dateModified" datetime="2019-12-14T17:18:41+08:00">2019-12-14</time>
+              </span>
+            
+          
+
+          
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/JavaScript/" itemprop="url" rel="index"><span itemprop="name">JavaScript</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+
+          <br/>
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="第十二章"><a href="#第十二章" class="headerlink" title="第十二章"></a>第十二章</h1><h2 id="DOM-的特性和属性"><a href="#DOM-的特性和属性" class="headerlink" title="DOM 的特性和属性"></a>DOM 的特性和属性</h2><p>当访问元素的特性值时，我们可以使用 DOM 方法： setAttribute getAttribute，或使用 DOM 对象上与之相对应的属性（div.id）。</p>
+<p>下面的代码说明并非所有的元素特性都能被属性表示，自定义的特性并不能被元素属性表示，必须通过 setAttribute getAttribute 才能访问。</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">data-a</span>=<span class="string">"a"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="undefined"></span></span><br><span class="line"><span class="undefined">  document.addEventListener("DOMContentLoaded", () =&gt; &#123;</span></span><br><span class="line"><span class="undefined">    const div = document.querySelector("div");</span></span><br><span class="line"><span class="undefined"></span></span><br><span class="line"><span class="undefined">    div.setAttribute("id", "ninja-1");</span></span><br><span class="line"><span class="undefined"></span></span><br><span class="line"><span class="undefined">    console.log(div.id === "ninja-1")</span></span><br><span class="line"><span class="undefined">    console.log(div.getAttribute('id') === "ninja-1")</span></span><br><span class="line"><span class="undefined"></span></span><br><span class="line"><span class="undefined">    div.id = "ninja-2";</span></span><br><span class="line"><span class="undefined"></span></span><br><span class="line"><span class="undefined">    console.log(div.id === "ninja-2")</span></span><br><span class="line"><span class="undefined">    console.log(div.getAttribute('id') === "ninja-2")</span></span><br><span class="line"><span class="undefined"></span></span><br><span class="line"><span class="undefined">    console.log(div['data-a']) // undefined</span></span><br><span class="line"><span class="undefined">    console.log(div.getAttribute('data-a')) // a</span></span><br><span class="line"><span class="undefined">  &#125;);</span></span><br><span class="line"><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>HTML5 中，建议使用 data- 作为自定义属性的前缀。</p>
+<h2 id="获取计算后的属性"><a href="#获取计算后的属性" class="headerlink" title="获取计算后的属性"></a>获取计算后的属性</h2><p>元素的 style 属性并不包含它在样式表中继承的样式信息。</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">style</span>&gt;</span><span class="undefined"></span></span><br><span class="line"><span class="undefined">  div &#123;</span></span><br><span class="line"><span class="undefined">    font-size: 1.8em;</span></span><br><span class="line"><span class="undefined">    border: 0 solid gold;</span></span><br><span class="line"><span class="undefined">  &#125;</span></span><br><span class="line"><span class="undefined"></span><span class="tag">&lt;/<span class="name">style</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line"></span><br><span class="line">  <span class="tag">&lt;<span class="name">div</span> <span class="attr">style</span>=<span class="string">"color:#000;"</span> <span class="attr">title</span>=<span class="string">"Ninja power!"</span>&gt;</span></span><br><span class="line">    忍者パワー</span><br><span class="line">  <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="undefined"></span></span><br><span class="line"><span class="undefined">    document.addEventListener("DOMContentLoaded", () =&gt; &#123;</span></span><br><span class="line"><span class="undefined">      const div = document.querySelector("div");</span></span><br><span class="line"><span class="undefined"></span></span><br><span class="line"><span class="undefined">      console.log(div.style.color === 'rgb(0, 0, 0)' || div.style.color === '#000'); // true</span></span><br><span class="line"><span class="undefined">      console.log(div.style.fontSize === '1.8em'); // false</span></span><br><span class="line"><span class="undefined">      console.log(div.style.borderWidth === '0'); // false</span></span><br><span class="line"><span class="undefined"></span></span><br><span class="line"><span class="undefined">      div.style.borderWidth = "4px";</span></span><br><span class="line"><span class="undefined"></span></span><br><span class="line"><span class="undefined">      console.log(div.style.borderWidth === '4px'); // true</span></span><br><span class="line"><span class="undefined">    &#125;);</span></span><br><span class="line"><span class="undefined">  </span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>使用 window.getComputedStyle 获取计算后的值，最后的 border 是自己加的，在 computedStyles 中是没有的，但还是打印出了 1px solid rgb(220, 20, 60)，正则表达式把驼峰转为中横线分隔，因为 getPropertyValue 只接受中横线分隔。</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">style</span> <span class="attr">type</span>=<span class="string">"text/css"</span>&gt;</span><span class="undefined"></span></span><br><span class="line"><span class="undefined">  div &#123;</span></span><br><span class="line"><span class="undefined">    background-color: #ffc;</span></span><br><span class="line"><span class="undefined">    display: inline;</span></span><br><span class="line"><span class="undefined">    font-size: 1.8em;</span></span><br><span class="line"><span class="undefined">    border: 1px solid crimson;</span></span><br><span class="line"><span class="undefined">    color: green;</span></span><br><span class="line"><span class="undefined">  &#125;</span></span><br><span class="line"><span class="undefined"></span><span class="tag">&lt;/<span class="name">style</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">div</span> <span class="attr">style</span>=<span class="string">"color:crimson;"</span> <span class="attr">id</span>=<span class="string">"testSubject"</span> <span class="attr">title</span>=<span class="string">"Ninja power!"</span>&gt;</span></span><br><span class="line">    忍者パワー</span><br><span class="line">  <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="undefined"></span></span><br><span class="line"><span class="undefined">    function fetchComputedStyle(element, property) &#123;</span></span><br><span class="line"><span class="undefined">      // 获取计算样式的接口，保存在一个变量中稍后引用，这样可以提升性能</span></span><br><span class="line"><span class="undefined">      const computedStyles = window.getComputedStyle(element);</span></span><br><span class="line"><span class="undefined">      if (computedStyles) &#123;</span></span><br><span class="line"><span class="undefined">        // 将驼峰转为中横线分隔</span></span><br><span class="line"><span class="undefined">        property = property.replace(/([A-Z])/g, '-$1').toLowerCase();</span></span><br><span class="line"><span class="undefined">        return computedStyles.getPropertyValue(property);</span></span><br><span class="line"><span class="undefined">      &#125;</span></span><br><span class="line"><span class="undefined">    &#125;</span></span><br><span class="line"><span class="undefined">    document.addEventListener("DOMContentLoaded", () =&gt; &#123;</span></span><br><span class="line"><span class="undefined">      const div = document.querySelector("div");</span></span><br><span class="line"><span class="undefined">      console.log("background-color: " + fetchComputedStyle(div, 'background-color'));</span></span><br><span class="line"><span class="undefined">      console.log("display: " + fetchComputedStyle(div, 'display'));</span></span><br><span class="line"><span class="undefined">      console.log("font-size: " + fetchComputedStyle(div, 'fontSize'));</span></span><br><span class="line"><span class="undefined">      console.log("color: " + fetchComputedStyle(div, 'color'));</span></span><br><span class="line"><span class="undefined">      console.log("border-top-color: " + fetchComputedStyle(div, 'borderTopColor'));</span></span><br><span class="line"><span class="undefined">      console.log("border-top-width: " + fetchComputedStyle(div, 'border-top-width'));</span></span><br><span class="line"><span class="undefined">      console.log("border: " + fetchComputedStyle(div, 'border'));  // 自己加的</span></span><br><span class="line"><span class="undefined">    &#125;);</span></span><br><span class="line"><span class="undefined">  </span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<h1 id="第十三章-历久弥新的事件"><a href="#第十三章-历久弥新的事件" class="headerlink" title="第十三章 历久弥新的事件"></a>第十三章 历久弥新的事件</h1><h2 id="深入事件循环"><a href="#深入事件循环" class="headerlink" title="深入事件循环"></a>深入事件循环</h2><h3 id="宏任务、微任务和事件循环"><a href="#宏任务、微任务和事件循环" class="headerlink" title="宏任务、微任务和事件循环"></a>宏任务、微任务和事件循环</h3><p>宏任务（或通常称为任务）。</p>
+<p>宏任务的例子很多，包括创建主文档对象、解析HTML、执行主线(或全局)JavaScript代码，更改当前URL以及各种事件，如页面加载、输入、网络事件和定时器事件。从浏览器的角度来看，宏任务代表一个个离散的、独立工作单元。运行完任务后，浏览器可以继续其他调度，如重新渲染页面的UI或执行垃圾回收。</p>
+<p>而微任务是更小的任务。微任务更新应用程序的状态，但必须在浏览器任务继续执行其他任务之前执行，浏览器任务包括重新渲染页面的UI。微任务的案例包括promise回调函数、DOM发生变化等。微任务需要尽可能快地、通过异步方式执行，同时不能产生全新的微任务。微任务使得我们能够在重新渲染UI之前执行指定的行为，避免不必要的UI重绘，UI重绘会使应用程序的状态不连续。</p>
+<p>事件循环基于两个基本原则：</p>
+<ol>
+<li>一次处理一个任务。</li>
+<li>一个任务开始后直到运行完成，不会被其他任务中断。</li>
+</ol>
+<p>如图所示：</p>
+<p><img src="/img/JS忍者/13_1.png" alt="两个原则"></p>
+<p>事件循环通常至少需要两个事件队列：宏任务队列和微任务队列。</p>
+<p>细节：</p>
+<ul>
+<li><p>全局来看，图中展示了在一次迭代中，事件循环将首先检查宏任务队列，如果宏任务等待，则立即开始执行宏任务。直到该任务运行完成(或者队列为空)，事件循环将移动去处理微任务队列。如果有任务在该队列中等待，则事件循环将依次开始执行，完成一个后执行余下的微任务，直到队列中所有微任务执行完毕。注意处理宏任务和微任务队列之间的区别：<strong>单次循环迭代中，最多处理一个宏任务(其余的在队列中等待)，而队列中的所有微任务都会被处理</strong>。</p>
+</li>
+<li><p><strong>当微任务队列处理完成并清空时，事件循环会检查是否需要更新UI渲染</strong>，如果是，则会重新渲染UI视图。至此，当前事件循环结束，之后将回到最初第一个环节，再次检查宏任务队列，并开启新一轮的事件循环。</p>
+</li>
+<li><p>因为JavaScript基于单线程执行模型，所以这两类任务都是逐个执行的。当一个任务开始执行后，在完成前，中间不会被任何其他任务中断。除非浏览器决定中止执行该任务，例如，某个任务执行时间过长或内存占用过大。所有微任务会在下一次渲染之前执行完成，因为它们的目标是在渲染前更新应用程序状态。<strong>浏览器通常会尝试每秒渲染60次页面，以达到每秒60帧(60 fps)的速度。60fps通常是检验体验是否平滑流畅的标准</strong>，比方在动画里——这意味着浏览器会尝试在16ms内渲染一帧。需要注意图中所示的“更新渲染”是何时发生在事件循环内的，因为在页面渲染时，任何任务都无法再进行修改。这些设计和原则都意味着，如果想要实现平滑流畅的应用，我们是没有太多时间浪费在处理单个事件循环任务的。理想情况下，<strong>单个任务和该任务附属的所有微任务，都应在16ms内完成</strong>。</p>
+</li>
+</ul>
+<p>因此提醒我们注意事件处理函数的发生频率以及执行耗时。例如，处理鼠标移动(mouse-move)事件时应当特别小心。因为移动鼠标将导致大量的事件进入队列，因此在鼠标移动的处理函数中执行任何复杂操作都可能导致Web应用的糟糕体验。</p>
+<h3 id="仅含宏任务的示例"><a href="#仅含宏任务的示例" class="headerlink" title="仅含宏任务的示例"></a>仅含宏任务的示例</h3><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">button</span> <span class="attr">id</span>=<span class="string">"firstButton"</span>&gt;</span>First button<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">button</span> <span class="attr">id</span>=<span class="string">"secondButton"</span>&gt;</span>Second button<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="undefined"></span></span><br><span class="line"><span class="undefined">  const firstButton = document.getElementById("firstButton");</span></span><br><span class="line"><span class="undefined">  const secondButton = document.getElementById("secondButton");</span></span><br><span class="line"><span class="undefined">  firstButton.addEventListener("click", function firstHandler()&#123;</span></span><br><span class="line"><span class="undefined">    /*Some click handle code that runs for 8 ms*/</span></span><br><span class="line"><span class="undefined">  &#125;);</span></span><br><span class="line"><span class="undefined">  secondButton.addEventListener("click", function secondHandler()&#123;</span></span><br><span class="line"><span class="undefined">    /*Click handle code that runs for 5ms*/</span></span><br><span class="line"><span class="undefined">  &#125;);</span></span><br><span class="line"><span class="undefined">  /*Code that runs for 15ms*/</span></span><br><span class="line"><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>代码需要发挥一些想象空间，避免添加不必要的聚合代码，要求读者想象以下内容。</p>
+<p>主线程JavaScript代码执行时间需要15ms。第一个单击事件处理器需要运行8ms。第二个单击事件处理器需要运行5ms。假设一个手快的用户在代码执行后5ms时单击第一个按钮，随后在12ms时单击第二个按钮。</p>
+<p>如图所示：</p>
+<p><img src="/img/JS忍者/13_2.png" alt="事件"></p>
+<p>由于JavaScript基于单线程执行模型，单击firstButton并不会立即执行对应的处理器。(记住，一个任务一旦开始执行，就不会被另一个任务中断)firstButton的事件处理器则进入任务队列，等待执行。当单击secondButton时发生类似的情况：对应的事件处理器进入队列，等待执行。注意，<strong>事件监测和添加任务是独立于事件循环的，尽管主线程仍在执行，仍然可以向队列添加任务</strong>。</p>
+<p>本示例强调如果其他任务正在执行，那么事件则需要按顺序等待执行。例如，<strong>尽管在第12ms时单击secondButton，但是其对应的事件处理任务在第23ms时才开始执行</strong>。</p>
+<h3 id="同时含有宏任务和微任务"><a href="#同时含有宏任务和微任务" class="headerlink" title="同时含有宏任务和微任务"></a>同时含有宏任务和微任务</h3><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">button</span> <span class="attr">id</span>=<span class="string">"firstButton"</span>&gt;</span>First button<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">button</span> <span class="attr">id</span>=<span class="string">"secondButton"</span>&gt;</span>Second button<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="undefined"></span></span><br><span class="line"><span class="undefined">  const firstButton = document.getElementById("firstButton");</span></span><br><span class="line"><span class="undefined">  const secondButton = document.getElementById("secondButton");</span></span><br><span class="line"><span class="undefined">  firstButton.addEventListener("click", function firstHandler()&#123;</span></span><br><span class="line"><span class="undefined">    Promise.resolve().then(function()&#123;</span></span><br><span class="line"><span class="undefined">      /*Some promise handling code that runs for 4 ms*/</span></span><br><span class="line"><span class="undefined">    &#125;);</span></span><br><span class="line"><span class="undefined"></span></span><br><span class="line"><span class="undefined">    /*Some click handle code that runs for 8 ms*/</span></span><br><span class="line"><span class="undefined">  &#125;);</span></span><br><span class="line"><span class="undefined"></span></span><br><span class="line"><span class="undefined">  secondButton.addEventListener("click", function secondHandler()&#123;</span></span><br><span class="line"><span class="undefined">    /*Click handle code that runs for 5ms*/</span></span><br><span class="line"><span class="undefined">  &#125;);</span></span><br><span class="line"><span class="undefined">/*Code that runs for 15ms*/</span></span><br><span class="line"><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p><img src="/img/JS忍者/13_3.png" alt="事件"></p>
+<p>与之前的示例唯一的区别是，在firstHandler代码中我们创建立即兑现的promise，并需要运行4ms的传入回调函数。因为promise表示当前未知的一个未来值，因此promise处理函数总是异步执行。</p>
+<p>在本例中，我们创建立即兑现的promise。说实话，JavaScript引擎本应立即调用回调函数，因为我们已知promise成功兑现。但是，为了连续性，JavaScript引擎不会这么做，<strong>仍然会在firstHandler代码执行(需要运行8ms)完成之后再异步调用回调函数</strong>。通过创建微任务，将回调放入微任务队列。</p>
+<p>除了宏任务队列之外，本例重点关注微任务队列，<strong>在第12ms时微任务队列仍为空</strong>。</p>
+<h2 id="处理计算复杂度高的任务"><a href="#处理计算复杂度高的任务" class="headerlink" title="处理计算复杂度高的任务"></a>处理计算复杂度高的任务</h2><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">table</span>&gt;</span><span class="tag">&lt;<span class="name">tbody</span>&gt;</span><span class="tag">&lt;/<span class="name">tbody</span>&gt;</span><span class="tag">&lt;/<span class="name">table</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="undefined"></span></span><br><span class="line"><span class="undefined">  "use strict";</span></span><br><span class="line"><span class="undefined">  const tbody = document.querySelector("tbody");</span></span><br><span class="line"><span class="undefined">  for (let i = 0; i &lt; 60000; i++) &#123;</span></span><br><span class="line"><span class="undefined">    let tr = document.createElement("tr");</span></span><br><span class="line"><span class="undefined">    for (let t = 0; t &lt; 6; t++) &#123;</span></span><br><span class="line"><span class="undefined">      const td = document.createElement("td");</span></span><br><span class="line"><span class="undefined">      td.appendChild(document.createTextNode(i + "," + t));</span></span><br><span class="line"><span class="undefined">      tr.appendChild(td);</span></span><br><span class="line"><span class="undefined">    &#125;</span></span><br><span class="line"><span class="undefined">    tbody.appendChild(tr);</span></span><br><span class="line"><span class="undefined">  &#125;</span></span><br><span class="line"><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p><strong>个人理解</strong>的就是创建了这么多的微任务（DOM操作），会使页面在渲染前等待的时间特别长。</p>
+<p>上面的代码中，我们创建了240 000个DOM节点，创建一个20 000行、每行6列的表格，表格中的每个单元格都包含一个文本节点。这个操作的消耗是惊人的，会导致浏览器挂起一段时间，这段时间内用户无法正常操作(如同Bruce叔叔主宰了家庭聚会中的谈话)。</p>
+<p>我们需要做的就是让Bruce叔叔定期闭嘴，这样其他人才有机会加入谈话。在代码中，我们可以引入定时器来创建这样的“中断谈话”。如下所示：</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">table</span>&gt;</span><span class="tag">&lt;<span class="name">tbody</span>&gt;</span><span class="tag">&lt;/<span class="name">tbody</span>&gt;</span><span class="tag">&lt;/<span class="name">table</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="undefined"></span></span><br><span class="line"><span class="undefined">  "use strict";</span></span><br><span class="line"><span class="undefined">  </span></span><br><span class="line"><span class="undefined">  const tbody = document.querySelector("tbody");</span></span><br><span class="line"><span class="undefined">  const rowCount = 60000;</span></span><br><span class="line"><span class="undefined">  const divideInto = 4;</span></span><br><span class="line"><span class="undefined">  const chunkSize = rowCount/divideInto;</span></span><br><span class="line"><span class="undefined">  let iteration = 0;</span></span><br><span class="line"><span class="undefined">  </span></span><br><span class="line"><span class="undefined">  const table = document.getElementsByTagName("tbody")[0];</span></span><br><span class="line"><span class="undefined">  setTimeout(function generateRows()&#123;</span></span><br><span class="line"><span class="undefined">    const base = chunkSize * iteration;</span></span><br><span class="line"><span class="undefined">    for (let i = 0; i &lt; chunkSize; i++) &#123;</span></span><br><span class="line"><span class="undefined">      const tr = document.createElement("tr");</span></span><br><span class="line"><span class="undefined">      for (let t = 0; t &lt; 6; t++) &#123;</span></span><br><span class="line"><span class="undefined">        const td = document.createElement("td");</span></span><br><span class="line"><span class="undefined">        td.appendChild(</span></span><br><span class="line"><span class="undefined">          document.createTextNode((i + base) + "," + t +</span></span><br><span class="line"><span class="undefined">                                    "," + iteration));</span></span><br><span class="line"><span class="undefined">        tr.appendChild(td);</span></span><br><span class="line"><span class="undefined">      &#125;</span></span><br><span class="line"><span class="undefined">      table.appendChild(tr);</span></span><br><span class="line"><span class="undefined">    &#125;</span></span><br><span class="line"><span class="undefined">    iteration++;</span></span><br><span class="line"><span class="undefined">    if (iteration &lt; divideInto)</span></span><br><span class="line"><span class="undefined">      setTimeout(generateRows, 0);</span></span><br><span class="line"><span class="undefined">  &#125;,0);</span></span><br><span class="line"><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>令人印象深刻的是，可以使用异步的方法（setTimeout）来优化代码。在本例中，我们使用0作为超时时间。如果关注事件循环是如何工作的，就会知道这并不意味着将在0ms时执行回调。使用0，意味着通知浏览器尽快执行回调，但仍然必须在UI更新之后执行。</p>
+<p>通过这种技术，从用户的角度可察觉的最显著的变化是，一个长时间的浏览器挂起，替代为4次(次数可修改)页面更新。尽管浏览器尝试尽可能快地执行代码片段，但仍然是依次执行DOM渲染。在这段代码的初始版本中，页面更新需要等待很长时间。</p>
+<p><strong>个人理解</strong>的就是借助setTimeout，将这么多的微任务分解成了四个宏任务，每一段宏任务后面有原来总量四分之一的微任务，这样浏览器渲染前等待的时间就会明显变少了。</p>
+<p><img src="/img/JS忍者/13_4.png" alt="事件"></p>
+
+      
+    </div>
+
+    
+
+    
+      
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+        
+          
+        
+        <div class="post-tags">
+          
+            <a href="/tags/读书笔记/" rel="tag"># 读书笔记</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/11/18/pipenv常用命令/" rel="next" title="pipenv常用命令">
+                <i class="fa fa-chevron-left"></i> pipenv常用命令
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/12/07/RN-JavaScript忍者秘籍(上)/" rel="prev" title="RN-JavaScript忍者秘籍(上)">
+                RN-JavaScript忍者秘籍(上) <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+  </div>
+
+
+          </div>
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  
+  <p class="site-author-name" itemprop="name">gzl</p>
+  <div class="site-description motion-element" itemprop="description"></div>
+</div>
+
+
+  <nav class="site-state motion-element">
+    
+      <div class="site-state-item site-state-posts">
+        
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">85</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+    
+
+    
+      
+      
+      <div class="site-state-item site-state-categories">
+        
+          
+            <a href="/categories/">
+          
+        
+        
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+        <span class="site-state-item-count">13</span>
+        <span class="site-state-item-name">分类</span>
+        </a>
+      </div>
+    
+
+    
+      
+      
+      <div class="site-state-item site-state-tags">
+        
+          
+            <a href="/tags/">
+          
+        
+        
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+        <span class="site-state-item-count">42</span>
+        <span class="site-state-item-name">标签</span>
+        </a>
+      </div>
+    
+  </nav>
+
+
+
+
+
+
+
+
+
+
+
+
+
+          
+          
+        </div>
+      </div>
+
+      
+      <!--noindex-->
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+            
+            
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#第十二章"><span class="nav-number">1.</span> <span class="nav-text">第十二章</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#DOM-的特性和属性"><span class="nav-number">1.1.</span> <span class="nav-text">DOM 的特性和属性</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#获取计算后的属性"><span class="nav-number">1.2.</span> <span class="nav-text">获取计算后的属性</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#第十三章-历久弥新的事件"><span class="nav-number">2.</span> <span class="nav-text">第十三章 历久弥新的事件</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#深入事件循环"><span class="nav-number">2.1.</span> <span class="nav-text">深入事件循环</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#宏任务、微任务和事件循环"><span class="nav-number">2.1.1.</span> <span class="nav-text">宏任务、微任务和事件循环</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#仅含宏任务的示例"><span class="nav-number">2.1.2.</span> <span class="nav-text">仅含宏任务的示例</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#同时含有宏任务和微任务"><span class="nav-number">2.1.3.</span> <span class="nav-text">同时含有宏任务和微任务</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#处理计算复杂度高的任务"><span class="nav-number">2.2.</span> <span class="nav-text">处理计算复杂度高的任务</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </div>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">gzl</span>
+
+  
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动 v3.7.1</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> v7.2.0</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+    
+  </div>
+
+  
+
+<script>
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+  
+  
+
+
+
+
+
+  
+    
+    
+  
+  <script color='0,0,255' opacity='0.5' zIndex='-1' count='99' src="/lib/canvas-nest/canvas-nest.min.js"></script>
+
+
+
+
+
+
+
+
+
+  
+  <script src="/lib/jquery/index.js?v=3.4.1"></script>
+
+  
+  <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+
+
+
+  <script src="/js/utils.js?v=7.2.0"></script>
+
+  <script src="/js/motion.js?v=7.2.0"></script>
+
+
+
+  
+  
+
+
+  <script src="/js/affix.js?v=7.2.0"></script>
+
+  <script src="/js/schemes/pisces.js?v=7.2.0"></script>
+
+
+
+  
+  <script src="/js/scrollspy.js?v=7.2.0"></script>
+<script src="/js/post-details.js?v=7.2.0"></script>
+
+
+
+  <script src="/js/next-boot.js?v=7.2.0"></script>
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+  
+
+
+  
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+  
+
+</body>
+</html>
