@@ -101,7 +101,7 @@
 <meta property="og:site_name" content="gzl的博客">
 <meta property="og:description" content="第一章 加载和执行脚本位置当浏览器遇到 &amp;lt;script&amp;gt; 标签时，浏览器会停止处理页面，先执行 JavaScript 代码，然后继续解析和渲染页面，同样的情况也发生在使用 src 属性加载 JavaScript 的过程中，浏览器必须先花时间下载外链文件中代码，然后解析并执行，在这个过程中，页面渲染和用户交互是完全被阻塞的。 浏览器在解析到 &amp;lt;body&amp;gt; 标签之前，不会渲染页">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-09-03T14:09:58.983Z">
+<meta property="og:updated_time" content="2019-12-15T09:20:08.393Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="RN-高性能JavaScript">
 <meta name="twitter:description" content="第一章 加载和执行脚本位置当浏览器遇到 &amp;lt;script&amp;gt; 标签时，浏览器会停止处理页面，先执行 JavaScript 代码，然后继续解析和渲染页面，同样的情况也发生在使用 src 属性加载 JavaScript 的过程中，浏览器必须先花时间下载外链文件中代码，然后解析并执行，在这个过程中，页面渲染和用户交互是完全被阻塞的。 浏览器在解析到 &amp;lt;body&amp;gt; 标签之前，不会渲染页">
@@ -373,13 +373,23 @@
                 
               
 
-              <time title="创建时间：2019-09-03 14:13:41 / 修改时间：22:09:58" itemprop="dateCreated datePublished" datetime="2019-09-03T14:13:41+08:00">2019-09-03</time>
+              <time title="创建时间：2019-09-03 14:13:41" itemprop="dateCreated datePublished" datetime="2019-09-03T14:13:41+08:00">2019-09-03</time>
             </span>
           
 
           
             
 
+            
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2019-12-15 17:20:08" itemprop="dateModified" datetime="2019-12-15T17:20:08+08:00">2019-12-15</time>
+              </span>
             
           
 
@@ -437,7 +447,7 @@
 <p><strong>推荐将所有的 <code>&lt;script&gt;</code> 标签尽可能放到 <code>&lt;body&gt;</code> 标签的底部，以尽量减少对整个页面下载的影响。</strong></p>
 <h2 id="组织脚本"><a href="#组织脚本" class="headerlink" title="组织脚本"></a>组织脚本</h2><p>浏览器在解析HTML页面的过程中每遇到一个 <code>&lt;script&gt;</code> 标签，都会因脚本而导致一定的延时，因此最小化延时时间将会明显改善页面的总体性能。</p>
 <p>因此下载单个 100KB 的文件将比下载 4 个 25KB 的文件更快。也就是说，<strong>减少页面中外链脚本文件的数量将会改善性能。</strong></p>
-<h2 id="异步加载js"><a href="#异步加载js" class="headerlink" title="异步加载js"></a>异步加载js</h2><p>秘籍就是在页面加载完成后才加载JavaScript代码。</p>
+<h2 id="异步加载js"><a href="#异步加载js" class="headerlink" title="异步加载js"></a>异步加载js</h2><p>在页面加载完成后才加载JavaScript代码。</p>
 <h3 id="三种方式"><a href="#三种方式" class="headerlink" title="三种方式"></a>三种方式</h3><ol>
 <li>defer 异步加载，但要等到 dom 文档全部解析完才会被执行。只有IE能用，也可以将代码写到内部。</li>
 <li>async 异步加载，dom 文档加载完就执行，async只能加载外部脚本，不能把 Javascript 代码写到 <code>&lt;script&gt;</code> 标签里。</li>
