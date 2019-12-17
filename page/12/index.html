@@ -326,6 +326,203 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/08/21/node-中间件/"/>
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="gzl"/>
+      <meta itemprop="description" content=""/>
+      <meta itemprop="image" content="/images/avatar.gif"/>
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="gzl的博客"/>
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/2019/08/21/node-中间件/" class="post-title-link" itemprop="url">中间件</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+
+          
+          
+          
+
+          
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2019-08-21 21:48:19" itemprop="dateCreated datePublished" datetime="2019-08-21T21:48:19+08:00">2019-08-21</time>
+            </span>
+          
+
+          
+            
+
+            
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2019-08-22 09:48:26" itemprop="dateModified" datetime="2019-08-22T09:48:26+08:00">2019-08-22</time>
+              </span>
+            
+          
+
+          
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/node-js/" itemprop="url" rel="index"><span itemprop="name">node.js</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+
+          <br/>
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="koa中的中间件"><a href="#koa中的中间件" class="headerlink" title="koa中的中间件"></a>koa中的中间件</h1><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> Koa = <span class="built_in">require</span>(<span class="string">'koa'</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> app = <span class="keyword">new</span> Koa();</span><br><span class="line"></span><br><span class="line">app.use(<span class="function">(<span class="params">ctx, next</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="comment">// console.log(ctx); 上下文</span></span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">'first'</span>);</span><br><span class="line">  next(); <span class="comment">// 调用下一个中间件</span></span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line">app.use(<span class="function">(<span class="params">ctx, next</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">'second'</span>);</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line">app.listen(<span class="number">3000</span>, () =&gt; &#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">`127.0.0.1:3000`</span>)</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<p>执行下面的代码，然后在浏览器中输入127.0.0.1:3000，终端依次打印出 <code>first second</code>。</p>
+<h2 id="洋葱模型"><a href="#洋葱模型" class="headerlink" title="洋葱模型"></a>洋葱模型</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> Koa = <span class="built_in">require</span>(<span class="string">'koa'</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> app = <span class="keyword">new</span> Koa();</span><br><span class="line"></span><br><span class="line">app.use(<span class="function">(<span class="params">ctx, next</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="number">1</span>);</span><br><span class="line">  next();</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="number">2</span>)</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line">app.use(<span class="function">(<span class="params">ctx, next</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="number">3</span>);</span><br><span class="line">  next();</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="number">4</span>);</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line">app.listen(<span class="number">3000</span>, () =&gt; &#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">`127.0.0.1:3000`</span>)</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<p>执行上面的代码，然后在浏览器中输入127.0.0.1:3000，终端会依次打印出 <code>1 3 4 2</code>。</p>
+<h2 id="next返回值"><a href="#next返回值" class="headerlink" title="next返回值"></a>next返回值</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> Koa = <span class="built_in">require</span>(<span class="string">'koa'</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> app = <span class="keyword">new</span> Koa();</span><br><span class="line"></span><br><span class="line">app.use(<span class="function">(<span class="params">ctx, next</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="number">1</span>);</span><br><span class="line">  <span class="keyword">const</span> a = next();</span><br><span class="line">  <span class="built_in">console</span>.log(a);</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="number">2</span>);</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line">app.use(<span class="function">(<span class="params">ctx, next</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="number">3</span>);</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="number">4</span>);</span><br><span class="line">  <span class="keyword">return</span> <span class="string">"abc"</span>;</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line">app.listen(<span class="number">3000</span>, () =&gt; &#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">`127.0.0.1:3000`</span>)</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<p>执行上面的代码，然后在浏览器中输入127.0.0.1:3000，终端会依次打印 <code>1 3 4 Promise { &#39;abc&#39; } 2</code>，如果没有 <code>return &quot;abc&quot;;</code>，那么 a 为 <code>Promise { undefined }</code>，可以看到，next() 的返回值就是 <code>Promise</code>。</p>
+<h2 id="await-async"><a href="#await-async" class="headerlink" title="await async"></a>await async</h2><h3 id="求值"><a href="#求值" class="headerlink" title="求值"></a>求值</h3><p><strong>加上 <code>await</code> 和 <code>async</code> 确保按洋葱顺序执行，如果不加上，很难保证按洋葱顺序执行</strong>。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> Koa = <span class="built_in">require</span>(<span class="string">'koa'</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> app = <span class="keyword">new</span> Koa();</span><br><span class="line"></span><br><span class="line">app.use(<span class="keyword">async</span> (ctx, next) =&gt; &#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="number">1</span>);</span><br><span class="line">  <span class="keyword">const</span> a = <span class="keyword">await</span> next(); <span class="comment">// 进行求值得到 'abc'</span></span><br><span class="line">  <span class="built_in">console</span>.log(a);</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="number">2</span>);</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line">app.use(<span class="function">(<span class="params">ctx, next</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="number">3</span>);</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="number">4</span>);</span><br><span class="line">  <span class="keyword">return</span> <span class="string">"abc"</span>;</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line">app.listen(<span class="number">3000</span>, () =&gt; &#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">`127.0.0.1:3000`</span>)</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<p>执行上面的代码，然后在浏览器中输入127.0.0.1:3000，终端会依次打印 <code>1 3 4 abc 2</code>。</p>
+<p>如果使用 <code>.then</code>，那么结果就不一样了，如下：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> Koa = <span class="built_in">require</span>(<span class="string">'koa'</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> app = <span class="keyword">new</span> Koa();</span><br><span class="line"></span><br><span class="line">app.use(<span class="keyword">async</span> (ctx, next) =&gt; &#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="number">1</span>);</span><br><span class="line">  <span class="keyword">const</span> a = next();</span><br><span class="line">  a.then(<span class="function">(<span class="params">res</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(res);</span><br><span class="line">  &#125;)</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="number">2</span>);</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line">app.use(<span class="function">(<span class="params">ctx, next</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="number">3</span>);</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="number">4</span>);</span><br><span class="line">  <span class="keyword">return</span> <span class="string">"abc"</span>;</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line">app.listen(<span class="number">3000</span>, () =&gt; &#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">`127.0.0.1:3000`</span>)</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<p>执行上面的代码，在浏览器中输入127.0.0.1:3000，终端会依次打印 <code>1 3 4 2 abc</code></p>
+<h3 id="阻塞"><a href="#阻塞" class="headerlink" title="阻塞"></a>阻塞</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> Koa = <span class="built_in">require</span>(<span class="string">'koa'</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> app = <span class="keyword">new</span> Koa();</span><br><span class="line"></span><br><span class="line">app.use(<span class="function">(<span class="params">ctx, next</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">const</span> axios = <span class="built_in">require</span>(<span class="string">'axios'</span>);</span><br><span class="line">  <span class="keyword">const</span> start = <span class="built_in">Date</span>.now();</span><br><span class="line">  <span class="keyword">const</span> res = axios.get(<span class="string">`https://www.baidu.com`</span>);</span><br><span class="line">  <span class="keyword">const</span> end = <span class="built_in">Date</span>.now();</span><br><span class="line">  <span class="built_in">console</span>.log(end-start);  <span class="comment">// 0</span></span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line">app.listen(<span class="number">3000</span>, () =&gt; &#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">`127.0.0.1:3000`</span>)</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> Koa = <span class="built_in">require</span>(<span class="string">'koa'</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> app = <span class="keyword">new</span> Koa();</span><br><span class="line"></span><br><span class="line">app.use(<span class="keyword">async</span> (ctx, next) =&gt; &#123;</span><br><span class="line">  <span class="keyword">const</span> axios = <span class="built_in">require</span>(<span class="string">'axios'</span>);</span><br><span class="line">  <span class="keyword">const</span> start = <span class="built_in">Date</span>.now();</span><br><span class="line">  <span class="keyword">const</span> res = <span class="keyword">await</span> axios.get(<span class="string">`https://www.baidu.com`</span>);</span><br><span class="line">  <span class="keyword">const</span> end = <span class="built_in">Date</span>.now();</span><br><span class="line">  <span class="built_in">console</span>.log(end-start);  <span class="comment">// 79</span></span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line">app.listen(<span class="number">3000</span>, () =&gt; &#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">`127.0.0.1:3000`</span>)</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<p>比较上面的代码，第二段代码把<strong>异步变成了同步</strong>，所以 <code>end-start</code> 会变得很大</p>
+<h2 id="ctx"><a href="#ctx" class="headerlink" title="ctx"></a>ctx</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> Koa = <span class="built_in">require</span>(<span class="string">'koa'</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> app = <span class="keyword">new</span> Koa();</span><br><span class="line"></span><br><span class="line">app.use(<span class="keyword">async</span> (ctx, next) =&gt; &#123;</span><br><span class="line">  <span class="keyword">await</span> next();</span><br><span class="line">  <span class="comment">// 按照洋葱模型才能保证 r 是有值的，如果不加 await async，那么不一定是按照洋葱模型来执行</span></span><br><span class="line">  <span class="keyword">const</span> r = ctx.r;</span><br><span class="line">  <span class="built_in">console</span>.log(r);</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line">app.use(<span class="keyword">async</span> (ctx, next) =&gt; &#123;</span><br><span class="line">  <span class="keyword">const</span> axios = <span class="built_in">require</span>(<span class="string">'axios'</span>);</span><br><span class="line">  <span class="keyword">const</span> res = <span class="keyword">await</span> axios.get(<span class="string">"https://www.baidu.com"</span>);</span><br><span class="line">  ctx.r = res;</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line">app.listen(<span class="number">3000</span>, () =&gt; &#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">`127.0.0.1:3000`</span>)</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<h1 id="express中的中间件"><a href="#express中的中间件" class="headerlink" title="express中的中间件"></a>express中的中间件</h1><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> express = <span class="built_in">require</span>(<span class="string">'express'</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> app = express();</span><br><span class="line"></span><br><span class="line">app.use(<span class="function">(<span class="params">req, res, next</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">'1'</span>);</span><br><span class="line">  next();</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line">app.use(<span class="function">(<span class="params">req, res, next</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">'2'</span>);</span><br><span class="line">  next();</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line">app.use(<span class="function">(<span class="params">req, res, next</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">'3'</span>);</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line">app.listen(<span class="number">3000</span>, () =&gt; &#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">`127.0.0.1:3000`</span>);</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<p>执行上面的代码，然后在浏览器中输入127.0.0.1:3000，终端会依次打印出 <code>1 2 3</code>。</p>
+<h2 id="分类"><a href="#分类" class="headerlink" title="分类"></a>分类</h2><blockquote>
+<p>应用级中间件<br>路由级中间件<br>错误处理中间件<br>内置中间件<br>第三方中间件</p>
+</blockquote>
+<h2 id="举例"><a href="#举例" class="headerlink" title="举例"></a>举例</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> express = <span class="built_in">require</span>(<span class="string">'express'</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> app = express();</span><br><span class="line"></span><br><span class="line">app.use(<span class="function">(<span class="params">req, res, next</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">'1'</span>);</span><br><span class="line">  next();</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line">app.use(<span class="string">'/a'</span>, (req, res, next) =&gt; &#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">'2'</span>);</span><br><span class="line">  next();</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line">app.get(<span class="string">'/a'</span>, (req, res, next) =&gt; &#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">'a'</span>);</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line">app.use(<span class="string">'/b'</span>, (req, res, next) =&gt; &#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">'3'</span>);</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line">app.listen(<span class="number">3000</span>, () =&gt; &#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">`127.0.0.1:3000`</span>);</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<p>上面这段代码，在浏览器中输入 <code>http://127.0.0.1:3000</code> 只会打印出 1，输入 <code>http://127.0.0.1:3000/a</code> 会依次打印出 1 2 a，输入 <code>http://127.0.0.1:3000/b</code> 回依次打印出 1 3。</p>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/08/21/进阶命令/"/>
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -684,209 +881,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/08/19/vue-fund-manage记录/"/>
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="gzl"/>
-      <meta itemprop="description" content=""/>
-      <meta itemprop="image" content="/images/avatar.gif"/>
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="gzl的博客"/>
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/2019/08/19/vue-fund-manage记录/" class="post-title-link" itemprop="url">vue-fund-manage记录</a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-
-          
-          
-          
-
-          
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-
-              
-                
-              
-
-              <time title="创建时间：2019-08-19 14:55:20" itemprop="dateCreated datePublished" datetime="2019-08-19T14:55:20+08:00">2019-08-19</time>
-            </span>
-          
-
-          
-            
-
-            
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">更新于</span>
-                
-                <time title="修改时间：2019-10-13 17:24:37" itemprop="dateModified" datetime="2019-10-13T17:24:37+08:00">2019-10-13</time>
-              </span>
-            
-          
-
-          
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/vue/" itemprop="url" rel="index"><span itemprop="name">vue</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-            
-          
-
-          
-          
-
-          
-
-          
-
-          <br/>
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h1 id="依赖总结"><a href="#依赖总结" class="headerlink" title="依赖总结"></a>依赖总结</h1><h2 id="后端部分"><a href="#后端部分" class="headerlink" title="后端部分"></a>后端部分</h2><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">"dependencies": &#123;</span><br><span class="line">  "bcrypt": "^3.0.6",            // 进行密码的加密</span><br><span class="line">  "body-parser": "^1.19.0",      // post请求</span><br><span class="line">  "concurrently": "^4.1.1",      // 前后端连载</span><br><span class="line">  "express": "^4.17.1",          // express框架</span><br><span class="line">  "jsonwebtoken": "^8.5.1",      // 生成token</span><br><span class="line">  "mongoose": "^5.6.9",          // mongoose框架</span><br><span class="line">  "passport": "^0.4.0",          // passport配合passport-jwt实现token验证</span><br><span class="line">  "passport-jwt": "^4.0.0"</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h2 id="前端部分"><a href="#前端部分" class="headerlink" title="前端部分"></a>前端部分</h2><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">"dependencies": &#123;</span><br><span class="line">  "axios": "^0.19.0",             // 进行数据请求</span><br><span class="line">  "core-js": "^2.6.5",</span><br><span class="line">  "element-ui": "^2.11.1",        // elementUI</span><br><span class="line">  "jwt-decode": "^2.2.0",         // token的解析</span><br><span class="line">  "vue": "^2.6.10",</span><br><span class="line">  "vue-router": "^3.0.3",</span><br><span class="line">  "vuex": "^3.0.1"</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h1 id="token"><a href="#token" class="headerlink" title="token"></a>token</h1><h2 id="生成token"><a href="#生成token" class="headerlink" title="生成token"></a>生成token</h2><blockquote>
-<p><a href="https://www.npmjs.com/package/jsonwebtoken" target="_blank" rel="noopener">https://www.npmjs.com/package/jsonwebtoken</a></p>
-</blockquote>
-<p>后端代码 <code>users.js</code>  登录成功部分节选</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> jwt = <span class="built_in">require</span>(<span class="string">'jsonwebtoken'</span>);</span><br><span class="line"><span class="keyword">const</span> keys = <span class="built_in">require</span>(<span class="string">'../../config/keys.js'</span>); <span class="comment">// "secret"</span></span><br><span class="line"><span class="keyword">if</span> (isMatch) &#123;</span><br><span class="line">  <span class="keyword">const</span> rule = &#123;</span><br><span class="line">    id: user.id, </span><br><span class="line">    name: user.name,</span><br><span class="line">    identity: user.identity</span><br><span class="line">  &#125;;</span><br><span class="line">  <span class="comment">// 规则 加密名字 过期时间 箭头函数</span></span><br><span class="line">  jwt.sign(rule, keys.secretOrKey, &#123;<span class="attr">expiresIn</span>: <span class="number">3600</span>&#125;, (err, token) =&gt; &#123;</span><br><span class="line">    <span class="keyword">if</span>(err) <span class="keyword">throw</span> err;</span><br><span class="line">    res.json(&#123;</span><br><span class="line">      success: <span class="literal">true</span>,</span><br><span class="line">      token: <span class="string">"bearer "</span> + token</span><br><span class="line">    &#125;)</span><br><span class="line">  &#125;)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h2 id="验证token"><a href="#验证token" class="headerlink" title="验证token"></a>验证token</h2><blockquote>
-<p><a href="https://www.npmjs.com/package/passport" target="_blank" rel="noopener">https://www.npmjs.com/package/passport</a></p>
-<p><a href="https://www.npmjs.com/package/passport-jwt" target="_blank" rel="noopener">https://www.npmjs.com/package/passport-jwt</a></p>
-</blockquote>
-<h3 id="passport初始化"><a href="#passport初始化" class="headerlink" title="passport初始化"></a>passport初始化</h3><p>后端代码 <code>index.js</code> 节选</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> passport = <span class="built_in">require</span>(<span class="string">'passport'</span>);</span><br><span class="line"><span class="comment">// passport初始化</span></span><br><span class="line">app.use(passport.initialize());</span><br><span class="line"><span class="built_in">require</span>(<span class="string">'./config/passport.js'</span>)(passport);</span><br></pre></td></tr></table></figure>
-<p>后端代码 <code>passport.js</code> 节选</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> JwtStrategy = <span class="built_in">require</span>(<span class="string">'passport-jwt'</span>).Strategy,</span><br><span class="line">  ExtractJwt = <span class="built_in">require</span>(<span class="string">'passport-jwt'</span>).ExtractJwt;</span><br><span class="line"><span class="keyword">const</span> mongoose = <span class="built_in">require</span>(<span class="string">'mongoose'</span>);</span><br><span class="line"><span class="keyword">const</span> User = mongoose.model(<span class="string">'users'</span>);</span><br><span class="line"><span class="keyword">const</span> keys = <span class="built_in">require</span>(<span class="string">'../config/keys.js'</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> opts = &#123;&#125;</span><br><span class="line">opts.jwtFromRequest = ExtractJwt.fromAuthHeaderAsBearerToken();</span><br><span class="line">opts.secretOrKey = keys.secretOrKey;</span><br><span class="line"></span><br><span class="line"><span class="built_in">module</span>.exports = <span class="function"><span class="params">passport</span> =&gt;</span> &#123;</span><br><span class="line">  passport.use(<span class="keyword">new</span> JwtStrategy(opts, (jwt_payload, done) =&gt; &#123;</span><br><span class="line">    <span class="comment">// console.log(jwt_payload);</span></span><br><span class="line">    User.findById(jwt_payload.id)</span><br><span class="line">      .then(<span class="function"><span class="params">user</span> =&gt;</span> &#123;</span><br><span class="line">        <span class="keyword">if</span> (user) &#123;</span><br><span class="line">          <span class="keyword">return</span> done(<span class="literal">null</span>, user);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> done(<span class="literal">null</span>, <span class="literal">false</span>);</span><br><span class="line">      &#125;)</span><br><span class="line">      .catch(<span class="function"><span class="params">err</span> =&gt;</span> <span class="built_in">console</span>.log(err))</span><br><span class="line">  &#125;));</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h3 id="进行请求"><a href="#进行请求" class="headerlink" title="进行请求"></a>进行请求</h3><p><strong>必须带着 <code>token</code> 才能请求成功</strong>。使用 <code>postman</code> 进行测试时要设置 headers 部分的 <code>Authorization</code> 为登录请求后得到的 <code>token</code> 值，在这个项目中，只有登录和注册是不带 <code>token</code> 验证的。</p>
-<p>后端代码 <code>profiles.js</code> 节选</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// $route POST api/profiles/add</span></span><br><span class="line"><span class="comment">// @desc  添加信息接口</span></span><br><span class="line"><span class="comment">// @access Private</span></span><br><span class="line">router.post(<span class="string">'/add'</span>, passport.authenticate(<span class="string">'jwt'</span>, &#123; <span class="attr">session</span>: <span class="literal">false</span> &#125;),(req, res) =&gt; &#123;</span><br><span class="line">  <span class="keyword">const</span> profileFields = &#123;&#125;;</span><br><span class="line">  <span class="comment">// console.log(req.user);</span></span><br><span class="line"></span><br><span class="line">  <span class="keyword">if</span> (req.body.type) profileFields.type = req.body.type;</span><br><span class="line">  <span class="keyword">if</span> (req.body.describe) profileFields.describe = req.body.describe;</span><br><span class="line">  <span class="keyword">if</span> (req.body.income) profileFields.income = req.body.income;</span><br><span class="line">  <span class="keyword">if</span> (req.body.expend) profileFields.expend = req.body.expend;</span><br><span class="line">  <span class="keyword">if</span> (req.body.cash) profileFields.cash = req.body.cash;</span><br><span class="line">  <span class="keyword">if</span> (req.body.remark) profileFields.remark = req.body.remark;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">new</span> Profile(profileFields)</span><br><span class="line">    .save()</span><br><span class="line">    .then(<span class="function"><span class="params">profile</span> =&gt;</span> &#123;</span><br><span class="line">      res.json(profile)</span><br><span class="line">    &#125;)</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
-<p>后端代码 <code>users.js</code> 节选</p>
-<p>前端部分并没有使用 <code>current</code> 这个接口，这个接口只是为了了解 <code>token</code> ，特别是下面 <code>req.user</code> 部分，个人觉得 <code>req.user</code> 部分就代表 <code>token</code> 验证成功，表示谁去请求。</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// $route GET api/users/current</span></span><br><span class="line"><span class="comment">// @desc  return current user</span></span><br><span class="line"><span class="comment">// @access Private</span></span><br><span class="line">router.get(<span class="string">"/current"</span>, passport.authenticate(<span class="string">'jwt'</span>, &#123; <span class="attr">session</span>: <span class="literal">false</span> &#125;), (req, res) =&gt; &#123;</span><br><span class="line">  <span class="comment">// console.log(req.user.identity);</span></span><br><span class="line">  res.json(&#123;</span><br><span class="line">    id: req.user.id,</span><br><span class="line">    name: req.user.name,</span><br><span class="line">    email: req.user.email,</span><br><span class="line">    identity: req.user.identity,</span><br><span class="line">  &#125;);</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
-<h1 id="请求拦截响应拦截"><a href="#请求拦截响应拦截" class="headerlink" title="请求拦截响应拦截"></a>请求拦截响应拦截</h1><p>前端代码中 <code>http.js</code> 节选</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 请求拦截</span></span><br><span class="line">axios.interceptors.request.use(<span class="function"><span class="params">config</span> =&gt;</span> &#123;</span><br><span class="line">  <span class="comment">// 加载动画</span></span><br><span class="line">  startLoading();</span><br><span class="line">  <span class="keyword">if</span> (localStorage.eleToken) &#123;</span><br><span class="line">    <span class="comment">// 设置统一的请求header</span></span><br><span class="line">    config.headers.Authorization = localStorage.eleToken;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> config;</span><br><span class="line">&#125;, error =&gt; &#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="built_in">Promise</span>.reject(error);</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line"><span class="comment">// 响应拦截</span></span><br><span class="line">axios.interceptors.response.use(<span class="function">(<span class="params">response</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="comment">// 结束加载动画</span></span><br><span class="line">  endLoading();</span><br><span class="line">  <span class="keyword">return</span> response;</span><br><span class="line">&#125;, (error) =&gt; &#123;</span><br><span class="line">  endLoading();</span><br><span class="line">  Message.error(error.response.data);</span><br><span class="line"></span><br><span class="line">  <span class="comment">// 获取错误状态码</span></span><br><span class="line">  <span class="keyword">const</span> &#123; status &#125; = error.response;</span><br><span class="line">  <span class="keyword">if</span> (status === <span class="number">401</span>) &#123;</span><br><span class="line">    Message.error(<span class="string">'token失效，请重新登录'</span>);</span><br><span class="line">    <span class="comment">// 清除token</span></span><br><span class="line">    localStorage.removeItem(<span class="string">'eleToken'</span>);</span><br><span class="line">    <span class="comment">// 跳转到的登录页面</span></span><br><span class="line">    router.push(<span class="string">'login'</span>);</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> <span class="built_in">Promise</span>.reject(error);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
-<h1 id="vuex"><a href="#vuex" class="headerlink" title="vuex"></a>vuex</h1><p>前端部分 <code>store.js</code> 代码</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> Vue <span class="keyword">from</span> <span class="string">'vue'</span></span><br><span class="line"><span class="keyword">import</span> Vuex <span class="keyword">from</span> <span class="string">'vuex'</span></span><br><span class="line"></span><br><span class="line">Vue.use(Vuex)</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> types = &#123;</span><br><span class="line">  SET_AUTHENTICATED: <span class="string">'SET_AUTHENTICATED'</span>,</span><br><span class="line">  SET_USER: <span class="string">'SET_USER'</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> state = &#123;</span><br><span class="line">  isAuthenticated: <span class="literal">false</span>,</span><br><span class="line">  user: &#123;&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> getters = &#123;</span><br><span class="line">  isAuthenticated: <span class="function"><span class="params">state</span> =&gt;</span> state.isAuthenticated,</span><br><span class="line">  user: <span class="function"><span class="params">state</span> =&gt;</span> state.user</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> mutations = &#123;</span><br><span class="line">  [types.SET_AUTHENTICATED](state, isAuthenticated) &#123;</span><br><span class="line">    <span class="keyword">if</span> (isAuthenticated) state.isAuthenticated = isAuthenticated;</span><br><span class="line">    <span class="keyword">else</span> state.isAuthenticated = <span class="literal">false</span>;</span><br><span class="line">  &#125;,</span><br><span class="line"></span><br><span class="line">  [types.SET_USER](state, user) &#123;</span><br><span class="line">    <span class="keyword">if</span> (user) state.user = user;</span><br><span class="line">    <span class="keyword">else</span> state.user = &#123;&#125;;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> actions = &#123;</span><br><span class="line">  setAuthenticated: <span class="function">(<span class="params">&#123;commit&#125;, isAuthenticated</span>) =&gt;</span> &#123;</span><br><span class="line">    commit(types.SET_AUTHENTICATED, isAuthenticated);</span><br><span class="line">  &#125;,</span><br><span class="line">  setUser: <span class="function">(<span class="params">&#123;commit&#125;, user</span>) =&gt;</span> &#123;</span><br><span class="line">    commit(types.SET_USER, user);</span><br><span class="line">  &#125;,</span><br><span class="line">  clearCurrentState: <span class="function">(<span class="params">&#123;commit&#125;</span>) =&gt;</span> &#123;</span><br><span class="line">    commit(types.SET_AUTHENTICATED, <span class="literal">false</span>);</span><br><span class="line">    commit(types.SET_USER, <span class="literal">null</span>);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="keyword">new</span> Vuex.Store(&#123;</span><br><span class="line">  state,</span><br><span class="line">  getters,</span><br><span class="line">  mutations,</span><br><span class="line">  actions</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
-<p>前端部分 <code>Login.vue</code> 代码节选</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">this</span>.$axios.post(<span class="string">"/api/users/login"</span>, <span class="keyword">this</span>.loginUser)</span><br><span class="line">  .then(<span class="function"><span class="params">res</span> =&gt;</span> &#123;</span><br><span class="line">    <span class="comment">// console.log(res);</span></span><br><span class="line">    <span class="comment">// token</span></span><br><span class="line">    <span class="keyword">const</span> &#123; token &#125; = res.data;</span><br><span class="line">    <span class="comment">// 存储到 ls</span></span><br><span class="line">    localStorage.setItem(<span class="string">'eleToken'</span>, token);</span><br><span class="line">    <span class="comment">// 解析token</span></span><br><span class="line">    <span class="keyword">const</span> decoded = jwt_decode(token);</span><br><span class="line">    <span class="comment">// console.log(decoded);</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">// token 存储到vuex中</span></span><br><span class="line">    <span class="keyword">this</span>.$store.dispatch(<span class="string">"setAuthenticated"</span>, !<span class="keyword">this</span>.isEmpty(decoded));</span><br><span class="line">    <span class="keyword">this</span>.$store.dispatch(<span class="string">"setUser"</span>, decoded);</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">this</span>.$router.push(<span class="string">'/index'</span>);</span><br><span class="line">  &#125;)</span><br></pre></td></tr></table></figure>
-<h1 id="总结流程"><a href="#总结流程" class="headerlink" title="总结流程"></a>总结流程</h1><p>首先进入 <code>register</code> 或者 <code>login</code> 页面，因为有路由守卫，所以不能直接进入 <code>index</code> 页面，进行注册，然后登录，登录会返回后端生成的 <code>token</code> ，存储 <code>token</code> 到 <code>localStorage</code> 中，并解析 <code>token</code> 存储到 <code>vuex</code> 中，设置授权 <code>setAuthenticated</code> 为真，<code>setUser</code> 为 <code>token</code> 解析后的用户信息，如果登录失败，可能是 <code>token</code> 过期失效，如果退出登录的话，会删除 <code>localStorage</code> 中的 <code>token</code>，并将 <code>vuex</code> 中的存储清除。</p>
-<p>进行对数据的增删改查需要带上 <code>token</code> ，在请求拦截与响应拦截中有相关的配置。</p>
-
-          
-        
-      
-    </div>
-
-    
-
-    
-
-    
-    
-    
-
-    
-
-    
-      
-    
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -934,7 +928,7 @@
         
           <a href="/archives/">
         
-          <span class="site-state-item-count">86</span>
+          <span class="site-state-item-count">87</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
