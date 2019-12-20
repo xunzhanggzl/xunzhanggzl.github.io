@@ -93,17 +93,17 @@
   };
 </script>
 
-  <meta name="description" content="git log退出在英文状态下按 q git clone重命名如何重命名仓库，对当前文件夹已经存在同名仓库的时候会很有用： 1git clone git@github.com:muwenzi/repo.git new-repo-name git rm有时候在项目开发过程中，把某些目录或文件加入.gitignore后发现并未生效，原因是.gitignore只能忽略那些原来没有被track的文件，如果">
+  <meta name="description" content="退出 git log在英文状态下按 q git clone 重命名如何重命名仓库，对当前文件夹已经存在同名仓库的时候会很有用： 1git clone git@github.com:muwenzi/repo.git new-repo-name git rm有时候在项目开发过程中，把某些目录或文件加入.gitignore后发现并未生效，原因是.gitignore只能忽略那些原来没有被track的文件，">
 <meta property="og:type" content="article">
 <meta property="og:title" content="git-常用操作小结">
 <meta property="og:url" content="http://yoursite.com/2019/10/19/git-常用操作小结/index.html">
 <meta property="og:site_name" content="gzl的博客">
-<meta property="og:description" content="git log退出在英文状态下按 q git clone重命名如何重命名仓库，对当前文件夹已经存在同名仓库的时候会很有用： 1git clone git@github.com:muwenzi/repo.git new-repo-name git rm有时候在项目开发过程中，把某些目录或文件加入.gitignore后发现并未生效，原因是.gitignore只能忽略那些原来没有被track的文件，如果">
+<meta property="og:description" content="退出 git log在英文状态下按 q git clone 重命名如何重命名仓库，对当前文件夹已经存在同名仓库的时候会很有用： 1git clone git@github.com:muwenzi/repo.git new-repo-name git rm有时候在项目开发过程中，把某些目录或文件加入.gitignore后发现并未生效，原因是.gitignore只能忽略那些原来没有被track的文件，">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-11-14T11:53:52.874Z">
+<meta property="og:updated_time" content="2019-12-20T14:49:11.733Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="git-常用操作小结">
-<meta name="twitter:description" content="git log退出在英文状态下按 q git clone重命名如何重命名仓库，对当前文件夹已经存在同名仓库的时候会很有用： 1git clone git@github.com:muwenzi/repo.git new-repo-name git rm有时候在项目开发过程中，把某些目录或文件加入.gitignore后发现并未生效，原因是.gitignore只能忽略那些原来没有被track的文件，如果">
+<meta name="twitter:description" content="退出 git log在英文状态下按 q git clone 重命名如何重命名仓库，对当前文件夹已经存在同名仓库的时候会很有用： 1git clone git@github.com:muwenzi/repo.git new-repo-name git rm有时候在项目开发过程中，把某些目录或文件加入.gitignore后发现并未生效，原因是.gitignore只能忽略那些原来没有被track的文件，">
 
 
 
@@ -387,7 +387,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2019-11-14 19:53:52" itemprop="dateModified" datetime="2019-11-14T19:53:52+08:00">2019-11-14</time>
+                <time title="修改时间：2019-12-20 22:49:11" itemprop="dateModified" datetime="2019-12-20T22:49:11+08:00">2019-12-20</time>
               </span>
             
           
@@ -441,13 +441,15 @@
       
 
       
-        <h1 id="git-log退出"><a href="#git-log退出" class="headerlink" title="git log退出"></a>git log退出</h1><p>在英文状态下按 q</p>
-<h1 id="git-clone重命名"><a href="#git-clone重命名" class="headerlink" title="git clone重命名"></a>git clone重命名</h1><p>如何重命名仓库，对当前文件夹已经存在同名仓库的时候会很有用：</p>
+        <h1 id="退出-git-log"><a href="#退出-git-log" class="headerlink" title="退出 git log"></a>退出 git log</h1><p>在英文状态下按 q</p>
+<h1 id="git-clone-重命名"><a href="#git-clone-重命名" class="headerlink" title="git clone 重命名"></a>git clone 重命名</h1><p>如何重命名仓库，对当前文件夹已经存在同名仓库的时候会很有用：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git <span class="built_in">clone</span> git@github.com:muwenzi/repo.git new-repo-name</span><br></pre></td></tr></table></figure>
 <h1 id="git-rm"><a href="#git-rm" class="headerlink" title="git rm"></a>git rm</h1><p>有时候在项目开发过程中，把某些目录或文件加入<code>.gitignore</code>后发现并未生效，原因是<code>.gitignore</code><strong>只能忽略那些原来没有被track的文件</strong>，如果某些文件已经被纳入了版本管理中，则修改<code>.gitignore</code>是无效的。那么解决方法就是先把本地缓存删除（改变成未track状态），然后再提交：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">git rm -r --cached .</span><br><span class="line">git add .</span><br><span class="line">git commit -m <span class="string">'update .gitignore</span></span><br></pre></td></tr></table></figure>
 <p><code>.gitignore</code> 的匹配规则：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">.a       <span class="comment"># 忽略所有 .a 结尾的文件</span></span><br><span class="line">!lib.a    <span class="comment"># 但 lib.a 除外</span></span><br><span class="line">/TODO     <span class="comment"># 仅仅忽略项目根目录下的 TODO 文件，不包括 subdir/TODO</span></span><br><span class="line">build/    <span class="comment"># 忽略 build/ 目录下的所有文件</span></span><br><span class="line">doc/.txt <span class="comment"># 会忽略 doc/notes.txt 但不包括 doc/server/arch.txt</span></span><br></pre></td></tr></table></figure>
+<h1 id="更改-git-commit-注释"><a href="#更改-git-commit-注释" class="headerlink" title="更改 git commit 注释"></a>更改 git commit 注释</h1><p><code>git add .</code> ，<code>git commit -m &quot;wrong explanatory&quot;</code> 之后还没有 <code>git push</code> ， 发现 <code>git commit</code> 的注释写错了。</p>
+<p>这个时候输入 <code>git commit --amend</code>，会自动打开 vim 编辑器，按 a 进入编辑模式，将正确的注释写入，然后按 ESC 键，输入 <code>:wq</code> 进行保存并退出，然后 <code>git push</code>。</p>
 <p><strong>参考</strong></p>
 <p><a href="https://github.com/muwenzi/Program-Blog/issues/13" target="_blank" rel="noopener">Git常用操作小结</a></p>
 
@@ -745,7 +747,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#git-log退出"><span class="nav-number">1.</span> <span class="nav-text">git log退出</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#git-clone重命名"><span class="nav-number">2.</span> <span class="nav-text">git clone重命名</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#git-rm"><span class="nav-number">3.</span> <span class="nav-text">git rm</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#退出-git-log"><span class="nav-number">1.</span> <span class="nav-text">退出 git log</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#git-clone-重命名"><span class="nav-number">2.</span> <span class="nav-text">git clone 重命名</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#git-rm"><span class="nav-number">3.</span> <span class="nav-text">git rm</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#更改-git-commit-注释"><span class="nav-number">4.</span> <span class="nav-text">更改 git commit 注释</span></a></li></ol></div>
             
 
           </div>
