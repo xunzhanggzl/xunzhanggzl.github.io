@@ -326,6 +326,198 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/09/22/git-tags/"/>
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="gzl"/>
+      <meta itemprop="description" content=""/>
+      <meta itemprop="image" content="/images/avatar.gif"/>
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="gzl的博客"/>
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/2019/09/22/git-tags/" class="post-title-link" itemprop="url">git-tags</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+
+          
+          
+          
+
+          
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2019-09-22 19:10:19" itemprop="dateCreated datePublished" datetime="2019-09-22T19:10:19+08:00">2019-09-22</time>
+            </span>
+          
+
+          
+            
+
+            
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2019-11-14 19:53:48" itemprop="dateModified" datetime="2019-11-14T19:53:48+08:00">2019-11-14</time>
+              </span>
+            
+          
+
+          
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/git/" itemprop="url" rel="index"><span itemprop="name">git</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+
+          <br/>
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="基础操作"><a href="#基础操作" class="headerlink" title="基础操作"></a>基础操作</h1><p>打标签的作用，就是给项目的开发节点，加上语义化的名字，也即功能版本的别名。 打上标签名的同时，写上附带信息，可以方便项目日后维护过程中的回溯和复查。 另外，也可以通过标签记录，大致了解当前项目的向下兼容性、API的修改和迭代情况。</p>
+<h2 id="查看所有标签"><a href="#查看所有标签" class="headerlink" title="查看所有标签"></a>查看所有标签</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git tag</span><br></pre></td></tr></table></figure>
+<h2 id="创建标签"><a href="#创建标签" class="headerlink" title="创建标签"></a>创建标签</h2><p>最好创建带有说明的标签，用<code>-a</code>指定标签名，<code>-m</code>指定说明文字：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> git tag -a v1.0 -m <span class="string">"Hello,World"</span></span></span><br></pre></td></tr></table></figure>
+<h2 id="推送到远程仓库"><a href="#推送到远程仓库" class="headerlink" title="推送到远程仓库"></a>推送到远程仓库</h2><p>将标签推送到远程仓库</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git push origin v1.0</span><br></pre></td></tr></table></figure>
+<p>或者，一次性推送全部尚未推送到远程的本地标签：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> git push origin --tags</span></span><br></pre></td></tr></table></figure>
+<h2 id="删除标签"><a href="#删除标签" class="headerlink" title="删除标签"></a>删除标签</h2><p>如果标签已经推送到远程，要删除远程标签就麻烦一点，先从本地删除：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> git tag -d v0.9</span></span><br></pre></td></tr></table></figure>
+<p>然后，从远程删除。删除命令也是push，但是格式如下：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> git push origin :refs/tags/v0.9</span></span><br></pre></td></tr></table></figure>
+<p>要看看是否真的从远程库删除了标签，可以登陆GitHub查看。</p>
+<h2 id="查看标签情况"><a href="#查看标签情况" class="headerlink" title="查看标签情况"></a>查看标签情况</h2><p>查看版本的情况</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> git show v1.0</span></span><br></pre></td></tr></table></figure>
+<p>要注意的就是打标签要在master分支上进行 <code>git push</code> 之后再打标签，像自己仓库中的 flask 学习笔记的master上面就停留在 <code>Hello World</code> 这里了，是因为自己在每一次 <code>git commit</code> 之后就打了标签。。。</p>
+<h1 id="进阶"><a href="#进阶" class="headerlink" title="进阶"></a>进阶</h1><h2 id="查看提交历史"><a href="#查看提交历史" class="headerlink" title="查看提交历史"></a>查看提交历史</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git <span class="built_in">log</span> --pretty=oneline --abbrev-commit</span><br></pre></td></tr></table></figure>
+<h2 id="给历史打标签"><a href="#给历史打标签" class="headerlink" title="给历史打标签"></a>给历史打标签</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git tag -a v0.1 -m <span class="string">"version 0.1 released"</span> 1094adb</span><br></pre></td></tr></table></figure>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/09/22/flask-tutorial记录/"/>
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -811,189 +1003,11 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/09/10/RN-深入浅出nodejs/"/>
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="gzl"/>
-      <meta itemprop="description" content=""/>
-      <meta itemprop="image" content="/images/avatar.gif"/>
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="gzl的博客"/>
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/2019/09/10/RN-深入浅出nodejs/" class="post-title-link" itemprop="url">RN-深入浅出nodejs</a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-
-          
-          
-          
-
-          
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-
-              
-                
-              
-
-              <time title="创建时间：2019-09-10 21:40:33 / 修改时间：22:18:01" itemprop="dateCreated datePublished" datetime="2019-09-10T21:40:33+08:00">2019-09-10</time>
-            </span>
-          
-
-          
-            
-
-            
-          
-
-          
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/node-js/" itemprop="url" rel="index"><span itemprop="name">node.js</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-            
-          
-
-          
-          
-
-          
-
-          
-
-          <br/>
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h1 id="第一章-Node简介"><a href="#第一章-Node简介" class="headerlink" title="第一章 Node简介"></a>第一章 Node简介</h1><h2 id="异步I-O"><a href="#异步I-O" class="headerlink" title="异步I/O"></a>异步I/O</h2><p>在Node中，绝大多数的操作都以异步的方式进行调用，从文件读取到网络请求。这样的意义在于，在Node中，我们可以从语言层面很自然地进行并行I/O操作。<strong>每个调用之间无须等待之前的I/O调用结束</strong>。</p>
-<p>下面的两个文件读取任务的耗时取决于最慢的那个文件读取的耗时：</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">fs.readFile(<span class="string">'/path1'</span>, <span class="function"><span class="keyword">function</span> (<span class="params">err, file</span>) </span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">'读取文件1完成'</span>);</span><br><span class="line">&#125;);</span><br><span class="line">fs.readFile(<span class="string">'/path2'</span>, <span class="function"><span class="keyword">function</span> (<span class="params">err, file</span>) </span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">'读取文件2完成'</span>);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
-<p><strong>而对于同步I/O而言，它们的耗时是两个任务的耗时之和</strong>。</p>
-<h2 id="事件与回调函数"><a href="#事件与回调函数" class="headerlink" title="事件与回调函数"></a>事件与回调函数</h2><p>事件的编程方式具有轻量级、松耦合、只关注事务点等优势。</p>
-<p>纵观下来，回调函数也是最好的接受异步调用返回数据的方式。</p>
-<h1 id="第二章-模块机制"><a href="#第二章-模块机制" class="headerlink" title="第二章 模块机制"></a>第二章 模块机制</h1><h2 id="CommonJS模块规范"><a href="#CommonJS模块规范" class="headerlink" title="CommonJS模块规范"></a>CommonJS模块规范</h2><p>主要分为模块引用、模块定义、模块标识3个部分。</p>
-<h3 id="模块引用"><a href="#模块引用" class="headerlink" title="模块引用"></a>模块引用</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> math = <span class="built_in">require</span>(<span class="string">'math'</span>)</span><br></pre></td></tr></table></figure>
-<h3 id="模块定义"><a href="#模块定义" class="headerlink" title="模块定义"></a>模块定义</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">exports.add = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">"add函数"</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h3 id="模块标识"><a href="#模块标识" class="headerlink" title="模块标识"></a>模块标识</h3><p>模块标识其实就是传递给 <code>require()</code> 方法的参数，它必须是符合小驼峰命名的字符串，或者以 <code>. ..</code> 开头的相对路径，或者绝对路径。它可以没有文件名后缀<code>.js</code>。</p>
-<h2 id="Node的模块实现"><a href="#Node的模块实现" class="headerlink" title="Node的模块实现"></a>Node的模块实现</h2><p>在Node中引入模块，需要经历如下3个步骤。</p>
-<p>(1)路径分析 (2)文件定位 (3)编译执行</p>
-<p>在Node中，模块分为两类，一类是Node提供的模块，称为<strong>核心模块</strong>；另一类是用户编写的模块，称为<strong>文件模块</strong>。</p>
-<h3 id="优先从缓存加载"><a href="#优先从缓存加载" class="headerlink" title="优先从缓存加载"></a>优先从缓存加载</h3><p>不论是核心模块还是文件模块，<code>require()</code>方法对相同模块的二次加载都一律采用缓存优先的方式，<strong>这是第一优先级的</strong>，不同之处在于核心模块的缓存检查先于文件模块的缓存检查。</p>
-<h3 id="路径分析和文件定位"><a href="#路径分析和文件定位" class="headerlink" title="路径分析和文件定位"></a>路径分析和文件定位</h3><h4 id="模块标识符分析"><a href="#模块标识符分析" class="headerlink" title="模块标识符分析"></a>模块标识符分析</h4><h5 id="核心模块"><a href="#核心模块" class="headerlink" title="核心模块"></a>核心模块</h5><h4 id="文件定位"><a href="#文件定位" class="headerlink" title="文件定位"></a>文件定位</h4><h4 id="目录分析和包"><a href="#目录分析和包" class="headerlink" title="目录分析和包"></a>目录分析和包</h4>
-          
-        
-      
-    </div>
-
-    
-
-    
-
-    
-    
-    
-
-    
-
-    
-      
-    
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/7/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/7/">7</a><span class="page-number current">8</span><a class="page-number" href="/page/9/">9</a><span class="space">&hellip;</span><a class="page-number" href="/page/29/">29</a><a class="extend next" rel="next" href="/page/9/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
+    <a class="extend prev" rel="prev" href="/page/7/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/7/">7</a><span class="page-number current">8</span><a class="page-number" href="/page/9/">9</a><span class="space">&hellip;</span><a class="page-number" href="/page/30/">30</a><a class="extend next" rel="next" href="/page/9/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
   </nav>
 
 
@@ -1036,7 +1050,7 @@
         
           <a href="/archives/">
         
-          <span class="site-state-item-count">87</span>
+          <span class="site-state-item-count">88</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -1219,7 +1233,7 @@
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2020</span>
   <span class="with-love" id="animate">
     <i class="fa fa-user"></i>
   </span>

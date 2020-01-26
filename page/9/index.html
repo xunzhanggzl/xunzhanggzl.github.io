@@ -326,6 +326,184 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/09/10/RN-深入浅出nodejs/"/>
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="gzl"/>
+      <meta itemprop="description" content=""/>
+      <meta itemprop="image" content="/images/avatar.gif"/>
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="gzl的博客"/>
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/2019/09/10/RN-深入浅出nodejs/" class="post-title-link" itemprop="url">RN-深入浅出nodejs</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+
+          
+          
+          
+
+          
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2019-09-10 21:40:33 / 修改时间：22:18:01" itemprop="dateCreated datePublished" datetime="2019-09-10T21:40:33+08:00">2019-09-10</time>
+            </span>
+          
+
+          
+            
+
+            
+          
+
+          
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/node-js/" itemprop="url" rel="index"><span itemprop="name">node.js</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+
+          <br/>
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="第一章-Node简介"><a href="#第一章-Node简介" class="headerlink" title="第一章 Node简介"></a>第一章 Node简介</h1><h2 id="异步I-O"><a href="#异步I-O" class="headerlink" title="异步I/O"></a>异步I/O</h2><p>在Node中，绝大多数的操作都以异步的方式进行调用，从文件读取到网络请求。这样的意义在于，在Node中，我们可以从语言层面很自然地进行并行I/O操作。<strong>每个调用之间无须等待之前的I/O调用结束</strong>。</p>
+<p>下面的两个文件读取任务的耗时取决于最慢的那个文件读取的耗时：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">fs.readFile(<span class="string">'/path1'</span>, <span class="function"><span class="keyword">function</span> (<span class="params">err, file</span>) </span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">'读取文件1完成'</span>);</span><br><span class="line">&#125;);</span><br><span class="line">fs.readFile(<span class="string">'/path2'</span>, <span class="function"><span class="keyword">function</span> (<span class="params">err, file</span>) </span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">'读取文件2完成'</span>);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<p><strong>而对于同步I/O而言，它们的耗时是两个任务的耗时之和</strong>。</p>
+<h2 id="事件与回调函数"><a href="#事件与回调函数" class="headerlink" title="事件与回调函数"></a>事件与回调函数</h2><p>事件的编程方式具有轻量级、松耦合、只关注事务点等优势。</p>
+<p>纵观下来，回调函数也是最好的接受异步调用返回数据的方式。</p>
+<h1 id="第二章-模块机制"><a href="#第二章-模块机制" class="headerlink" title="第二章 模块机制"></a>第二章 模块机制</h1><h2 id="CommonJS模块规范"><a href="#CommonJS模块规范" class="headerlink" title="CommonJS模块规范"></a>CommonJS模块规范</h2><p>主要分为模块引用、模块定义、模块标识3个部分。</p>
+<h3 id="模块引用"><a href="#模块引用" class="headerlink" title="模块引用"></a>模块引用</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> math = <span class="built_in">require</span>(<span class="string">'math'</span>)</span><br></pre></td></tr></table></figure>
+<h3 id="模块定义"><a href="#模块定义" class="headerlink" title="模块定义"></a>模块定义</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">exports.add = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">"add函数"</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="模块标识"><a href="#模块标识" class="headerlink" title="模块标识"></a>模块标识</h3><p>模块标识其实就是传递给 <code>require()</code> 方法的参数，它必须是符合小驼峰命名的字符串，或者以 <code>. ..</code> 开头的相对路径，或者绝对路径。它可以没有文件名后缀<code>.js</code>。</p>
+<h2 id="Node的模块实现"><a href="#Node的模块实现" class="headerlink" title="Node的模块实现"></a>Node的模块实现</h2><p>在Node中引入模块，需要经历如下3个步骤。</p>
+<p>(1)路径分析 (2)文件定位 (3)编译执行</p>
+<p>在Node中，模块分为两类，一类是Node提供的模块，称为<strong>核心模块</strong>；另一类是用户编写的模块，称为<strong>文件模块</strong>。</p>
+<h3 id="优先从缓存加载"><a href="#优先从缓存加载" class="headerlink" title="优先从缓存加载"></a>优先从缓存加载</h3><p>不论是核心模块还是文件模块，<code>require()</code>方法对相同模块的二次加载都一律采用缓存优先的方式，<strong>这是第一优先级的</strong>，不同之处在于核心模块的缓存检查先于文件模块的缓存检查。</p>
+<h3 id="路径分析和文件定位"><a href="#路径分析和文件定位" class="headerlink" title="路径分析和文件定位"></a>路径分析和文件定位</h3><h4 id="模块标识符分析"><a href="#模块标识符分析" class="headerlink" title="模块标识符分析"></a>模块标识符分析</h4><h5 id="核心模块"><a href="#核心模块" class="headerlink" title="核心模块"></a>核心模块</h5><h4 id="文件定位"><a href="#文件定位" class="headerlink" title="文件定位"></a>文件定位</h4><h4 id="目录分析和包"><a href="#目录分析和包" class="headerlink" title="目录分析和包"></a>目录分析和包</h4>
+          
+        
+      
+    </div>
+
+    
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/09/10/JS深入prototype/"/>
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -684,211 +862,11 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/09/07/JS深入理解异步/"/>
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="gzl"/>
-      <meta itemprop="description" content=""/>
-      <meta itemprop="image" content="/images/avatar.gif"/>
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="gzl的博客"/>
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/2019/09/07/JS深入理解异步/" class="post-title-link" itemprop="url">JS深入理解异步</a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-
-          
-          
-          
-
-          
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-
-              
-                
-              
-
-              <time title="创建时间：2019-09-07 20:05:01" itemprop="dateCreated datePublished" datetime="2019-09-07T20:05:01+08:00">2019-09-07</time>
-            </span>
-          
-
-          
-            
-
-            
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">更新于</span>
-                
-                <time title="修改时间：2019-10-19 16:48:22" itemprop="dateModified" datetime="2019-10-19T16:48:22+08:00">2019-10-19</time>
-              </span>
-            
-          
-
-          
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/JavaScript/" itemprop="url" rel="index"><span itemprop="name">JavaScript</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-            
-          
-
-          
-          
-
-          
-
-          
-
-          <br/>
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h1 id="什么是异步"><a href="#什么是异步" class="headerlink" title="什么是异步"></a>什么是异步</h1><h2 id="JS-为何会有异步"><a href="#JS-为何会有异步" class="headerlink" title="JS 为何会有异步"></a>JS 为何会有异步</h2><p> <strong>JS 是单线程的语言</strong>，所谓“单线程”就是一根筋，对于拿到的程序，一行一行的执行，上面的执行为完成，就傻傻的等着。例如：</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> i, t = <span class="built_in">Date</span>.now();</span><br><span class="line"><span class="keyword">for</span> (i = <span class="number">0</span>; i &lt; <span class="number">100000000</span>; i++) &#123;&#125;</span><br><span class="line"><span class="built_in">console</span>.log(<span class="built_in">Date</span>.now() - t) <span class="comment">// 261 （chrome浏览器）</span></span><br></pre></td></tr></table></figure>
-<p>上面的程序花费 261ms 的时间执行完成，执行过程中就会有卡顿，其他的事儿就先撂一边不管了。</p>
-<p>执行程序这样没有问题，但是对于 JS 最初使用的环境 ———— 浏览器客户端 ———— 就不一样了。因此在浏览器端运行的 js ，可能会有大量的网络请求，<strong>而一个网络资源啥时候返回，这个时间是不可预估的。这种情况也要傻傻的等着、卡顿着、啥都不做吗？</strong>———— 那肯定不行。</p>
-<p>因此，JS 对于这种场景就设计了异步 ———— 即，发起一个网络请求，就先不管这边了，先干其他事儿，网络请求啥时候返回结果，到时候再说。这样就能保证一个网页的流程运行。</p>
-<h2 id="异步的实现原理"><a href="#异步的实现原理" class="headerlink" title="异步的实现原理"></a>异步的实现原理</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> ajax = $.ajax(&#123;</span><br><span class="line">  url: <span class="string">'/data/data1.json'</span>,</span><br><span class="line">  success: <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'success'</span>)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
-<p>上面代码中<code>$.ajax()</code>需要传入两个参数进去，<code>url</code>和<code>success</code>，其中<code>url</code>是请求的路由，<code>success</code>是一个函数。这个函数传递过去不会立即执行，而是等着请求成功之后才能执行。<strong>对于这种传递过去不执行，等出来结果之后再执行的函数，叫做callback，即回调函数</strong>，所谓”回调函数”（callback），就是那些会被主线程挂起来的代码。异步任务必须指定回调函数，当主线程开始执行异步任务，就是执行对应的回调函数。</p>
-<p>再看一段更加能说明回调函数的 nodejs 代码。和上面代码基本一样，唯一区别就是：上面代码时网络请求，而下面代码时 IO 操作。</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> fs = <span class="built_in">require</span>(<span class="string">'fs'</span>)</span><br><span class="line">fs.readFile(<span class="string">'data1.json'</span>, (err, data) =&gt; &#123;</span><br><span class="line">  <span class="built_in">console</span>.log(data.toString())</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
-<p>从上面两个 demo 看来，<strong>实现异步的最核心原理，就是将callback作为参数传递给异步执行函数，当有结果返回之后再触发 callback执行</strong>，就是如此简单！</p>
-<h2 id="常用的异步操作"><a href="#常用的异步操作" class="headerlink" title="常用的异步操作"></a>常用的异步操作</h2><ul>
-<li>网络请求，如<code>ajax</code> <code>http.get</code></li>
-<li>IO 操作，如<code>readFile</code> <code>readdir</code></li>
-<li>定时函数，如<code>setTimeout</code> <code>setInterval</code></li>
-</ul>
-<p><strong>事件绑定是不是也是异步操作</strong>？</p>
-<h1 id="异步和-event-loop"><a href="#异步和-event-loop" class="headerlink" title="异步和 event-loop"></a>异步和 event-loop</h1><p><a href="http://www.ruanyifeng.com/blog/2014/10/event-loop.html" target="_blank" rel="noopener">JavaScript 运行机制详解：再谈Event Loop</a></p>
-<p><a href="https://juejin.im/post/59e85eebf265da430d571f89" target="_blank" rel="noopener">这一次，彻底弄懂 JavaScript 执行机制</a></p>
-<h1 id="事件绑定算不算异步？"><a href="#事件绑定算不算异步？" class="headerlink" title="事件绑定算不算异步？"></a>事件绑定算不算异步？</h1><p>事件绑定和异步操作的实现机制是一样的，那么事件绑定是不是就是异步操作呢？（声明一下，这里说的事件绑定是如下代码的形式）</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$btn.on(<span class="string">'click'</span>, <span class="function"><span class="keyword">function</span> (<span class="params">e</span>) </span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">'你点击了按钮'</span>)</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
-<h2 id="相同"><a href="#相同" class="headerlink" title="相同"></a>相同</h2><p>从技术实现以及书写方法上来讲，他们是一样的。例如事件绑定和 IO 操作的写法基本相同。</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">$btn.on(<span class="string">'click'</span>, <span class="function"><span class="keyword">function</span> (<span class="params">e</span>) </span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">'你点击了按钮'</span>)</span><br><span class="line">&#125;)</span><br><span class="line">fs.readFile(<span class="string">'data1.json'</span>, <span class="function"><span class="keyword">function</span> (<span class="params">err, data</span>) </span>&#123;</span><br><span class="line">  <span class="comment">// 获取数据</span></span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
-<p>最终执行的方式也基本一样，都会被放在 <strong>call-stack</strong> 中通过 event-loop 来调用。</p>
-<h2 id="不同"><a href="#不同" class="headerlink" title="不同"></a>不同</h2><p>第一，event-loop 执行时，调用的源不一样。异步操作是系统自动调用，无论是<code>setTimeout</code>时间到了还是<code>$.ajax</code>请求返回了，系统会自动调用。而事件绑定就需要用户手动触发</p>
-<p>第二，从设计上来将，事件绑定有着明显的“订阅-发布”的设计模式，而异步操作却没有。</p>
-<p>其实，事件绑定在 js 中扮演着非常重要的角色，各个地方都会用到事件绑定的形式。例如 web 页面监控鼠标、键盘，以及 nodejs 中的 <code>EventEmitter</code> 应用非常广泛（特别是涉及到数据流时）。事件绑定被应用到非常广泛，却没有发生像异步操作带来的程序逻辑问题。</p>
-
-          
-        
-      
-    </div>
-
-    
-
-    
-
-    
-    
-    
-
-    
-
-    
-      
-    
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/8/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/8/">8</a><span class="page-number current">9</span><a class="page-number" href="/page/10/">10</a><span class="space">&hellip;</span><a class="page-number" href="/page/29/">29</a><a class="extend next" rel="next" href="/page/10/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
+    <a class="extend prev" rel="prev" href="/page/8/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/8/">8</a><span class="page-number current">9</span><a class="page-number" href="/page/10/">10</a><span class="space">&hellip;</span><a class="page-number" href="/page/30/">30</a><a class="extend next" rel="next" href="/page/10/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
   </nav>
 
 
@@ -931,7 +909,7 @@
         
           <a href="/archives/">
         
-          <span class="site-state-item-count">87</span>
+          <span class="site-state-item-count">88</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -1114,7 +1092,7 @@
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2020</span>
   <span class="with-love" id="animate">
     <i class="fa fa-user"></i>
   </span>

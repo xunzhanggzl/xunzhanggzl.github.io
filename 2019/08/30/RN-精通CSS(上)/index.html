@@ -101,7 +101,7 @@
 <meta property="og:site_name" content="gzl的博客">
 <meta property="og:description" content="第一章 基础知识创建结构化、语义化富HTML 123456&amp;lt;article class=&quot;post&quot;&amp;gt;  &amp;lt;header class=&quot;post-header&quot;&amp;gt;    &amp;lt;h1&amp;gt;How I became a CSS Master&amp;lt;/h1&amp;gt;  &amp;lt;/header&amp;gt;  &amp;lt;p&amp;gt;Ten-thousand hours&amp;lt;/p&amp;gt;&amp;">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-08-31T08:53:18.929Z">
+<meta property="og:updated_time" content="2019-12-21T15:04:17.790Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="RN-精通CSS(上)">
 <meta name="twitter:description" content="第一章 基础知识创建结构化、语义化富HTML 123456&amp;lt;article class=&quot;post&quot;&amp;gt;  &amp;lt;header class=&quot;post-header&quot;&amp;gt;    &amp;lt;h1&amp;gt;How I became a CSS Master&amp;lt;/h1&amp;gt;  &amp;lt;/header&amp;gt;  &amp;lt;p&amp;gt;Ten-thousand hours&amp;lt;/p&amp;gt;&amp;">
@@ -388,7 +388,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2019-08-31 16:53:18" itemprop="dateModified" datetime="2019-08-31T16:53:18+08:00">2019-08-31</time>
+                <time title="修改时间：2019-12-21 23:04:17" itemprop="dateModified" datetime="2019-12-21T23:04:17+08:00">2019-12-21</time>
               </span>
             
           
@@ -498,11 +498,11 @@
 <p>h1 中文字最终会变成 <code>green</code>。</p>
 <h2 id="继承"><a href="#继承" class="headerlink" title="继承"></a>继承</h2><p>继承和层叠看起来有点类似，但实际上他们有着本质上的不同。</p>
 <p>有些属性，像颜色或字体大小，会被应用它们的元素的后代所继承。比如，我把 <code>body</code> 元素的文本颜色设置为黑色，那么 <code>body</code> 所有后代元素的文本颜色都会继承这个黑色，字号也一样。</p>
-<p>如果在 <code>body</code> 上设置了一个字号，就会发现页面中标题并不会变成同样的字号。实际上，标题大小是浏览器默认样式表中设定的。任何直接应用给元素的样式都会覆盖继承的样式，因为继承的样式<strong>没有任何特殊性</strong>。</p>
+<p>在 <code>body</code> 上设置了一个字号，会发现页面中标题并不会变成同样的字号。可能你觉得这是因为标题不会继承文本大小。实际上，标题大小是浏览器默认样式表中设定的。任何直接应用给元素的样式都会覆盖继承的样式，因为继承的样式<strong>没有任何特殊性</strong>。</p>
 <p>继承的属性没有任何特殊性，连0都说不上。这意味着使用特殊性为0的通用选择符设置的样式都可以覆盖继承的样式。</p>
 <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">h1</span> <span class="attr">class</span>=<span class="string">"title"</span>&gt;</span></span><br><span class="line">  h1</span><br><span class="line">  <span class="tag">&lt;<span class="name">em</span>&gt;</span>这是一个em<span class="tag">&lt;/<span class="name">em</span>&gt;</span></span><br><span class="line">  h1</span><br><span class="line"><span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span><br></pre></td></tr></table></figure>
 <figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">* &#123;</span><br><span class="line">  <span class="attribute">color</span>: black;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-tag">h1</span> &#123;</span><br><span class="line">  <span class="attribute">color</span>: red;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>在上面这段代码中，表面上看 em 会继承 h1 的红色，但通用选择符给所有元素设置的黑色会覆盖它所继承的红色。</p>
+<p>在上面这段代码中，表面上看 em 会继承 h1 的红色，但通用选择符给所有元素设置的黑色会覆盖它所继承的红色。通用选择符的特殊性为 0，但仍然优先于继承的属性，在这种情况下，最好是给 body 元素设置一个基准色，这样它的所有元素就都会继承这个颜色，而不是被设置成这个颜色。</p>
 <h1 id="第三章-可见格式化模型"><a href="#第三章-可见格式化模型" class="headerlink" title="第三章 可见格式化模型"></a>第三章 可见格式化模型</h1><h2 id="盒模型"><a href="#盒模型" class="headerlink" title="盒模型"></a>盒模型</h2><h3 id="百分比问题"><a href="#百分比问题" class="headerlink" title="百分比问题"></a>百分比问题</h3><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"group"</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">article</span> <span class="attr">class</span>=<span class="string">"block"</span>&gt;</span><span class="tag">&lt;/<span class="name">article</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
 <figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.group</span> &#123;</span><br><span class="line">  <span class="attribute">width</span>: <span class="number">300px</span>;</span><br><span class="line">  <span class="attribute">height</span>: <span class="number">200px</span>;</span><br><span class="line">  <span class="attribute">margin</span>: <span class="number">0</span> auto;</span><br><span class="line">  <span class="attribute">border</span>: <span class="number">1px</span> solid black;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-class">.block</span> &#123;</span><br><span class="line">  <span class="attribute">width</span>: <span class="number">100px</span>;</span><br><span class="line">  <span class="attribute">height</span>: <span class="number">100px</span>;</span><br><span class="line">  <span class="attribute">border</span>: <span class="number">1px</span> solid red;</span><br><span class="line">  <span class="attribute">margin-left</span>: <span class="number">5%</span>;</span><br><span class="line">  <span class="attribute">margin-top</span>: <span class="number">5%</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>上面的代码中，5% 指的是父元素 <code>.group</code> 宽度的 5%，<code>.group</code> 宽度是在这里是 300px，那么 <code>margin-left</code> 为 15px。注意，CSS规定，上、下方位的内外边距，仍然基于包含块的<strong>宽度</strong>，来计算，因此 <code>margin-top</code> 也为 15px。原因就是<strong>元素的高度常常不会被声明</strong>，而且会因内容多少而差距很大，如果要明确设定默认高度，也最好使用 <code>min-height</code>，因为这个属性允许<strong>盒子随内容扩展</strong>。</p>
@@ -654,7 +654,7 @@
         
           <a href="/archives/">
         
-          <span class="site-state-item-count">87</span>
+          <span class="site-state-item-count">88</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -854,7 +854,7 @@
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2020</span>
   <span class="with-love" id="animate">
     <i class="fa fa-user"></i>
   </span>
