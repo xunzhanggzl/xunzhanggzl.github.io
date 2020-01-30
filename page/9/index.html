@@ -326,6 +326,218 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/09/22/flask-tutorial记录/"/>
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="gzl"/>
+      <meta itemprop="description" content=""/>
+      <meta itemprop="image" content="/images/avatar.gif"/>
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="gzl的博客"/>
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/2019/09/22/flask-tutorial记录/" class="post-title-link" itemprop="url">flask-tutorial记录</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+
+          
+          
+          
+
+          
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2019-09-22 12:57:39" itemprop="dateCreated datePublished" datetime="2019-09-22T12:57:39+08:00">2019-09-22</time>
+            </span>
+          
+
+          
+            
+
+            
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2019-10-02 08:59:48" itemprop="dateModified" datetime="2019-10-02T08:59:48+08:00">2019-10-02</time>
+              </span>
+            
+          
+
+          
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/python/" itemprop="url" rel="index"><span itemprop="name">python</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+
+          <br/>
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <blockquote>
+<p><a href="https://github.com/luhuisicnu/The-Flask-Mega-Tutorial-zh" target="_blank" rel="noopener">https://github.com/luhuisicnu/The-Flask-Mega-Tutorial-zh</a></p>
+</blockquote>
+<p>相关代码记录在了 <a href="https://github.com/xunzhanggzl/flask-tutorial" target="_blank" rel="noopener">https://github.com/xunzhanggzl/flask-tutorial</a> 这个仓库中，通过 <code>git checkout &lt;标签名&gt;</code>查看不同标签的所有代码。</p>
+<h1 id="Hello-World"><a href="#Hello-World" class="headerlink" title="Hello World"></a>Hello World</h1><blockquote>
+<p>v1.0</p>
+</blockquote>
+<h2 id="虚拟环境"><a href="#虚拟环境" class="headerlink" title="虚拟环境"></a>虚拟环境</h2><h3 id="Python3创建虚拟环境"><a href="#Python3创建虚拟环境" class="headerlink" title="Python3创建虚拟环境"></a>Python3创建虚拟环境</h3><p>在 Python3 中，虚拟环境由 Python 标准库中的 venv 包原生支持，<code>-m venv</code>  选项的作用是以独立的脚本运行标准库中的 <code>venv</code>  包，后面的参数为虚拟环境的名称，通常为 <code>venv</code> 。</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">python3 -m venv /path/to/new/virtual/environment</span><br></pre></td></tr></table></figure>
+<p>下面这个命令在执行完毕后，根目录中会出现一个名为 <code>venv</code>  的子目录，这里就是一个全新的虚拟环境，包含这个项目专用的 Python 解释器。</p>
+<p>下面的 <code>microblog</code> 是根目录</p>
+<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># python3 要改成 python 才可以，不知道为啥</span></span><br><span class="line">microblog&gt;python -m venv venv</span><br></pre></td></tr></table></figure>
+<h3 id="使用虚拟环境"><a href="#使用虚拟环境" class="headerlink" title="使用虚拟环境"></a>使用虚拟环境</h3><figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 进入虚拟环境</span></span><br><span class="line">microblog&gt;venv\Scripts\activate</span><br><span class="line"></span><br><span class="line">(venv) microblog&gt;</span><br><span class="line"></span><br><span class="line"><span class="comment"># 退出虚拟环境</span></span><br><span class="line">(venv) microblog&gt;venv\Scripts\deactivate</span><br></pre></td></tr></table></figure>
+<h2 id="安装Flask"><a href="#安装Flask" class="headerlink" title="安装Flask"></a>安装Flask</h2><figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">(venv) microblog&gt;pip install flask</span><br></pre></td></tr></table></figure>
+<h2 id="“Hello-World”"><a href="#“Hello-World”" class="headerlink" title="“Hello World”"></a>“Hello World”</h2><p>应用程序是存在于<em>包</em>中的。 在Python中，包含<code>__init__.py</code>文件的子目录被视为一个可导入的包。 当你导入一个包时，<code>__init__.py</code>会执行并定义这个包暴露给外界的属性。</p>
+<p>那就创建一个名为<code>app</code>的包来存放整个应用吧。</p>
+<p><code>__init__.py</code></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> flask <span class="keyword">import</span> Flask</span><br><span class="line"></span><br><span class="line">app = Flask(__name__)</span><br><span class="line"></span><br><span class="line"><span class="keyword">from</span> app <span class="keyword">import</span> routes</span><br></pre></td></tr></table></figure>
+<p>上面的脚本仅仅是从flask中导入的类<code>Flask</code>，并以此类创建了一个应用程序对象。 传递给<code>Flask</code>类的<code>__name__</code>变量是一个Python预定义的变量，它表示当前调用它的模块的名字。<strong>FLASK用这个参数确定应用的位置，进而找到应用中其他文件的位置，例如图像和模板。</strong> 代码的最后，应用程序导入尚未存在的<code>routes</code>模块。</p>
+<p>其一，这里有两个实体名为<code>app</code>。 <code>app</code>包由<em>app</em>目录和<code>__init__.py</code>脚本来定义构成，并在<code>from app import routes</code>语句中被引用。 <code>app</code>变量被定义为<code>__init__.py</code>脚本中的<code>Flask</code>类的一个实例，以至于它成为<code>app</code>包的属性。</p>
+<p>其二，<code>routes</code>模块是在底部导入的，而不是在脚本的顶部。 最下面的导入是解决<strong>循环导入</strong>的问题，这是Flask应用程序的常见问题。 你将会看到<code>routes</code>模块需要导入在这个脚本中定义的<code>app</code>变量，因此将<code>routes</code>的导入放在底部可以避免由于这两个文件之间的相互引用而导致的错误。</p>
+<p>那么在<code>routes</code>模块中有些什么？ 路由是应用程序实现的不同URL。 在Flask中，应用程序路由的处理逻辑被编写为Python函数，称为<em>视图函数</em>。 视图函数被映射到一个或多个路由URL，以便Flask知道当客户端请求给定的URL时执行什么逻辑。</p>
+<p>routes.py</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> app <span class="keyword">import</span> app</span><br><span class="line"></span><br><span class="line"><span class="meta">@app.route('/')</span></span><br><span class="line"><span class="meta">@app.route('/index')</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">index</span><span class="params">()</span>:</span></span><br><span class="line">  <span class="keyword">return</span> <span class="string">"Hello, World!"</span></span><br></pre></td></tr></table></figure>
+<p>函数上面的两个奇怪的<code>＠app.route</code>行是<em>装饰器</em>，这是Python语言的一个独特功能。 装饰器会修改跟在其后的函数。 装饰器的常见模式是使用它们将函数注册为某些事件的回调函数。在这个例子中，有两个装饰器，它们将URL <code>/</code>和<code>/index</code>索引关联到这个函数。 这意味着，当Web浏览器请求这两个URL中的任何一个时，Flask将调用该函数并将其返回值作为响应传递回浏览器。这样做是为了在运行这个应用程序的时候会稍微有一点点意义。</p>
+<p>要完成应用程序，你需要在定义Flask应用程序实例的顶层（译者注：也就是microblog目录下）创建一个命名为<em>microblog.py</em>的Python脚本。 它仅拥有一个导入应用程序实例的行：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> app <span class="keyword">import</span> app</span><br></pre></td></tr></table></figure>
+<p>还记得两个<code>app</code>实体吗？ 在这里，你可以在同一句话中看到两者。 Flask应用程序实例被称为<code>app</code>，是<code>app</code>包的成员。<code>from app import app</code>语句从<code>app</code>包导入其成员<code>app</code>变量。 如果你觉得这很混乱，你可以重命名包或者变量。</p>
+<h2 id="设置环境变量"><a href="#设置环境变量" class="headerlink" title="设置环境变量"></a>设置环境变量</h2><p>为方便起见，用 $ 替代 <code>microblog</code></p>
+<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">(venv) $ set FLASK_APP=microblog.py</span><br></pre></td></tr></table></figure>
+<h2 id="运行"><a href="#运行" class="headerlink" title="运行"></a>运行</h2><figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">(venv) $ flask run</span><br></pre></td></tr></table></figure>
+<h2 id="python-dotenv"><a href="#python-dotenv" class="headerlink" title="python-dotenv"></a>python-dotenv</h2><p>在终端会话中直接设置的环境变量不会永久生效，因此你不得不在每次新开终端时设定 <code>FLASK_APP</code> 环境变量，从 1.0 版本开始，Flask 允许你设置只会在运行<code>flask</code>命令时自动注册生效的环境变量，要实现这点，你需要安装 <code>python-dotenv</code></p>
+<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">(venv) $ pip install python-dotenv</span><br></pre></td></tr></table></figure>
+<p>此时，在项目的根目录下新建一个名为 <code>.flaskenv</code> 的文件，其内容是：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">FLASK_APP=microblog.py</span><br></pre></td></tr></table></figure>
+<p>通过此项设置，<code>FLASK_APP</code>就可以自动加载了</p>
+<h2 id="查看依赖"><a href="#查看依赖" class="headerlink" title="查看依赖"></a>查看依赖</h2><p>pip freeze</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">(venv) $ pip freeze</span><br><span class="line">Click==7.0</span><br><span class="line">Flask==1.1.1</span><br><span class="line">itsdangerous==1.1.0</span><br><span class="line">Jinja2==2.10.1</span><br><span class="line">MarkupSafe==1.1.1</span><br><span class="line">python-dotenv==0.10.3</span><br><span class="line">Werkzeug==0.15.6</span><br></pre></td></tr></table></figure>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/09/11/JS全面梳理EventLoop/"/>
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -777,199 +989,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/09/10/JS深入prototype/"/>
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="gzl"/>
-      <meta itemprop="description" content=""/>
-      <meta itemprop="image" content="/images/avatar.gif"/>
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="gzl的博客"/>
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/2019/09/10/JS深入prototype/" class="post-title-link" itemprop="url">JS深入prototype</a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-
-          
-          
-          
-
-          
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-
-              
-                
-              
-
-              <time title="创建时间：2019-09-10 20:29:15 / 修改时间：20:47:43" itemprop="dateCreated datePublished" datetime="2019-09-10T20:29:15+08:00">2019-09-10</time>
-            </span>
-          
-
-          
-            
-
-            
-          
-
-          
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/JavaScript/" itemprop="url" rel="index"><span itemprop="name">JavaScript</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-            
-          
-
-          
-          
-
-          
-
-          
-
-          <br/>
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>直接上图</p>
-<p><img src="/img/JavaScript/prototype.png" alt="prototype"></p>
-<p>下面是两个不太注意的点</p>
-<h1 id="constructor-NaN"><a href="#constructor-NaN" class="headerlink" title="constructor"></a>constructor</h1><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Person</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">let</span> person = <span class="keyword">new</span> Person();</span><br><span class="line"><span class="built_in">console</span>.log(person.constructor === Person); <span class="comment">// true</span></span><br></pre></td></tr></table></figure>
-<p>当获取 person.constructor 时，其实 person 中并没有 constructor 属性,当不能读取到constructor 属性时，会从 person 的原型也就是 Person.prototype 中读取，正好原型中有该属性，所以：</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">person.constructor === Person.prototype.constructor</span><br></pre></td></tr></table></figure>
-<h1 id="proto"><a href="#proto" class="headerlink" title="__proto__"></a><code>__proto__</code></h1><p>其次是 <strong>proto</strong> ，绝大部分浏览器都支持这个非标准的方法访问原型，然而它并不存在于 Person.prototype 中，实际上，它是来自于 Object.prototype ，与其说是一个属性，不如说是一个 getter/setter，当使用 obj.<strong>proto</strong> 时，可以理解成返回了 Object.getPrototypeOf(obj)。</p>
-<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><p>摘自评论区</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Person</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> person = <span class="keyword">new</span> Person();</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(person.__proto__ === Person.prototype) <span class="comment">// true</span></span><br><span class="line"><span class="built_in">console</span>.log(Person.prototype.constructor === Person) <span class="comment">// true</span></span><br><span class="line"><span class="built_in">console</span>.log(Person.prototype.__proto__ === <span class="built_in">Object</span>.prototype); <span class="comment">// true</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="built_in">Object</span>.prototype.__proto__ === <span class="literal">null</span>); <span class="comment">// true</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="built_in">Object</span>.constructor === <span class="built_in">Function</span>); <span class="comment">// true</span></span><br></pre></td></tr></table></figure>
-<blockquote>
-<p>实例对象的隐式原型始终指向构造函数的显式原型；</p>
-</blockquote>
-<blockquote>
-<p>只有函数才拥有<code>prototype</code>属性，每一个对象都拥有<code>__proto__</code>属性；</p>
-</blockquote>
-<blockquote>
-<p>每一个原型对象都有一个<code>constructor</code>属性指向它们的构造函数；</p>
-</blockquote>
-<blockquote>
-<p>原型链的链接依赖<code>__proto__</code>这个指针，每一级的原型对象都依靠这个指针指向上一级原型对象；</p>
-</blockquote>
-<blockquote>
-<p>原型链的尽头始终是<code>null</code>；</p>
-</blockquote>
-<blockquote>
-<p>原型对象充当两面派，既是构造函数函数，也是对象；</p>
-</blockquote>
-<p><strong>参考</strong></p>
-<p><a href="https://github.com/mqyqingfeng/Blog/issues/2" target="_blank" rel="noopener">JavaScript深入之从原型到原型链</a></p>
-
-          
-        
-      
-    </div>
-
-    
-
-    
-
-    
-    
-    
-
-    
-
-    
-      
-    
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -1017,7 +1036,7 @@
         
           <a href="/archives/">
         
-          <span class="site-state-item-count">89</span>
+          <span class="site-state-item-count">90</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
