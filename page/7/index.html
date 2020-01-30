@@ -326,6 +326,201 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/10/02/dbmovie记录/"/>
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="gzl"/>
+      <meta itemprop="description" content=""/>
+      <meta itemprop="image" content="/images/avatar.gif"/>
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="gzl的博客"/>
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/2019/10/02/dbmovie记录/" class="post-title-link" itemprop="url">dbmovie记录</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+
+          
+          
+          
+
+          
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2019-10-02 08:58:27 / 修改时间：19:41:31" itemprop="dateCreated datePublished" datetime="2019-10-02T08:58:27+08:00">2019-10-02</time>
+            </span>
+          
+
+          
+            
+
+            
+          
+
+          
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/node-js/" itemprop="url" rel="index"><span itemprop="name">node.js</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+
+          <br/>
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="流程"><a href="#流程" class="headerlink" title="流程"></a>流程</h1><ol>
+<li>抓取数据</li>
+<li>数据入库</li>
+<li>启动服务</li>
+<li>渲染数据</li>
+</ol>
+<h1 id="依赖"><a href="#依赖" class="headerlink" title="依赖"></a>依赖</h1><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">"dependencies": &#123;</span><br><span class="line">    "bluebird": "^3.5.5",       // 这个项目中将数据库的query方法promisify</span><br><span class="line">    "cheerio": "^1.0.0-rc.3",   // 像jquery一样操作</span><br><span class="line">    "debug": "^4.1.1",          // cmd可以打印相关信息，简洁明了</span><br><span class="line">    "ejs": "^2.7.1",            // 前端渲染页面</span><br><span class="line">    "express": "^4.17.1",       // 开启后端服务器</span><br><span class="line">    "mysql": "^2.17.1",         // 使用mysql数据库</span><br><span class="line">    "request": "^2.88.0",       // 进行html爬取</span><br><span class="line">    "request-promise": "^4.2.4" // request的小弟</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h1 id="爬取导入库"><a href="#爬取导入库" class="headerlink" title="爬取导入库"></a>爬取导入库</h1><p>read.js进行读取操作 </p>
+<ul>
+<li>通过<strong>request</strong>抓取了html代码</li>
+<li><strong>cheerio</strong>将html转成了dom</li>
+<li>将需要的内容<strong>存在数组</strong>(名称|评分|地址|图片|id)</li>
+<li>返回结果数组并<strong>导出read方法</strong></li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> rp = <span class="built_in">require</span>(<span class="string">'request-promise'</span>);</span><br><span class="line"><span class="keyword">const</span> cheerio = <span class="built_in">require</span>(<span class="string">'cheerio'</span>);</span><br><span class="line"><span class="keyword">const</span> debug = <span class="built_in">require</span>(<span class="string">'debug'</span>)(<span class="string">'movie:read'</span>);</span><br><span class="line"><span class="keyword">const</span> read = <span class="keyword">async</span> (url) =&gt; &#123;</span><br><span class="line">  debug(<span class="string">'开始读取最近上映的电影'</span>);</span><br><span class="line"></span><br><span class="line">  <span class="keyword">const</span> opts = &#123;</span><br><span class="line">    url,</span><br><span class="line">    transform: <span class="function"><span class="params">body</span> =&gt;</span> &#123;</span><br><span class="line">      <span class="keyword">return</span> cheerio.load(body);</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">return</span> rp(opts).then(<span class="function"><span class="params">$</span> =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">let</span> result = []; <span class="comment">// 结果数组</span></span><br><span class="line"></span><br><span class="line">    $(<span class="string">'#screening li.ui-slide-item'</span>).each(<span class="function">(<span class="params">index, item</span>) =&gt;</span> &#123;</span><br><span class="line">      <span class="comment">// ...</span></span><br><span class="line">    &#125;);</span><br><span class="line">    <span class="keyword">return</span> result;</span><br><span class="line">  &#125;);</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="built_in">module</span>.exports = read;</span><br></pre></td></tr></table></figure>
+<p>db.js 连接数据库，导出promisify query 方法</p>
+<p>write.js 将数据写入数据库</p>
+<p>index.js为入口函数</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">(<span class="keyword">async</span> () =&gt; &#123;</span><br><span class="line">  <span class="comment">// 异步抓取目标页面</span></span><br><span class="line">  <span class="keyword">const</span> movies = <span class="keyword">await</span> read(url); <span class="comment">// 这里要用await，因为read()函数是async式的，返回的是promise，如下</span></span><br><span class="line">  <span class="comment">// const movies = read(url);</span></span><br><span class="line">  <span class="comment">// console.log(movies);   Promise &#123; &lt;pending&gt; &#125;</span></span><br><span class="line"></span><br><span class="line">  <span class="comment">// 写入数据到数据库</span></span><br><span class="line">  <span class="keyword">await</span> write(movies); <span class="comment">// 这里也要添加await关键字，等到写完再关闭程序</span></span><br><span class="line">  <span class="comment">// 完毕后退出程序</span></span><br><span class="line">  process.exit();</span><br><span class="line">&#125;)();</span><br></pre></td></tr></table></figure>
+<h1 id="前端展示"><a href="#前端展示" class="headerlink" title="前端展示"></a>前端展示</h1><p>使用 ejs 模板，查询到数据后渲染到 index.html 页面。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 首页路由</span></span><br><span class="line">app.get(<span class="string">'/'</span>, <span class="keyword">async</span> (req, res) =&gt; &#123;</span><br><span class="line">  <span class="comment">// 通过SQL查询语句拿到库里的movies表数据</span></span><br><span class="line">  <span class="keyword">const</span> movies = <span class="keyword">await</span> query(<span class="string">'SELECT * FROM movies'</span>);</span><br><span class="line">  <span class="comment">// 渲染首页模板并把movies数据传过去</span></span><br><span class="line">  res.render(<span class="string">'index'</span>, &#123;</span><br><span class="line">    movies</span><br><span class="line">  &#125;);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<h1 id="DEBUG"><a href="#DEBUG" class="headerlink" title="DEBUG"></a>DEBUG</h1><p><a href="https://www.npmjs.com/package/debug" target="_blank" rel="noopener">https://www.npmjs.com/package/debug</a></p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">set DEBUG=movie:* # debug模块需要先设置</span><br></pre></td></tr></table></figure>
+<h1 id="项目启动"><a href="#项目启动" class="headerlink" title="项目启动"></a>项目启动</h1><p>在 README.md 里</p>
+<h1 id="bug"><a href="#bug" class="headerlink" title="bug"></a>bug</h1><p>注意这个项目中 async 和 await 的使用，个人觉得非常巧妙，还有下面的 promisify，值得好好学习。</p>
+<p>mysql 的 query 方法 <strong>promisify</strong> 后进行 bind 绑定，以免 this 混乱。</p>
+<p><a href="https://stackoverflow.com/questions/44004418/node-js-async-await-using-with-mysql/51690276#51690276" target="_blank" rel="noopener">https://stackoverflow.com/questions/44004418/node-js-async-await-using-with-mysql/51690276#51690276</a></p>
+<p><strong>参考</strong></p>
+<blockquote>
+<p><a href="https://juejin.im/post/5ac9bc56f265da238c3af18f#heading-11" target="_blank" rel="noopener">https://juejin.im/post/5ac9bc56f265da238c3af18f#heading-11</a></p>
+</blockquote>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/10/01/hello-koa记录/"/>
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -759,358 +954,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/09/25/node-blog记录/"/>
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="gzl"/>
-      <meta itemprop="description" content=""/>
-      <meta itemprop="image" content="/images/avatar.gif"/>
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="gzl的博客"/>
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/2019/09/25/node-blog记录/" class="post-title-link" itemprop="url">node-blog记录</a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-
-          
-          
-          
-
-          
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-
-              
-                
-              
-
-              <time title="创建时间：2019-09-25 19:52:00" itemprop="dateCreated datePublished" datetime="2019-09-25T19:52:00+08:00">2019-09-25</time>
-            </span>
-          
-
-          
-            
-
-            
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">更新于</span>
-                
-                <time title="修改时间：2019-10-01 15:30:51" itemprop="dateModified" datetime="2019-10-01T15:30:51+08:00">2019-10-01</time>
-              </span>
-            
-          
-
-          
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/node-js/" itemprop="url" rel="index"><span itemprop="name">node.js</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-            
-          
-
-          
-          
-
-          
-
-          
-
-          <br/>
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h1 id="准备知识"><a href="#准备知识" class="headerlink" title="准备知识"></a>准备知识</h1><h2 id="require"><a href="#require" class="headerlink" title="require"></a>require</h2><p>简单概括以下几点:</p>
-<ul>
-<li>require 可加载 .js、.json 和 .node 后缀的文件</li>
-<li>require 的过程是同步的，所以这样是错误的:</li>
-</ul>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">setTimeout(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">  <span class="built_in">module</span>.exports = &#123; <span class="attr">a</span>: <span class="string">'hello'</span> &#125;</span><br><span class="line">&#125;, <span class="number">0</span>)</span><br></pre></td></tr></table></figure>
-<p>require 这个文件得到的是空对象 <code>{}</code></p>
-<ul>
-<li>require 目录的机制是:<ul>
-<li>如果目录下有 package.json 并指定了 main 字段，则用之</li>
-<li>如果不存在 package.json，则依次尝试加载目录下的 index.js 和 index.node</li>
-</ul>
-</li>
-<li>require 过的文件会加载到缓存，所以多次 require 同一个文件（模块）不会重复加载</li>
-<li>判断是否是程序的入口文件有两种方式:<ul>
-<li>require.main === module（推荐）</li>
-<li>module.parent === null</li>
-</ul>
-</li>
-</ul>
-<h2 id="npm"><a href="#npm" class="headerlink" title="npm"></a>npm</h2><ol>
-<li><code>npm i express --save</code>/<code>npm i express -S</code> (安装 express，同时将 <code>&quot;express&quot;: &quot;^4.14.0&quot;</code> 写入 dependencies )</li>
-<li><code>npm i express --save-dev</code>/<code>npm i express -D</code> (安装 express，同时将 <code>&quot;express&quot;: &quot;^4.14.0&quot;</code> 写入 devDependencies )</li>
-<li><code>npm i express --save --save-exact</code> (安装 express，同时将 <code>&quot;express&quot;: &quot;4.14.0&quot;</code> 写入 dependencies )</li>
-</ol>
-<p>第三种方式将固定版本号写入 dependencies，建议线上的 Node.js 应用都采取这种锁定版本号的方式，因为你不可能保证第三方模块下个小版本是没有验证 bug 的，即使是很流行的模块。</p>
-<h2 id="req"><a href="#req" class="headerlink" title="req"></a>req</h2><p>req 包含了请求来的相关信息，res 则用来返回该请求的响应，更多请查阅 <a href="http://expressjs.com/en/4x/api.html" target="_blank" rel="noopener">express 官方文档</a>。下面介绍几个常用的 req 的属性：</p>
-<ul>
-<li><code>req.query</code>: 解析后的 url 中的 querystring，如 <code>?name=haha</code>，req.query 的值为 <code>{name: &#39;haha&#39;}</code></li>
-<li><code>req.params</code>: 解析 url 中的占位符，如 <code>/:name</code>，访问 /haha，req.params 的值为 <code>{name: &#39;haha&#39;}</code></li>
-<li><code>req.body</code>: 解析后请求体，需使用相关的模块，如 <a href="https://www.npmjs.com/package/body-parser" target="_blank" rel="noopener">body-parser</a>，请求体为 <code>{&quot;name&quot;: &quot;haha&quot;}</code>，则 req.body 为 <code>{name: &#39;haha&#39;}</code></li>
-</ul>
-<h2 id="ejs"><a href="#ejs" class="headerlink" title="ejs"></a>ejs</h2><p>ejs 有 3 种常用标签：</p>
-<ol>
-<li><code>&lt;% code %&gt;</code>：运行 JavaScript 代码，不输出</li>
-<li><code>&lt;%= code %&gt;</code>：显示转义后的 HTML内容</li>
-<li><code>&lt;%- code %&gt;</code>：显示原始 HTML 内容</li>
-</ol>
-<blockquote>
-<p>注意：<code>&lt;%= code %&gt;</code> 和 <code>&lt;%- code %&gt;</code> 都可以是 JavaScript 表达式生成的字符串，当变量 code 为普通字符串时，两者没有区别。当 code 比如为 <code>&lt;h1&gt;hello&lt;/h1&gt;</code> 这种字符串时，<code>&lt;%= code %&gt;</code> 会原样输出 <code>&lt;h1&gt;hello&lt;/h1&gt;</code>，而 <code>&lt;%- code %&gt;</code> 则会显示 H1 大的 hello 字符串。</p>
-</blockquote>
-<p>更多 ejs 的标签请看 <a href="https://www.npmjs.com/package/ejs#tags" target="_blank" rel="noopener">官方文档</a>。</p>
-<h2 id="includes"><a href="#includes" class="headerlink" title="includes"></a>includes</h2><blockquote>
-<p>小提示：拆分模板组件通常有两个好处：</p>
-<ol>
-<li>模板可复用，减少重复代码</li>
-<li>主模板结构清晰</li>
-</ol>
-</blockquote>
-<blockquote>
-<p>注意：要用 <code>&lt;%- include(&#39;header&#39;) %&gt;</code> 而不是 <code>&lt;%= include(&#39;header&#39;) %&gt;</code></p>
-</blockquote>
-<h1 id="项目开始"><a href="#项目开始" class="headerlink" title="项目开始"></a>项目开始</h1><h2 id="目录结构"><a href="#目录结构" class="headerlink" title="目录结构"></a>目录结构</h2><ol>
-<li><code>models</code>: 存放操作数据库的文件</li>
-<li><code>public</code>: 存放静态文件，如样式、图片等</li>
-<li><code>routes</code>: 存放路由文件</li>
-<li><code>views</code>: 存放模板文件</li>
-<li><code>index.js</code>: 程序主文件</li>
-<li><code>package.json</code>: 存储项目名、描述、作者、依赖等等信息</li>
-</ol>
-<h2 id="相关依赖"><a href="#相关依赖" class="headerlink" title="相关依赖"></a>相关依赖</h2><ol>
-<li><code>express</code>: web 框架</li>
-<li><code>express-session</code>: session 中间件</li>
-<li><code>connect-mongo</code>: 将 session 存储于 mongodb，结合 express-session 使用</li>
-<li><code>connect-flash</code>: 页面通知的中间件，基于 session 实现</li>
-<li><code>ejs</code>: 模板</li>
-<li><code>express-formidable</code>: 接收表单及文件上传的中间件</li>
-<li><code>config-lite</code>: 读取配置文件</li>
-<li><code>marked</code>: markdown 解析</li>
-<li><code>moment</code>: 时间格式化</li>
-<li><code>mongolass</code>: mongodb 驱动</li>
-<li><code>objectid-to-timestamp</code>: 根据 ObjectId 生成时间戳</li>
-<li><code>sha1</code>: sha1 加密，用于密码加密</li>
-<li><code>winston</code>: 日志</li>
-<li><code>express-winston</code>: express 的 winston 日志中间件</li>
-</ol>
-<h2 id="配置文件"><a href="#配置文件" class="headerlink" title="配置文件"></a>配置文件</h2><p><strong>config/default.js</strong></p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">module</span>.exports = &#123;</span><br><span class="line">  port: <span class="number">3000</span>,</span><br><span class="line">  session: &#123;</span><br><span class="line">    secret: <span class="string">'myblog'</span>,</span><br><span class="line">    key: <span class="string">'myblog'</span>,</span><br><span class="line">    maxAge: <span class="number">2592000000</span></span><br><span class="line">  &#125;,</span><br><span class="line">  mongodb: <span class="string">'mongodb://localhost:27017/myblog'</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>配置释义：</p>
-<ol>
-<li><code>port</code>: 程序启动要监听的端口号</li>
-<li><code>session</code>: express-session 的配置信息，后面介绍</li>
-<li><code>mongodb</code>: mongodb 的地址，以 <code>mongodb://</code> 协议开头，<code>myblog</code> 为 db 名</li>
-</ol>
-<p><a href="https://www.npmjs.com/package/config-lite" target="_blank" rel="noopener">config-lite</a> 是一个轻量的读取配置文件的模块。config-lite 会根据环境变量（<code>NODE_ENV</code>）的不同加载 config 目录下不同的配置文件。如果不设置 <code>NODE_ENV</code>，则读取默认的 default 配置文件，如果设置了 <code>NODE_ENV</code>，则会合并指定的配置文件和 default 配置文件作为配置，config-lite 支持 .js、.json、.node、.yml、.yaml 后缀的文件。</p>
-<p>如果程序以 <code>NODE_ENV=test node app</code> 启动，则 config-lite 会依次降级查找 <code>config/test.js</code>、<code>config/test.json</code>、<code>config/test.node</code>、<code>config/test.yml</code>、<code>config/test.yaml</code> 并合并 default 配置; 如果程序以 <code>NODE_ENV=production node app</code> 启动，则 config-lite 会依次降级查找 <code>config/production.js</code>、<code>config/production.json</code>、<code>config/production.node</code>、<code>config/production.yml</code>、<code>config/production.yaml</code> 并合并 default 配置。</p>
-<p>config-lite 还支持冒泡查找配置，即从传入的路径开始，从该目录不断往上一级目录查找 config 目录，直到找到或者到达根目录为止。</p>
-<h2 id="功能设计-v1-0"><a href="#功能设计-v1-0" class="headerlink" title="功能设计 v1.0"></a>功能设计 v1.0</h2><h3 id="路由设计"><a href="#路由设计" class="headerlink" title="路由设计"></a>路由设计</h3><p>功能及路由设计如下：</p>
-<ol>
-<li>注册<ol>
-<li>注册页：<code>GET /signup</code></li>
-<li>注册（包含上传头像）：<code>POST /signup</code></li>
-</ol>
-</li>
-<li>登录<ol>
-<li>登录页：<code>GET /signin</code></li>
-<li>登录：<code>POST /signin</code></li>
-</ol>
-</li>
-<li>登出：<code>GET /signout</code></li>
-<li>查看文章<ol>
-<li>主页：<code>GET /posts</code></li>
-<li>个人主页：<code>GET /posts?author=xxx</code></li>
-<li>查看一篇文章（包含留言）：<code>GET /posts/:postId</code></li>
-</ol>
-</li>
-<li>发表文章<ol>
-<li>发表文章页：<code>GET /posts/create</code></li>
-<li>发表文章：<code>POST /posts/create</code></li>
-</ol>
-</li>
-<li>修改文章<ol>
-<li>修改文章页：<code>GET /posts/:postId/edit</code></li>
-<li>修改文章：<code>POST /posts/:postId/edit</code></li>
-</ol>
-</li>
-<li>删除文章：<code>GET /posts/:postId/remove</code></li>
-<li>留言<ol>
-<li>创建留言：<code>POST /comments</code></li>
-<li>删除留言：<code>GET /comments/:commentId/remove</code></li>
-</ol>
-</li>
-</ol>
-<p>由于我们博客页面是后端渲染的，所以只通过简单的 <code>&lt;a&gt;(GET)</code> 和 <code>&lt;form&gt;(POST)</code> 与后端进行交互，如果使用 jQuery 或者其他前端框架（如 Angular、Vue、React 等等）可通过 Ajax 与后端交互，则 api 的设计应尽量遵循 Restful 风格。</p>
-<p>更多阅读：</p>
-<ol>
-<li><a href="http://www.ruanyifeng.com/blog/2011/09/restful" target="_blank" rel="noopener">http://www.ruanyifeng.com/blog/2011/09/restful</a></li>
-<li><a href="http://www.ruanyifeng.com/blog/2014/05/restful_api.html" target="_blank" rel="noopener">http://www.ruanyifeng.com/blog/2014/05/restful_api.html</a></li>
-<li><a href="http://developer.51cto.com/art/200908/141825.htm" target="_blank" rel="noopener">http://developer.51cto.com/art/200908/141825.htm</a></li>
-<li><a href="http://blog.jobbole.com/41233/" target="_blank" rel="noopener">http://blog.jobbole.com/41233/</a></li>
-</ol>
-<h3 id="会话"><a href="#会话" class="headerlink" title="会话"></a>会话</h3><p>由于 HTTP 协议是无状态的协议，所以服务端需要记录用户的状态时，就需要用某种机制来识别具体的用户，这个机制就是会话（Session）。</p>
-<p><strong>cookie 与 session 的区别</strong></p>
-<ol>
-<li>cookie 存储在浏览器（有大小限制），session 存储在服务端（没有大小限制）</li>
-<li>通常 session 的实现是基于 cookie 的，session id 存储于 cookie 中</li>
-<li>session 更安全，cookie 可以直接在浏览器查看甚至编辑</li>
-</ol>
-<p>更多 session 的资料，参考：<a href="https://www.zhihu.com/question/19786827" target="_blank" rel="noopener">https://www.zhihu.com/question/19786827</a></p>
-<p>我们通过引入 express-session 中间件实现对会话的支持：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">app.use(session(options))</span><br></pre></td></tr></table></figure>
-<p>session 中间件会在 req 上添加 session 对象，即 req.session 初始值为 <code>{}</code>，当我们登录后设置 <code>req.session.user = 用户信息</code>，返回浏览器的头信息中会带上 <code>set-cookie</code> 将 session id 写到浏览器 cookie 中，那么该用户下次请求时，通过带上来的 cookie 中的 session id 我们就可以查找到该用户，并将用户信息保存到 <code>req.session.user</code>。</p>
-<h3 id="页面通知"><a href="#页面通知" class="headerlink" title="页面通知"></a>页面通知</h3><p>我们还需要这样一个功能：当我们操作成功时需要显示一个成功的通知，如登录成功跳转到主页时，需要显示一个 <code>登陆成功</code> 的通知；当我们操作失败时需要显示一个失败的通知，如注册时用户名被占用了，需要显示一个 <code>用户名已占用</code> 的通知。通知只显示一次，刷新后消失，我们可以通过 connect-flash 中间件实现这个功能。</p>
-<p><a href="https://www.npmjs.com/package/connect-flash" target="_blank" rel="noopener">connect-flash</a> 是基于 session 实现的，它的原理很简单：设置初始值 <code>req.session.flash={}</code>，通过 <code>req.flash(name, value)</code> 设置这个对象下的字段和值，通过 <code>req.flash(name)</code> 获取这个对象下的值，同时删除这个字段，实现了只显示一次刷新后消失的功能。</p>
-<p><strong>express-session、connect-mongo 和 connect-flash 的区别与联系</strong></p>
-<ol>
-<li><code>express-session</code>: 会话（session）支持中间件</li>
-<li><code>connect-mongo</code>: 将 session 存储于 mongodb，需结合 express-session 使用，我们也可以将 session 存储于 redis，如 <a href="https://www.npmjs.com/package/connect-redis" target="_blank" rel="noopener">connect-redis</a></li>
-<li><code>connect-flash</code>: 基于 session 实现的用于通知功能的中间件，需结合 express-session 使用</li>
-</ol>
-<h3 id="权限控制"><a href="#权限控制" class="headerlink" title="权限控制"></a>权限控制</h3><p>不管是论坛还是博客网站，我们没有登录的话只能浏览，登陆后才能发帖或写文章，即使登录了你也不能修改或删除其他人的文章，这就是权限控制。我们也来给博客添加权限控制，如何实现页面的权限控制呢？我们可以把用户状态的检查封装成一个中间件，在每个需要权限控制的路由加载该中间件，即可实现页面的权限控制。</p>
-<p>可以看出：</p>
-<ol>
-<li><code>checkLogin</code>: 当用户信息（<code>req.session.user</code>）不存在，即认为用户没有登录，则跳转到登录页，同时显示 <code>未登录</code> 的通知，用于需要用户登录才能操作的页面</li>
-<li><code>checkNotLogin</code>: 当用户信息（<code>req.session.user</code>）存在，即认为用户已经登录，则跳转到之前的页面，同时显示 <code>已登录</code> 的通知，如已登录用户就禁止访问登录、注册页面</li>
-</ol>
-<p>注意：中间件的加载顺序很重要。如上面设置静态文件目录的中间件应该放到 routes(app) 之前加载，这样静态文件的请求就不会落到业务逻辑的路由里；flash 中间件应该放到 session 中间件之后加载，因为 flash 是基于 session 实现的。</p>
-<h2 id="页面设计-v2-0"><a href="#页面设计-v2-0" class="headerlink" title="页面设计 v2.0"></a>页面设计 v2.0</h2><h3 id="app-locals-和-res-locals"><a href="#app-locals-和-res-locals" class="headerlink" title="app.locals 和 res.locals"></a>app.locals 和 res.locals</h3><p>上面的 ejs 模板中我们用到了 blog、user、success、error 变量，我们将 blog 变量挂载到 <code>app.locals</code> 下，将 user、success、error 挂载到 <code>res.locals</code> 下。为什么要这么做呢？<code>app.locals</code> 和 <code>res.locals</code> 是什么？它们有什么区别？</p>
-<p>express 中有两个对象可用于模板的渲染：<code>app.locals</code> 和 <code>res.locals</code>。</p>
-<p>可以看出：在调用 <code>res.render</code> 的时候，express 合并（merge）了 3 处的结果后传入要渲染的模板，优先级：<code>res.render</code>传入的对象&gt; <code>res.locals</code> 对象 &gt; <code>app.locals</code> 对象，所以 <code>app.locals</code> 和 <code>res.locals</code> 几乎没有区别，都用来渲染模板，使用上的区别在于：<code>app.locals</code> 上通常挂载常量信息（如博客名、描述、作者这种不会变的信息），<code>res.locals</code> 上通常挂载变量信息，即每次请求可能的值都不一样（如请求者信息，<code>res.locals.user = req.session.user</code>）。</p>
-<h2 id="连接数据库-v3-0"><a href="#连接数据库-v3-0" class="headerlink" title="连接数据库 v3.0"></a>连接数据库 v3.0</h2><blockquote>
-<p><a href="https://github.com/mongolass/mongolass" target="_blank" rel="noopener">https://github.com/mongolass/mongolass</a></p>
-</blockquote>
-<p>这里使用的是 mongolass</p>
-<h2 id="注册-v4-0"><a href="#注册-v4-0" class="headerlink" title="注册 v4.0"></a>注册 v4.0</h2><p>我们使用 express-formidable 处理表单的上传，表单普通字段挂载到 req.fields 上，表单上传后的文件挂载到 req.files 上，文件存储在 public/img 目录下。然后校验了参数，校验通过后将用户信息插入到 MongoDB 中，成功则跳转到主页并显示『注册成功』的通知，失败（如用户名被占用）则跳转回注册页面并显示『用户名已被占用』的通知。</p>
-<blockquote>
-<p>注意：我们使用 sha1 加密用户的密码，sha1 并不是一种十分安全的加密方式，实际开发中可以使用更安全的 <a href="https://www.npmjs.com/package/bcrypt" target="_blank" rel="noopener">bcrypt</a>或 <a href="https://www.npmjs.com/package/scrypt" target="_blank" rel="noopener">scrypt</a> 加密。 注意：注册失败时（参数校验失败或者存数据库时出错）删除已经上传到 public/img 目录下的头像。</p>
-</blockquote>
-<p>bug - fs.unlink Callback must be a function <strong>v4.0注册时删除头像</strong></p>
-<h2 id="登出与登录-v5-0"><a href="#登出与登录-v5-0" class="headerlink" title="登出与登录 v5.0"></a>登出与登录 v5.0</h2><h2 id="文章-v6-0"><a href="#文章-v6-0" class="headerlink" title="文章 v6.0"></a>文章 v6.0</h2><h2 id="留言-v7-0"><a href="#留言-v7-0" class="headerlink" title="留言 v7.0"></a>留言 v7.0</h2><h2 id="404简单处理-v8-0"><a href="#404简单处理-v8-0" class="headerlink" title="404简单处理 v8.0"></a>404简单处理 v8.0</h2><h2 id="忽略img和logs-v9-0"><a href="#忽略img和logs-v9-0" class="headerlink" title="忽略img和logs v9.0"></a>忽略img和logs v9.0</h2><h2 id="测试-v10-0"><a href="#测试-v10-0" class="headerlink" title="测试 v10.0"></a>测试 v10.0</h2><h2 id="修复fs-unlink以及控制台取消打印log-v11-0"><a href="#修复fs-unlink以及控制台取消打印log-v11-0" class="headerlink" title="修复fs.unlink以及控制台取消打印log v11.0"></a>修复fs.unlink以及控制台取消打印log v11.0</h2><h2 id="腾讯公益404-v12-0"><a href="#腾讯公益404-v12-0" class="headerlink" title="腾讯公益404 v12.0"></a>腾讯公益404 v12.0</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git checkout 版本号 # 切换学习时相应的版本</span><br></pre></td></tr></table></figure>
-<h1 id="启动"><a href="#启动" class="headerlink" title="启动"></a>启动</h1><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">启动本地mongoDB数据库</span><br><span class="line">cd node-blog  # 进入该项目</span><br><span class="line">node index.js # 启动</span><br></pre></td></tr></table></figure>
-<h1 id="部署"><a href="#部署" class="headerlink" title="部署"></a>部署</h1><blockquote>
-<p><a href="https://github.com/nswbmw/N-blog/blob/master/book/4.15 部署.md#4154-部署到阿里云" target="_blank" rel="noopener">https://github.com/nswbmw/N-blog/blob/master/book/4.15%20%E9%83%A8%E7%BD%B2.md#4154-%E9%83%A8%E7%BD%B2%E5%88%B0%E9%98%BF%E9%87%8C%E4%BA%91</a></p>
-</blockquote>
-<h1 id="bug"><a href="#bug" class="headerlink" title="bug"></a>bug</h1><blockquote>
-<p><a href="https://stackoverflow.com/questions/53583183/i-have-got-typeerror-err-invalid-callback-callback-must-be-a-function" target="_blank" rel="noopener">https://stackoverflow.com/questions/53583183/i-have-got-typeerror-err-invalid-callback-callback-must-be-a-function</a></p>
-</blockquote>
-<p>fs.unlink Callback must be a function <strong>v4.0注册时删除头像</strong></p>
-
-          
-        
-      
-    </div>
-
-    
-
-    
-
-    
-    
-    
-
-    
-
-    
-      
-    
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -1158,7 +1001,7 @@
         
           <a href="/archives/">
         
-          <span class="site-state-item-count">88</span>
+          <span class="site-state-item-count">89</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -1201,7 +1044,9 @@
         
           
         
-        <span class="site-state-item-count">13</span>
+          
+        
+        <span class="site-state-item-count">14</span>
         <span class="site-state-item-name">分类</span>
         </a>
       </div>
