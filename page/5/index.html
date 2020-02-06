@@ -326,6 +326,226 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/10/30/CSS-flex布局/"/>
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="gzl"/>
+      <meta itemprop="description" content=""/>
+      <meta itemprop="image" content="/images/avatar.gif"/>
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="gzl的博客"/>
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/2019/10/30/CSS-flex布局/" class="post-title-link" itemprop="url">CSS-flex布局</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+
+          
+          
+          
+
+          
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2019-10-30 20:42:25" itemprop="dateCreated datePublished" datetime="2019-10-30T20:42:25+08:00">2019-10-30</time>
+            </span>
+          
+
+          
+            
+
+            
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2019-12-15 15:33:47" itemprop="dateModified" datetime="2019-12-15T15:33:47+08:00">2019-12-15</time>
+              </span>
+            
+          
+
+          
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/CSS/" itemprop="url" rel="index"><span itemprop="name">CSS</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+
+          <br/>
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="Flex-布局是什么？"><a href="#Flex-布局是什么？" class="headerlink" title="Flex 布局是什么？"></a>Flex 布局是什么？</h1><p>Flex 是 Flexible Box 的缩写，意为”弹性布局”，用来为盒状模型提供最大的灵活性。</p>
+<p>任何一个容器都可以指定为 Flex 布局。</p>
+<p>行内元素也可以使用 Flex 布局。</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.container</span> &#123;</span><br><span class="line">  <span class="attribute">display</span>: flex; <span class="comment">/* or inline-flex */</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>注意，设为 Flex 布局以后，子元素的<code>float</code>、<code>clear</code>和<code>vertical-align</code>属性将失效。</p>
+<p>Note that <code>float</code>, <code>clear</code> and <code>vertical-align</code> have no effect on a flex item.</p>
+<h1 id="基本概念"><a href="#基本概念" class="headerlink" title="基本概念"></a>基本概念</h1><p>采用 Flex 布局的元素，称为 Flex 容器（flex container），简称”容器”。它的所有子元素自动成为容器成员，称为 Flex 项目（flex item），简称”项目”。</p>
+<p>容器默认存在两根轴：水平的主轴（main axis）和垂直的交叉轴（cross axis）。主轴的开始位置（与边框的交叉点）叫做<code>main start</code>，结束位置叫做<code>main end</code>；交叉轴的开始位置叫做<code>cross start</code>，结束位置叫做<code>cross end</code>。</p>
+<p>项目默认沿主轴排列。单个项目占据的主轴空间叫做<code>main size</code>，占据的交叉轴空间叫做<code>cross size</code>。</p>
+<h1 id="容器的属性"><a href="#容器的属性" class="headerlink" title="容器的属性"></a>容器的属性</h1><p>以下6个属性设置在容器上。</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">flex-direction</span></span><br><span class="line"><span class="selector-tag">flex-wrap</span></span><br><span class="line"><span class="selector-tag">flex-flow</span></span><br><span class="line"><span class="selector-tag">justify-content</span></span><br><span class="line"><span class="selector-tag">align-items</span></span><br><span class="line"><span class="selector-tag">align-content</span></span><br></pre></td></tr></table></figure>
+<h2 id="flex-direction"><a href="#flex-direction" class="headerlink" title="flex-direction"></a>flex-direction</h2><p><code>flex-direction</code>属性决定主轴的方向（即项目的排列方向）。</p>
+<p>它可能有4个值。</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">row</span>（默认值）：主轴为水平方向，起点在左端。</span><br><span class="line"><span class="selector-tag">row-reverse</span>：主轴为水平方向，起点在右端。</span><br><span class="line"><span class="selector-tag">column</span>：主轴为垂直方向，起点在上沿。</span><br><span class="line"><span class="selector-tag">column-reverse</span>：主轴为垂直方向，起点在下沿。</span><br></pre></td></tr></table></figure>
+<h2 id="flex-wrap"><a href="#flex-wrap" class="headerlink" title="flex-wrap"></a>flex-wrap</h2><p>默认情况下，项目都排在一条线（又称”轴线”）上。<code>flex-wrap</code>属性定义，如果一条轴线排不下，如何换行。</p>
+<p>它可能取三个值。</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">nowrap</span>（默认）：不换行。</span><br><span class="line"><span class="selector-tag">wrap</span>：换行，第一行在上方。</span><br><span class="line"><span class="selector-tag">wrap-reverse</span>：换行，第一行在下方。</span><br></pre></td></tr></table></figure>
+<h2 id="flex-flow"><a href="#flex-flow" class="headerlink" title="flex-flow"></a>flex-flow</h2><p><code>flex-flow</code>属性是<code>flex-direction</code>属性和<code>flex-wrap</code>属性的简写形式，默认值为<code>row nowrap</code>。</p>
+<h2 id="justify-content"><a href="#justify-content" class="headerlink" title="justify-content"></a>justify-content</h2><p><code>justify-content</code>属性定义了项目在主轴上的对齐方式。</p>
+<p>它可能取5个值，具体对齐方式与轴的方向有关。下面假设主轴为从左到右。</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">flex-start</span>（默认值）：左对齐</span><br><span class="line"><span class="selector-tag">flex-end</span>：右对齐</span><br><span class="line"><span class="selector-tag">center</span>： 居中</span><br><span class="line"><span class="selector-tag">space-between</span>：两端对齐，项目之间的间隔都相等。</span><br><span class="line"><span class="selector-tag">space-around</span>：每个项目两侧的间隔相等。所以，项目之间的间隔比项目与边框的间隔大一倍。</span><br></pre></td></tr></table></figure>
+<h2 id="align-items"><a href="#align-items" class="headerlink" title="align-items"></a>align-items</h2><p><code>align-items</code>属性定义项目在交叉轴上如何对齐。</p>
+<p>它可能取5个值。具体的对齐方式与交叉轴的方向有关，下面假设交叉轴从上到下。</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">flex-start</span>：交叉轴的起点对齐。</span><br><span class="line"><span class="selector-tag">flex-end</span>：交叉轴的终点对齐。</span><br><span class="line"><span class="selector-tag">center</span>：交叉轴的中点对齐。</span><br><span class="line"><span class="selector-tag">baseline</span>: 项目的第一行文字的基线对齐。</span><br><span class="line"><span class="selector-tag">stretch</span>（默认值）：如果项目未设置高度或设为<span class="selector-tag">auto</span>，将占满整个容器的高度。</span><br></pre></td></tr></table></figure>
+<h2 id="align-content"><a href="#align-content" class="headerlink" title="align-content"></a>align-content</h2><p><code>align-content</code>属性定义了多根轴线的对齐方式。如果项目只有一根轴线，该属性不起作用。</p>
+<p>该属性可能取6个值。</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">flex-start</span>：与交叉轴的起点对齐。</span><br><span class="line"><span class="selector-tag">flex-end</span>：与交叉轴的终点对齐。</span><br><span class="line"><span class="selector-tag">center</span>：与交叉轴的中点对齐。</span><br><span class="line"><span class="selector-tag">space-between</span>：与交叉轴两端对齐，轴线之间的间隔平均分布。</span><br><span class="line"><span class="selector-tag">space-around</span>：每根轴线两侧的间隔都相等。所以，轴线之间的间隔比轴线与边框的间隔大一倍。</span><br><span class="line"><span class="selector-tag">stretch</span>（默认值）：轴线占满整个交叉轴。</span><br></pre></td></tr></table></figure>
+<h1 id="项目的属性"><a href="#项目的属性" class="headerlink" title="项目的属性"></a>项目的属性</h1><p>以下6个属性设置在项目上。</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">order</span></span><br><span class="line"><span class="selector-tag">flex-grow</span></span><br><span class="line"><span class="selector-tag">flex-shrink</span></span><br><span class="line"><span class="selector-tag">flex-basis</span></span><br><span class="line"><span class="selector-tag">flex</span></span><br><span class="line"><span class="selector-tag">align-self</span></span><br></pre></td></tr></table></figure>
+<h2 id="order"><a href="#order" class="headerlink" title="order"></a>order</h2><p><code>order</code>属性定义项目的排列顺序。数值越小，排列越靠前，默认为0。</p>
+<h2 id="flex-grow"><a href="#flex-grow" class="headerlink" title="flex-grow"></a>flex-grow</h2><p><code>flex-grow</code>属性定义项目的放大比例，默认为<code>0</code>，即如果存在剩余空间，也不放大。</p>
+<p>如果所有项目的<code>flex-grow</code>属性都为1，则它们将等分剩余空间（如果有的话）。如果一个项目的<code>flex-grow</code>属性为2，其他项目都为1，则前者占据的剩余空间将比其他项多一倍。</p>
+<h2 id="flex-shrink"><a href="#flex-shrink" class="headerlink" title="flex-shrink"></a>flex-shrink</h2><p><code>flex-shrink</code>属性定义了项目的缩小比例，默认为1，即如果空间不足，该项目将缩小。</p>
+<p>如果所有项目的<code>flex-shrink</code>属性都为1，当空间不足时，都将等比例缩小。如果一个项目的<code>flex-shrink</code>属性为0，其他项目都为1，则空间不足时，前者不缩小。</p>
+<p>负值对该属性无效。</p>
+<h2 id="flex-basis"><a href="#flex-basis" class="headerlink" title="flex-basis"></a>flex-basis</h2><p><code>flex-basis</code>属性定义了在分配多余空间之前，项目占据的主轴空间（main size）。浏览器根据这个属性，计算主轴是否有多余空间。它的默认值为<code>auto</code>，即项目的本来大小。</p>
+<p>它可以设为跟<code>width</code>或<code>height</code>属性一样的值（比如350px），则项目将占据固定空间。</p>
+<h2 id="flex"><a href="#flex" class="headerlink" title="flex"></a>flex</h2><p><code>flex</code>属性是<code>flex-grow</code>, <code>flex-shrink</code> 和 <code>flex-basis</code>的简写，默认值为<code>0 1 auto</code>。后两个属性可选。</p>
+<p>该属性有两个快捷值：<code>auto</code> (<code>1 1 auto</code>) 和 none (<code>0 0 auto</code>)。</p>
+<p>建议优先使用这个属性，而不是单独写三个分离的属性，因为浏览器会推算相关值。</p>
+<h2 id="align-self"><a href="#align-self" class="headerlink" title="align-self"></a>align-self</h2><p><code>align-self</code>属性允许单个项目有与其他项目不一样的对齐方式，可覆盖<code>align-items</code>属性。默认值为<code>auto</code>，表示继承父元素的<code>align-items</code>属性，如果没有父元素，则等同于<code>stretch</code>。</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.item</span> &#123;</span><br><span class="line">  <span class="attribute">align-self</span>: auto | flex-start | flex-end | center | baseline | stretch;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>该属性可能取6个值，除了auto，其他都与align-items属性完全一致。</p>
+<p><strong>参考</strong></p>
+<p><a href="https://www.ruanyifeng.com/blog/2015/07/flex-grammar.html?utm_source=tuicool" target="_blank" rel="noopener">Flex 布局教程：语法篇</a></p>
+<p><a href="https://css-tricks.com/snippets/css/a-guide-to-flexbox/#flexbox-background" target="_blank" rel="noopener">a-guide-to-flexbox</a></p>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/10/29/JavaScript-Style-Guide/"/>
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -816,184 +1036,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/10/25/CSS-stylus/"/>
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="gzl"/>
-      <meta itemprop="description" content=""/>
-      <meta itemprop="image" content="/images/avatar.gif"/>
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="gzl的博客"/>
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/2019/10/25/CSS-stylus/" class="post-title-link" itemprop="url">CSS-stylus</a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-
-          
-          
-          
-
-          
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-
-              
-                
-              
-
-              <time title="创建时间：2019-10-25 08:33:21 / 修改时间：09:35:15" itemprop="dateCreated datePublished" datetime="2019-10-25T08:33:21+08:00">2019-10-25</time>
-            </span>
-          
-
-          
-            
-
-            
-          
-
-          
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/CSS/" itemprop="url" rel="index"><span itemprop="name">CSS</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-            
-          
-
-          
-          
-
-          
-
-          
-
-          <br/>
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h1 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h1><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install stylus -g</span><br></pre></td></tr></table></figure>
-<h1 id="编译命令"><a href="#编译命令" class="headerlink" title="编译命令"></a>编译命令</h1><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">stylus index.styl -o index.css   //index是创建的文件名  -o 的意思是-out 输出css文件</span><br></pre></td></tr></table></figure>
-<p>你会发现stylus自动帮我们在本目录下编译并生成好了index.css文件</p>
-<p>每修改一次stylus文件就要再输入一次stylus命令进行重新编译，这样对于我们开发者来说极大的不便。<br>所以stylus提供了解决的方法，就是在原有基础上加上-w</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">stylus -w index.styl -o index.css   //在原有的基础上加了-w  w的意思是watch，也就是监听</span><br></pre></td></tr></table></figure>
-<p>这样就可以实时监听修改，并实时编译。</p>
-<p>这是写好的 stylus 代码</p>
-<figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">*</span><br><span class="line">  <span class="attribute">margin</span> <span class="number">0</span></span><br><span class="line">  <span class="attribute">padding</span> <span class="number">0</span></span><br><span class="line">.tab</span><br><span class="line">  <span class="attribute">display</span> flex</span><br><span class="line">  <span class="attribute">width</span> <span class="number">100%</span></span><br><span class="line">  <span class="attribute">height</span> <span class="number">40px</span></span><br><span class="line">  <span class="attribute">line-height</span> <span class="number">40px</span></span><br><span class="line">  .tab-item</span><br><span class="line">    <span class="attribute">flex</span> <span class="number">1</span></span><br><span class="line">    <span class="attribute">text-align</span> center</span><br><span class="line">    &amp; &gt; a</span><br><span class="line">      <span class="attribute">display</span> block</span><br><span class="line">      <span class="attribute">font-size</span> <span class="number">14px</span></span><br><span class="line">      <span class="attribute">color</span> rgb(<span class="number">77</span>, <span class="number">85</span>, <span class="number">93</span>)</span><br><span class="line">      <span class="attribute">text-decoration</span> none</span><br></pre></td></tr></table></figure>
-<p>这是编译生成后的 css 代码</p>
-<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">* &#123;</span><br><span class="line">  <span class="attribute">margin</span>: <span class="number">0</span>;</span><br><span class="line">  <span class="attribute">padding</span>: <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-class">.tab</span> &#123;</span><br><span class="line">  <span class="attribute">display</span>: flex;</span><br><span class="line">  <span class="attribute">width</span>: <span class="number">100%</span>;</span><br><span class="line">  <span class="attribute">height</span>: <span class="number">40px</span>;</span><br><span class="line">  <span class="attribute">line-height</span>: <span class="number">40px</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-class">.tab</span> <span class="selector-class">.tab-item</span> &#123;</span><br><span class="line">  <span class="attribute">flex</span>: <span class="number">1</span>;</span><br><span class="line">  <span class="attribute">text-align</span>: center;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-class">.tab</span> <span class="selector-class">.tab-item</span> &gt; <span class="selector-tag">a</span> &#123;</span><br><span class="line">  <span class="attribute">display</span>: block;</span><br><span class="line">  <span class="attribute">font-size</span>: <span class="number">14px</span>;</span><br><span class="line">  <span class="attribute">color</span>: <span class="number">#4d555d</span>;</span><br><span class="line">  <span class="attribute">text-decoration</span>: none;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h1 id="注释"><a href="#注释" class="headerlink" title="注释"></a>注释</h1><blockquote>
-<p><a href="https://www.zhangxinxu.com/jq/stylus/comments.php" target="_blank" rel="noopener">https://www.zhangxinxu.com/jq/stylus/comments.php</a></p>
-</blockquote>
-<p>在 stylus 中的单行注释不会写入编译后的 css 中，多行注释在<code>compress</code>选项未启用的时候才会被输出</p>
-
-          
-        
-      
-    </div>
-
-    
-
-    
-
-    
-    
-    
-
-    
-
-    
-      
-    
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -1041,7 +1083,7 @@
         
           <a href="/archives/">
         
-          <span class="site-state-item-count">91</span>
+          <span class="site-state-item-count">92</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -1086,7 +1128,9 @@
         
           
         
-        <span class="site-state-item-count">14</span>
+          
+        
+        <span class="site-state-item-count">15</span>
         <span class="site-state-item-name">分类</span>
         </a>
       </div>
@@ -1185,9 +1229,7 @@
         
           
         
-          
-        
-        <span class="site-state-item-count">42</span>
+        <span class="site-state-item-count">41</span>
         <span class="site-state-item-name">标签</span>
         </a>
       </div>
