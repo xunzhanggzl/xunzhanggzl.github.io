@@ -326,6 +326,174 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/08/11/LC最大子序和/"/>
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="gzl"/>
+      <meta itemprop="description" content=""/>
+      <meta itemprop="image" content="/images/avatar.gif"/>
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="gzl的博客"/>
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/2019/08/11/LC最大子序和/" class="post-title-link" itemprop="url">最大子序和</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+
+          
+          
+          
+
+          
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2019-08-11 10:14:49 / 修改时间：10:23:13" itemprop="dateCreated datePublished" datetime="2019-08-11T10:14:49+08:00">2019-08-11</time>
+            </span>
+          
+
+          
+            
+
+            
+          
+
+          
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/LeetCode/" itemprop="url" rel="index"><span itemprop="name">LeetCode</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+
+          <br/>
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p><a href="https://leetcode-cn.com/problems/maximum-subarray/" target="_blank" rel="noopener">53. 最大子序和</a></p>
+<p>给定一个整数数组 <code>nums</code> ，找到一个具有最大和的连续子数组（子数组最少包含一个元素），返回其最大和。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">输入: [-2,1,-3,4,-1,2,1,-5,4],</span><br><span class="line">输出: 6</span><br><span class="line">解释: 连续子数组 [4,-1,2,1] 的和最大，为 6。</span><br></pre></td></tr></table></figure>
+<h1 id="动态规划"><a href="#动态规划" class="headerlink" title="动态规划"></a>动态规划</h1><p>下面这个解法的思想就是从一开始就求出到该位置的最大子序和，然后直接返回其中的最大值。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * @param &#123;number[]&#125; nums</span></span><br><span class="line"><span class="comment"> * @return &#123;number&#125;</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">var</span> maxSubArray = <span class="function"><span class="keyword">function</span> (<span class="params">nums</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">1</span>; i &lt; nums.length; i++) &#123;</span><br><span class="line">    nums[i] = <span class="built_in">Math</span>.max(nums[i<span class="number">-1</span>] + nums[i], nums[i]);</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="built_in">console</span>.log(nums); <span class="comment">// [-2, 1, -2, 4, 3, 5, 6, 1, 5]</span></span><br><span class="line">  <span class="keyword">return</span> <span class="built_in">Math</span>.max(...nums);</span><br><span class="line">&#125;;</span><br><span class="line">maxSubArray([<span class="number">-2</span>,<span class="number">1</span>,<span class="number">-3</span>,<span class="number">4</span>,<span class="number">-1</span>,<span class="number">2</span>,<span class="number">1</span>,<span class="number">-5</span>,<span class="number">4</span>]);</span><br></pre></td></tr></table></figure>
+          
+        
+      
+    </div>
+
+    
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/08/07/RN-《JavaScript高级程序设计》第六章创建对象/"/>
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -707,206 +875,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/08/06/JS强制类型转换/"/>
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="gzl"/>
-      <meta itemprop="description" content=""/>
-      <meta itemprop="image" content="/images/avatar.gif"/>
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="gzl的博客"/>
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/2019/08/06/JS强制类型转换/" class="post-title-link" itemprop="url">JS强制类型转换</a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-
-          
-          
-          
-
-          
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-
-              
-                
-              
-
-              <time title="创建时间：2019-08-06 14:37:13" itemprop="dateCreated datePublished" datetime="2019-08-06T14:37:13+08:00">2019-08-06</time>
-            </span>
-          
-
-          
-            
-
-            
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">更新于</span>
-                
-                <time title="修改时间：2019-08-07 13:38:19" itemprop="dateModified" datetime="2019-08-07T13:38:19+08:00">2019-08-07</time>
-              </span>
-            
-          
-
-          
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/JavaScript/" itemprop="url" rel="index"><span itemprop="name">JavaScript</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-            
-          
-
-          
-          
-
-          
-
-          
-
-          <br/>
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h1 id="显式强制类型转换"><a href="#显式强制类型转换" class="headerlink" title="显式强制类型转换"></a>显式强制类型转换</h1><h2 id="字符串和数字之间的显式转换"><a href="#字符串和数字之间的显式转换" class="headerlink" title="字符串和数字之间的显式转换"></a>字符串和数字之间的显式转换</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> a = <span class="number">42</span>;</span><br><span class="line"><span class="keyword">let</span> b = <span class="built_in">String</span>(a);</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> c = <span class="string">"3.14"</span>;</span><br><span class="line"><span class="keyword">let</span> d = <span class="built_in">Number</span>(c);</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(b);  <span class="comment">// "42"</span></span><br><span class="line"><span class="built_in">console</span>.log(d);  <span class="comment">// 3.14</span></span><br></pre></td></tr></table></figure>
-<p>除了 String() 和 Number() 以外，还有其他方法：</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> a = <span class="number">42</span>;</span><br><span class="line"><span class="keyword">let</span> b = a.toString();</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> c = <span class="string">"3.14"</span>;</span><br><span class="line"><span class="keyword">let</span> d = +c;</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(b);  <span class="comment">// "42"</span></span><br><span class="line"><span class="built_in">console</span>.log(d);  <span class="comment">// 3.14</span></span><br></pre></td></tr></table></figure>
-<h3 id="日期显式转换为数字"><a href="#日期显式转换为数字" class="headerlink" title="日期显式转换为数字"></a>日期显式转换为数字</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> d = <span class="keyword">new</span> <span class="built_in">Date</span>();</span><br><span class="line"><span class="built_in">console</span>.log(+d); <span class="comment">// 1565074622713</span></span><br></pre></td></tr></table></figure>
-<p>我们下面的方法获取当前的时间戳：</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> timestamp1 = +<span class="keyword">new</span> <span class="built_in">Date</span>();</span><br><span class="line"><span class="keyword">let</span> timestamp2 = <span class="keyword">new</span> <span class="built_in">Date</span>().getTime();</span><br><span class="line"><span class="keyword">let</span> timestamp3 = <span class="built_in">Date</span>.now();</span><br></pre></td></tr></table></figure>
-<h3 id="奇特的-运算符"><a href="#奇特的-运算符" class="headerlink" title="奇特的 ~ 运算符"></a>奇特的 ~ 运算符</h3><p><strong>~ 可以和 indexOf() 一起将结果强制类型转换：</strong>如果 indexOf() 返回 -1，<strong>~</strong> 将其转换为假值0，其他情况一律转换为真值。</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> a = <span class="string">"Hello World"</span>;</span><br><span class="line"><span class="built_in">console</span>.log(~a.indexOf(<span class="string">"H"</span>));  <span class="comment">// -1</span></span><br><span class="line"><span class="built_in">console</span>.log(~a.indexOf(<span class="string">"lo"</span>)); <span class="comment">// -4</span></span><br><span class="line"><span class="built_in">console</span>.log(~a.indexOf(<span class="string">"ol"</span>)); <span class="comment">// 0</span></span><br><span class="line"><span class="keyword">if</span> (~a.indexOf(<span class="string">"lo"</span>)) &#123;</span><br><span class="line">    <span class="comment">// 找到匹配</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h2 id="显式解析数字字符串"><a href="#显式解析数字字符串" class="headerlink" title="显式解析数字字符串"></a>显式解析数字字符串</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> a = <span class="string">"42"</span>;</span><br><span class="line"><span class="keyword">let</span> b = <span class="string">"42px"</span>;</span><br><span class="line"><span class="built_in">console</span>.log(<span class="built_in">Number</span>(a));   <span class="comment">// 42</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="built_in">parseInt</span>(a)); <span class="comment">// 42</span></span><br></pre></td></tr></table></figure>
-<h2 id="显式转换为布尔值"><a href="#显式转换为布尔值" class="headerlink" title="显式转换为布尔值"></a>显式转换为布尔值</h2><p>虽然Boolean是显式的，但并不常用。</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> a = <span class="string">"0"</span>;</span><br><span class="line"><span class="keyword">let</span> b = [];</span><br><span class="line"><span class="keyword">let</span> c = &#123;&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> d = <span class="string">""</span>;</span><br><span class="line"><span class="keyword">let</span> e = <span class="number">0</span>;</span><br><span class="line"><span class="keyword">let</span> f = <span class="literal">null</span>;</span><br><span class="line"><span class="keyword">let</span> g;</span><br><span class="line"></span><br><span class="line"><span class="built_in">Boolean</span>(a) <span class="comment">// true</span></span><br><span class="line"><span class="built_in">Boolean</span>(b) <span class="comment">// true</span></span><br><span class="line"><span class="built_in">Boolean</span>(c) <span class="comment">// true</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">Boolean</span>(d) <span class="comment">// false</span></span><br><span class="line"><span class="built_in">Boolean</span>(e) <span class="comment">// false</span></span><br><span class="line"><span class="built_in">Boolean</span>(f) <span class="comment">// false</span></span><br><span class="line"><span class="built_in">Boolean</span>(g) <span class="comment">// false</span></span><br></pre></td></tr></table></figure>
-<p>常用的是 ！</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> a = <span class="string">"0"</span>;</span><br><span class="line"><span class="keyword">let</span> b = [];</span><br><span class="line"><span class="keyword">let</span> c = &#123;&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> d = <span class="string">""</span>;</span><br><span class="line"><span class="keyword">let</span> e = <span class="number">0</span>;</span><br><span class="line"><span class="keyword">let</span> f = <span class="literal">null</span>;</span><br><span class="line"><span class="keyword">let</span> g;</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(!!a) <span class="comment">// true</span></span><br><span class="line"><span class="built_in">console</span>.log(!!b) <span class="comment">// true</span></span><br><span class="line"><span class="built_in">console</span>.log(!!c) <span class="comment">// true</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(!!d) <span class="comment">// false</span></span><br><span class="line"><span class="built_in">console</span>.log(!!e) <span class="comment">// false</span></span><br><span class="line"><span class="built_in">console</span>.log(!!f) <span class="comment">// false</span></span><br><span class="line"><span class="built_in">console</span>.log(!!g) <span class="comment">// false</span></span><br></pre></td></tr></table></figure>
-<h1 id="隐式强制类型转换"><a href="#隐式强制类型转换" class="headerlink" title="隐式强制类型转换"></a>隐式强制类型转换</h1><h2 id="字符串和数字之间的隐式转换"><a href="#字符串和数字之间的隐式转换" class="headerlink" title="字符串和数字之间的隐式转换"></a>字符串和数字之间的隐式转换</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> a = <span class="string">"42"</span>;</span><br><span class="line"><span class="keyword">let</span> b = <span class="string">"0"</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> c = <span class="number">42</span>;</span><br><span class="line"><span class="keyword">let</span> d = <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(a + b);  <span class="comment">// "420"</span></span><br><span class="line"><span class="built_in">console</span>.log(c + d);  <span class="comment">// 42</span></span><br></pre></td></tr></table></figure>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> a = [<span class="number">1</span>,<span class="number">2</span>];</span><br><span class="line"><span class="keyword">let</span> b = [<span class="number">3</span>,<span class="number">4</span>];</span><br><span class="line"><span class="built_in">console</span>.log(a + b); <span class="comment">// "1,23,4"</span></span><br></pre></td></tr></table></figure>
-<p>简单来说，如果 + 的其中一个操作数是字符串（或者经过一系列操作得到字符串），则执行字符串的拼接，否则执行数字加法。</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> a = <span class="string">"3.14"</span>;</span><br><span class="line"><span class="keyword">let</span> b = a - <span class="number">0</span>;</span><br><span class="line"><span class="built_in">console</span>.log(b); <span class="comment">// 3.14</span></span><br></pre></td></tr></table></figure>
-<p>a - 0 会将 a 强制类型转换为数字。执行减法运算，a 和 b 都需要转换为数字。</p>
-<h2 id="隐式转换为布尔值"><a href="#隐式转换为布尔值" class="headerlink" title="隐式转换为布尔值"></a>隐式转换为布尔值</h2><ol>
-<li>if() 语句中的条件判断表达式</li>
-<li>for() 语句中的条件判断表达式（第二个）</li>
-<li>while() 和 do.while() 中的条件判断表达式</li>
-<li>? : 中的条件判断表达式</li>
-<li>逻辑运算符 || 和 &amp;&amp; 左边的操作数</li>
-</ol>
-<p>在以上情况中，非布尔值会被隐式强制类型转换为布尔值。</p>
-
-          
-        
-      
-    </div>
-
-    
-
-    
-
-    
-    
-    
-
-    
-
-    
-      
-    
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -954,7 +922,7 @@
         
           <a href="/archives/">
         
-          <span class="site-state-item-count">92</span>
+          <span class="site-state-item-count">93</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
