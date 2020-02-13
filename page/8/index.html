@@ -326,6 +326,184 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/10/25/CSS-stylus/"/>
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="gzl"/>
+      <meta itemprop="description" content=""/>
+      <meta itemprop="image" content="/images/avatar.gif"/>
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="gzl的博客"/>
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/2019/10/25/CSS-stylus/" class="post-title-link" itemprop="url">CSS-stylus</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+
+          
+          
+          
+
+          
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2019-10-25 08:33:21 / 修改时间：09:35:15" itemprop="dateCreated datePublished" datetime="2019-10-25T08:33:21+08:00">2019-10-25</time>
+            </span>
+          
+
+          
+            
+
+            
+          
+
+          
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/CSS/" itemprop="url" rel="index"><span itemprop="name">CSS</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+
+          <br/>
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h1><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install stylus -g</span><br></pre></td></tr></table></figure>
+<h1 id="编译命令"><a href="#编译命令" class="headerlink" title="编译命令"></a>编译命令</h1><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">stylus index.styl -o index.css   //index是创建的文件名  -o 的意思是-out 输出css文件</span><br></pre></td></tr></table></figure>
+<p>你会发现stylus自动帮我们在本目录下编译并生成好了index.css文件</p>
+<p>每修改一次stylus文件就要再输入一次stylus命令进行重新编译，这样对于我们开发者来说极大的不便。<br>所以stylus提供了解决的方法，就是在原有基础上加上-w</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">stylus -w index.styl -o index.css   //在原有的基础上加了-w  w的意思是watch，也就是监听</span><br></pre></td></tr></table></figure>
+<p>这样就可以实时监听修改，并实时编译。</p>
+<p>这是写好的 stylus 代码</p>
+<figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">*</span><br><span class="line">  <span class="attribute">margin</span> <span class="number">0</span></span><br><span class="line">  <span class="attribute">padding</span> <span class="number">0</span></span><br><span class="line">.tab</span><br><span class="line">  <span class="attribute">display</span> flex</span><br><span class="line">  <span class="attribute">width</span> <span class="number">100%</span></span><br><span class="line">  <span class="attribute">height</span> <span class="number">40px</span></span><br><span class="line">  <span class="attribute">line-height</span> <span class="number">40px</span></span><br><span class="line">  .tab-item</span><br><span class="line">    <span class="attribute">flex</span> <span class="number">1</span></span><br><span class="line">    <span class="attribute">text-align</span> center</span><br><span class="line">    &amp; &gt; a</span><br><span class="line">      <span class="attribute">display</span> block</span><br><span class="line">      <span class="attribute">font-size</span> <span class="number">14px</span></span><br><span class="line">      <span class="attribute">color</span> rgb(<span class="number">77</span>, <span class="number">85</span>, <span class="number">93</span>)</span><br><span class="line">      <span class="attribute">text-decoration</span> none</span><br></pre></td></tr></table></figure>
+<p>这是编译生成后的 css 代码</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">* &#123;</span><br><span class="line">  <span class="attribute">margin</span>: <span class="number">0</span>;</span><br><span class="line">  <span class="attribute">padding</span>: <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-class">.tab</span> &#123;</span><br><span class="line">  <span class="attribute">display</span>: flex;</span><br><span class="line">  <span class="attribute">width</span>: <span class="number">100%</span>;</span><br><span class="line">  <span class="attribute">height</span>: <span class="number">40px</span>;</span><br><span class="line">  <span class="attribute">line-height</span>: <span class="number">40px</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-class">.tab</span> <span class="selector-class">.tab-item</span> &#123;</span><br><span class="line">  <span class="attribute">flex</span>: <span class="number">1</span>;</span><br><span class="line">  <span class="attribute">text-align</span>: center;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-class">.tab</span> <span class="selector-class">.tab-item</span> &gt; <span class="selector-tag">a</span> &#123;</span><br><span class="line">  <span class="attribute">display</span>: block;</span><br><span class="line">  <span class="attribute">font-size</span>: <span class="number">14px</span>;</span><br><span class="line">  <span class="attribute">color</span>: <span class="number">#4d555d</span>;</span><br><span class="line">  <span class="attribute">text-decoration</span>: none;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h1 id="注释"><a href="#注释" class="headerlink" title="注释"></a>注释</h1><blockquote>
+<p><a href="https://www.zhangxinxu.com/jq/stylus/comments.php" target="_blank" rel="noopener">https://www.zhangxinxu.com/jq/stylus/comments.php</a></p>
+</blockquote>
+<p>在 stylus 中的单行注释不会写入编译后的 css 中，多行注释在<code>compress</code>选项未启用的时候才会被输出</p>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/10/22/node-git-open/"/>
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -611,198 +789,6 @@
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install fanyi -g</span><br></pre></td></tr></table></figure>
 <p>使用：直接在命令行里输入想翻译的词即可 <code>fy</code> 是简写，完整写法是 <code>fanyi</code>。</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ fy love</span><br></pre></td></tr></table></figure>
-
-          
-        
-      
-    </div>
-
-    
-
-    
-
-    
-    
-    
-
-    
-
-    
-      
-    
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/10/19/git-常用操作小结/"/>
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="gzl"/>
-      <meta itemprop="description" content=""/>
-      <meta itemprop="image" content="/images/avatar.gif"/>
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="gzl的博客"/>
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/2019/10/19/git-常用操作小结/" class="post-title-link" itemprop="url">git-常用操作小结</a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-
-          
-          
-          
-
-          
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-
-              
-                
-              
-
-              <time title="创建时间：2019-10-19 16:11:24" itemprop="dateCreated datePublished" datetime="2019-10-19T16:11:24+08:00">2019-10-19</time>
-            </span>
-          
-
-          
-            
-
-            
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">更新于</span>
-                
-                <time title="修改时间：2020-02-12 21:38:56" itemprop="dateModified" datetime="2020-02-12T21:38:56+08:00">2020-02-12</time>
-              </span>
-            
-          
-
-          
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/git/" itemprop="url" rel="index"><span itemprop="name">git</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-            
-          
-
-          
-          
-
-          
-
-          
-
-          <br/>
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h1 id="退出-git-log"><a href="#退出-git-log" class="headerlink" title="退出 git log"></a>退出 git log</h1><p>在英文状态下按 q</p>
-<h1 id="git-clone-重命名"><a href="#git-clone-重命名" class="headerlink" title="git clone 重命名"></a>git clone 重命名</h1><p>如何重命名仓库，对当前文件夹已经存在同名仓库的时候会很有用：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git <span class="built_in">clone</span> git@github.com:muwenzi/repo.git new-repo-name</span><br></pre></td></tr></table></figure>
-<h1 id="git-rm"><a href="#git-rm" class="headerlink" title="git rm"></a>git rm</h1><p>有时候在项目开发过程中，把某些目录或文件加入<code>.gitignore</code>后发现并未生效，原因是<code>.gitignore</code><strong>只能忽略那些原来没有被track的文件</strong>，如果某些文件已经被纳入了版本管理中，则修改<code>.gitignore</code>是无效的。那么解决方法就是先把本地缓存删除（改变成未track状态），然后再提交：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">git rm -r --cached .</span><br><span class="line">git add .</span><br><span class="line">git commit -m <span class="string">'update .gitignore</span></span><br></pre></td></tr></table></figure>
-<p><code>.gitignore</code> 的匹配规则：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">.a       <span class="comment"># 忽略所有 .a 结尾的文件</span></span><br><span class="line">!lib.a    <span class="comment"># 但 lib.a 除外</span></span><br><span class="line">/TODO     <span class="comment"># 仅仅忽略项目根目录下的 TODO 文件，不包括 subdir/TODO</span></span><br><span class="line">build/    <span class="comment"># 忽略 build/ 目录下的所有文件</span></span><br><span class="line">doc/.txt <span class="comment"># 会忽略 doc/notes.txt 但不包括 doc/server/arch.txt</span></span><br></pre></td></tr></table></figure>
-<h1 id="更改-git-commit-注释"><a href="#更改-git-commit-注释" class="headerlink" title="更改 git commit 注释"></a>更改 git commit 注释</h1><p><code>git add .</code> ，<code>git commit -m &quot;wrong explanatory&quot;</code> 之后还没有 <code>git push</code> ， 发现 <code>git commit</code> 的注释写错了。</p>
-<p>这个时候输入 <code>git commit --amend</code>，会自动打开 vim 编辑器，按 a 进入编辑模式，将正确的注释写入，然后按 ESC 键，输入 <code>:wq</code> 进行保存并退出，然后 <code>git push</code>。</p>
-<h1 id="github仓库更改名字后"><a href="#github仓库更改名字后" class="headerlink" title="github仓库更改名字后"></a>github仓库更改名字后</h1><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> 更改github仓库名称后在本地进行git push出现下面提示，在这种情况下github也能同步</span></span><br><span class="line">remote: This repository moved. Please use the new location:</span><br><span class="line">remote:   git@github.com:xunzhanggzl/JavaScript-demos.git</span><br><span class="line">To github.com:xunzhanggzl/JavaScript-Summary.git</span><br></pre></td></tr></table></figure>
-<p>查看当前名称</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">git remote -v</span><br><span class="line">origin  git@github.com:xunzhanggzl/JavaScript-Summary.git (fetch)</span><br><span class="line">origin  git@github.com:xunzhanggzl/JavaScript-Summary.git (push)</span><br></pre></td></tr></table></figure>
-<p>进行 set-url</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">git remote set-url origin https://github.com/YOUR-USERNAME/YOUR-REPO.git</span><br><span class="line"><span class="meta">#</span><span class="bash"> 换成自己的</span></span><br><span class="line">git remote set-url origin https://github.com/xunzhanggzl/JavaScript-demos.git</span><br></pre></td></tr></table></figure>
-<p>修改后再查看，以后再进行 git push 就不会出现上面的提示了。</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">git remote -v</span><br><span class="line">origin  https://github.com/xunzhanggzl/JavaScript-demos.git (fetch)</span><br><span class="line">origin  https://github.com/xunzhanggzl/JavaScript-demos.git (push)</span><br></pre></td></tr></table></figure>
-<h1 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h1><p><a href="https://github.com/muwenzi/Program-Blog/issues/13" target="_blank" rel="noopener">Git常用操作小结</a></p>
-<p><a href="https://stackoverflow.com/questions/30443333/error-with-renamed-repo-in-github-remote-this-repository-moved-please-use-th" target="_blank" rel="noopener">github仓库改名后的处理</a></p>
 
           
         
