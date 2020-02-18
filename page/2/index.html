@@ -326,6 +326,194 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/02/12/JavaScript中sort函数/"/>
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="gzl"/>
+      <meta itemprop="description" content=""/>
+      <meta itemprop="image" content="/images/avatar.gif"/>
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="gzl的博客"/>
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/2020/02/12/JavaScript中sort函数/" class="post-title-link" itemprop="url">JavaScript中sort函数</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+
+          
+          
+          
+
+          
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2020-02-12 20:42:37" itemprop="dateCreated datePublished" datetime="2020-02-12T20:42:37+08:00">2020-02-12</time>
+            </span>
+          
+
+          
+            
+
+            
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2020-02-13 10:46:28" itemprop="dateModified" datetime="2020-02-13T10:46:28+08:00">2020-02-13</time>
+              </span>
+            
+          
+
+          
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/JavaScript/" itemprop="url" rel="index"><span itemprop="name">JavaScript</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+
+          <br/>
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="对数组的排序"><a href="#对数组的排序" class="headerlink" title="对数组的排序"></a>对数组的排序</h1><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> arr = [<span class="number">1</span>,<span class="number">6</span>,<span class="number">9</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">12</span>];</span><br><span class="line"><span class="built_in">console</span>.log(arr.sort()) <span class="comment">// [1, 12, 3, 4, 6, 9]</span></span><br></pre></td></tr></table></figure>
+<p>因为 sort 方法在对数组做排序时，把元素默认成字符串进行相互比较，因此需要添加一个辅助函数，然后 sort 就能根据返回值的情况对数组进行排序</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> arr = [<span class="number">1</span>,<span class="number">6</span>,<span class="number">9</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">12</span>];</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">compare</span>(<span class="params">a, b</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (a &lt; b) &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">-1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span> (a &gt; b) &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">console</span>.log(arr.sort(compare));  <span class="comment">// [1, 3, 4, 6, 9, 12]</span></span><br></pre></td></tr></table></figure>
+<p>上面的方法可以简化为</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> arr = [<span class="number">1</span>,<span class="number">6</span>,<span class="number">9</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">12</span>];</span><br><span class="line"><span class="built_in">console</span>.log(arr.sort(<span class="function">(<span class="params">a, b</span>) =&gt;</span> a - b));  <span class="comment">// [1, 3, 4, 6, 9, 12]</span></span><br></pre></td></tr></table></figure>
+<h1 id="对字符串的排序"><a href="#对字符串的排序" class="headerlink" title="对字符串的排序"></a>对字符串的排序</h1><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> names = [<span class="string">'Ana'</span>,<span class="string">'ana'</span>,<span class="string">'john'</span>,<span class="string">'John'</span>];</span><br><span class="line"><span class="built_in">console</span>.log(names.sort())  <span class="comment">// ["Ana", "John", "ana", "john"]</span></span><br></pre></td></tr></table></figure>
+<p>为什么会出现上面的结果呢？这是因为 JavaScript 在做字符比较的时候，是根据字符对应的 ASCII 值来比较的，例如 A、J、a、j 对应的 ASCII 值分别是 65、74、97、106，虽然 a 在字母表中是最靠前的，但 J 的 ASCII 值比 a 的小，所以排在了 a 前面。</p>
+<p>加入  <code>toLowerCase()</code>  使其按照字母顺序排序</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> names = [<span class="string">'Ana'</span>,<span class="string">'ana'</span>,<span class="string">'john'</span>,<span class="string">'John'</span>];</span><br><span class="line"><span class="built_in">console</span>.log(names.sort(<span class="function">(<span class="params">a, b</span>) =&gt;</span> a.toLowerCase() - b.toLowerCase()))</span><br><span class="line"><span class="comment">//  ["Ana", "ana", "john", "John"]</span></span><br></pre></td></tr></table></figure>
+<p>使用  <code>localeCompare()</code>  可以使小写子母排在前面</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> names = [<span class="string">'Ana'</span>,<span class="string">'ana'</span>,<span class="string">'john'</span>,<span class="string">'John'</span>];</span><br><span class="line"><span class="built_in">console</span>.log(names.sort(<span class="function">(<span class="params">a, b</span>) =&gt;</span> a.localeCompare(b)))</span><br><span class="line"><span class="comment">//  ["ana", "Ana", "john", "John"]</span></span><br></pre></td></tr></table></figure>
+<h1 id="自定义排序"><a href="#自定义排序" class="headerlink" title="自定义排序"></a>自定义排序</h1><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> friends = [</span><br><span class="line">    &#123; <span class="attr">name</span>: <span class="string">'John'</span>, <span class="attr">age</span>: <span class="number">30</span> &#125;,</span><br><span class="line">    &#123; <span class="attr">name</span>: <span class="string">'Ana'</span>, <span class="attr">age</span>: <span class="number">20</span> &#125;,</span><br><span class="line">    &#123; <span class="attr">name</span>: <span class="string">'Chris'</span>, <span class="attr">age</span>: <span class="number">25</span> &#125;</span><br><span class="line">];</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">comparePerson</span>(<span class="params">a, b</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (a.age &lt; b.age) &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">-1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span> (a.age &gt; b.age) &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">console</span>.log(friends.sort(comparePerson));</span><br><span class="line"><span class="comment">// 0: &#123;name: "Ana", age: 20&#125;</span></span><br><span class="line"><span class="comment">// 1: &#123; name: "Chris", age: 25 &#125;</span></span><br><span class="line"><span class="comment">// 2: &#123; name: "John", age: 30 &#125;</span></span><br></pre></td></tr></table></figure>
+<p>简化一下</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> friends = [</span><br><span class="line">    &#123; <span class="attr">name</span>: <span class="string">'John'</span>, <span class="attr">age</span>: <span class="number">30</span> &#125;,</span><br><span class="line">    &#123; <span class="attr">name</span>: <span class="string">'Ana'</span>, <span class="attr">age</span>: <span class="number">20</span> &#125;,</span><br><span class="line">    &#123; <span class="attr">name</span>: <span class="string">'Chris'</span>, <span class="attr">age</span>: <span class="number">25</span> &#125;</span><br><span class="line">];</span><br><span class="line"><span class="built_in">console</span>.log(friends.sort(<span class="function">(<span class="params">a, b</span>) =&gt;</span> a.age - b.age));</span><br></pre></td></tr></table></figure>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/02/10/浏览器的防抖和节流/"/>
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -558,13 +746,23 @@
                 
               
 
-              <time title="创建时间：2020-02-08 18:56:42 / 修改时间：19:14:15" itemprop="dateCreated datePublished" datetime="2020-02-08T18:56:42+08:00">2020-02-08</time>
+              <time title="创建时间：2020-02-08 18:56:42" itemprop="dateCreated datePublished" datetime="2020-02-08T18:56:42+08:00">2020-02-08</time>
             </span>
           
 
           
             
 
+            
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2020-02-18 15:38:36" itemprop="dateModified" datetime="2020-02-18T15:38:36+08:00">2020-02-18</time>
+              </span>
             
           
 
@@ -619,7 +817,7 @@
       
         
           
-            <h1 id="可行方法"><a href="#可行方法" class="headerlink" title="可行方法"></a>可行方法</h1><blockquote>
+            <h1 id="简单方法"><a href="#简单方法" class="headerlink" title="简单方法"></a>简单方法</h1><blockquote>
 <p>vue-cli4 vue2.6</p>
 </blockquote>
 <p>在 public 目录下创建 data 文件夹，在 data 文件夹中创建 index.json 文件，访问 <a href="http://localhost:8080/data/index.json" target="_blank" rel="noopener">http://localhost:8080/data/index.json</a> 即可查看到 json 数据。</p>
@@ -627,182 +825,15 @@
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">axios.get(<span class="string">'/data/index.json'</span>)</span><br><span class="line">  .then(<span class="function">(<span class="params">res</span>) =&gt;</span> &#123;</span><br><span class="line">    res = res.data</span><br><span class="line">    <span class="keyword">this</span>.city = res.city</span><br><span class="line">    <span class="keyword">if</span> (res.ret) &#123;</span><br><span class="line">      <span class="keyword">const</span> data = res.data</span><br><span class="line">      <span class="keyword">this</span>.swiperList = data.swiperList</span><br><span class="line">      <span class="keyword">this</span>.iconList = data.iconList</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;)</span><br></pre></td></tr></table></figure>
 <p>图片展示：</p>
 <p><img src="/img/vueLocalJson/1.png" alt="效果"></p>
+<h1 id="借助-vue-config-js-配置"><a href="#借助-vue-config-js-配置" class="headerlink" title="借助 vue.config.js 配置"></a>借助 vue.config.js 配置</h1><p>借助下面的配置，访问 <a href="http://localhost:8080/api/seller" target="_blank" rel="noopener">http://localhost:8080/api/seller</a> 即可查看到 json 数据。</p>
+<p>vue.config.js</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> appData = <span class="built_in">require</span>(<span class="string">'./data.json'</span>)</span><br><span class="line"><span class="keyword">const</span> seller = appData.seller</span><br><span class="line"></span><br><span class="line"><span class="built_in">module</span>.exports = &#123;</span><br><span class="line">  devServer: &#123;</span><br><span class="line">    before(app) &#123;</span><br><span class="line">      app.get(<span class="string">'/api/seller'</span>, <span class="function"><span class="keyword">function</span> (<span class="params">req, res</span>) </span>&#123;</span><br><span class="line">        res.json(&#123;</span><br><span class="line">          errno: <span class="number">0</span>,</span><br><span class="line">          data: seller</span><br><span class="line">        &#125;)</span><br><span class="line">      &#125;)</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>使用 axios 进行请求的关键代码如下：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">axios.get(<span class="string">'/api/seller'</span>)</span><br><span class="line">  .then(<span class="function">(<span class="params">res</span>) =&gt;</span> &#123;</span><br><span class="line">  	<span class="built_in">console</span>.log(res)  </span><br><span class="line">  &#125;)</span><br></pre></td></tr></table></figure>
 <h1 id="页面渲染问题"><a href="#页面渲染问题" class="headerlink" title="页面渲染问题"></a>页面渲染问题</h1><p>因为在一开始，轮播图的数组为空，当请求到的时候数组才有数据，这时候就有一个 bug：图片不能循环轮播。解决的方法是加上 v-if</p>
 <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">swiper</span> <span class="attr">:options</span>=<span class="string">"swiperOption"</span> <span class="attr">v-if</span>=<span class="string">"swiperList.length"</span>&gt;</span></span><br><span class="line">  <span class="comment">&lt;!-- slides --&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">swiper-slide</span> <span class="attr">v-for</span>=<span class="string">"item in swiperList"</span> <span class="attr">:key</span>=<span class="string">"item.id"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">img</span> <span class="attr">class</span>=<span class="string">"img-swiper"</span> <span class="attr">:src</span>=<span class="string">"item.imgUrl"</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">swiper-slide</span>&gt;</span></span><br><span class="line">  <span class="comment">&lt;!-- Optional controls --&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"swiper-pagination"</span> <span class="attr">slot</span>=<span class="string">"pagination"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">swiper</span>&gt;</span></span><br></pre></td></tr></table></figure>
 <h1 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h1><p><a href="https://www.imooc.com/article/291839" target="_blank" rel="noopener">https://www.imooc.com/article/291839</a></p>
-
-          
-        
-      
-    </div>
-
-    
-
-    
-
-    
-    
-    
-
-    
-
-    
-      
-    
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/02/08/git-branchs/"/>
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="gzl"/>
-      <meta itemprop="description" content=""/>
-      <meta itemprop="image" content="/images/avatar.gif"/>
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="gzl的博客"/>
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/2020/02/08/git-branchs/" class="post-title-link" itemprop="url">git-branchs</a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-
-          
-          
-          
-
-          
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-
-              
-                
-              
-
-              <time title="创建时间：2020-02-08 10:26:33 / 修改时间：11:32:24" itemprop="dateCreated datePublished" datetime="2020-02-08T10:26:33+08:00">2020-02-08</time>
-            </span>
-          
-
-          
-            
-
-            
-          
-
-          
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/git/" itemprop="url" rel="index"><span itemprop="name">git</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-            
-          
-
-          
-          
-
-          
-
-          
-
-          <br/>
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h1 id="基础"><a href="#基础" class="headerlink" title="基础"></a>基础</h1><p>在 github 上创建 swiper 分支</p>
-<p>在本地进行 <code>git pull</code> 拉取线上的分支</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">vue-travel&gt;</span><span class="bash">git pull</span></span><br><span class="line">From github.com:xunzhanggzl/vue-travel</span><br><span class="line"> * [new branch]      swiper     -&gt; origin/swiper</span><br><span class="line">Already up to date.</span><br></pre></td></tr></table></figure>
-<p>在本地进行 <code>git checkout swiper</code> 切换到 swiper 分支</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">vue-travel&gt;</span><span class="bash">git checkout swiper</span></span><br><span class="line">Switched to branch 'swiper'</span><br><span class="line">Your branch is up to date with 'origin/swiper'.</span><br></pre></td></tr></table></figure>
-<p>在 swiper 分支上进行开发，在本地开发完后，提交到线上</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">git add .</span><br><span class="line">git commit -m "finish swiper"</span><br><span class="line">git push</span><br><span class="line"></span><br><span class="line">To github.com:xunzhanggzl/vue-travel.git</span><br><span class="line">   a60bf20..dd193b5  swiper -&gt; swiper</span><br></pre></td></tr></table></figure>
-<p>合并到 master 上</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">git checkout master</span><br><span class="line">git merge origin/swiper # 进行合并</span><br><span class="line">git push # 推送到线上分支</span><br></pre></td></tr></table></figure>
+<p><a href="https://webpack.js.org/configuration/dev-server/#devserverbefore" target="_blank" rel="noopener">https://webpack.js.org/configuration/dev-server/#devserverbefore</a></p>
 
           
         
@@ -893,7 +924,7 @@
         
           <a href="/archives/">
         
-          <span class="site-state-item-count">98</span>
+          <span class="site-state-item-count">99</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
