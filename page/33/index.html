@@ -326,6 +326,201 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/09/26/python-spiderlearning/"/>
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="gzl"/>
+      <meta itemprop="description" content=""/>
+      <meta itemprop="image" content="/images/avatar.gif"/>
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="gzl的博客"/>
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/2018/09/26/python-spiderlearning/" class="post-title-link" itemprop="url">python Requests库入门与实战</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+
+          
+          
+          
+
+          
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2018-09-26 14:17:52" itemprop="dateCreated datePublished" datetime="2018-09-26T14:17:52+08:00">2018-09-26</time>
+            </span>
+          
+
+          
+            
+
+            
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2019-11-25 16:32:57" itemprop="dateModified" datetime="2019-11-25T16:32:57+08:00">2019-11-25</time>
+              </span>
+            
+          
+
+          
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/python/" itemprop="url" rel="index"><span itemprop="name">python</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+
+          <br/>
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <blockquote>
+<p>  中国大学MOOC上的北京理工大学开的一门《python》网络爬虫与信息提取这门课的学习记录。</p>
+</blockquote>
+<h1 id="基础代码"><a href="#基础代码" class="headerlink" title="基础代码"></a>基础代码</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> requests</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">getHTMLText</span><span class="params">(url)</span>:</span></span><br><span class="line">    <span class="keyword">try</span>:</span><br><span class="line">        r = requests.get(url, timeout=<span class="number">30</span>)</span><br><span class="line">        <span class="comment"># https://2.python-requests.org/en/master/user/quickstart/#response-status-codes</span></span><br><span class="line">        r.raise_for_status()</span><br><span class="line">        <span class="comment"># https://2.python-requests.org/en/master/api/#requests.Response.apparent_encoding</span></span><br><span class="line">        r.encoding = r.apparent_encoding</span><br><span class="line">        <span class="comment"># https://2.python-requests.org/en/master/api/#requests.Response.text</span></span><br><span class="line">        <span class="keyword">return</span> r.text</span><br><span class="line">    <span class="keyword">except</span>:</span><br><span class="line">        <span class="keyword">return</span> <span class="string">"产生异常"</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">"__main__"</span>:</span><br><span class="line">    url = <span class="string">"http://www.baidu.com"</span></span><br><span class="line">    print(getHTMLText(url))</span><br></pre></td></tr></table></figure>
+<p><a href="https://blog.csdn.net/yjk13703623757/article/details/77918633" target="_blank" rel="noopener">如何简单地理解Python中的if <strong>name</strong>==”<strong>main</strong>“:</a></p>
+<p>其中 <code>r.raise_for_status()</code> )在方法内部判断 <code>r.status_code</code> 是否等于200，不需要增加额外的if语句，该语句便于利用try‐except进行异常处理，<code>r.apparent_encoding</code> 是从内容中分析出的响应内容编码方式（备选编码方式），<code>r.encoding</code> 是从HTTP header中猜测的响应内容编码方式。</p>
+<p>在上面的例子中 <code>r.apparent_encoding</code> 是 <code>utf-8</code>，<code>r.encoding</code> 是 <code>ISO-8859-1</code>，如果没有 <code>r.encoding = r.apparent_encoding</code> 这行代码的话，返回的不是中文的百度首页。</p>
+<blockquote>
+<p><a href="https://2.python-requests.org/en/master/api/#requests.Response.text" target="_blank" rel="noopener">https://2.python-requests.org/en/master/api/#requests.Response.text</a></p>
+</blockquote>
+<p><code>r.text</code>  ：Content of the response, in unicode.</p>
+<p>If Response.encoding is None, encoding will be guessed using <code>chardet</code>.</p>
+<p>The encoding of the response content is determined based solely on HTTP headers, following RFC 2616 to the letter. If you can take advantage of non-HTTP knowledge to make a better guess at the encoding, you should set <code>r.encoding</code> appropriately before accessing this property.</p>
+<h1 id="Robots协议"><a href="#Robots协议" class="headerlink" title="Robots协议"></a>Robots协议</h1><p>作用：网站告知网络爬虫哪些页面可以爬取，哪些不可以爬取</p>
+<p>形式：<a href="https://www.jd.com/robots.txt" target="_blank" rel="noopener">京东的Robots协议</a></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">User-agent: * </span><br><span class="line">Disallow: /?* </span><br><span class="line">Disallow: /pop/*.html </span><br><span class="line">Disallow: /pinpai/*.html?* </span><br><span class="line">User-agent: EtaoSpider </span><br><span class="line">Disallow: / </span><br><span class="line">User-agent: HuihuiSpider </span><br><span class="line">Disallow: / </span><br><span class="line">User-agent: GwdangSpider </span><br><span class="line">Disallow: / </span><br><span class="line">User-agent: WochachaSpider </span><br><span class="line">Disallow: /</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"># 注释，*代表所有，/代表根目录</span><br><span class="line">User‐agent: *</span><br><span class="line">Disallow: /</span><br></pre></td></tr></table></figure>
+<h1 id="Requests实战"><a href="#Requests实战" class="headerlink" title="Requests实战"></a>Requests实战</h1><h2 id="百度360搜索关键词提交"><a href="#百度360搜索关键词提交" class="headerlink" title="百度360搜索关键词提交"></a>百度360搜索关键词提交</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> requests</span><br><span class="line">keyword = <span class="string">"Python"</span></span><br><span class="line"><span class="keyword">try</span>:</span><br><span class="line">    kv = &#123;<span class="string">'wd'</span>: keyword&#125;</span><br><span class="line">    r = requests.get(<span class="string">"http://www.baidu.com/s"</span>,params=kv)</span><br><span class="line">    print(r.request.url)  <span class="comment"># http://www.baidu.com/s?wd=Python</span></span><br><span class="line">    r.raise_for_status()</span><br><span class="line">    print(len(r.text))</span><br><span class="line"><span class="keyword">except</span>:</span><br><span class="line">    print(<span class="string">"爬取失败"</span>)</span><br></pre></td></tr></table></figure>
+<p>百度关键词接口：<a href="https://www.baidu.com/s?wd=keyword" target="_blank" rel="noopener">https://www.baidu.com/s?wd=keyword</a></p>
+<h2 id="网络图片的爬取和存储"><a href="#网络图片的爬取和存储" class="headerlink" title="网络图片的爬取和存储"></a>网络图片的爬取和存储</h2><p>文件操作上不熟悉…</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> requests</span><br><span class="line"><span class="keyword">import</span> os</span><br><span class="line">url = <span class="string">"http://image.ngchina.com.cn/2018/0926/20180926031035591.jpg"</span></span><br><span class="line">root = <span class="string">"D://pics//"</span></span><br><span class="line">path = root + url.split(<span class="string">'/'</span>)[<span class="number">-1</span>]</span><br><span class="line"><span class="keyword">try</span>:</span><br><span class="line">    <span class="keyword">if</span> <span class="keyword">not</span> os.path.exists(root):</span><br><span class="line">        os.mkdir(root)</span><br><span class="line">    <span class="keyword">if</span> <span class="keyword">not</span> os.path.exists(path):</span><br><span class="line">        r = requests.get(url)</span><br><span class="line">        <span class="keyword">with</span> open(path,<span class="string">'wb'</span>) <span class="keyword">as</span> f:</span><br><span class="line">            f.write(r.content)</span><br><span class="line">            f.close()</span><br><span class="line">            print(<span class="string">"文件保存成功"</span>)</span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        print(<span class="string">"文件已存在"</span>)</span><br><span class="line"><span class="keyword">except</span>:</span><br><span class="line">    print(<span class="string">"爬取失败"</span>)</span><br></pre></td></tr></table></figure>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/08/25/dom结构/"/>
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -680,187 +875,6 @@ Node
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/08/08/JS经典题目prototype/"/>
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="gzl"/>
-      <meta itemprop="description" content=""/>
-      <meta itemprop="image" content="/images/avatar.gif"/>
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="gzl的博客"/>
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/2018/08/08/JS经典题目prototype/" class="post-title-link" itemprop="url">JS关于原型</a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-
-          
-          
-          
-
-          
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-
-              
-                
-              
-
-              <time title="创建时间：2018-08-08 09:42:47" itemprop="dateCreated datePublished" datetime="2018-08-08T09:42:47+08:00">2018-08-08</time>
-            </span>
-          
-
-          
-            
-
-            
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">更新于</span>
-                
-                <time title="修改时间：2019-12-13 09:23:03" itemprop="dateModified" datetime="2019-12-13T09:23:03+08:00">2019-12-13</time>
-              </span>
-            
-          
-
-          
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/JavaScript/" itemprop="url" rel="index"><span itemprop="name">JavaScript</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-            
-          
-
-          
-          
-
-          
-
-          
-
-          <br/>
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h1 id="一、实例"><a href="#一、实例" class="headerlink" title="一、实例"></a>一、实例</h1><h2 id="1-new-Person-在前"><a href="#1-new-Person-在前" class="headerlink" title="1. new Person()在前"></a>1. new Person()在前</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">Person.prototype.name = <span class="string">'sunny'</span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Person</span>(<span class="params"></span>) </span>&#123;&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> person = <span class="keyword">new</span> Person();</span><br><span class="line"></span><br><span class="line">Person.prototype.name = <span class="string">'cherry'</span>;</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(person.name);  <span class="comment">//cherry</span></span><br></pre></td></tr></table></figure>
-<h2 id="2-new-Person-在后"><a href="#2-new-Person-在后" class="headerlink" title="2. new Person()在后"></a>2. new Person()在后</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">Person.prototype.name = <span class="string">'sunny'</span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Person</span>(<span class="params"></span>) </span>&#123;&#125;</span><br><span class="line"></span><br><span class="line">Person.prototype.name = <span class="string">'cherry'</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> person = <span class="keyword">new</span> Person();</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(person.name);   <span class="comment">//cherry</span></span><br></pre></td></tr></table></figure>
-<h2 id="3-改变写法"><a href="#3-改变写法" class="headerlink" title="3. 改变写法"></a>3. 改变写法</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">Person.prototype.name = <span class="string">'sunny'</span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Person</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="comment">//var this = &#123;__proto__ : Person.prototype&#125;</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> person = <span class="keyword">new</span> Person();</span><br><span class="line"></span><br><span class="line">Person.prototype = &#123;</span><br><span class="line">    name : <span class="string">'cherry'</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(person.name);  <span class="comment">//sunny</span></span><br></pre></td></tr></table></figure>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">这样理解</span><br><span class="line"><span class="keyword">var</span> obj = &#123;<span class="attr">name</span> : <span class="string">"a"</span>&#125;;</span><br><span class="line"><span class="keyword">var</span> obj1 = obj;</span><br><span class="line">obj = &#123;<span class="attr">name</span> : <span class="string">"b"</span>&#125;;</span><br><span class="line"></span><br><span class="line">Person.prototype = &#123;<span class="attr">name</span> : <span class="string">"a"</span>&#125;;</span><br><span class="line">__proto__ = Person.prototype;</span><br><span class="line">Person.prototype = &#123;<span class="attr">name</span> : <span class="string">"b"</span>&#125;;</span><br></pre></td></tr></table></figure>
-<h2 id="4-new-Person最后执行"><a href="#4-new-Person最后执行" class="headerlink" title="4. new Person最后执行"></a>4. new Person最后执行</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">Person.prototype.name = <span class="string">'sunny'</span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Person</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="comment">// var this = &#123;__proto__ : Person.prototype&#125;</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">Person.prototype = &#123;</span><br><span class="line">    name : <span class="string">'cherry'</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> person = <span class="keyword">new</span> Person();</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(person.name);   <span class="comment">//cherry</span></span><br></pre></td></tr></table></figure>
-<h1 id="二、隐式添加"><a href="#二、隐式添加" class="headerlink" title="二、隐式添加"></a>二、隐式添加</h1><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">Person.prototype.name = <span class="string">'abc'</span>;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Person</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="comment">// let this = Object.create(Person.prototype);</span></span><br><span class="line">    <span class="comment">// let this = &#123;</span></span><br><span class="line">    <span class="comment">// 	__proto__ : Person.prototype</span></span><br><span class="line">    <span class="comment">// &#125;</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> person = <span class="keyword">new</span> Person();</span><br></pre></td></tr></table></figure>
-<h1 id="三、继承"><a href="#三、继承" class="headerlink" title="三、继承"></a>三、继承</h1><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 继承  </span></span><br><span class="line"></span><br><span class="line"><span class="comment">//1.圣杯模式</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">inherit</span>(<span class="params">Target, Origin</span>) </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">F</span>(<span class="params"></span>) </span>&#123;&#125;</span><br><span class="line">    F.prototype = Origin.prototype;</span><br><span class="line">    Target.prototype = <span class="keyword">new</span> F();</span><br><span class="line">    Target.prototype.constructor = Target;</span><br><span class="line">    Target.prototype.uber = Origin.prototype;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 2.雅虎写法  闭包</span></span><br><span class="line"><span class="keyword">var</span> inherit = (<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> F = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;&#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="function"><span class="keyword">function</span> (<span class="params">Target, Origin</span>) </span>&#123;</span><br><span class="line">        F.prototype = Origin.prototype;</span><br><span class="line">        Target.prototype = <span class="keyword">new</span> F();</span><br><span class="line">        Target.prototype.constructor = Target;</span><br><span class="line">        Target.prototype.uber = Origin.prototype;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;());</span><br><span class="line"></span><br><span class="line">Father.prototype.lastName = <span class="string">"G"</span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Father</span>(<span class="params"></span>) </span>&#123;&#125;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Son</span>(<span class="params"></span>) </span>&#123;&#125;</span><br><span class="line"></span><br><span class="line">inherit(Son, Father);</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> son = <span class="keyword">new</span> Son();</span><br><span class="line"><span class="keyword">var</span> father = <span class="keyword">new</span> Father();</span><br></pre></td></tr></table></figure>
-
-          
-        
-      
-    </div>
-
-    
-
-    
-
-    
-    
-    
-
-    
-
-    
-      
-    
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -908,7 +922,7 @@ Node
         
           <a href="/archives/">
         
-          <span class="site-state-item-count">101</span>
+          <span class="site-state-item-count">102</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>

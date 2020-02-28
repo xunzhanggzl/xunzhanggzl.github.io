@@ -326,6 +326,282 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/08/03/RN-《你不知道的JS》上卷第一部分/"/>
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="gzl"/>
+      <meta itemprop="description" content=""/>
+      <meta itemprop="image" content="/images/avatar.gif"/>
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="gzl的博客"/>
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/2019/08/03/RN-《你不知道的JS》上卷第一部分/" class="post-title-link" itemprop="url">RN-《你不知道的JS》上卷第一部分</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+
+          
+          
+          
+
+          
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2019-08-03 09:13:30" itemprop="dateCreated datePublished" datetime="2019-08-03T09:13:30+08:00">2019-08-03</time>
+            </span>
+          
+
+          
+            
+
+            
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2020-02-06 14:36:27" itemprop="dateModified" datetime="2020-02-06T14:36:27+08:00">2020-02-06</time>
+              </span>
+            
+          
+
+          
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/读书笔记/" itemprop="url" rel="index"><span itemprop="name">读书笔记</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+
+          <br/>
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <blockquote>
+<p>第一部分 作用域和闭包</p>
+</blockquote>
+<h1 id="第一章-作用域是什么"><a href="#第一章-作用域是什么" class="headerlink" title="第一章 作用域是什么"></a>第一章 作用域是什么</h1><h2 id="编译原理"><a href="#编译原理" class="headerlink" title="编译原理"></a>编译原理</h2><p>尽管通常将 JavaScript 归类为 “动态” 或 “解释执行” 语言，但事实上它是一门 <strong>编译语言</strong>，但与传统的编译语言不同，它不是提前编译的，编译结果也不能在分布式系统中进行移植。</p>
+<p>在传统编译语言流程中，程序中的一段源代码在执行之前会经历<strong>三个</strong>步骤，统称为 <strong>“编译”</strong>。</p>
+<p><strong>分词/词法分析（Tokenizing/Lexing）</strong></p>
+<p>这个过程会将由字符组成的字符串分解成（对编程语言来说）有意义的代码块 ，  这些代码块被称为词法单元（token）。例如  <code>var a = 2</code>  ，被分解成这些词法单元：<code>var、a、=、2、;</code>  空格是否会被当做词法单元，取决于空格在这门语言中是否具有意义。</p>
+<p><strong>解析/语法分析（Parsing）</strong></p>
+<p>这个过程将词法单元流（数组）转换成一个由元素逐级嵌套所组成的代表了程序语法结构的树，这个树被称为 “ 抽象语法树 “（Abstract Syntax Tree，AST）。</p>
+<p><strong>代码生成</strong></p>
+<p>简单来说有某种方法可以将  <code>var = 2</code>  的 AST 转化为一组机器指令，用来创建一个叫做 a 的变量（包括分配内存等），并将一个值储存在 a 中。</p>
+<p>与其他语言不同，JavaScript 的编译过程不是发生在构建之前的。大部分的编译发生在代码执行前的几微秒的时间里，<strong>比起编译过程只有三步的语言的编译器，JavaScript 引擎要复杂得多</strong>。</p>
+<h2 id="理解作用域"><a href="#理解作用域" class="headerlink" title="理解作用域"></a>理解作用域</h2><h3 id="演员表"><a href="#演员表" class="headerlink" title="演员表"></a>演员表</h3><ul>
+<li><p>引擎：从头到尾负责整个 JavaScript 程序的编译及执行过程</p>
+</li>
+<li><p>编译器：引擎的好朋友之一，负责语言分析及代码生成等脏活累活</p>
+</li>
+<li><p>作用域：引擎的另一位好朋友，负责收集并维护由所有声明的标识符（变量）组成的一系列查询</p>
+</li>
+</ul>
+<h3 id="变量赋值"><a href="#变量赋值" class="headerlink" title="变量赋值"></a>变量赋值</h3><p>对于  <code>var a = 2</code>  ，引擎认为这里有两个完全不同的声明，一个由编译器在编译时处理，另一个则由引擎在运行时处理。</p>
+<p>变量赋值操作会执行两个动作，首先编译器会在当前作用域中声明一个变量（如果之前没有声明过），然后在运行时引擎会在作用域中查找该变量，如果能够找到就会对它赋值。</p>
+<ol>
+<li><p>首先，<code>var a</code>  在其作用域中声明新变量。这会在最开始的阶段，也就是代码执行前进行。</p>
+</li>
+<li><p>接下来，<code>a = 2</code>  会查询（LHS 查询）变量 a 并对其进行赋值。</p>
+</li>
+</ol>
+<h3 id="引擎查找"><a href="#引擎查找" class="headerlink" title="引擎查找"></a>引擎查找</h3><p>在  <code>var a = 2</code>  ，这个例子中，引擎会为变量 a 进行 LHS 查询，另一个查找的类型叫做 RHS。</p>
+<h4 id="简单理解"><a href="#简单理解" class="headerlink" title="简单理解"></a>简单理解</h4><p>如果查找的目标是对变量进行赋值，那么就会使用 LHS 查询；如果目的是获取变量的值，就会使用 RHS 查询；    赋值操作符会导致 LHS 查询，<strong>= 操作符</strong> 或 <strong>调用函数时传入参数</strong>的操作都会导致关联作用域的赋值操作。</p>
+<h4 id="深入理解"><a href="#深入理解" class="headerlink" title="深入理解"></a>深入理解</h4><p><strong>RHS查询 与简单查找某个变量的值别无二致</strong>， <strong>而 LHS查询 则是试图找到变量的容器本身，从而可以对其赋值。</strong>在概念上最好将其理解为 <strong>“ 赋值操作的目标是谁（LHS）” 以及 “ 谁是赋值操作的源头（RHS）”</strong>。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">console</span>.log(a); <span class="comment">// 这里对 a 的引用是一个 RHS引用，因为这里 a 并没有赋予任何值。</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> a = <span class="number">2</span>;      <span class="comment">// 这里对 a 的引用则是 LHS引用，因为实际上我们并不关心当前的值是什么，只是想为 = 2 这个赋值操作找到一个目标</span></span><br></pre></td></tr></table></figure>
+<ol>
+<li>实例一理解 <strong>LHS</strong> <strong>RHS</strong></li>
+</ol>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">foo</span>(<span class="params">a</span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(a);</span><br><span class="line">&#125;</span><br><span class="line">foo(<span class="number">2</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// LHS: 参数 a 的隐式赋值</span></span><br><span class="line"><span class="comment">// RHS: </span></span><br><span class="line"><span class="comment">// 1. console.log(a) 中对 a 的 RHS查询，将得到的 a 的值传给 console.log(..)</span></span><br><span class="line"><span class="comment">// 2. console.log(..) 本身会对 console 对象进行 RHS查询，检查是否有一个叫做 log 的方法</span></span><br><span class="line"><span class="comment">// 3. foo(..) 的调用需要对 foo 进行 RHS查询，意为找到 foo 的值并把它给我</span></span><br></pre></td></tr></table></figure>
+<ol start="2">
+<li>实例二理解  <strong>LHS</strong> <strong>RHS</strong></li>
+</ol>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">foo</span>(<span class="params">a</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> b = a;</span><br><span class="line">    <span class="keyword">return</span> a + b;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> c = foo(<span class="number">2</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// LHS: </span></span><br><span class="line"><span class="comment">// 1. 参数 a 的隐式赋值</span></span><br><span class="line"><span class="comment">// 2. var b = a; 中对 b 的 LHS查询</span></span><br><span class="line"><span class="comment">// 3. var c = foo(2); 中对 c 的 LHS查询</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// RHS: </span></span><br><span class="line"><span class="comment">// 1. var b = a; 中对 a 的 RHS查询</span></span><br><span class="line"><span class="comment">// 2. return a + b 中对 a、b 的 RHS查询 </span></span><br><span class="line"><span class="comment">// 3. var c = foo(2) 中对 foo(..) 的 RHS查询</span></span><br></pre></td></tr></table></figure>
+<h2 id="异常"><a href="#异常" class="headerlink" title="异常"></a>异常</h2><h3 id="ReferenceError"><a href="#ReferenceError" class="headerlink" title="ReferenceError"></a>ReferenceError</h3><p>不成功的 RHS、LHS(严格)查询</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">foo</span>(<span class="params">a</span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(a + b);</span><br><span class="line">    b = a;</span><br><span class="line">&#125;</span><br><span class="line">foo(<span class="number">2</span>);</span><br></pre></td></tr></table></figure>
+<p>上面这段代码在对 b 进行 RHS 查询时无法找到，引擎会抛出 <strong>ReferenceError</strong> : Uncaught ReferenceError: b is not defined。    </p>
+<p>在非严格模式下，对 a 的 LHS 查询并没有抛出错误，而会在全局创建一个 a 的变量，在严格模式下，LHS 查询没有结果也会抛出 <strong>ReferenceError</strong>。</p>
+<h3 id="TypeError"><a href="#TypeError" class="headerlink" title="TypeError"></a>TypeError</h3><p>成功的 RHS 查询，但是是非法的操作</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> b = <span class="literal">null</span>;</span><br><span class="line">b();</span><br></pre></td></tr></table></figure>
+<p>如果 RHS 查询到了，但是对其进行不合理的操作，比如对非函数类型的值进行函数调用，那么引擎会抛出 <code>TypeError：Uncaught TypeError: b is not a function</code></p>
+<h3 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h3><ul>
+<li><p>ReferenceError 同作用域判别失败相关</p>
+</li>
+<li><p>TypeError 代表作用域判别成功了，但对结果的操作是非法的或不合理的。</p>
+</li>
+<li><p>不成功的 RHS 引用会导致 ReferenceError 异常</p>
+</li>
+<li><p>不成功的 LHS 引用</p>
+<ul>
+<li>非严格模式下会创建全局变量</li>
+<li>严格模式下导致 ReferenceError 异常</li>
+</ul>
+</li>
+</ul>
+<h1 id="第二章-词法作用域"><a href="#第二章-词法作用域" class="headerlink" title="第二章 词法作用域"></a>第二章 词法作用域</h1><blockquote>
+<p>简单的说，词法作用域就是定义在词法阶段的作用域</p>
+</blockquote>
+<h2 id="词法阶段"><a href="#词法阶段" class="headerlink" title="词法阶段"></a>词法阶段</h2><p><code>window a</code>  通过这种技术可以访问那些被同名变量所遮蔽的全局变量，但是非全局变量如果被遮蔽了无论如何都无法被访问到。</p>
+<p><strong>词法作用域只会查找一级标识符</strong>，如果代码中引用了 foo.bar.baz ，词法作用域只会试图查找 foo 标识符，找到这个变量后，对象属性访问规则会接管对 bar 和 baz 属性的访问。</p>
+<h2 id="欺骗词法"><a href="#欺骗词法" class="headerlink" title="欺骗词法"></a>欺骗词法</h2><p>不要使用 eval 和 with </p>
+<h1 id="第三章-函数作用域和块作用域"><a href="#第三章-函数作用域和块作用域" class="headerlink" title="第三章 函数作用域和块作用域"></a>第三章 函数作用域和块作用域</h1><blockquote>
+<p>函数作用域的含义是指，属于这个函数的全部变量都可以在整个函数的范围内使用及复用</p>
+</blockquote>
+<h2 id="函数作用域"><a href="#函数作用域" class="headerlink" title="函数作用域"></a>函数作用域</h2><p>从所写的代码中挑选出一个任意的片段，然后用函数声明对它进行包装，然后再用立即执行函数（IIFE）的方式再进行一层包装。</p>
+<h3 id="立即执行函数表达式"><a href="#立即执行函数表达式" class="headerlink" title="立即执行函数表达式"></a>立即执行函数表达式</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> a = <span class="number">2</span>;</span><br><span class="line"></span><br><span class="line">(<span class="function"><span class="keyword">function</span> <span class="title">IIFE</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">var</span> a = <span class="number">3</span>;</span><br><span class="line">    <span class="built_in">console</span>.log(a); <span class="comment">//3 </span></span><br><span class="line">    </span><br><span class="line">&#125;)()</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(a); <span class="comment">// 2</span></span><br></pre></td></tr></table></figure>
+<h3 id="立即执行函数传参"><a href="#立即执行函数传参" class="headerlink" title="立即执行函数传参"></a>立即执行函数传参</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 传递 window 对象</span></span><br><span class="line"><span class="keyword">var</span> a = <span class="number">2</span>;</span><br><span class="line"></span><br><span class="line">(<span class="function"><span class="keyword">function</span> <span class="title">IIFE</span>(<span class="params">global</span>) </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">var</span> a = <span class="number">3</span>;</span><br><span class="line">    <span class="built_in">console</span>.log(a); <span class="comment">//3 </span></span><br><span class="line">    <span class="built_in">console</span>.log(global.a) <span class="comment">// 2</span></span><br><span class="line"></span><br><span class="line">&#125;)(<span class="built_in">window</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 传递 undefined：将一个参数命名为 undefined，对应位置不传入任何值，这样就可以保证是真的 undefined</span></span><br><span class="line"><span class="literal">undefined</span> = <span class="literal">true</span>; <span class="comment">// 不要这样做</span></span><br><span class="line">(<span class="function"><span class="keyword">function</span> <span class="title">IIFE</span>(<span class="params">undefined</span>) </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">var</span> a;</span><br><span class="line">    <span class="keyword">if</span> (a === <span class="literal">undefined</span>) &#123;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="string">'undefined is safe here!'</span>)</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;)();</span><br></pre></td></tr></table></figure>
+<h3 id="IIFE-传函数当做参数"><a href="#IIFE-传函数当做参数" class="headerlink" title="IIFE 传函数当做参数"></a>IIFE 传函数当做参数</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> a = <span class="number">2</span>;</span><br><span class="line"></span><br><span class="line">(<span class="function"><span class="keyword">function</span> <span class="title">IIFE</span>(<span class="params">def</span>) </span>&#123;</span><br><span class="line"></span><br><span class="line">    def(<span class="built_in">window</span>);</span><br><span class="line"></span><br><span class="line">&#125;)(<span class="function"><span class="keyword">function</span> <span class="title">def</span>(<span class="params">global</span>) </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">var</span> a = <span class="number">3</span>;</span><br><span class="line">    <span class="built_in">console</span>.log(a); <span class="comment">// 3</span></span><br><span class="line">    <span class="built_in">console</span>.log(global.a); </span><br><span class="line"></span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<h2 id="块作用域"><a href="#块作用域" class="headerlink" title="块作用域"></a>块作用域</h2><p>能用 <code>let</code> 和 <code>const</code> 就不用 <code>var</code></p>
+<h1 id="第四章-提升"><a href="#第四章-提升" class="headerlink" title="第四章 提升"></a>第四章 提升</h1><p>无论作用域中的声明出现在什么地方，都将在代码本身被执行前首先进行处理，可以将这个过程形象地想象成所有的声明（变量和函数），都会被 “移动” 到各自作用域的最顶端，这个过程被称为提升。</p>
+<p>声明本身会被提升，而包括函数表达式的赋值在内的赋值操作并不会提升。</p>
+<h1 id="第五章-作用域闭包"><a href="#第五章-作用域闭包" class="headerlink" title="第五章 作用域闭包"></a>第五章 作用域闭包</h1><h2 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h2><p><strong>当函数可以记住并访问所在的词法作用域时，就产生了闭包，即使函数是在当前词法作用域之外执行。</strong></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">foo</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> a = <span class="number">2</span>;</span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">bar</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">        <span class="built_in">console</span>.log(a);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> bar</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> baz = foo();</span><br><span class="line">baz() <span class="comment">// 2 -- 这就是闭包的效果</span></span><br></pre></td></tr></table></figure>
+<p>对于上面的代码，简单来说，bar() 依然持有对该作用域的引用，而这个引用就叫作闭包。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">foo</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> a = <span class="number">2</span>;</span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">bar</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">        <span class="built_in">console</span>.log(a);</span><br><span class="line">    &#125;</span><br><span class="line">    baz(bar)</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">baz</span>(<span class="params">fn</span>) </span>&#123;</span><br><span class="line">    fn(); <span class="comment">// 2</span></span><br><span class="line">&#125;</span><br><span class="line">foo()</span><br></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> fn;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">foo</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> a = <span class="number">2</span>;</span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">bar</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">        <span class="built_in">console</span>.log(a);</span><br><span class="line">    &#125;</span><br><span class="line">    fn = bar</span><br><span class="line">&#125;</span><br><span class="line">foo() </span><br><span class="line">fn() <span class="comment">// 2</span></span><br></pre></td></tr></table></figure>
+<p>无论通过何种手段将内部函数传递到所在的词法作用域以外，它都会持有对原始定义作用域的引用，无论在何处执行这个函数都会使用闭包。</p>
+<h2 id="本质理解"><a href="#本质理解" class="headerlink" title="本质理解"></a>本质理解</h2><p>下面这段代码中 timer 保有对变量 message 的引用，wait(…) 执行 1000 毫秒后，它的内部作用域并不会消失，timer 函数依然保有 wait(..) 作用域的闭包。</p>
+<p>在引擎内部，内置的工具函数 setTimeout(..) 持有对一个参数的引用，这个参数也许叫 fn 或者 func，或者其它名字。引擎会调用这个函数，在这个例子中就是内部的 timer 函数。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">wait</span>(<span class="params">message</span>) </span>&#123;</span><br><span class="line">    setTimeout(<span class="function"><span class="keyword">function</span> <span class="title">timer</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">        <span class="built_in">console</span>.log(message) <span class="comment">// Hello, closure</span></span><br><span class="line">    &#125;, <span class="number">1000</span>)</span><br><span class="line">&#125;</span><br><span class="line">wait(<span class="string">'Hello, closure'</span>)</span><br></pre></td></tr></table></figure>
+<p><strong>本质上无论何时何地，如果将函数当做第一级的值类型并到处传递，就可以看到闭包在这些函数中的应用。在定时器、事件监听器、Ajax 请求、跨窗口通信、Web Workers 或者任何其他的异步（或者同步）任务中，只要用了回调函数，实际上就是在使用闭包！</strong></p>
+<h2 id="循环和闭包"><a href="#循环和闭包" class="headerlink" title="循环和闭包"></a>循环和闭包</h2><h3 id="普通循环"><a href="#普通循环" class="headerlink" title="普通循环"></a>普通循环</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span>(<span class="keyword">var</span> i = <span class="number">1</span>; i &lt;= <span class="number">5</span>; i ++) &#123;</span><br><span class="line">    setTimeout(<span class="function"><span class="keyword">function</span> <span class="title">timer</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">        <span class="built_in">console</span>.log(i);</span><br><span class="line">    &#125;, i * <span class="number">1000</span>)        </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>上面这段代码会一秒打印一个6，总共打印5个6</p>
+<p>原因就是延时函数的回调会在循环结束时才执行，当定时器运行时即使每个迭代中执行的是 <code>setTimeout(.., 0)</code>，即 0ms 后执行 setTimeout，所有的回调函数依然是在循环结束后才会被执行，因此会每次输出一个 6 出来。</p>
+<h3 id="IIFE-闭包"><a href="#IIFE-闭包" class="headerlink" title="IIFE + 闭包"></a>IIFE + 闭包</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span>(<span class="keyword">var</span> i = <span class="number">1</span>; i &lt;= <span class="number">5</span>; i ++) &#123;</span><br><span class="line">    (<span class="function"><span class="keyword">function</span> (<span class="params">i</span>) </span>&#123;</span><br><span class="line">        setTimeout(<span class="function"><span class="keyword">function</span> <span class="title">timer</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">            <span class="built_in">console</span>.log(i);</span><br><span class="line">        &#125;, i * <span class="number">1000</span>)</span><br><span class="line">    &#125;)(i);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="块作用域-闭包"><a href="#块作用域-闭包" class="headerlink" title="块作用域 + 闭包"></a>块作用域 + 闭包</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span>(<span class="keyword">let</span> i = <span class="number">1</span>; i &lt;= <span class="number">5</span>; i ++) &#123;</span><br><span class="line">    setTimeout(<span class="function"><span class="keyword">function</span> <span class="title">timer</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">        <span class="built_in">console</span>.log(i);</span><br><span class="line">    &#125;, i * <span class="number">1000</span>)        </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="模块"><a href="#模块" class="headerlink" title="模块"></a>模块</h2><h3 id="模块模式"><a href="#模块模式" class="headerlink" title="模块模式"></a>模块模式</h3><p>模块模式需要两个必要条件：</p>
+<ol>
+<li>必须有外部的封闭函数，该函数必须至少被调用一次（每次调用都会创建一个新的模块实例）。</li>
+<li>封闭函数必须返回至少一个内部函数，这样内部函数才能在私有作用域中形成闭包，并且可以访问或者修改私有的状态。</li>
+</ol>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">CoolModule</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> something = <span class="string">"cool"</span>;</span><br><span class="line">    <span class="keyword">var</span> another = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>];</span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">doSomething</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">        <span class="built_in">console</span>.log( something )</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">doAnother</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">        <span class="built_in">console</span>.log( another.join(<span class="string">" ! "</span>) );</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> &#123;</span><br><span class="line">        doSomething,</span><br><span class="line">        doAnother</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> foo = CoolModule();</span><br><span class="line">foo.doSomething(); <span class="comment">// cool</span></span><br><span class="line">foo.doAnother();   <span class="comment">// 1 ! 2 ! 3</span></span><br></pre></td></tr></table></figure>
+<h3 id="单例模式"><a href="#单例模式" class="headerlink" title="单例模式"></a>单例模式</h3><p>当只需要一个实例时，可以对模块模式进行简单的改进来实现单例模式：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> foo = (<span class="function"><span class="keyword">function</span> <span class="title">CoolModule</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> something = <span class="string">"cool"</span>;</span><br><span class="line">    <span class="keyword">var</span> another = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>];</span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">doSomething</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">        <span class="built_in">console</span>.log( something )</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">doAnother</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">        <span class="built_in">console</span>.log( another.join(<span class="string">" ! "</span>) );</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> &#123;</span><br><span class="line">        doSomething,</span><br><span class="line">        doAnother</span><br><span class="line">    &#125;</span><br><span class="line">&#125;)()</span><br><span class="line">foo.doSomething(); <span class="comment">// cool</span></span><br><span class="line">foo.doAnother();   <span class="comment">// 1 ! 2 ! 3</span></span><br></pre></td></tr></table></figure>
+<h3 id="补充"><a href="#补充" class="headerlink" title="补充"></a>补充</h3><p>可以传参，另外可以命名将要作为公共API返回的对象，比如下面的 <code>change()</code> 函数</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> foo = (<span class="function"><span class="keyword">function</span> <span class="title">CoolModule</span>(<span class="params">id</span>) </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">first</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">        <span class="built_in">console</span>.log(id)</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">second</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">        <span class="built_in">console</span>.log(id.toUpperCase());</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">change</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">        publicAPI.identity = second</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">var</span> publicAPI = &#123;</span><br><span class="line">        change,</span><br><span class="line">        identity: first</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> publicAPI;</span><br><span class="line">&#125;)(<span class="string">" foo module "</span>)</span><br><span class="line">foo.identity(); <span class="comment">// foo module</span></span><br><span class="line">foo.change();</span><br><span class="line">foo.identity(); <span class="comment">// FOO MODULE</span></span><br></pre></td></tr></table></figure>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/08/02/JavaScript-questions-1/"/>
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -915,204 +1191,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/07/24/JS循环/"/>
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="gzl"/>
-      <meta itemprop="description" content=""/>
-      <meta itemprop="image" content="/images/avatar.gif"/>
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="gzl的博客"/>
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/2019/07/24/JS循环/" class="post-title-link" itemprop="url">for of、for in</a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-
-          
-          
-          
-
-          
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-
-              
-                
-              
-
-              <time title="创建时间：2019-07-24 07:26:01" itemprop="dateCreated datePublished" datetime="2019-07-24T07:26:01+08:00">2019-07-24</time>
-            </span>
-          
-
-          
-            
-
-            
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">更新于</span>
-                
-                <time title="修改时间：2019-09-07 19:18:29" itemprop="dateModified" datetime="2019-09-07T19:18:29+08:00">2019-09-07</time>
-              </span>
-            
-          
-
-          
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/JavaScript/" itemprop="url" rel="index"><span itemprop="name">JavaScript</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-            
-          
-
-          
-          
-
-          
-
-          
-
-          <br/>
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h1 id="for-in"><a href="#for-in" class="headerlink" title="for in"></a>for in</h1><p><code>for...in</code> 循环实际是为循环可枚举（enumerable）对象而设计的：</p>
-<p>如果表示要迭代的对象的变量值为 <code>null</code>  或 <code>undefined</code>，<code>for...in</code> 语句在 ES5 中不会抛出错误，只是不执行循环体，建议使用 <code>for...in</code> 之前，先检测确认该对象的值不是 <code>null</code> 或 <code>undefined</code> 。</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> arr = <span class="literal">null</span>;</span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">let</span> prop <span class="keyword">in</span> arr) &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(prop);</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 不会打印出任何东西</span></span><br></pre></td></tr></table></figure>
-<h2 id="循环一个"><a href="#循环一个" class="headerlink" title="循环一个 {}"></a>循环一个 {}</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> obj = &#123; <span class="attr">a</span>: <span class="number">1</span>, <span class="attr">b</span>: <span class="number">2</span>, <span class="attr">c</span>: <span class="number">3</span> &#125;;</span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">let</span> prop <span class="keyword">in</span> obj) &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(prop + <span class="string">": "</span> + obj[prop]);</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 输出</span></span><br><span class="line"><span class="comment">// a: 1</span></span><br><span class="line"><span class="comment">// b: 2</span></span><br><span class="line"><span class="comment">// c: 3</span></span><br></pre></td></tr></table></figure>
-<p>可以用来循环一个数组，<strong>但不推荐</strong>，因为不像对象，数组的 <code>index</code> 跟普通的对象属性不一样，是重要的数值序列指标。</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> arr = [<span class="string">"a"</span>,<span class="string">"b"</span>,<span class="string">"c"</span>,<span class="string">"d"</span>,<span class="string">"e"</span>];</span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">let</span> prop <span class="keyword">in</span> arr) &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(prop + <span class="string">": "</span> + arr[prop])</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 输出</span></span><br><span class="line"><span class="comment">// 0: a</span></span><br><span class="line"><span class="comment">// 1: b</span></span><br><span class="line"><span class="comment">// 2: c</span></span><br><span class="line"><span class="comment">// 3: d</span></span><br><span class="line"><span class="comment">// 4: e</span></span><br></pre></td></tr></table></figure>
-<p>总之，<code>for...in</code> 是用来循环带有字符串 key 的对象的方法。</p>
-<h1 id="for-of"><a href="#for-of" class="headerlink" title="for of"></a>for of</h1><p>ES6 在 for 和 for…in 基础上，新增了一个 <code>for of</code> 循环，在<strong>迭代器</strong>产生的一系列值上循环。</p>
-<p><code>for...of</code> 循环的值必须是一个 <code>iterable</code> ，或者说它必须是可以转换 / 封箱到一个 <code>iterable</code> 对象的值。<code>iterable</code> 就是一个能够产生迭代器供循环使用的对象。 </p>
-<p>JavaScript 中默认为（或提供）iterable 的标准内建值包括：</p>
-<ul>
-<li>Arrays</li>
-<li>Strings</li>
-<li>Generators</li>
-<li>Collections / TypedArrays</li>
-</ul>
-<p>默认情况下平凡的对象并不适用 for…of 循环，因为他们并没有默认的迭代器。</p>
-<h2 id="循环一个数组-Array"><a href="#循环一个数组-Array" class="headerlink" title="循环一个数组(Array):"></a>循环一个数组(Array):</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> arr = [<span class="string">"a"</span>,<span class="string">"b"</span>,<span class="string">"c"</span>,<span class="string">"d"</span>,<span class="string">"e"</span>];</span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">let</span> value <span class="keyword">of</span> arr) &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(value);</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 输出</span></span><br><span class="line"><span class="comment">// a</span></span><br><span class="line"><span class="comment">// b</span></span><br><span class="line"><span class="comment">// c</span></span><br><span class="line"><span class="comment">// d</span></span><br><span class="line"><span class="comment">// e</span></span><br></pre></td></tr></table></figure>
-<p>我们可以使用 <code>const</code> 来替代 <code>let</code>，这样它就变成了在循环里的不可修改的静态变量。</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> arr = [<span class="string">"a"</span>,<span class="string">"b"</span>,<span class="string">"c"</span>,<span class="string">"d"</span>,<span class="string">"e"</span>];</span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">const</span> value <span class="keyword">of</span> arr) &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(value);</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 输出</span></span><br><span class="line"><span class="comment">// a</span></span><br><span class="line"><span class="comment">// b</span></span><br><span class="line"><span class="comment">// c</span></span><br><span class="line"><span class="comment">// d</span></span><br><span class="line"><span class="comment">// e</span></span><br></pre></td></tr></table></figure>
-<h2 id="循环一个字符串："><a href="#循环一个字符串：" class="headerlink" title="循环一个字符串："></a>循环一个字符串：</h2><p>原生字符串值 “gzl” 被强制类型转换 / 封箱到等价的 String 封装对象中，而 Strings 默认是一个 iterable。</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> str = <span class="string">"gzl"</span>;</span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">let</span> value <span class="keyword">of</span> str) &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(value);</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 输出</span></span><br><span class="line"><span class="comment">// g</span></span><br><span class="line"><span class="comment">// z</span></span><br><span class="line"><span class="comment">// l</span></span><br></pre></td></tr></table></figure>
-<p><strong>参考</strong></p>
-<p><a href="http://www.ituring.com.cn/book/1666" target="_blank" rel="noopener">你不知道的JavaScript（下卷）P110</a></p>
-
-          
-        
-      
-    </div>
-
-    
-
-    
-
-    
-    
-    
-
-    
-
-    
-      
-    
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -1160,7 +1238,7 @@
         
           <a href="/archives/">
         
-          <span class="site-state-item-count">101</span>
+          <span class="site-state-item-count">102</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
