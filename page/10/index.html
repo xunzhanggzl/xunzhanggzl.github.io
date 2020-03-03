@@ -680,7 +680,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/10/22/node-git-open/"/>
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/10/22/一些使用过的npm包/"/>
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="gzl"/>
@@ -700,7 +700,7 @@
           <h1 class="post-title" itemprop="name headline">
                 
                 
-                <a href="/2019/10/22/node-git-open/" class="post-title-link" itemprop="url">node-git-open</a>
+                <a href="/2019/10/22/一些使用过的npm包/" class="post-title-link" itemprop="url">一些使用过的npm包</a>
               
             
           </h1>
@@ -725,13 +725,23 @@
                 
               
 
-              <time title="创建时间：2019-10-22 14:31:28 / 修改时间：14:35:08" itemprop="dateCreated datePublished" datetime="2019-10-22T14:31:28+08:00">2019-10-22</time>
+              <time title="创建时间：2019-10-22 14:31:28" itemprop="dateCreated datePublished" datetime="2019-10-22T14:31:28+08:00">2019-10-22</time>
             </span>
           
 
           
             
 
+            
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2020-03-03 20:02:57" itemprop="dateModified" datetime="2020-03-03T20:02:57+08:00">2020-03-03</time>
+              </span>
             
           
 
@@ -786,14 +796,49 @@
       
         
           
-            <blockquote>
+            <h1 id="concurrently"><a href="#concurrently" class="headerlink" title="concurrently"></a>concurrently</h1><blockquote>
+<p><a href="https://www.npmjs.com/package/concurrently" target="_blank" rel="noopener">https://www.npmjs.com/package/concurrently</a></p>
+</blockquote>
+<p>使用 <code>concurrently</code> 可以实现前后端用一个命令启动</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install concurrently</span><br></pre></td></tr></table></figure>
+<p>目录结构为后端文件中包含一个 <code>client</code> 文件夹为前端代码。详情看 <code>vue-fund-manage</code> 项目结构。</p>
+<p>后端 <code>package.json</code> 文件下配置 <code>script</code></p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">"scripts": &#123;</span><br><span class="line">    "client-install": "npm intall --prefix client",</span><br><span class="line">    "client": "npm start --prefix client",</span><br><span class="line">    "start": "node server.js",</span><br><span class="line">    "server": "supervisor server.js",</span><br><span class="line">    "dev": "concurrent \"npm run server\" \"npm run client\""</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>前端 <code>package.json</code> 文件下配置 <code>script</code></p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">"scripts": &#123;</span><br><span class="line">    "serve": "vue-cli-service serve",</span><br><span class="line">    "build": "vue-cli-service build",</span><br><span class="line">    "start": "npm run serve"</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>最后使用下面的命令就可以一起启动前后端。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm run dev</span><br></pre></td></tr></table></figure>
+<h1 id="supervisor"><a href="#supervisor" class="headerlink" title="supervisor"></a>supervisor</h1><blockquote>
+<p><a href="https://www.npmjs.com/package/supervisor" target="_blank" rel="noopener">https://www.npmjs.com/package/supervisor</a></p>
+</blockquote>
+<p>在开发过程中，每次修改代码保存后，我们都需要手动重启程序，才能查看改动的效果。使用 <a href="https://www.npmjs.com/package/supervisor" target="_blank" rel="noopener">supervisor</a> 可以解决这个繁琐的问题，全局安装 supervisor：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm i -g supervisor</span><br></pre></td></tr></table></figure>
+<p>开启</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">supervisor index.js</span><br></pre></td></tr></table></figure>
+<p>supervisor 会监听当前目录下 node 和 js 后缀的文件，当这些文件发生改动时，supervisor 会自动重启程序。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">Node Supervisor is used to restart programs when they crash.</span><br><span class="line">It can also be used to restart programs when a *.js file changes.</span><br><span class="line"></span><br><span class="line">Usage:</span><br><span class="line">  supervisor [options] &lt;program&gt;</span><br><span class="line">  supervisor [options] -- &lt;program&gt; [args ...]</span><br></pre></td></tr></table></figure>
+<h1 id="http-server"><a href="#http-server" class="headerlink" title="http-server"></a>http-server</h1><blockquote>
+<p><a href="https://www.npmjs.com/package/http-server" target="_blank" rel="noopener">https://www.npmjs.com/package/http-server</a></p>
+</blockquote>
+<p>使用 <code>http-server</code> 可以快速开启一个小型的node静态服务。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install http-server -g</span><br></pre></td></tr></table></figure>
+<p>开启</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">http-server</span><br><span class="line"></span><br><span class="line">hs <span class="comment"># 快捷方式</span></span><br><span class="line"></span><br><span class="line">usage: http-server [path] [options]</span><br></pre></td></tr></table></figure>
+<h1 id="fanyi"><a href="#fanyi" class="headerlink" title="fanyi"></a>fanyi</h1><blockquote>
+<p><a href="https://www.npmjs.com/package/fanyi" target="_blank" rel="noopener">https://www.npmjs.com/package/fanyi</a></p>
+</blockquote>
+<p>安装</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install fanyi -g</span><br></pre></td></tr></table></figure>
+<p>使用：直接在命令行里输入想翻译的词即可 <code>fy</code> 是简写，完整写法是 <code>fanyi</code>。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ fy love</span><br></pre></td></tr></table></figure>
+<h1 id="git-open"><a href="#git-open" class="headerlink" title="git open"></a>git open</h1><blockquote>
 <p><a href="https://www.npmjs.com/package/git-open" target="_blank" rel="noopener">https://www.npmjs.com/package/git-open</a></p>
 </blockquote>
 <p>安装</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install --global git-open</span><br></pre></td></tr></table></figure>
-<p>使用：在一次git push之后，运行</p>
+<p>使用：在一次 git push 之后，运行</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git open</span><br></pre></td></tr></table></figure>
-<p>即可打开该项目的网页地址</p>
+<p>即可打开该项目的网页地址。</p>
 
           
         
@@ -841,7 +886,7 @@
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/9/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/9/">9</a><span class="page-number current">10</span><a class="page-number" href="/page/11/">11</a><span class="space">&hellip;</span><a class="page-number" href="/page/35/">35</a><a class="extend next" rel="next" href="/page/11/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
+    <a class="extend prev" rel="prev" href="/page/9/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/9/">9</a><span class="page-number current">10</span><a class="page-number" href="/page/11/">11</a><span class="space">&hellip;</span><a class="page-number" href="/page/33/">33</a><a class="extend next" rel="next" href="/page/11/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
   </nav>
 
 
@@ -884,7 +929,7 @@
         
           <a href="/archives/">
         
-          <span class="site-state-item-count">103</span>
+          <span class="site-state-item-count">99</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -933,7 +978,7 @@
         
           
         
-        <span class="site-state-item-count">16</span>
+        <span class="site-state-item-count">15</span>
         <span class="site-state-item-name">分类</span>
         </a>
       </div>

@@ -326,571 +326,6 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/09/07/JS执行机制/"/>
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="gzl"/>
-      <meta itemprop="description" content=""/>
-      <meta itemprop="image" content="/images/avatar.gif"/>
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="gzl的博客"/>
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/2019/09/07/JS执行机制/" class="post-title-link" itemprop="url">JS-EventLoop</a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-
-          
-          
-          
-
-          
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-
-              
-                
-              
-
-              <time title="创建时间：2019-09-07 19:16:12" itemprop="dateCreated datePublished" datetime="2019-09-07T19:16:12+08:00">2019-09-07</time>
-            </span>
-          
-
-          
-            
-
-            
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">更新于</span>
-                
-                <time title="修改时间：2020-02-13 10:29:37" itemprop="dateModified" datetime="2020-02-13T10:29:37+08:00">2020-02-13</time>
-              </span>
-            
-          
-
-          
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/JavaScript/" itemprop="url" rel="index"><span itemprop="name">JavaScript</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-            
-          
-
-          
-          
-
-          
-
-          
-
-          <br/>
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h1 id="javascript事件循环"><a href="#javascript事件循环" class="headerlink" title="javascript事件循环"></a>javascript事件循环</h1><p>当我们打开网站时，网页的渲染过程就是一大堆<strong>同步任务</strong>，比如页面骨架和页面元素的渲染。而像加载图片音乐之类占用资源大耗时久的任务，就是<strong>异步任务</strong>。</p>
-<p><img src="/img/JavaScript/eventLoop.png" alt="EventLoop"></p>
-<p>导图要表达的内容用文字来表述的话：</p>
-<ul>
-<li>同步和异步任务分别进入不同的执行”场所”，所有同步任务进入主线程执行，形成一个执行栈（execution context stack）。异步的进入Event Table并注册函数。</li>
-<li>异步任务指定的事情完成时，Event Table会将这个函数移入Event Queue。</li>
-<li>主线程(执行栈)内的所有同步任务执行完毕为空，会去Event Queue读取对应的函数，进入主线程(执行栈)执行。</li>
-<li>上述过程会不断重复，也就是常说的Event Loop(事件循环)。</li>
-</ul>
-<p>例如：</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> data = [];</span><br><span class="line">$.ajax(&#123;</span><br><span class="line">  url: www.javascript.com,</span><br><span class="line">  data: data,</span><br><span class="line">  success: <span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'发送成功!'</span>);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;)</span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">'代码执行结束'</span>);</span><br></pre></td></tr></table></figure>
-<p>上面是一段简易的<code>ajax</code>请求代码：</p>
-<ul>
-<li>ajax进入Event Table，注册回调函数<code>success</code>。</li>
-<li>执行<code>console.log(&#39;代码执行结束&#39;)</code>。</li>
-<li>ajax事件完成，回调函数<code>success</code>进入Event Queue。</li>
-<li>主线程从Event Queue读取回调函数<code>success</code>并执行。</li>
-</ul>
-<h1 id="定时器"><a href="#定时器" class="headerlink" title="定时器"></a>定时器</h1><h2 id="setTimeout"><a href="#setTimeout" class="headerlink" title="setTimeout"></a>setTimeout</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">task</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">"执行"</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">sleep</span>(<span class="params">num</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; num; i++) &#123;&#125;</span><br><span class="line">&#125;</span><br><span class="line">setTimeout(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">  task()</span><br><span class="line">&#125;, <span class="number">3000</span>)</span><br><span class="line"></span><br><span class="line">sleep(<span class="number">10000000000</span>)</span><br></pre></td></tr></table></figure>
-<p>把这段代码在chrome执行一下，却发现控制台执行<code>task()</code>需要的时间远远超过3秒</p>
-<p>这时候我们需要重新理解<code>setTimeout</code>的定义。我们先说上述代码是怎么执行的：</p>
-<ul>
-<li><code>task()</code>进入Event Table并注册,计时开始。</li>
-<li>执行<code>sleep</code>函数，很慢，非常慢，计时仍在继续。</li>
-<li>3秒到了，计时事件<code>timeout</code>完成，<code>task()</code>进入Event Queue，但是<code>sleep</code>也太慢了吧，还没执行完，只好等着。</li>
-<li><code>sleep</code>终于执行完了，<code>task()</code>终于从Event Queue进入了主线程执行。</li>
-</ul>
-<p>上述的流程走完，我们知道<code>setTimeout</code>这个函数，是经过指定时间后，把要执行的任务(本例中为<code>task()</code>)加入到Event Queue中，又因为是单线程任务要一个一个执行，如果前面的任务需要的时间太久，那么只能等着，导致真正的延迟时间远远大于3秒。</p>
-<p>我们还经常遇到<code>setTimeout(fn,0)</code>这样的代码，0秒后执行又是什么意思呢？是不是可以立即执行呢？</p>
-<p>答案是不会的，<code>setTimeout(fn,0)</code>的含义是，指定某个任务在主线程最早可得的空闲时间执行，意思就是不用再等多少秒了，只要主线程执行栈内的同步任务全部执行完成，栈为空就马上执行。</p>
-<h2 id="setInterval"><a href="#setInterval" class="headerlink" title="setInterval"></a>setInterval</h2><p>对于执行顺序来说，<code>setInterval</code>会每隔指定的时间将注册的函数置入Event Queue，如果前面的任务耗时太久，那么同样需要等待。</p>
-<p>唯一需要注意的一点是，对于<code>setInterval(fn,ms)</code>来说，我们已经知道不是每过<code>ms</code>秒会执行一次<code>fn</code>，而是每过<code>ms</code>秒，会有<code>fn</code>进入Event Queue。一旦<strong>setInterval的回调函数fn执行时间超过了延迟时间ms，那么就完全看不出来有时间间隔了</strong>。这句话请读者仔细品味。</p>
-<h1 id="任务"><a href="#任务" class="headerlink" title="任务"></a>任务</h1><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">console</span>.log(<span class="number">1</span>)</span><br><span class="line"></span><br><span class="line">setTimeout(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="number">2</span>)</span><br><span class="line">&#125;, <span class="number">0</span>)</span><br><span class="line"></span><br><span class="line"><span class="built_in">Promise</span>.resolve().then(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="number">3</span>)</span><br><span class="line">&#125;).then(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="number">4</span>)</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(<span class="number">5</span>)</span><br><span class="line"><span class="comment">// 1、5、3、4、2</span></span><br></pre></td></tr></table></figure>
-<p>当遇到上面这种问题时，仅仅依靠上面的知识还是不够的。因为 <code>setTimeout</code>和<code>Promise.then</code> 都是异步的，怎么判断他们的执行顺序呢？</p>
-<p>这就引出了宏任务与微任务。</p>
-<p>这两个概念属于对异步任务的分类，不同的API注册的异步任务会依次进入自身对应的队列(Event Queue)中，然后等待<strong>Event Loop</strong>将它们依次压入执行栈中执行。比如<code>setTimeout</code>和<code>setInterval</code>会进入相同的Event Queue。</p>
-<p>特别的：script代码执行到底部就相当于一次宏任务。第一次执行栈执行的代码就是script代码执行到底部。这样就能理解下面的<strong>“每次执行栈执行的代码就是一个宏任务”</strong>这个说法了。</p>
-<p><img src="/img/JavaScript/queue.png" alt="EventLoop"></p>
-<h2 id="宏任务"><a href="#宏任务" class="headerlink" title="宏任务"></a>宏任务</h2><p>(macro)task（又称之为宏任务），<strong>可以理解是每次执行栈执行的代码就是一个宏任务（包括每次从事件队列中获取一个事件回调并放到执行栈中执行）</strong>。</p>
-<p>浏览器为了能够使得JS内部(macro)task与DOM任务能够有序的执行，<strong>会在一个(macro)task执行结束后，在下一个(macro)task 执行开始前，对页面进行重新渲染</strong>，流程如下：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">(macro)task-&gt;渲染-&gt;(macro)task-&gt;...</span><br></pre></td></tr></table></figure>
-<p>(macro)task主要包含：setTimeout、setInterval、I/O、UI交互事件、postMessage、MessageChannel、setImmediate(Node.js 环境)</p>
-<h2 id="微任务"><a href="#微任务" class="headerlink" title="微任务"></a>微任务</h2><p>(micro)task（又称为微任务），<strong>可以理解是在当前 task 执行结束后立即执行的任务</strong>。也就是说，在当前task任务后，下一个task之前，在渲染之前。</p>
-<p>所以它的响应速度相比setTimeout（setTimeout是task）会更快，因为无需等渲染。也就是说，在某一个(macro)task执行完后，就会将在它执行期间产生的所有(micro)task都执行完毕（在渲染前）。</p>
-<p>(micro)task主要包含：Promise.then、MutaionObserver、process.nextTick(Node.js 环境)</p>
-<p>事件循环的顺序，决定js代码的执行顺序。进入整体代码后，开始第一次循环。接着执行所有的微任务。然后再次从宏任务开始，找到其中一个任务队列执行完毕，再执行所有的微任务。</p>
-<p>例如：</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">setTimeout(<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">'setTimeout'</span>);</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line"><span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function"><span class="keyword">function</span> (<span class="params">resolve</span>) </span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">'promise'</span>);</span><br><span class="line">  resolve();</span><br><span class="line">&#125;).then(<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">'then'</span>);</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">'console'</span>);</span><br></pre></td></tr></table></figure>
-<p>这段代码作为宏任务，进入主线程。</p>
-<p>先遇到<code>setTimeout</code>，那么将其回调函数注册后分发到宏任务Event Queue。(注册过程与上同，下文不再描述)</p>
-<p>接下来遇到了<code>Promise</code>，<code>new Promise</code>立即执行，<code>then</code>函数分发到微任务Event Queue。</p>
-<p>遇到<code>console.log()</code>，立即执行。</p>
-<p>好啦，整体代码执行结束，看看有哪些微任务？我们发现了<code>then</code>在微任务Event Queue里面，执行。</p>
-<p>ok，第一轮事件循环结束了，我们开始第二轮循环，当然要从宏任务Event Queue开始。我们发现了宏任务Event Queue中<code>setTimeout</code>对应的回调函数，立即执行。</p>
-<p>结束。</p>
-<p>下图是它们的关系：</p>
-<p><img src="/img/JavaScript/task.png" alt="EventLoop"></p>
-<h1 id="测试题"><a href="#测试题" class="headerlink" title="测试题"></a>测试题</h1><h2 id="实例1"><a href="#实例1" class="headerlink" title="实例1"></a>实例1</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">console</span>.log(<span class="string">'1'</span>);</span><br><span class="line"></span><br><span class="line">setTimeout(<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">'2'</span>);</span><br><span class="line">  process.nextTick(<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'3'</span>);</span><br><span class="line">  &#125;)</span><br><span class="line">  <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function"><span class="keyword">function</span> (<span class="params">resolve</span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'4'</span>);</span><br><span class="line">    resolve();</span><br><span class="line">  &#125;).then(<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'5'</span>)</span><br><span class="line">  &#125;)</span><br><span class="line">&#125;)</span><br><span class="line">process.nextTick(<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">'6'</span>);</span><br><span class="line">&#125;)</span><br><span class="line"><span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function"><span class="keyword">function</span> (<span class="params">resolve</span>) </span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">'7'</span>);</span><br><span class="line">  resolve();</span><br><span class="line">&#125;).then(<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">'8'</span>)</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line">setTimeout(<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">'9'</span>);</span><br><span class="line">  process.nextTick(<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'10'</span>);</span><br><span class="line">  &#125;)</span><br><span class="line">  <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function"><span class="keyword">function</span> (<span class="params">resolve</span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'11'</span>);</span><br><span class="line">    resolve();</span><br><span class="line">  &#125;).then(<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'12'</span>)</span><br><span class="line">  &#125;)</span><br><span class="line">&#125;)</span><br><span class="line"><span class="comment">// 1，7，6，8，2，4，3，5，9，11，10，12</span></span><br></pre></td></tr></table></figure>
-<p>第一轮事件循环流程分析如下：</p>
-<ul>
-<li>整体代码作为进入主线程，遇到<code>console.log</code>，输出1。</li>
-<li>遇到<code>setTimeout</code>，其回调函数被分发到宏任务Event Queue中。我们暂且记为<code>setTimeout1</code>。</li>
-<li>遇到<code>process.nextTick()</code>，其回调函数被分发到微任务Event Queue中。我们记为<code>process1</code>。</li>
-<li>遇到<code>Promise</code>，<code>new Promise</code>直接执行，输出7。<code>then</code>被分发到微任务Event Queue中。我们记为<code>then1</code>。</li>
-<li>又遇到了<code>setTimeout</code>，其回调函数被分发到宏任务Event Queue中，我们记为<code>setTimeout2</code>。</li>
-</ul>
-<table>
-<thead>
-<tr>
-<th style="text-align:center">宏任务Event Queue</th>
-<th style="text-align:center">微任务Event Queue</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:center">setTimeout1</td>
-<td style="text-align:center">process1</td>
-</tr>
-<tr>
-<td style="text-align:center">setTimeout2</td>
-<td style="text-align:center">then1</td>
-</tr>
-</tbody>
-</table>
-<ul>
-<li>上表是第一轮事件循环宏任务结束时各Event Queue的情况，此时已经输出了1和7。</li>
-<li>我们发现了<code>process1</code>和<code>then1</code>两个微任务。</li>
-<li>执行<code>process1</code>,输出6。</li>
-<li>执行<code>then1</code>，输出8。</li>
-</ul>
-<p>好了，第一轮事件循环正式结束，这一轮的结果是输出1，7，6，8。那么第二轮时间循环从<code>setTimeout1</code>宏任务开始：</p>
-<ul>
-<li>首先输出2。接下来遇到了<code>process.nextTick()</code>，同样将其分发到微任务Event Queue中，记为<code>process2</code>。<code>new Promise</code>立即执行输出4，<code>then</code>也分发到微任务Event Queue中，记为<code>then2</code>。</li>
-</ul>
-<table>
-<thead>
-<tr>
-<th style="text-align:center">宏任务Event Queue</th>
-<th style="text-align:center">微任务Event Queue</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:center">setTimeout2</td>
-<td style="text-align:center">process2</td>
-</tr>
-<tr>
-<td style="text-align:center"></td>
-<td style="text-align:center">then2</td>
-</tr>
-</tbody>
-</table>
-<ul>
-<li>第二轮事件循环宏任务结束，我们发现有<code>process2</code>和<code>then2</code>两个微任务可以执行。</li>
-<li>输出3。</li>
-<li>输出5。</li>
-<li>第二轮事件循环结束，第二轮输出2，4，3，5。</li>
-<li>第三轮事件循环开始，此时只剩setTimeout2了，执行。</li>
-<li>直接输出9。</li>
-<li>将<code>process.nextTick()</code>分发到微任务Event Queue中。记为<code>process3</code>。</li>
-<li>直接执行<code>new Promise</code>，输出11。</li>
-<li>将<code>then</code>分发到微任务Event Queue中，记为<code>then3</code>。</li>
-</ul>
-<table>
-<thead>
-<tr>
-<th style="text-align:center">宏任务Event Queue</th>
-<th style="text-align:center">微任务Event Queue</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:center"></td>
-<td style="text-align:center">process3</td>
-</tr>
-<tr>
-<td style="text-align:center"></td>
-<td style="text-align:center">then3</td>
-</tr>
-</tbody>
-</table>
-<ul>
-<li>第三轮事件循环宏任务执行结束，执行两个微任务<code>process3</code>和<code>then3</code>。</li>
-<li>输出10。</li>
-<li>输出12。</li>
-<li>第三轮事件循环结束，第三轮输出9，11，10，12。</li>
-</ul>
-<p>整段代码，共进行了三次事件循环，完整的输出为1，7，6，8，2，4，3，5，9，11，10，12。<br>(请注意，node环境下的事件监听依赖libuv与前端环境不完全相同，输出顺序可能会有误差)</p>
-<h2 id="实例2"><a href="#实例2" class="headerlink" title="实例2"></a>实例2</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function"><span class="params">resolve</span> =&gt;</span> &#123;</span><br><span class="line">  resolve(<span class="number">1</span>);</span><br><span class="line"></span><br><span class="line">  <span class="built_in">Promise</span>.resolve().then(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">    <span class="comment">// t2</span></span><br><span class="line">    <span class="built_in">console</span>.log(<span class="number">2</span>)</span><br><span class="line">  &#125;);</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="number">4</span>)</span><br><span class="line">&#125;).then(<span class="function"><span class="params">t</span> =&gt;</span> &#123;</span><br><span class="line">  <span class="comment">// t1</span></span><br><span class="line">  <span class="built_in">console</span>.log(t)</span><br><span class="line">&#125;);</span><br><span class="line"><span class="built_in">console</span>.log(<span class="number">3</span>);</span><br></pre></td></tr></table></figure>
-<p>这段代码的流程大致如下：</p>
-<ol>
-<li>首先遇到 <code>Promise</code> 实例，构造函数首先执行，所以首先输出了 4。此时 microtask 的任务有 <code>t2</code> 和 <code>t1</code></li>
-<li>继续运行，输出 3。</li>
-<li>执行所有的微任务，先后取出 <code>t2</code> 和 <code>t1</code>，分别输出 2 和 1</li>
-<li>代码执行完毕</li>
-</ol>
-<p>综上，上述代码的输出是：4321</p>
-<p>为什么 <code>t2</code> 会先执行呢？理由如下：</p>
-<p><strong>对于下面的解释还是不太理解。。。</strong></p>
-<ul>
-<li>根据 <a href="http://www.ituring.com.cn/article/66566" target="_blank" rel="noopener">Promises/A+规范</a>：</li>
-</ul>
-<blockquote>
-<p>实践中要确保 onFulfilled 和 onRejected 方法异步执行，且应该在 <code>then</code> 方法被调用的那一轮事件循环之后的新执行栈中执行</p>
-</blockquote>
-<ul>
-<li><code>Promise.resolve</code> 方法允许调用时不带参数，直接返回一个<code>resolved</code> 状态的 <code>Promise</code> 对象。立即 <code>resolved</code> 的 <code>Promise</code> 对象，是在本轮“事件循环”（event loop）的结束时执行，而不是在下一轮“事件循环”的开始时。</li>
-</ul>
-<blockquote>
-<p><a href="http://es6.ruanyifeng.com/#docs/promise#Promise-resolve" target="_blank" rel="noopener">http://es6.ruanyifeng.com/#docs/promise#Promise-resolve</a></p>
-</blockquote>
-<p>所以，<code>t2</code> 比 <code>t1</code> 会先进入 microtask 的 <code>Promise</code> 队列。</p>
-<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><p>javascript是一门单线程语言，不管是什么新框架新语法糖实现的所谓异步，其实都是用同步的方法去模拟的，牢牢把握住单线程这点非常重要。</p>
-<p>Event Loop（事件循环）是js实现异步的一种方法，也是js的执行机制。</p>
-<p><strong>参考</strong></p>
-<p><a href="https://juejin.im/post/59e85eebf265da430d571f89" target="_blank" rel="noopener">这一次，彻底弄懂 JavaScript 执行机制</a></p>
-<p><a href="https://github.com/dwqs/blog/issues/61" target="_blank" rel="noopener">从一道题浅说 JavaScript 的事件循环</a></p>
-
-          
-        
-      
-    </div>
-
-    
-
-    
-
-    
-    
-    
-
-    
-
-    
-      
-    
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/09/07/浏览器的事件处理/"/>
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="gzl"/>
-      <meta itemprop="description" content=""/>
-      <meta itemprop="image" content="/images/avatar.gif"/>
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="gzl的博客"/>
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/2019/09/07/浏览器的事件处理/" class="post-title-link" itemprop="url">浏览器的事件处理</a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-
-          
-          
-          
-
-          
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-
-              
-                
-              
-
-              <time title="创建时间：2019-09-07 15:05:44" itemprop="dateCreated datePublished" datetime="2019-09-07T15:05:44+08:00">2019-09-07</time>
-            </span>
-          
-
-          
-            
-
-            
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">更新于</span>
-                
-                <time title="修改时间：2020-02-13 10:28:45" itemprop="dateModified" datetime="2020-02-13T10:28:45+08:00">2020-02-13</time>
-              </span>
-            
-          
-
-          
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/浏览器/" itemprop="url" rel="index"><span itemprop="name">浏览器</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-            
-          
-
-          
-          
-
-          
-
-          
-
-          <br/>
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h1 id="事件流"><a href="#事件流" class="headerlink" title="事件流"></a>事件流</h1><p>可以想象画在一张纸上的一组同心圆，如果把手指放在圆心上，那么手指指向的不是一个圆，而是纸上所有的圆。</p>
-<p>事件流描述的是从页面中接受事件的顺序。</p>
-<p>触发顺序，<strong>先捕获，后冒泡</strong></p>
-<h2 id="事件冒泡"><a href="#事件冒泡" class="headerlink" title="事件冒泡"></a>事件冒泡</h2><p>即事件开始时由最具体的元素接受，然后逐级向上传播到较为不具体的节点。</p>
-<p><strong>结构上（非视觉上）</strong>嵌套关系的元素，会存在事件冒泡的功能，即同一事件，<strong>自子元素冒泡向父元素</strong>。（自底向上）。</p>
-<p>focus，blur，change，submit，reset，select 等事件不冒泡。</p>
-<p>比如下面这个例子，点击<code>.box</code>，会先后打印出 <code>box</code>，<code>content</code>，<code>wrapper</code>。</p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"wrapper"</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"content"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"box"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> wrapper = <span class="built_in">document</span>.getElementsByClassName(<span class="string">'wrapper'</span>)[<span class="number">0</span>];</span><br><span class="line"><span class="keyword">let</span> content = <span class="built_in">document</span>.getElementsByClassName(<span class="string">'content'</span>)[<span class="number">0</span>];</span><br><span class="line"><span class="keyword">let</span> box = <span class="built_in">document</span>.getElementsByClassName(<span class="string">'box'</span>)[<span class="number">0</span>];</span><br><span class="line"></span><br><span class="line">wrapper.addEventListener(<span class="string">'click'</span>, <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">'wrapper'</span>)</span><br><span class="line">&#125;, <span class="literal">false</span>)</span><br><span class="line">content.addEventListener(<span class="string">'click'</span>, <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">'content'</span>)</span><br><span class="line">&#125;, <span class="literal">false</span>)</span><br><span class="line">box.addEventListener(<span class="string">'click'</span>, <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">'box'</span>)</span><br><span class="line">&#125;, <span class="literal">false</span>)</span><br></pre></td></tr></table></figure>
-<h2 id="事件捕获"><a href="#事件捕获" class="headerlink" title="事件捕获"></a>事件捕获</h2><p>结构上（非视觉上）嵌套关系的元素，会存在事件捕获的功能，即同一事件，<strong>自父元素捕获至子元素</strong>。（自顶向下）。</p>
-<p>下面的代码与事件冒泡的代码的不同就是 <code>false</code> 改成了 <code>true</code>，会先后打印出 <code>wrapper</code>，<code>content</code>，<code>box</code>。</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">wrapper.addEventListener(<span class="string">'click'</span>, <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">'wrapper'</span>)</span><br><span class="line">&#125;, <span class="literal">true</span>)</span><br><span class="line">content.addEventListener(<span class="string">'click'</span>, <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">'content'</span>)</span><br><span class="line">&#125;, <span class="literal">true</span>)</span><br><span class="line">box.addEventListener(<span class="string">'click'</span>, <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">'box'</span>)</span><br><span class="line">&#125;, <span class="literal">true</span>)</span><br></pre></td></tr></table></figure>
-<h2 id="结合"><a href="#结合" class="headerlink" title="结合"></a>结合</h2><p>先捕获，后冒泡，这里注意一下 <code>boxBubble</code> 和 <code>box</code> 的打印顺序，因为 <code>boxBubble</code> 是先绑定的，所以先执行。</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 冒泡</span></span><br><span class="line">wrapper.addEventListener(<span class="string">'click'</span>, <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">'wrapperBubble'</span>)</span><br><span class="line">&#125;, <span class="literal">false</span>)</span><br><span class="line">content.addEventListener(<span class="string">'click'</span>, <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">'contentBubble'</span>)</span><br><span class="line">&#125;, <span class="literal">false</span>)</span><br><span class="line">box.addEventListener(<span class="string">'click'</span>, <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">'boxBubble'</span>)</span><br><span class="line">&#125;, <span class="literal">false</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment">// 捕获</span></span><br><span class="line">wrapper.addEventListener(<span class="string">'click'</span>, <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">'wrapper'</span>)</span><br><span class="line">&#125;, <span class="literal">true</span>)</span><br><span class="line">content.addEventListener(<span class="string">'click'</span>, <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">'content'</span>)</span><br><span class="line">&#125;, <span class="literal">true</span>)</span><br><span class="line">box.addEventListener(<span class="string">'click'</span>, <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">'box'</span>)</span><br><span class="line">&#125;, <span class="literal">true</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment">// wrapper</span></span><br><span class="line"><span class="comment">// content</span></span><br><span class="line"><span class="comment">// boxBubble</span></span><br><span class="line"><span class="comment">// box</span></span><br><span class="line"><span class="comment">// contentBubble</span></span><br><span class="line"><span class="comment">// wrapperBubble</span></span><br></pre></td></tr></table></figure>
-<h2 id="取消冒泡"><a href="#取消冒泡" class="headerlink" title="取消冒泡"></a>取消冒泡</h2><p>此时控制台只会打印出 <code>boxBubble</code>。</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">wrapper.addEventListener(<span class="string">'click'</span>, <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">'wrapperBubble'</span>)</span><br><span class="line">&#125;, <span class="literal">false</span>)</span><br><span class="line">content.addEventListener(<span class="string">'click'</span>, <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">'contentBubble'</span>)</span><br><span class="line">&#125;, <span class="literal">false</span>)</span><br><span class="line">box.addEventListener(<span class="string">'click'</span>, <span class="function"><span class="keyword">function</span> (<span class="params">e</span>) </span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">'boxBubble'</span>)</span><br><span class="line">  stopBubble(e);</span><br><span class="line">&#125;, <span class="literal">false</span>)</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">stopBubble</span>(<span class="params">event</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">if</span> (event.stopPropagation) &#123;</span><br><span class="line">    event.stopPropagation();</span><br><span class="line">  &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    event.cancelBubble = <span class="literal">true</span>;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h1 id="阻止默认事件"><a href="#阻止默认事件" class="headerlink" title="阻止默认事件"></a>阻止默认事件</h1><ol>
-<li>return false; <strong>以对象属性的方式注册的事件才生效</strong></li>
-<li>event.preventDefault(); W3C标注，IE9以下不兼容</li>
-<li>event.returnValue = false; 兼容IE</li>
-</ol>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 第一种方法 return false 对 addEventListener 不生效</span></span><br><span class="line"><span class="built_in">document</span>.oncontextmenu = <span class="function"><span class="keyword">function</span> (<span class="params">e</span>) </span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">'a'</span>);</span><br><span class="line">  cancelHandler(e);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">cancelHandler</span>(<span class="params">event</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">if</span> (event.preventDefault) &#123;</span><br><span class="line">    event.preventDefault();</span><br><span class="line">  &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    event.returnValue = <span class="literal">false</span>;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>阻止 <code>a</code> 标签的默认事件，点击会回到顶部。</p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!-- void相当于return --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"javascript:void(false)"</span>&gt;</span>百度一下<span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><br></pre></td></tr></table></figure>
-<h1 id="事件对象"><a href="#事件对象" class="headerlink" title="事件对象"></a>事件对象</h1><p>event || window.event</p>
-<p>事件源对象：</p>
-<ol>
-<li>event.target 火狐只有这个</li>
-<li>event.srcElement IE只有这个</li>
-<li>chrome上面的都有</li>
-</ol>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 获取事件源对象</span></span><br><span class="line"><span class="keyword">let</span> wrapper = <span class="built_in">document</span>.getElementsByClassName(<span class="string">'wrapper'</span>)[<span class="number">0</span>];</span><br><span class="line">wrapper.onclick = <span class="function"><span class="keyword">function</span> (<span class="params">e</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">let</span> event = e || <span class="built_in">window</span>.event;</span><br><span class="line">  <span class="keyword">let</span> target = event.target || event.srcElement;</span><br><span class="line">  <span class="built_in">console</span>.log(target);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h1 id="事件委托"><a href="#事件委托" class="headerlink" title="事件委托"></a>事件委托</h1><p>事件冒泡 + 事件源对象结合，避免过多地遍历 li。 </p>
-<p>优点：</p>
-<ol>
-<li>性能：不需要循环所有的元素一个个绑定事件</li>
-<li>灵活：当有新的子元素时不需要重新绑定事件</li>
-</ol>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">ul</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">li</span>&gt;</span>1<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">li</span>&gt;</span>2<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">li</span>&gt;</span>3<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">li</span>&gt;</span>4<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">li</span>&gt;</span>5<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">li</span>&gt;</span>6<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">li</span>&gt;</span>7<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">li</span>&gt;</span>8<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">li</span>&gt;</span>9<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">li</span>&gt;</span>10<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">ul</span>&gt;</span></span><br></pre></td></tr></table></figure>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> ul = <span class="built_in">document</span>.getElementsByTagName(<span class="string">'ul'</span>)[<span class="number">0</span>];</span><br><span class="line">ul.onclick = <span class="function"><span class="keyword">function</span> (<span class="params">e</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">let</span> event = e || <span class="built_in">window</span>.event;</span><br><span class="line">  <span class="keyword">let</span> target = event.target || event.srcElement;</span><br><span class="line">  <span class="built_in">console</span>.log(target.innerText)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-          
-        
-      
-    </div>
-
-    
-
-    
-
-    
-    
-    
-
-    
-
-    
-      
-    
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/09/03/浏览器的加载时间线/"/>
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1072,11 +507,510 @@
 
 
     
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/09/03/RN-《高性能JavaScript》/"/>
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="gzl"/>
+      <meta itemprop="description" content=""/>
+      <meta itemprop="image" content="/images/avatar.gif"/>
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="gzl的博客"/>
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/2019/09/03/RN-《高性能JavaScript》/" class="post-title-link" itemprop="url">RN-《高性能JavaScript》</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+
+          
+          
+          
+
+          
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2019-09-03 14:13:41" itemprop="dateCreated datePublished" datetime="2019-09-03T14:13:41+08:00">2019-09-03</time>
+            </span>
+          
+
+          
+            
+
+            
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2020-02-06 14:35:59" itemprop="dateModified" datetime="2020-02-06T14:35:59+08:00">2020-02-06</time>
+              </span>
+            
+          
+
+          
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/读书笔记/" itemprop="url" rel="index"><span itemprop="name">读书笔记</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+
+          <br/>
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="第一章-加载和执行"><a href="#第一章-加载和执行" class="headerlink" title="第一章 加载和执行"></a>第一章 加载和执行</h1><h2 id="脚本位置"><a href="#脚本位置" class="headerlink" title="脚本位置"></a>脚本位置</h2><p>当浏览器遇到 <code>&lt;script&gt;</code> 标签时，浏览器会停止处理页面，先执行 JavaScript 代码，然后继续解析和渲染页面，同样的情况也发生在使用 src 属性加载 JavaScript 的过程中，浏览器必须先花时间下载外链文件中代码，然后解析并执行，在这个过程中，页面渲染和用户交互是完全被阻塞的。</p>
+<p>浏览器在解析到 <code>&lt;body&gt;</code> 标签之前，不会渲染页面的任何部分。</p>
+<p><strong>推荐将所有的 <code>&lt;script&gt;</code> 标签尽可能放到 <code>&lt;body&gt;</code> 标签的底部，以尽量减少对整个页面下载的影响。</strong></p>
+<h2 id="组织脚本"><a href="#组织脚本" class="headerlink" title="组织脚本"></a>组织脚本</h2><p>浏览器在解析HTML页面的过程中每遇到一个 <code>&lt;script&gt;</code> 标签，都会因脚本而导致一定的延时，因此最小化延时时间将会明显改善页面的总体性能。</p>
+<p>因此下载单个 100KB 的文件将比下载 4 个 25KB 的文件更快。也就是说，<strong>减少页面中外链脚本文件的数量将会改善性能。</strong></p>
+<h2 id="异步加载js"><a href="#异步加载js" class="headerlink" title="异步加载js"></a>异步加载js</h2><p>在页面加载完成后才加载JavaScript代码。</p>
+<h3 id="三种方式"><a href="#三种方式" class="headerlink" title="三种方式"></a>三种方式</h3><ol>
+<li>defer 异步加载，但要等到 dom 文档全部解析完才会被执行。只有IE能用，也可以将代码写到内部。</li>
+<li>async 异步加载，dom 文档加载完就执行，async只能加载外部脚本，不能把 Javascript 代码写到 <code>&lt;script&gt;</code> 标签里。</li>
+<li><strong>创建 <code>script</code> ，插入到DOM中，加载完毕后callback</strong></li>
+</ol>
+<h3 id="动态加载"><a href="#动态加载" class="headerlink" title="动态加载"></a>动态加载</h3><p>第三种技术的重点在于：无论在何时启动下载，文件的下载和执行过程不会阻塞页面其他进程。</p>
+<p>如果要求不是太高，那么就可以不用动态加载。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">loadScript</span>(<span class="params">url, callback</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">let</span> script = <span class="built_in">document</span>.createElement(<span class="string">'script'</span>);</span><br><span class="line">  script.type = <span class="string">"text/javascript"</span>;</span><br><span class="line">  <span class="keyword">if</span> (script.readyState) &#123;</span><br><span class="line">    script.onreadystatechange = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123; <span class="comment">//IE</span></span><br><span class="line">      <span class="keyword">if</span> (script.readyState == <span class="string">"loaded"</span> || script.readyState == <span class="string">"complete"</span>) &#123;</span><br><span class="line">        script.onreadystatechange = <span class="literal">null</span>;</span><br><span class="line">        <span class="comment">// 只要其中一个状态触发，就删除事件处理器（以确保事件不会处理两次）</span></span><br><span class="line">        callback();</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    script.onload = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">      <span class="comment">// 确保加载完成后才能执行回调函数，如果没有这个保证的话，代码执行非常快，在没有下载完成的情况下执行callback会报错。</span></span><br><span class="line">      callback();</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  script.src = url;</span><br><span class="line">  <span class="built_in">document</span>.head.appendChild(script);  </span><br><span class="line">  <span class="comment">// 通常来讲，把新创建的&lt;script&gt;标签添加到&lt;head&gt;标签里比添加到&lt;body&gt;里更保险</span></span><br><span class="line">&#125;</span><br><span class="line">loadScript(<span class="string">'b.js'</span>, <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">  test();</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<p>b.js代码，可以正常调用。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">test</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">"b.js执行了"</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>如果像下面这样调用的话，会报错，<code>Uncaught ReferenceError: test is not defined</code>，原因就是执行的时候浏览器根据执行上下文不知道 <code>test</code> 是什么，因此要传入一个匿名函数，在匿名函数里面执行 <code>test</code>。 </p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">loadScript(<span class="string">'b.js'</span>, test);</span><br></pre></td></tr></table></figure>
+<p>最终写法：</p>
+<p>脚本位置放在 <code>&lt;/body&gt;</code> 之前，确保 JavaScript 执行过程不会阻碍页面其他内容的显示，然后进行动态加载</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;!DOCTYPE html&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span> <span class="attr">lang</span>=<span class="string">"en"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">"UTF-8"</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">title</span>&gt;</span>Document<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">link</span> <span class="attr">rel</span>=<span class="string">"stylesheet"</span> <span class="attr">href</span>=<span class="string">"./index.css"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">h1</span>&gt;</span>hhhh<span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="undefined"></span></span><br><span class="line"><span class="javascript">    <span class="function"><span class="keyword">function</span> <span class="title">loadScript</span>(<span class="params">url, callback</span>) </span>&#123;</span></span><br><span class="line"><span class="javascript">      <span class="keyword">let</span> script = <span class="built_in">document</span>.createElement(<span class="string">'script'</span>);</span></span><br><span class="line"><span class="javascript">      script.type = <span class="string">"text/javascript"</span>;</span></span><br><span class="line"><span class="javascript">      <span class="keyword">if</span> (script.readyState) &#123;</span></span><br><span class="line"><span class="javascript">        script.onreadystatechange = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123; <span class="comment">//IE</span></span></span><br><span class="line"><span class="javascript">          <span class="keyword">if</span> (script.readyState == <span class="string">"loaded"</span> || script.readyState == <span class="string">"complete"</span>) &#123;</span></span><br><span class="line"><span class="javascript">            script.onreadystatechange = <span class="literal">null</span>;</span></span><br><span class="line"><span class="javascript">            <span class="comment">// 只要其中一个状态触发，就删除事件处理器（以确保事件不会处理两次）</span></span></span><br><span class="line"><span class="undefined">            callback();</span></span><br><span class="line"><span class="undefined">          &#125;</span></span><br><span class="line"><span class="undefined">        &#125;</span></span><br><span class="line"><span class="javascript">      &#125; <span class="keyword">else</span> &#123;</span></span><br><span class="line"><span class="javascript">        script.onload = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span></span><br><span class="line"><span class="javascript">          <span class="comment">// 确保加载完成后才能执行回调函数，如果没有这个保证的话，代码执行非常快，在没有下载完成的情况下执行callback会报错。</span></span></span><br><span class="line"><span class="undefined">          callback();</span></span><br><span class="line"><span class="undefined">        &#125;</span></span><br><span class="line"><span class="undefined">      &#125;</span></span><br><span class="line"><span class="undefined">      script.src = url;</span></span><br><span class="line"><span class="javascript">      <span class="built_in">document</span>.head.appendChild(script);</span></span><br><span class="line"><span class="xml">      // 通常来讲，把新创建的<span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="xml">标签添加到<span class="tag">&lt;<span class="name">head</span>&gt;</span>标签里比添加到<span class="tag">&lt;<span class="name">body</span>&gt;</span>里更保险</span></span></span><br><span class="line"><span class="undefined">    &#125;</span></span><br><span class="line"><span class="javascript">    loadScript(<span class="string">'b.js'</span>, <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span></span><br><span class="line"><span class="undefined">      test();</span></span><br><span class="line"><span class="undefined">    &#125;);</span></span><br><span class="line"><span class="undefined">  </span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<h1 id="第二章-数据存取"><a href="#第二章-数据存取" class="headerlink" title="第二章 数据存取"></a>第二章 数据存取</h1><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">initUI</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">let</span> bd = <span class="built_in">document</span>.body,  <span class="comment">// 1</span></span><br><span class="line">      links = <span class="built_in">document</span>.getElementsByTagName(<span class="string">"a"</span>),  <span class="comment">// 2</span></span><br><span class="line">      i = <span class="number">0</span>,</span><br><span class="line">      len = links.length;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">while</span> (i &lt; len) &#123;</span><br><span class="line">    update(links[i++]);</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="built_in">document</span>.getElementById(<span class="string">"go-btn"</span>).onclick = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;  <span class="comment">// 3</span></span><br><span class="line">    start();</span><br><span class="line">  &#125;</span><br><span class="line">  bd.className = <span class="string">"active"</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>上面的函数中引用了三次 document，而 document 是个全局对象。搜索该变量的过程必须遍历整个作用域链，直到最后在全局变量对象中找到。因此可以<strong>先将全局变量的引用存储在一个局部变量中，然后使用这个局部变量代替全局变量。</strong></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">initUI</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">let</span> doc = <span class="built_in">document</span>,</span><br><span class="line">      bd = doc.body,   <span class="comment">// 1</span></span><br><span class="line">      links = doc.getElementsByTagName(<span class="string">"a"</span>),  <span class="comment">// 2</span></span><br><span class="line">      i = <span class="number">0</span>,</span><br><span class="line">      len = links.length;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">while</span> (i &lt; len) &#123;</span><br><span class="line">    update(links[i++]);</span><br><span class="line">  &#125;</span><br><span class="line">  doc.getElementById(<span class="string">"go-btn"</span>).onclick = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;  <span class="comment">// 3</span></span><br><span class="line">    start();</span><br><span class="line">  &#125;</span><br><span class="line">  bd.className = <span class="string">"active"</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h1 id="第三章-DOM编程"><a href="#第三章-DOM编程" class="headerlink" title="第三章 DOM编程"></a>第三章 DOM编程</h1><h2 id="减少访问DOM的次数"><a href="#减少访问DOM的次数" class="headerlink" title="减少访问DOM的次数"></a>减少访问DOM的次数</h2><p>访问DOM元素是有代价的，修改元素则更为昂贵，因为它会导致浏览器重新计算页面的几何变化。</p>
+<p>最坏的情况是在循环中访问或修改元素，尤其是对HTML元素集合循环操作。例如下面这段代码：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">innerHTMLLoop</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">for</span>(<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; <span class="number">10000</span>; i ++) &#123;</span><br><span class="line">    <span class="built_in">document</span>.getElementById(<span class="string">'here'</span>).innerHTML += <span class="string">"a"</span>;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>上面的循环函数修改页面元素的内容的问题在于每次循环，该元素都被访问两次：一次读取 innerHTML 属性值，另一次重写它。</p>
+<p>可以这样改进：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">innerHTMLLoop</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">let</span> content = <span class="string">""</span>;</span><br><span class="line">  <span class="keyword">for</span>(<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; <span class="number">10000</span>; i ++) &#123;</span><br><span class="line">    content += <span class="string">"a"</span>;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="built_in">document</span>.getElementById(<span class="string">'here'</span>).innerHTML += content;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>可以很直观地体验到速度的变快。</p>
+<p>通用的经验法则是：<strong>减少访问DOM的次数，把运算尽量留在ECMAScript这一端处理</strong>。</p>
+<h2 id="重绘与重排"><a href="#重绘与重排" class="headerlink" title="重绘与重排"></a>重绘与重排</h2><p>浏览器下载完页面中的所有组件–HTML标记、JS、CSS、图片–之后会解析并生成两个内部数据结构：</p>
+<ul>
+<li>DOM 树：表示页面结构</li>
+<li>渲染树：表示DOM节点如何显示</li>
+</ul>
+<p>重排是什么：<strong>重新生成布局</strong>。当DOM 的变化影响了元素的几何属性（宽和高）–比如改变边框宽度或给段落增加文字导致行数增加–浏览器需要重新计算元素的几何属性，同样其他元素的几何属性和位置也会因此受到影响。浏览器会使渲染树中受到影响的部分失效，并重新构造渲染树。这个过程称为重排。</p>
+<p>重绘是什么：<strong>重新绘制</strong>。完成重排后，浏览器会重新绘制受影响的部分到屏幕中。这个过程称为重绘。</p>
+<p><strong>重排一定会导致重绘</strong>，重绘不一定导致重排。如果DOM变化不影响几何属性（比如改变一个元素的背景色并不影响它的宽和高），则只发生一次重绘（不需要重排），因为元素的布局没有改变。</p>
+<p>更多内容可以参考这篇文章：<a href="https://juejin.im/post/5c15f797f265da61141c7f86" target="_blank" rel="noopener">https://juejin.im/post/5c15f797f265da61141c7f86</a></p>
+<h1 id="第四章-算法和流程控制"><a href="#第四章-算法和流程控制" class="headerlink" title="第四章 算法和流程控制"></a>第四章 算法和流程控制</h1><p>使用递归的时候，尽量结合缓存。</p>
+<p>如果遇到栈溢出错误，可以将方法改为迭代算法。</p>
+<p>基于函数的迭代，比如 forEach，性能远不如 for 循环。</p>
+<h1 id="第五章-字符串和正则表达式"><a href="#第五章-字符串和正则表达式" class="headerlink" title="第五章 字符串和正则表达式"></a>第五章 字符串和正则表达式</h1><p>未看</p>
+<h1 id="第六章-快速响应的用户界面"><a href="#第六章-快速响应的用户界面" class="headerlink" title="第六章 快速响应的用户界面"></a>第六章 快速响应的用户界面</h1><p>这一章第一部分其实就是利用 setTimeout 可以处理复杂的任务，不再进行记录，可以查看 JavaScript 忍者秘籍13章的 setTimeout 部分。</p>
+<p>第二部分 Web Workers 未看</p>
+<h1 id="第七章-Ajax"><a href="#第七章-Ajax" class="headerlink" title="第七章 Ajax"></a>第七章 Ajax</h1><p>介绍了几种数据格式，现在主流的就是 JSON</p>
+<h1 id="第八章-编程实践"><a href="#第八章-编程实践" class="headerlink" title="第八章 编程实践"></a>第八章 编程实践</h1><h2 id="延时加载"><a href="#延时加载" class="headerlink" title="延时加载"></a>延时加载</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 未改进之前</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">addHandler</span>(<span class="params">target, eventType, handler</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">if</span> (target.addEventListener) &#123;</span><br><span class="line">    target.addEventListener(eventType, handler, <span class="literal">false</span>);</span><br><span class="line">  &#125; <span class="keyword">else</span> &#123; <span class="comment">// IE</span></span><br><span class="line">    target.attachEvent(<span class="string">"on"</span> + eventType, handler);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>上面代码的问题就是：如果第一次调用 <code>addHandler()</code> 时就确定 <code>addEventListener()</code> 是存在的，那么随后每次调用时它应该也都存在，每次调用一个函数都重复相同的工作是一种浪费，有几种方法可以避免它。</p>
+ <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">addHandler</span>(<span class="params">target, eventType, handler</span>) </span>&#123;</span><br><span class="line">  <span class="comment">// 复写现有函数</span></span><br><span class="line">  <span class="keyword">if</span> (target.addEventListener) &#123;</span><br><span class="line">    addHandler = <span class="function"><span class="keyword">function</span> (<span class="params">target, eventType, handler</span>) </span>&#123;</span><br><span class="line">      target.addEventListener(eventType, handler, <span class="literal">false</span>);</span><br><span class="line">    &#125;</span><br><span class="line">  &#125; <span class="keyword">else</span> &#123; <span class="comment">// IE</span></span><br><span class="line">    addHandler = <span class="function"><span class="keyword">function</span> (<span class="params">target, eventType, handler</span>) </span>&#123;</span><br><span class="line">      target.attachEvent(<span class="string">"on"</span> + eventType, handler);</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="comment">// 调用新函数</span></span><br><span class="line">  addHandler(target, eventType, handler);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>上面这种方法就是<strong>延时加载</strong>，第一次调用时，会先检测并决定使用哪种方法去绑定事件处理器，然后原始函数被包含正确操作的新函数覆盖，最后一步调用新的函数，<strong>随后每次调用 <code>addHandler()</code> 都不会再做检测，因为检测代码已经被新的函数覆盖。</strong></p>
+<p>当一个函数在页面中不会立即调用时，延时加载是最好的选择。</p>
+<h2 id="条件预加载"><a href="#条件预加载" class="headerlink" title="条件预加载"></a>条件预加载</h2><p>这种方式会在脚本加载期间提前检测，而不会等到函数被调用。检测的操作依然只有一次，只是它在过程中来得更早，例如：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> addHandler = <span class="built_in">document</span>.body.addEventListener ? </span><br><span class="line">  <span class="function"><span class="keyword">function</span> (<span class="params">target, eventType, handler</span>) </span>&#123;</span><br><span class="line">    target.addEventListener(eventType, handler, <span class="literal">false</span>);</span><br><span class="line">  &#125;:</span><br><span class="line">  <span class="function"><span class="keyword">function</span> (<span class="params">target, eventType, handler</span>) </span>&#123;</span><br><span class="line">    target.attachEvent(<span class="string">"on"</span> + eventType, handler);</span><br><span class="line">  &#125;;</span><br></pre></td></tr></table></figure>
+<p>条件预加载确保所有函数调用消耗的时间相同。其代价是需要在脚本加载时就检测，而不是加载后。预加载适用于一个函数马上就要被用到，并且在整个页面的生命周期中频繁出现的场合。</p>
+<h2 id="位操作"><a href="#位操作" class="headerlink" title="位操作"></a>位操作</h2><p>有好几种方法来<strong>利用位操作符提升JavaScript的速度</strong>。首先是使用位运算代替纯数学操作。比如通常采用对 2 取模运算实现表格行颜色交替，例如：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span>(<span class="keyword">let</span> i = <span class="number">0</span>, len = rows.length; i &lt; len; i ++) &#123;</span><br><span class="line">  <span class="keyword">if</span> (i % <span class="number">2</span>) &#123;</span><br><span class="line">    className = <span class="string">"even"</span>;</span><br><span class="line">  &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    className = <span class="string">"odd"</span>;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="comment">// 增加class</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>如果你看到 32 位数字的二进制底层表示，会发现偶数的最低位是 0，奇数的最低位是 1。让给定数与数字 1 进行按位与运算，如果此数为偶数，那么它和 1 进行按位与运算的结果是 0，如果此数为奇数，那么它和 1 进行按位与运算的结果就是 1。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span>(<span class="keyword">let</span> i = <span class="number">0</span>, len = rows.length; i &lt; len; i ++) &#123;</span><br><span class="line">  <span class="keyword">if</span> (i &amp; <span class="number">1</span>) &#123;</span><br><span class="line">    className = <span class="string">"even"</span>;</span><br><span class="line">  &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    className = <span class="string">"odd"</span>;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="comment">// 增加class</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="原生方法"><a href="#原生方法" class="headerlink" title="原生方法"></a>原生方法</h2><p>当原生方法可用时，尽量使用它们。特别是数学运算（Math）和DOM操作。这样用编译后的代码做越多的事情，你的代码就会越快。 </p>
+<h1 id="第九章-第十章"><a href="#第九章-第十章" class="headerlink" title="第九章 第十章"></a>第九章 第十章</h1><p>这两章感觉没什么参考价值了</p>
+<p>第五章：未看</p>
+<p>第六章的第二部分 Web Workers 未看</p>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/08/30/RN-《精通CSS》(上)/"/>
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="gzl"/>
+      <meta itemprop="description" content=""/>
+      <meta itemprop="image" content="/images/avatar.gif"/>
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="gzl的博客"/>
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/2019/08/30/RN-《精通CSS》(上)/" class="post-title-link" itemprop="url">RN-《精通CSS》(上)</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+
+          
+          
+          
+
+          
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2019-08-30 20:42:18" itemprop="dateCreated datePublished" datetime="2019-08-30T20:42:18+08:00">2019-08-30</time>
+            </span>
+          
+
+          
+            
+
+            
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2020-02-06 14:36:04" itemprop="dateModified" datetime="2020-02-06T14:36:04+08:00">2020-02-06</time>
+              </span>
+            
+          
+
+          
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/读书笔记/" itemprop="url" rel="index"><span itemprop="name">读书笔记</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+
+          <br/>
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="第一章-基础知识"><a href="#第一章-基础知识" class="headerlink" title="第一章 基础知识"></a>第一章 基础知识</h1><p><strong>创建结构化、语义化富HTML</strong></p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">article</span> <span class="attr">class</span>=<span class="string">"post"</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">header</span> <span class="attr">class</span>=<span class="string">"post-header"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">h1</span>&gt;</span>How I became a CSS Master<span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">header</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">p</span>&gt;</span>Ten-thousand hours<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">article</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.post</span> &#123;</span><br><span class="line">  <span class="comment">/* 样式 */</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-class">.post-header</span> &#123;</span><br><span class="line">  <span class="comment">/* 其他样式 */</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h1 id="第二章-添加样式"><a href="#第二章-添加样式" class="headerlink" title="第二章 添加样式"></a>第二章 添加样式</h1><h2 id="CSS选择符"><a href="#CSS选择符" class="headerlink" title="CSS选择符"></a>CSS选择符</h2><h3 id="相邻同辈选择符"><a href="#相邻同辈选择符" class="headerlink" title="相邻同辈选择符"></a>相邻同辈选择符</h3><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"container"</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">p</span>&gt;</span>这是第一个段落<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">h2</span>&gt;</span>This is h2<span class="tag">&lt;/<span class="name">h2</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">p</span>&gt;</span>这是第二个段落<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">p</span>&gt;</span>这是第三个段落<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">h2</span> + <span class="selector-tag">p</span> &#123;</span><br><span class="line">  <span class="attribute">font-size</span>: <span class="number">2em</span>;</span><br><span class="line">  <span class="attribute">font-weight</span>: bold;</span><br><span class="line">  <span class="attribute">color</span>: <span class="number">#777</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>使用相邻同辈选择符，就可以选择位于某个元素后面，并与该元素拥有共同父元素的元素，可以看到只有 <code>这是第二个段落</code> 应用上了 CSS 样式。</p>
+<h3 id="一般同辈选择符"><a href="#一般同辈选择符" class="headerlink" title="一般同辈选择符"></a>一般同辈选择符</h3><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"container"</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">p</span>&gt;</span>这是第一个段落<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">h2</span>&gt;</span>This is h2<span class="tag">&lt;/<span class="name">h2</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">p</span>&gt;</span>这是第二个段落<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">p</span>&gt;</span>这是第三个段落<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">h2</span> ~ <span class="selector-tag">p</span> &#123;</span><br><span class="line">  <span class="attribute">font-size</span>: <span class="number">2em</span>;</span><br><span class="line">  <span class="attribute">font-weight</span>: bold;</span><br><span class="line">  <span class="attribute">color</span>: <span class="number">#777</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>使用一般同辈选择符可以选择 h2 元素后面的所有段落，可以看到 <code>这是第二个段落</code> 和 <code>这是第三个段落</code> 都应用上了 CSS 样式。</p>
+<p><strong>相邻同辈选择符和一般同辈选择符都不会选择前面的同辈元素，浏览器之所以不支持向前选择同辈元素，主要跟网页渲染性能有关。</strong></p>
+<h3 id="通用选择符"><a href="#通用选择符" class="headerlink" title="通用选择符"></a>通用选择符</h3><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">*&#123;</span><br><span class="line">  <span class="attribute">margin</span>: <span class="number">0</span>;</span><br><span class="line">  <span class="attribute">padding</span>: <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>简单的应用就像上面这样，只不过现在有很多现成的库可以重设样式并且比上面的简单地把一切都设为0要好一点。</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.container</span> &gt; * &#123;</span><br><span class="line">  <span class="attribute">margin</span>: <span class="number">20px</span>;</span><br><span class="line">  <span class="attribute">font-size</span>: <span class="number">2em</span>;</span><br><span class="line">  <span class="attribute">font-weight</span>: bold;</span><br><span class="line">  <span class="attribute">color</span>: <span class="number">#777</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>上面这样组合，可以选择 <code>.container</code> 的元素的所有<strong>直接</strong>后代。</p>
+<h3 id="伪元素"><a href="#伪元素" class="headerlink" title="伪元素"></a>伪元素</h3><p>可以使用 <code>::first-letter</code> 伪元素来选择一段文本的第一个字符。若要选择一段文本的第一行，可以使用 <code>::first-line</code>。</p>
+<p><code>::before</code> 和 <code>::after</code> 这两个伪元素非常适合用来<strong>插入小图标及版面装饰符号</strong>。</p>
+<p>伪元素应该使用双冒号语法，与伪类区别开，伪类使用单冒号语法。</p>
+<h3 id="伪类"><a href="#伪类" class="headerlink" title="伪类"></a>伪类</h3><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"https://www.baidu.com"</span>&gt;</span>百度一下<span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* 未访问过的链接为蓝色 */</span></span><br><span class="line"><span class="selector-tag">a</span><span class="selector-pseudo">:link</span> &#123;</span><br><span class="line">  <span class="attribute">color</span>: blue;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">/* 访问过的链接为绿色 */</span></span><br><span class="line"><span class="selector-tag">a</span><span class="selector-pseudo">:visited</span> &#123;</span><br><span class="line">  <span class="attribute">color</span>: green;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">/* 链接在鼠标悬停及获取键盘焦点时为红色 */</span></span><br><span class="line"><span class="selector-tag">a</span><span class="selector-pseudo">:hover</span>,</span><br><span class="line"><span class="selector-tag">a</span><span class="selector-pseudo">:focus</span> &#123;</span><br><span class="line">  <span class="attribute">color</span>: red;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">/* 活动状态时为紫色 */</span></span><br><span class="line"><span class="selector-tag">a</span><span class="selector-pseudo">:active</span> &#123;</span><br><span class="line">  <span class="attribute">color</span>: purple;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><code>:link</code> 和 <code>:visited</code> 应该排在前面，然后才是与用户交互相关的那些，在触摸屏和键盘等输入方式下不一定真的有悬停状态。因此，不要在重要的交互功能中使用 <code>:hover</code>。</p>
+<h3 id="结构化伪类"><a href="#结构化伪类" class="headerlink" title="结构化伪类"></a>结构化伪类</h3><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">ul</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">li</span>&gt;</span>1<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">li</span>&gt;</span>2<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">li</span>&gt;</span>3<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">li</span>&gt;</span>4<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">li</span>&gt;</span>5<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">li</span>&gt;</span>6<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">ul</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* 奇数行的背景变为黄色 */</span></span><br><span class="line"><span class="selector-tag">li</span><span class="selector-pseudo">:nth-child(odd)</span> &#123;</span><br><span class="line">  <span class="attribute">background</span>: yellow;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><code>nth-child</code> 选择符可以用来交替地为表格行应用样式。</p>
+<p><code>nth-child</code> 的参数可以是 <code>odd</code> 或者 <code>even</code>，还可以是数值，表示目标元素的序数位置</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* 第三行背景变黄 */</span></span><br><span class="line"><span class="selector-tag">li</span><span class="selector-pseudo">:nth-child(3)</span> &#123;</span><br><span class="line">  <span class="attribute">background</span>: yellow;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>如果参数是数值表达式，如：</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* 第一行和第四行变黄。n 首先等于 0 ，然后逐次递增 1。 */</span></span><br><span class="line"><span class="selector-tag">li</span><span class="selector-pseudo">:nth-child(3n+1)</span> &#123;</span><br><span class="line">  <span class="attribute">background</span>: yellow;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* 前三行会变黄 */</span></span><br><span class="line"><span class="selector-tag">li</span><span class="selector-pseudo">:nth-child(-n+3)</span> &#123;</span><br><span class="line">  <span class="attribute">background</span>: yellow;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><code>:nth-last-child</code> 选择符与 <code>:nth-child</code> 类似，只不过是从最后一个元素倒序计算（而不是从第一个元素正序计算）。</p>
+<p><code>:first-child</code> 相当于 <code>:nth-child(1)</code> ，<code>:last-child</code> 对应于 <code>:nth-last-child(1)</code>。</p>
+<h2 id="层叠"><a href="#层叠" class="headerlink" title="层叠"></a>层叠</h2><p>稍微复杂的样式表中都可能存在两条甚至多条规则同时选择一个元素的情况，CSS通过一种叫作<strong>层叠（cascade）</strong>的机制来处理这种冲突。</p>
+<p>层叠机制的重要性级别从高到低如下所示：</p>
+<ul>
+<li>标注为 <code>!important</code> 的用户样式；</li>
+<li>标注为 <code>!important</code> 的作者样式；</li>
+<li>作者样式</li>
+<li>用户样式</li>
+<li>浏览器的默认样式</li>
+</ul>
+<p>在此基础上，规则再按选择符的特殊性排序。<strong>特殊性高的选择符会覆盖特殊性低的选择符。如果两条规则的特殊性相等，则后定义的规则优先</strong>。</p>
+<p>!important &gt; 行间样式 &gt; id &gt; class | 属性选择器 &gt; 标签选择器 &gt; 通配符选择器</p>
+<p><strong>CSS权重（特殊性）</strong></p>
+<ul>
+<li>!important                   Infinity</li>
+<li>行间样式                        1000</li>
+<li>id                                     100</li>
+<li>class | 属性 | 伪类         10</li>
+<li>标签  | 伪元素                  1</li>
+<li>通配符                               0</li>
+</ul>
+<p>1000 100 这些不是十进制，是 256 进制</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">h1</span> <span class="attr">class</span>=<span class="string">"title"</span>&gt;</span>这是一个h1<span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">h1</span> &#123;</span><br><span class="line">  <span class="attribute">color</span>: red;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-class">.title</span> &#123;</span><br><span class="line">  <span class="attribute">color</span>: blue;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-class">.title</span> &#123;</span><br><span class="line">  <span class="attribute">color</span>: green;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>h1 中文字最终会变成 <code>green</code>。</p>
+<h2 id="继承"><a href="#继承" class="headerlink" title="继承"></a>继承</h2><p>继承和层叠看起来有点类似，但实际上他们有着本质上的不同。</p>
+<p>有些属性，像颜色或字体大小，会被应用它们的元素的后代所继承。比如，我把 <code>body</code> 元素的文本颜色设置为黑色，那么 <code>body</code> 所有后代元素的文本颜色都会继承这个黑色，字号也一样。</p>
+<p>在 <code>body</code> 上设置了一个字号，会发现页面中标题并不会变成同样的字号。可能你觉得这是因为标题不会继承文本大小。实际上，标题大小是浏览器默认样式表中设定的。任何直接应用给元素的样式都会覆盖继承的样式，因为继承的样式<strong>没有任何特殊性</strong>。</p>
+<p>继承的属性没有任何特殊性，连0都说不上。这意味着使用特殊性为0的通用选择符设置的样式都可以覆盖继承的样式。</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">h1</span> <span class="attr">class</span>=<span class="string">"title"</span>&gt;</span></span><br><span class="line">  h1</span><br><span class="line">  <span class="tag">&lt;<span class="name">em</span>&gt;</span>这是一个em<span class="tag">&lt;/<span class="name">em</span>&gt;</span></span><br><span class="line">  h1</span><br><span class="line"><span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">* &#123;</span><br><span class="line">  <span class="attribute">color</span>: black;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-tag">h1</span> &#123;</span><br><span class="line">  <span class="attribute">color</span>: red;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>在上面这段代码中，表面上看 em 会继承 h1 的红色，但通用选择符给所有元素设置的黑色会覆盖它所继承的红色。通用选择符的特殊性为 0，但仍然优先于继承的属性，在这种情况下，最好是给 body 元素设置一个基准色，这样它的所有元素就都会继承这个颜色，而不是被设置成这个颜色。</p>
+<h1 id="第三章-可见格式化模型"><a href="#第三章-可见格式化模型" class="headerlink" title="第三章 可见格式化模型"></a>第三章 可见格式化模型</h1><h2 id="盒模型"><a href="#盒模型" class="headerlink" title="盒模型"></a>盒模型</h2><h3 id="百分比问题"><a href="#百分比问题" class="headerlink" title="百分比问题"></a>百分比问题</h3><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"group"</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">article</span> <span class="attr">class</span>=<span class="string">"block"</span>&gt;</span><span class="tag">&lt;/<span class="name">article</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.group</span> &#123;</span><br><span class="line">  <span class="attribute">width</span>: <span class="number">300px</span>;</span><br><span class="line">  <span class="attribute">height</span>: <span class="number">200px</span>;</span><br><span class="line">  <span class="attribute">margin</span>: <span class="number">0</span> auto;</span><br><span class="line">  <span class="attribute">border</span>: <span class="number">1px</span> solid black;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-class">.block</span> &#123;</span><br><span class="line">  <span class="attribute">width</span>: <span class="number">100px</span>;</span><br><span class="line">  <span class="attribute">height</span>: <span class="number">100px</span>;</span><br><span class="line">  <span class="attribute">border</span>: <span class="number">1px</span> solid red;</span><br><span class="line">  <span class="attribute">margin-left</span>: <span class="number">5%</span>;</span><br><span class="line">  <span class="attribute">margin-top</span>: <span class="number">5%</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>上面的代码中，5% 指的是父元素 <code>.group</code> 宽度的 5%，<code>.group</code> 宽度是在这里是 300px，那么 <code>margin-left</code> 为 15px。注意，CSS规定，上、下方位的内外边距，仍然基于包含块的<strong>宽度</strong>，来计算，因此 <code>margin-top</code> 也为 15px。原因就是<strong>元素的高度常常不会被声明</strong>，而且会因内容多少而差距很大，如果要明确设定默认高度，也最好使用 <code>min-height</code>，因为这个属性允许<strong>盒子随内容扩展</strong>。</p>
+<h3 id="匿名盒子"><a href="#匿名盒子" class="headerlink" title="匿名盒子"></a>匿名盒子</h3><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">section</span>&gt;</span></span><br><span class="line">  some text</span><br><span class="line">  <span class="tag">&lt;<span class="name">p</span>&gt;</span>Some more text<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">section</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>此时，<code>some text</code> 就算没有定义为块级元素，也会被当成块级元素，这种情况下，这个盒子被称为<strong>匿名块盒子</strong>。</p>
+<h2 id="浮动模型"><a href="#浮动模型" class="headerlink" title="浮动模型"></a>浮动模型</h2><p>浮动盒子可以向左或向右移动，直到其外边沿接触包含块的外边沿，或接触另一个浮动盒子的外边沿。浮动盒子也会脱离常规文档流，因此常规流中的其他块级盒子的表现，几乎当浮动盒子根本不存在一样。</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"container"</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"first"</span>&gt;</span>1234567891231231315135<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"second"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"third"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.container</span> &gt; <span class="selector-tag">div</span> &#123;</span><br><span class="line">  <span class="attribute">width</span>: <span class="number">100px</span>;</span><br><span class="line">  <span class="attribute">height</span>: <span class="number">100px</span>;</span><br><span class="line">  <span class="attribute">border</span>: <span class="number">1px</span> solid black;</span><br><span class="line">  <span class="attribute">margin-bottom</span>: <span class="number">20px</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-class">.container</span> <span class="selector-class">.first</span> &#123;</span><br><span class="line">  <span class="attribute">width</span>: auto;</span><br><span class="line">  <span class="attribute">float</span>: right;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>上面的代码可以看出，<code>.first</code> 会脱离文档流并向右移动，直至其右边接触包含块的有边沿。同时，<code>.first</code> 的宽度也会<strong>收缩为适应于其中内容的最小宽度</strong>，除非通过 <code>width</code> 或 <code>min-width/max-width</code> 明确设置其宽度。</p>
+<p>修改 <code>.first</code> 为向左浮动：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">.container &gt; div &#123;</span><br><span class="line">  width: <span class="number">100</span>px;</span><br><span class="line">  height: <span class="number">100</span>px;</span><br><span class="line">  border: <span class="number">1</span>px solid black;</span><br><span class="line">  margin-bottom: <span class="number">20</span>px;</span><br><span class="line">&#125;</span><br><span class="line">.container .first &#123;</span><br><span class="line">  width: auto;</span><br><span class="line">  float: left;</span><br><span class="line">&#125;</span><br><span class="line">.container .second &#123;</span><br><span class="line">  background: green;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>可以看出 <code>.first</code> 已经不在文档流中，因此不会再占空间，这导致它浮于上方，遮住了 <code>.second</code> 。</p>
+<h2 id="块级格式化上下文"><a href="#块级格式化上下文" class="headerlink" title="块级格式化上下文"></a>块级格式化上下文</h2><ul>
+<li>display 属性值设置为 <code>inline-block</code> 或 <code>table-cell</code> 之类的元素，可以为内容创建类似块级的上下文</li>
+<li>float 属性值不是 <code>none</code> 的元素</li>
+<li>绝对定位的元素</li>
+<li>overflow 属性值不是 <code>visible</code> 的元素。</li>
+</ul>
+<p>最常见的就是<code>overflow:hidden</code>、<code>float:left/right</code>、<code>position:absolute</code>。也就是说，每次看到这些属性的时候，就代表了该元素以及创建了一个BFC了。</p>
+<p><a href="https://juejin.im/post/59b73d5bf265da064618731d" target="_blank" rel="noopener">学习 BFC (Block Formatting Context)</a></p>
+<h1 id="第四章-网页排版"><a href="#第四章-网页排版" class="headerlink" title="第四章 网页排版"></a>第四章 网页排版</h1><h2 id="字形大小"><a href="#字形大小" class="headerlink" title="字形大小"></a>字形大小</h2><p>几乎所有的浏览器中 <code>font-size</code> 的默认大小都是 16 像素，我们不修改默认的 <code>font-size</code> ，而是选择使用 <code>em</code> 单位调整特定元素的大小。</p>
+<p>对于 <code>font-size</code> 属性，可用百分比替代 <code>em</code> 。133.3% 和 <code>1.333em</code> 没有区别。</p>
+<p>最灵活的方式是使用 <code>rem</code> 单位，它始终基于根元素 <code>html</code> 元素的 <code>font-size</code> 缩放。</p>
+<p>当 <code>em</code> <strong>用于计算盒模型大小</strong>时，它不是基于继承的 <code>font-size</code> ，而是基于元素自身计算的 <code>font-size</code>。因此，不同级别的标题对应的 <code>font-size</code> 是不一样的。所以下面的代码推荐使用 <code>rem</code>。</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">h1</span>,<span class="selector-tag">h2</span>,<span class="selector-tag">h3</span>,<span class="selector-tag">h4</span>,<span class="selector-tag">h5</span>,<span class="selector-tag">h6</span> &#123;</span><br><span class="line">  <span class="attribute">margin-top</span>: <span class="number">1.5rem</span>; </span><br><span class="line">  <span class="comment">/* 24px = 16px * 1.5 */</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>不推荐使用绝对物理长度，如<code>mm cm in pt</code>。</p>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
   </section>
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/15/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/15/">15</a><span class="page-number current">16</span><a class="page-number" href="/page/17/">17</a><span class="space">&hellip;</span><a class="page-number" href="/page/35/">35</a><a class="extend next" rel="next" href="/page/17/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
+    <a class="extend prev" rel="prev" href="/page/15/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/15/">15</a><span class="page-number current">16</span><a class="page-number" href="/page/17/">17</a><span class="space">&hellip;</span><a class="page-number" href="/page/33/">33</a><a class="extend next" rel="next" href="/page/17/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
   </nav>
 
 
@@ -1119,7 +1053,7 @@
         
           <a href="/archives/">
         
-          <span class="site-state-item-count">103</span>
+          <span class="site-state-item-count">99</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -1168,7 +1102,7 @@
         
           
         
-        <span class="site-state-item-count">16</span>
+        <span class="site-state-item-count">15</span>
         <span class="site-state-item-name">分类</span>
         </a>
       </div>

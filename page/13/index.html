@@ -326,535 +326,6 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/10/01/curl/"/>
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="gzl"/>
-      <meta itemprop="description" content=""/>
-      <meta itemprop="image" content="/images/avatar.gif"/>
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="gzl的博客"/>
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/2019/10/01/curl/" class="post-title-link" itemprop="url">curl</a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-
-          
-          
-          
-
-          
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-
-              
-                
-              
-
-              <time title="创建时间：2019-10-01 13:16:06 / 修改时间：14:21:55" itemprop="dateCreated datePublished" datetime="2019-10-01T13:16:06+08:00">2019-10-01</time>
-            </span>
-          
-
-          
-            
-
-            
-          
-
-          
-
-          
-            
-            
-          
-
-          
-          
-
-          
-
-          
-
-          <br/>
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h1 id="查看网页源码"><a href="#查看网页源码" class="headerlink" title="查看网页源码"></a>查看网页源码</h1><p>直接在curl命令后加上网址，就可以看到网页源码。我们以网址<a href="http://www.sina.com为例（选择该网址，主要因为它的网页代码较短）：" target="_blank" rel="noopener">www.sina.com为例（选择该网址，主要因为它的网页代码较短）：</a></p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> curl www.sina.com</span></span><br></pre></td></tr></table></figure>
-<p>如果要把这个网页保存下来，可以使用<code>-o</code>参数，这就相当于使用wget命令了。这样在当前目录下就会有一个sina.txt的文件存放网页源码。</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> curl -o sina.txt www.sina.com</span></span><br><span class="line"><span class="meta">  %</span><span class="bash"> Total    % Received % Xferd  Average Speed   Time    Time     Time  Current</span></span><br><span class="line">                                 Dload  Upload   Total   Spent    Left  Speed</span><br><span class="line">100   178  100   178    0     0   2825      0 --:--:-- --:--:-- --:--:--  2825</span><br></pre></td></tr></table></figure>
-<h1 id="自动跳转"><a href="#自动跳转" class="headerlink" title="自动跳转"></a>自动跳转</h1><p>有的网址是自动跳转的。使用<code>-L</code>参数，curl就会跳转到新的网址。</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> curl -L www.sina.com</span></span><br></pre></td></tr></table></figure>
-<p>键入上面的命令，结果就自动跳转为<a href="http://www.sina.com.cn。" target="_blank" rel="noopener">www.sina.com.cn。</a></p>
-<h1 id="显示头信息"><a href="#显示头信息" class="headerlink" title="显示头信息"></a>显示头信息</h1><p><code>-i</code>参数可以显示http response的头信息，连同网页代码一起。<code>-I</code>参数则是只显示http response的头信息。</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> curl -i www.sina.com</span></span><br></pre></td></tr></table></figure>
-<h1 id="显示通信过程"><a href="#显示通信过程" class="headerlink" title="显示通信过程"></a>显示通信过程</h1><p><code>-v</code>参数可以显示一次http通信的整个过程，包括端口连接和http request头信息。</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> curl -v www.sina.com</span></span><br></pre></td></tr></table></figure>
-<p>如果你觉得上面的信息还不够，那么下面的命令可以查看更详细的通信过程。</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> curl --trace output.txt www.sina.com</span></span><br></pre></td></tr></table></figure>
-<p>或者</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> curl --trace-ascii output.txt www.sina.com</span></span><br></pre></td></tr></table></figure>
-<p>运行后，请打开output.txt文件查看。</p>
-<h1 id="发送表单信息"><a href="#发送表单信息" class="headerlink" title="发送表单信息"></a>发送表单信息</h1><p>发送表单信息有GET和POST两种方法。GET方法相对简单，只要把数据附在网址后面就行。</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> curl example.com/form.cgi?data=xxx</span></span><br></pre></td></tr></table></figure>
-<p>POST方法必须把数据和网址分开，curl就要用到–data参数。</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> curl -X POST --data <span class="string">"data=xxx"</span> example.com/form.cgi</span></span><br></pre></td></tr></table></figure>
-<p>如果你的数据没有经过表单编码，还可以让curl为你编码，参数是<code>--data-urlencode</code>。</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> curl -X POST--data-urlencode <span class="string">"date=April 1"</span> example.com/form.cgi</span></span><br></pre></td></tr></table></figure>
-<h1 id="HTTP动词"><a href="#HTTP动词" class="headerlink" title="HTTP动词"></a>HTTP动词</h1><p>curl默认的HTTP动词是GET，使用<code>-X</code>参数可以支持其他动词。</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> curl -X POST www.example.com</span></span><br></pre></td></tr></table></figure>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> curl -X DELETE www.example.com</span></span><br></pre></td></tr></table></figure>
-<p><strong>参考</strong></p>
-<p><a href="http://www.ruanyifeng.com/blog/2011/09/curl.html" target="_blank" rel="noopener">http://www.ruanyifeng.com/blog/2011/09/curl.html</a></p>
-<p><a href="http://www.ruanyifeng.com/blog/2019/09/curl-reference.html" target="_blank" rel="noopener">http://www.ruanyifeng.com/blog/2019/09/curl-reference.html</a></p>
-
-          
-        
-      
-    </div>
-
-    
-
-    
-
-    
-    
-    
-
-    
-
-    
-      
-    
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/09/25/node-blog记录/"/>
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="gzl"/>
-      <meta itemprop="description" content=""/>
-      <meta itemprop="image" content="/images/avatar.gif"/>
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="gzl的博客"/>
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/2019/09/25/node-blog记录/" class="post-title-link" itemprop="url">node-blog记录</a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-
-          
-          
-          
-
-          
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-
-              
-                
-              
-
-              <time title="创建时间：2019-09-25 19:52:00" itemprop="dateCreated datePublished" datetime="2019-09-25T19:52:00+08:00">2019-09-25</time>
-            </span>
-          
-
-          
-            
-
-            
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">更新于</span>
-                
-                <time title="修改时间：2019-10-01 15:30:51" itemprop="dateModified" datetime="2019-10-01T15:30:51+08:00">2019-10-01</time>
-              </span>
-            
-          
-
-          
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/node-js/" itemprop="url" rel="index"><span itemprop="name">node.js</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-            
-          
-
-          
-          
-
-          
-
-          
-
-          <br/>
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h1 id="准备知识"><a href="#准备知识" class="headerlink" title="准备知识"></a>准备知识</h1><h2 id="require"><a href="#require" class="headerlink" title="require"></a>require</h2><p>简单概括以下几点:</p>
-<ul>
-<li>require 可加载 .js、.json 和 .node 后缀的文件</li>
-<li>require 的过程是同步的，所以这样是错误的:</li>
-</ul>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">setTimeout(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">  <span class="built_in">module</span>.exports = &#123; <span class="attr">a</span>: <span class="string">'hello'</span> &#125;</span><br><span class="line">&#125;, <span class="number">0</span>)</span><br></pre></td></tr></table></figure>
-<p>require 这个文件得到的是空对象 <code>{}</code></p>
-<ul>
-<li>require 目录的机制是:<ul>
-<li>如果目录下有 package.json 并指定了 main 字段，则用之</li>
-<li>如果不存在 package.json，则依次尝试加载目录下的 index.js 和 index.node</li>
-</ul>
-</li>
-<li>require 过的文件会加载到缓存，所以多次 require 同一个文件（模块）不会重复加载</li>
-<li>判断是否是程序的入口文件有两种方式:<ul>
-<li>require.main === module（推荐）</li>
-<li>module.parent === null</li>
-</ul>
-</li>
-</ul>
-<h2 id="npm"><a href="#npm" class="headerlink" title="npm"></a>npm</h2><ol>
-<li><code>npm i express --save</code>/<code>npm i express -S</code> (安装 express，同时将 <code>&quot;express&quot;: &quot;^4.14.0&quot;</code> 写入 dependencies )</li>
-<li><code>npm i express --save-dev</code>/<code>npm i express -D</code> (安装 express，同时将 <code>&quot;express&quot;: &quot;^4.14.0&quot;</code> 写入 devDependencies )</li>
-<li><code>npm i express --save --save-exact</code> (安装 express，同时将 <code>&quot;express&quot;: &quot;4.14.0&quot;</code> 写入 dependencies )</li>
-</ol>
-<p>第三种方式将固定版本号写入 dependencies，建议线上的 Node.js 应用都采取这种锁定版本号的方式，因为你不可能保证第三方模块下个小版本是没有验证 bug 的，即使是很流行的模块。</p>
-<h2 id="req"><a href="#req" class="headerlink" title="req"></a>req</h2><p>req 包含了请求来的相关信息，res 则用来返回该请求的响应，更多请查阅 <a href="http://expressjs.com/en/4x/api.html" target="_blank" rel="noopener">express 官方文档</a>。下面介绍几个常用的 req 的属性：</p>
-<ul>
-<li><code>req.query</code>: 解析后的 url 中的 querystring，如 <code>?name=haha</code>，req.query 的值为 <code>{name: &#39;haha&#39;}</code></li>
-<li><code>req.params</code>: 解析 url 中的占位符，如 <code>/:name</code>，访问 /haha，req.params 的值为 <code>{name: &#39;haha&#39;}</code></li>
-<li><code>req.body</code>: 解析后请求体，需使用相关的模块，如 <a href="https://www.npmjs.com/package/body-parser" target="_blank" rel="noopener">body-parser</a>，请求体为 <code>{&quot;name&quot;: &quot;haha&quot;}</code>，则 req.body 为 <code>{name: &#39;haha&#39;}</code></li>
-</ul>
-<h2 id="ejs"><a href="#ejs" class="headerlink" title="ejs"></a>ejs</h2><p>ejs 有 3 种常用标签：</p>
-<ol>
-<li><code>&lt;% code %&gt;</code>：运行 JavaScript 代码，不输出</li>
-<li><code>&lt;%= code %&gt;</code>：显示转义后的 HTML内容</li>
-<li><code>&lt;%- code %&gt;</code>：显示原始 HTML 内容</li>
-</ol>
-<blockquote>
-<p>注意：<code>&lt;%= code %&gt;</code> 和 <code>&lt;%- code %&gt;</code> 都可以是 JavaScript 表达式生成的字符串，当变量 code 为普通字符串时，两者没有区别。当 code 比如为 <code>&lt;h1&gt;hello&lt;/h1&gt;</code> 这种字符串时，<code>&lt;%= code %&gt;</code> 会原样输出 <code>&lt;h1&gt;hello&lt;/h1&gt;</code>，而 <code>&lt;%- code %&gt;</code> 则会显示 H1 大的 hello 字符串。</p>
-</blockquote>
-<p>更多 ejs 的标签请看 <a href="https://www.npmjs.com/package/ejs#tags" target="_blank" rel="noopener">官方文档</a>。</p>
-<h2 id="includes"><a href="#includes" class="headerlink" title="includes"></a>includes</h2><blockquote>
-<p>小提示：拆分模板组件通常有两个好处：</p>
-<ol>
-<li>模板可复用，减少重复代码</li>
-<li>主模板结构清晰</li>
-</ol>
-</blockquote>
-<blockquote>
-<p>注意：要用 <code>&lt;%- include(&#39;header&#39;) %&gt;</code> 而不是 <code>&lt;%= include(&#39;header&#39;) %&gt;</code></p>
-</blockquote>
-<h1 id="项目开始"><a href="#项目开始" class="headerlink" title="项目开始"></a>项目开始</h1><h2 id="目录结构"><a href="#目录结构" class="headerlink" title="目录结构"></a>目录结构</h2><ol>
-<li><code>models</code>: 存放操作数据库的文件</li>
-<li><code>public</code>: 存放静态文件，如样式、图片等</li>
-<li><code>routes</code>: 存放路由文件</li>
-<li><code>views</code>: 存放模板文件</li>
-<li><code>index.js</code>: 程序主文件</li>
-<li><code>package.json</code>: 存储项目名、描述、作者、依赖等等信息</li>
-</ol>
-<h2 id="相关依赖"><a href="#相关依赖" class="headerlink" title="相关依赖"></a>相关依赖</h2><ol>
-<li><code>express</code>: web 框架</li>
-<li><code>express-session</code>: session 中间件</li>
-<li><code>connect-mongo</code>: 将 session 存储于 mongodb，结合 express-session 使用</li>
-<li><code>connect-flash</code>: 页面通知的中间件，基于 session 实现</li>
-<li><code>ejs</code>: 模板</li>
-<li><code>express-formidable</code>: 接收表单及文件上传的中间件</li>
-<li><code>config-lite</code>: 读取配置文件</li>
-<li><code>marked</code>: markdown 解析</li>
-<li><code>moment</code>: 时间格式化</li>
-<li><code>mongolass</code>: mongodb 驱动</li>
-<li><code>objectid-to-timestamp</code>: 根据 ObjectId 生成时间戳</li>
-<li><code>sha1</code>: sha1 加密，用于密码加密</li>
-<li><code>winston</code>: 日志</li>
-<li><code>express-winston</code>: express 的 winston 日志中间件</li>
-</ol>
-<h2 id="配置文件"><a href="#配置文件" class="headerlink" title="配置文件"></a>配置文件</h2><p><strong>config/default.js</strong></p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">module</span>.exports = &#123;</span><br><span class="line">  port: <span class="number">3000</span>,</span><br><span class="line">  session: &#123;</span><br><span class="line">    secret: <span class="string">'myblog'</span>,</span><br><span class="line">    key: <span class="string">'myblog'</span>,</span><br><span class="line">    maxAge: <span class="number">2592000000</span></span><br><span class="line">  &#125;,</span><br><span class="line">  mongodb: <span class="string">'mongodb://localhost:27017/myblog'</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>配置释义：</p>
-<ol>
-<li><code>port</code>: 程序启动要监听的端口号</li>
-<li><code>session</code>: express-session 的配置信息，后面介绍</li>
-<li><code>mongodb</code>: mongodb 的地址，以 <code>mongodb://</code> 协议开头，<code>myblog</code> 为 db 名</li>
-</ol>
-<p><a href="https://www.npmjs.com/package/config-lite" target="_blank" rel="noopener">config-lite</a> 是一个轻量的读取配置文件的模块。config-lite 会根据环境变量（<code>NODE_ENV</code>）的不同加载 config 目录下不同的配置文件。如果不设置 <code>NODE_ENV</code>，则读取默认的 default 配置文件，如果设置了 <code>NODE_ENV</code>，则会合并指定的配置文件和 default 配置文件作为配置，config-lite 支持 .js、.json、.node、.yml、.yaml 后缀的文件。</p>
-<p>如果程序以 <code>NODE_ENV=test node app</code> 启动，则 config-lite 会依次降级查找 <code>config/test.js</code>、<code>config/test.json</code>、<code>config/test.node</code>、<code>config/test.yml</code>、<code>config/test.yaml</code> 并合并 default 配置; 如果程序以 <code>NODE_ENV=production node app</code> 启动，则 config-lite 会依次降级查找 <code>config/production.js</code>、<code>config/production.json</code>、<code>config/production.node</code>、<code>config/production.yml</code>、<code>config/production.yaml</code> 并合并 default 配置。</p>
-<p>config-lite 还支持冒泡查找配置，即从传入的路径开始，从该目录不断往上一级目录查找 config 目录，直到找到或者到达根目录为止。</p>
-<h2 id="功能设计-v1-0"><a href="#功能设计-v1-0" class="headerlink" title="功能设计 v1.0"></a>功能设计 v1.0</h2><h3 id="路由设计"><a href="#路由设计" class="headerlink" title="路由设计"></a>路由设计</h3><p>功能及路由设计如下：</p>
-<ol>
-<li>注册<ol>
-<li>注册页：<code>GET /signup</code></li>
-<li>注册（包含上传头像）：<code>POST /signup</code></li>
-</ol>
-</li>
-<li>登录<ol>
-<li>登录页：<code>GET /signin</code></li>
-<li>登录：<code>POST /signin</code></li>
-</ol>
-</li>
-<li>登出：<code>GET /signout</code></li>
-<li>查看文章<ol>
-<li>主页：<code>GET /posts</code></li>
-<li>个人主页：<code>GET /posts?author=xxx</code></li>
-<li>查看一篇文章（包含留言）：<code>GET /posts/:postId</code></li>
-</ol>
-</li>
-<li>发表文章<ol>
-<li>发表文章页：<code>GET /posts/create</code></li>
-<li>发表文章：<code>POST /posts/create</code></li>
-</ol>
-</li>
-<li>修改文章<ol>
-<li>修改文章页：<code>GET /posts/:postId/edit</code></li>
-<li>修改文章：<code>POST /posts/:postId/edit</code></li>
-</ol>
-</li>
-<li>删除文章：<code>GET /posts/:postId/remove</code></li>
-<li>留言<ol>
-<li>创建留言：<code>POST /comments</code></li>
-<li>删除留言：<code>GET /comments/:commentId/remove</code></li>
-</ol>
-</li>
-</ol>
-<p>由于我们博客页面是后端渲染的，所以只通过简单的 <code>&lt;a&gt;(GET)</code> 和 <code>&lt;form&gt;(POST)</code> 与后端进行交互，如果使用 jQuery 或者其他前端框架（如 Angular、Vue、React 等等）可通过 Ajax 与后端交互，则 api 的设计应尽量遵循 Restful 风格。</p>
-<p>更多阅读：</p>
-<ol>
-<li><a href="http://www.ruanyifeng.com/blog/2011/09/restful" target="_blank" rel="noopener">http://www.ruanyifeng.com/blog/2011/09/restful</a></li>
-<li><a href="http://www.ruanyifeng.com/blog/2014/05/restful_api.html" target="_blank" rel="noopener">http://www.ruanyifeng.com/blog/2014/05/restful_api.html</a></li>
-<li><a href="http://developer.51cto.com/art/200908/141825.htm" target="_blank" rel="noopener">http://developer.51cto.com/art/200908/141825.htm</a></li>
-<li><a href="http://blog.jobbole.com/41233/" target="_blank" rel="noopener">http://blog.jobbole.com/41233/</a></li>
-</ol>
-<h3 id="会话"><a href="#会话" class="headerlink" title="会话"></a>会话</h3><p>由于 HTTP 协议是无状态的协议，所以服务端需要记录用户的状态时，就需要用某种机制来识别具体的用户，这个机制就是会话（Session）。</p>
-<p><strong>cookie 与 session 的区别</strong></p>
-<ol>
-<li>cookie 存储在浏览器（有大小限制），session 存储在服务端（没有大小限制）</li>
-<li>通常 session 的实现是基于 cookie 的，session id 存储于 cookie 中</li>
-<li>session 更安全，cookie 可以直接在浏览器查看甚至编辑</li>
-</ol>
-<p>更多 session 的资料，参考：<a href="https://www.zhihu.com/question/19786827" target="_blank" rel="noopener">https://www.zhihu.com/question/19786827</a></p>
-<p>我们通过引入 express-session 中间件实现对会话的支持：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">app.use(session(options))</span><br></pre></td></tr></table></figure>
-<p>session 中间件会在 req 上添加 session 对象，即 req.session 初始值为 <code>{}</code>，当我们登录后设置 <code>req.session.user = 用户信息</code>，返回浏览器的头信息中会带上 <code>set-cookie</code> 将 session id 写到浏览器 cookie 中，那么该用户下次请求时，通过带上来的 cookie 中的 session id 我们就可以查找到该用户，并将用户信息保存到 <code>req.session.user</code>。</p>
-<h3 id="页面通知"><a href="#页面通知" class="headerlink" title="页面通知"></a>页面通知</h3><p>我们还需要这样一个功能：当我们操作成功时需要显示一个成功的通知，如登录成功跳转到主页时，需要显示一个 <code>登陆成功</code> 的通知；当我们操作失败时需要显示一个失败的通知，如注册时用户名被占用了，需要显示一个 <code>用户名已占用</code> 的通知。通知只显示一次，刷新后消失，我们可以通过 connect-flash 中间件实现这个功能。</p>
-<p><a href="https://www.npmjs.com/package/connect-flash" target="_blank" rel="noopener">connect-flash</a> 是基于 session 实现的，它的原理很简单：设置初始值 <code>req.session.flash={}</code>，通过 <code>req.flash(name, value)</code> 设置这个对象下的字段和值，通过 <code>req.flash(name)</code> 获取这个对象下的值，同时删除这个字段，实现了只显示一次刷新后消失的功能。</p>
-<p><strong>express-session、connect-mongo 和 connect-flash 的区别与联系</strong></p>
-<ol>
-<li><code>express-session</code>: 会话（session）支持中间件</li>
-<li><code>connect-mongo</code>: 将 session 存储于 mongodb，需结合 express-session 使用，我们也可以将 session 存储于 redis，如 <a href="https://www.npmjs.com/package/connect-redis" target="_blank" rel="noopener">connect-redis</a></li>
-<li><code>connect-flash</code>: 基于 session 实现的用于通知功能的中间件，需结合 express-session 使用</li>
-</ol>
-<h3 id="权限控制"><a href="#权限控制" class="headerlink" title="权限控制"></a>权限控制</h3><p>不管是论坛还是博客网站，我们没有登录的话只能浏览，登陆后才能发帖或写文章，即使登录了你也不能修改或删除其他人的文章，这就是权限控制。我们也来给博客添加权限控制，如何实现页面的权限控制呢？我们可以把用户状态的检查封装成一个中间件，在每个需要权限控制的路由加载该中间件，即可实现页面的权限控制。</p>
-<p>可以看出：</p>
-<ol>
-<li><code>checkLogin</code>: 当用户信息（<code>req.session.user</code>）不存在，即认为用户没有登录，则跳转到登录页，同时显示 <code>未登录</code> 的通知，用于需要用户登录才能操作的页面</li>
-<li><code>checkNotLogin</code>: 当用户信息（<code>req.session.user</code>）存在，即认为用户已经登录，则跳转到之前的页面，同时显示 <code>已登录</code> 的通知，如已登录用户就禁止访问登录、注册页面</li>
-</ol>
-<p>注意：中间件的加载顺序很重要。如上面设置静态文件目录的中间件应该放到 routes(app) 之前加载，这样静态文件的请求就不会落到业务逻辑的路由里；flash 中间件应该放到 session 中间件之后加载，因为 flash 是基于 session 实现的。</p>
-<h2 id="页面设计-v2-0"><a href="#页面设计-v2-0" class="headerlink" title="页面设计 v2.0"></a>页面设计 v2.0</h2><h3 id="app-locals-和-res-locals"><a href="#app-locals-和-res-locals" class="headerlink" title="app.locals 和 res.locals"></a>app.locals 和 res.locals</h3><p>上面的 ejs 模板中我们用到了 blog、user、success、error 变量，我们将 blog 变量挂载到 <code>app.locals</code> 下，将 user、success、error 挂载到 <code>res.locals</code> 下。为什么要这么做呢？<code>app.locals</code> 和 <code>res.locals</code> 是什么？它们有什么区别？</p>
-<p>express 中有两个对象可用于模板的渲染：<code>app.locals</code> 和 <code>res.locals</code>。</p>
-<p>可以看出：在调用 <code>res.render</code> 的时候，express 合并（merge）了 3 处的结果后传入要渲染的模板，优先级：<code>res.render</code>传入的对象&gt; <code>res.locals</code> 对象 &gt; <code>app.locals</code> 对象，所以 <code>app.locals</code> 和 <code>res.locals</code> 几乎没有区别，都用来渲染模板，使用上的区别在于：<code>app.locals</code> 上通常挂载常量信息（如博客名、描述、作者这种不会变的信息），<code>res.locals</code> 上通常挂载变量信息，即每次请求可能的值都不一样（如请求者信息，<code>res.locals.user = req.session.user</code>）。</p>
-<h2 id="连接数据库-v3-0"><a href="#连接数据库-v3-0" class="headerlink" title="连接数据库 v3.0"></a>连接数据库 v3.0</h2><blockquote>
-<p><a href="https://github.com/mongolass/mongolass" target="_blank" rel="noopener">https://github.com/mongolass/mongolass</a></p>
-</blockquote>
-<p>这里使用的是 mongolass</p>
-<h2 id="注册-v4-0"><a href="#注册-v4-0" class="headerlink" title="注册 v4.0"></a>注册 v4.0</h2><p>我们使用 express-formidable 处理表单的上传，表单普通字段挂载到 req.fields 上，表单上传后的文件挂载到 req.files 上，文件存储在 public/img 目录下。然后校验了参数，校验通过后将用户信息插入到 MongoDB 中，成功则跳转到主页并显示『注册成功』的通知，失败（如用户名被占用）则跳转回注册页面并显示『用户名已被占用』的通知。</p>
-<blockquote>
-<p>注意：我们使用 sha1 加密用户的密码，sha1 并不是一种十分安全的加密方式，实际开发中可以使用更安全的 <a href="https://www.npmjs.com/package/bcrypt" target="_blank" rel="noopener">bcrypt</a>或 <a href="https://www.npmjs.com/package/scrypt" target="_blank" rel="noopener">scrypt</a> 加密。 注意：注册失败时（参数校验失败或者存数据库时出错）删除已经上传到 public/img 目录下的头像。</p>
-</blockquote>
-<p>bug - fs.unlink Callback must be a function <strong>v4.0注册时删除头像</strong></p>
-<h2 id="登出与登录-v5-0"><a href="#登出与登录-v5-0" class="headerlink" title="登出与登录 v5.0"></a>登出与登录 v5.0</h2><h2 id="文章-v6-0"><a href="#文章-v6-0" class="headerlink" title="文章 v6.0"></a>文章 v6.0</h2><h2 id="留言-v7-0"><a href="#留言-v7-0" class="headerlink" title="留言 v7.0"></a>留言 v7.0</h2><h2 id="404简单处理-v8-0"><a href="#404简单处理-v8-0" class="headerlink" title="404简单处理 v8.0"></a>404简单处理 v8.0</h2><h2 id="忽略img和logs-v9-0"><a href="#忽略img和logs-v9-0" class="headerlink" title="忽略img和logs v9.0"></a>忽略img和logs v9.0</h2><h2 id="测试-v10-0"><a href="#测试-v10-0" class="headerlink" title="测试 v10.0"></a>测试 v10.0</h2><h2 id="修复fs-unlink以及控制台取消打印log-v11-0"><a href="#修复fs-unlink以及控制台取消打印log-v11-0" class="headerlink" title="修复fs.unlink以及控制台取消打印log v11.0"></a>修复fs.unlink以及控制台取消打印log v11.0</h2><h2 id="腾讯公益404-v12-0"><a href="#腾讯公益404-v12-0" class="headerlink" title="腾讯公益404 v12.0"></a>腾讯公益404 v12.0</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git checkout 版本号 # 切换学习时相应的版本</span><br></pre></td></tr></table></figure>
-<h1 id="启动"><a href="#启动" class="headerlink" title="启动"></a>启动</h1><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">启动本地mongoDB数据库</span><br><span class="line">cd node-blog  # 进入该项目</span><br><span class="line">node index.js # 启动</span><br></pre></td></tr></table></figure>
-<h1 id="部署"><a href="#部署" class="headerlink" title="部署"></a>部署</h1><blockquote>
-<p><a href="https://github.com/nswbmw/N-blog/blob/master/book/4.15 部署.md#4154-部署到阿里云" target="_blank" rel="noopener">https://github.com/nswbmw/N-blog/blob/master/book/4.15%20%E9%83%A8%E7%BD%B2.md#4154-%E9%83%A8%E7%BD%B2%E5%88%B0%E9%98%BF%E9%87%8C%E4%BA%91</a></p>
-</blockquote>
-<h1 id="bug"><a href="#bug" class="headerlink" title="bug"></a>bug</h1><blockquote>
-<p><a href="https://stackoverflow.com/questions/53583183/i-have-got-typeerror-err-invalid-callback-callback-must-be-a-function" target="_blank" rel="noopener">https://stackoverflow.com/questions/53583183/i-have-got-typeerror-err-invalid-callback-callback-must-be-a-function</a></p>
-</blockquote>
-<p>fs.unlink Callback must be a function <strong>v4.0注册时删除头像</strong></p>
-
-          
-        
-      
-    </div>
-
-    
-
-    
-
-    
-    
-    
-
-    
-
-    
-      
-    
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/09/22/git-tags/"/>
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1033,11 +504,511 @@
 
 
     
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/09/22/flask-tutorial记录/"/>
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="gzl"/>
+      <meta itemprop="description" content=""/>
+      <meta itemprop="image" content="/images/avatar.gif"/>
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="gzl的博客"/>
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/2019/09/22/flask-tutorial记录/" class="post-title-link" itemprop="url">flask-tutorial记录</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+
+          
+          
+          
+
+          
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2019-09-22 12:57:39" itemprop="dateCreated datePublished" datetime="2019-09-22T12:57:39+08:00">2019-09-22</time>
+            </span>
+          
+
+          
+            
+
+            
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2019-10-02 08:59:48" itemprop="dateModified" datetime="2019-10-02T08:59:48+08:00">2019-10-02</time>
+              </span>
+            
+          
+
+          
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/python/" itemprop="url" rel="index"><span itemprop="name">python</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+
+          <br/>
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <blockquote>
+<p><a href="https://github.com/luhuisicnu/The-Flask-Mega-Tutorial-zh" target="_blank" rel="noopener">https://github.com/luhuisicnu/The-Flask-Mega-Tutorial-zh</a></p>
+</blockquote>
+<p>相关代码记录在了 <a href="https://github.com/xunzhanggzl/flask-tutorial" target="_blank" rel="noopener">https://github.com/xunzhanggzl/flask-tutorial</a> 这个仓库中，通过 <code>git checkout &lt;标签名&gt;</code>查看不同标签的所有代码。</p>
+<h1 id="Hello-World"><a href="#Hello-World" class="headerlink" title="Hello World"></a>Hello World</h1><blockquote>
+<p>v1.0</p>
+</blockquote>
+<h2 id="虚拟环境"><a href="#虚拟环境" class="headerlink" title="虚拟环境"></a>虚拟环境</h2><h3 id="Python3创建虚拟环境"><a href="#Python3创建虚拟环境" class="headerlink" title="Python3创建虚拟环境"></a>Python3创建虚拟环境</h3><p>在 Python3 中，虚拟环境由 Python 标准库中的 venv 包原生支持，<code>-m venv</code>  选项的作用是以独立的脚本运行标准库中的 <code>venv</code>  包，后面的参数为虚拟环境的名称，通常为 <code>venv</code> 。</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">python3 -m venv /path/to/new/virtual/environment</span><br></pre></td></tr></table></figure>
+<p>下面这个命令在执行完毕后，根目录中会出现一个名为 <code>venv</code>  的子目录，这里就是一个全新的虚拟环境，包含这个项目专用的 Python 解释器。</p>
+<p>下面的 <code>microblog</code> 是根目录</p>
+<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># python3 要改成 python 才可以，不知道为啥</span></span><br><span class="line">microblog&gt;python -m venv venv</span><br></pre></td></tr></table></figure>
+<h3 id="使用虚拟环境"><a href="#使用虚拟环境" class="headerlink" title="使用虚拟环境"></a>使用虚拟环境</h3><figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 进入虚拟环境</span></span><br><span class="line">microblog&gt;venv\Scripts\activate</span><br><span class="line"></span><br><span class="line">(venv) microblog&gt;</span><br><span class="line"></span><br><span class="line"><span class="comment"># 退出虚拟环境</span></span><br><span class="line">(venv) microblog&gt;venv\Scripts\deactivate</span><br></pre></td></tr></table></figure>
+<h2 id="安装Flask"><a href="#安装Flask" class="headerlink" title="安装Flask"></a>安装Flask</h2><figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">(venv) microblog&gt;pip install flask</span><br></pre></td></tr></table></figure>
+<h2 id="“Hello-World”"><a href="#“Hello-World”" class="headerlink" title="“Hello World”"></a>“Hello World”</h2><p>应用程序是存在于<em>包</em>中的。 在Python中，包含<code>__init__.py</code>文件的子目录被视为一个可导入的包。 当你导入一个包时，<code>__init__.py</code>会执行并定义这个包暴露给外界的属性。</p>
+<p>那就创建一个名为<code>app</code>的包来存放整个应用吧。</p>
+<p><code>__init__.py</code></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> flask <span class="keyword">import</span> Flask</span><br><span class="line"></span><br><span class="line">app = Flask(__name__)</span><br><span class="line"></span><br><span class="line"><span class="keyword">from</span> app <span class="keyword">import</span> routes</span><br></pre></td></tr></table></figure>
+<p>上面的脚本仅仅是从flask中导入的类<code>Flask</code>，并以此类创建了一个应用程序对象。 传递给<code>Flask</code>类的<code>__name__</code>变量是一个Python预定义的变量，它表示当前调用它的模块的名字。<strong>FLASK用这个参数确定应用的位置，进而找到应用中其他文件的位置，例如图像和模板。</strong> 代码的最后，应用程序导入尚未存在的<code>routes</code>模块。</p>
+<p>其一，这里有两个实体名为<code>app</code>。 <code>app</code>包由<em>app</em>目录和<code>__init__.py</code>脚本来定义构成，并在<code>from app import routes</code>语句中被引用。 <code>app</code>变量被定义为<code>__init__.py</code>脚本中的<code>Flask</code>类的一个实例，以至于它成为<code>app</code>包的属性。</p>
+<p>其二，<code>routes</code>模块是在底部导入的，而不是在脚本的顶部。 最下面的导入是解决<strong>循环导入</strong>的问题，这是Flask应用程序的常见问题。 你将会看到<code>routes</code>模块需要导入在这个脚本中定义的<code>app</code>变量，因此将<code>routes</code>的导入放在底部可以避免由于这两个文件之间的相互引用而导致的错误。</p>
+<p>那么在<code>routes</code>模块中有些什么？ 路由是应用程序实现的不同URL。 在Flask中，应用程序路由的处理逻辑被编写为Python函数，称为<em>视图函数</em>。 视图函数被映射到一个或多个路由URL，以便Flask知道当客户端请求给定的URL时执行什么逻辑。</p>
+<p>routes.py</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> app <span class="keyword">import</span> app</span><br><span class="line"></span><br><span class="line"><span class="meta">@app.route('/')</span></span><br><span class="line"><span class="meta">@app.route('/index')</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">index</span><span class="params">()</span>:</span></span><br><span class="line">  <span class="keyword">return</span> <span class="string">"Hello, World!"</span></span><br></pre></td></tr></table></figure>
+<p>函数上面的两个奇怪的<code>＠app.route</code>行是<em>装饰器</em>，这是Python语言的一个独特功能。 装饰器会修改跟在其后的函数。 装饰器的常见模式是使用它们将函数注册为某些事件的回调函数。在这个例子中，有两个装饰器，它们将URL <code>/</code>和<code>/index</code>索引关联到这个函数。 这意味着，当Web浏览器请求这两个URL中的任何一个时，Flask将调用该函数并将其返回值作为响应传递回浏览器。这样做是为了在运行这个应用程序的时候会稍微有一点点意义。</p>
+<p>要完成应用程序，你需要在定义Flask应用程序实例的顶层（译者注：也就是microblog目录下）创建一个命名为<em>microblog.py</em>的Python脚本。 它仅拥有一个导入应用程序实例的行：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> app <span class="keyword">import</span> app</span><br></pre></td></tr></table></figure>
+<p>还记得两个<code>app</code>实体吗？ 在这里，你可以在同一句话中看到两者。 Flask应用程序实例被称为<code>app</code>，是<code>app</code>包的成员。<code>from app import app</code>语句从<code>app</code>包导入其成员<code>app</code>变量。 如果你觉得这很混乱，你可以重命名包或者变量。</p>
+<h2 id="设置环境变量"><a href="#设置环境变量" class="headerlink" title="设置环境变量"></a>设置环境变量</h2><p>为方便起见，用 $ 替代 <code>microblog</code></p>
+<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">(venv) $ set FLASK_APP=microblog.py</span><br></pre></td></tr></table></figure>
+<h2 id="运行"><a href="#运行" class="headerlink" title="运行"></a>运行</h2><figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">(venv) $ flask run</span><br></pre></td></tr></table></figure>
+<h2 id="python-dotenv"><a href="#python-dotenv" class="headerlink" title="python-dotenv"></a>python-dotenv</h2><p>在终端会话中直接设置的环境变量不会永久生效，因此你不得不在每次新开终端时设定 <code>FLASK_APP</code> 环境变量，从 1.0 版本开始，Flask 允许你设置只会在运行<code>flask</code>命令时自动注册生效的环境变量，要实现这点，你需要安装 <code>python-dotenv</code></p>
+<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">(venv) $ pip install python-dotenv</span><br></pre></td></tr></table></figure>
+<p>此时，在项目的根目录下新建一个名为 <code>.flaskenv</code> 的文件，其内容是：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">FLASK_APP=microblog.py</span><br></pre></td></tr></table></figure>
+<p>通过此项设置，<code>FLASK_APP</code>就可以自动加载了</p>
+<h2 id="查看依赖"><a href="#查看依赖" class="headerlink" title="查看依赖"></a>查看依赖</h2><p>pip freeze</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">(venv) $ pip freeze</span><br><span class="line">Click==7.0</span><br><span class="line">Flask==1.1.1</span><br><span class="line">itsdangerous==1.1.0</span><br><span class="line">Jinja2==2.10.1</span><br><span class="line">MarkupSafe==1.1.1</span><br><span class="line">python-dotenv==0.10.3</span><br><span class="line">Werkzeug==0.15.6</span><br></pre></td></tr></table></figure>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/09/11/JS全面梳理EventLoop/"/>
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="gzl"/>
+      <meta itemprop="description" content=""/>
+      <meta itemprop="image" content="/images/avatar.gif"/>
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="gzl的博客"/>
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/2019/09/11/JS全面梳理EventLoop/" class="post-title-link" itemprop="url">JS全面梳理EventLoop</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+
+          
+          
+          
+
+          
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2019-09-11 21:26:24" itemprop="dateCreated datePublished" datetime="2019-09-11T21:26:24+08:00">2019-09-11</time>
+            </span>
+          
+
+          
+            
+
+            
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2019-12-15 20:25:42" itemprop="dateModified" datetime="2019-12-15T20:25:42+08:00">2019-12-15</time>
+              </span>
+            
+          
+
+          
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/JavaScript/" itemprop="url" rel="index"><span itemprop="name">JavaScript</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+
+          <br/>
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <blockquote>
+<p><a href="https://juejin.im/post/5d5b4c2df265da03dd3d73e5" target="_blank" rel="noopener">https://juejin.im/post/5d5b4c2df265da03dd3d73e5</a></p>
+</blockquote>
+<h1 id="CPU、进程、线程之间的关系"><a href="#CPU、进程、线程之间的关系" class="headerlink" title="CPU、进程、线程之间的关系"></a>CPU、进程、线程之间的关系</h1><p>计算机的核心是<strong>CPU</strong>，它承担了所有的计算任务。</p>
+<p>它就像一座工厂，时刻在运行。</p>
+<p>假定工厂的电力有限，一次只能供给一个车间使用。 也就是说，一个车间开工的时候，其他车间都必须停工。 背后的含义就是，单个CPU一次只能运行一个任务。</p>
+<p><strong>进程</strong>就好比工厂的车间，它代表CPU所能处理的单个任务。 <strong>进程</strong>之间相互独立，任一时刻，CPU总是运行一个<strong>进程</strong>，其他<strong>进程</strong>处于非运行状态。 CPU使用时间片轮转进度算法来实现同时运行多个<strong>进程</strong>。</p>
+<p>一个车间里，可以有很多工人，共享车间所有的资源，他们协同完成一个任务。</p>
+<p><strong>线程</strong>就好比车间里的工人，一个<strong>进程</strong>可以包括多个<strong>线程</strong>，多个<strong>线程</strong>共享<strong>进程</strong>资源。</p>
+<ul>
+<li><strong>进程</strong>是cpu资源分配的最小单位（是能拥有资源和独立运行的最小单位）</li>
+<li><strong>线程</strong>是cpu调度的最小单位（线程是建立在进程的基础上的一次程序运行单位，一个进程中可以有多个线程）</li>
+<li>不同<strong>进程</strong>之间也可以通信，不过代价较大</li>
+<li><strong>单线程</strong>与<strong>多线程</strong>，都是指在一个<strong>进程</strong>内的单和多</li>
+</ul>
+<h1 id="浏览器是多进程的"><a href="#浏览器是多进程的" class="headerlink" title="浏览器是多进程的"></a>浏览器是多进程的</h1><p>对于计算机来说，每一个应用程序都是一个<strong>进程</strong>， 而每一个应用程序都会分别有很多的功能模块，这些功能模块实际上是通过<strong>子进程</strong>来实现的。 对于这种<strong>子进程</strong>的扩展方式，我们可以称这个应用程序是<strong>多进程</strong>的。</p>
+<p>而对于浏览器来说，浏览器就是多进程的，在Chrome浏览器中打开多个tab，然后打开windows控制管理器可以看到一个Chrome浏览器启动了好多个进程。</p>
+<p>总结一下：</p>
+<ul>
+<li>浏览器是多进程的</li>
+<li>每一个Tab页，就是一个独立的进程</li>
+</ul>
+<h1 id="浏览器包含了哪些进程"><a href="#浏览器包含了哪些进程" class="headerlink" title="浏览器包含了哪些进程"></a>浏览器包含了哪些进程</h1><p>主进程 </p>
+<ul>
+<li>协调控制其他子进程（创建、销毁）</li>
+<li>浏览器界面显示，用户交互，前进、后退、收藏</li>
+<li>将渲染进程得到的内存中的Bitmap，绘制到用户界面上</li>
+<li>处理不可见操作，网络请求，文件访问等</li>
+</ul>
+<p>第三方插件进程 </p>
+<ul>
+<li>每种类型的插件对应一个进程，仅当使用该插件时才创建</li>
+</ul>
+<p>GPU进程 </p>
+<ul>
+<li>用于3D绘制等</li>
+</ul>
+<p>渲染进程，就是我们说的<strong>浏览器内核</strong></p>
+<ul>
+<li>负责页面渲染，脚本执行，事件处理等</li>
+<li>每个tab页一个渲染进程</li>
+</ul>
+<p>那么浏览器中包含了这么多的进程，那么对于普通的前端操作来说，最重要的是什么呢？</p>
+<p>答案是<strong>渲染进程</strong>，也就是我们常说的<strong>浏览器内核</strong></p>
+<h1 id="浏览器内核（渲染进程）"><a href="#浏览器内核（渲染进程）" class="headerlink" title="浏览器内核（渲染进程）"></a>浏览器内核（渲染进程）</h1><p>进程和线程是一对多的关系，也就是说一个进程包含了多条线程。</p>
+<p>而对于<strong>渲染进程</strong>来说，它当然也是多线程的了，接下来我们来看一下渲染进程包含哪些线程。</p>
+<ul>
+<li><p>GUI渲染线程</p>
+<ul>
+<li>负责渲染页面，布局和绘制</li>
+<li>页面需要重绘和回流时，该线程就会执行</li>
+</ul>
+<ul>
+<li>与js引擎线程互斥，防止渲染结果不可预期</li>
+</ul>
+</li>
+<li><p>JS引擎线程</p>
+<ul>
+<li>负责处理解析和执行javascript脚本程序</li>
+<li>只有一个JS引擎线程（单线程）</li>
+</ul>
+<ul>
+<li>与GUI渲染线程互斥，防止渲染结果不可预期</li>
+</ul>
+</li>
+<li><p>事件触发线程</p>
+<ul>
+<li>用来控制事件循环（鼠标点击、setTimeout、ajax等）</li>
+<li>当事件满足触发条件时，将事件放入到JS引擎所在的执行队列中</li>
+</ul>
+</li>
+<li><p>定时触发器线程</p>
+<ul>
+<li>setInterval与setTimeout所在的线程</li>
+<li>定时任务并不是由JS引擎计时的，是由定时触发线程来计时的</li>
+</ul>
+<ul>
+<li>计时完毕后，通知事件触发线程</li>
+</ul>
+</li>
+<li>异步http请求线程<ul>
+<li>浏览器有一个单独的线程用于处理AJAX请求</li>
+<li>当请求完成时，若有回调函数，通知事件触发线程</li>
+</ul>
+</li>
+</ul>
+<h2 id="为什么-javascript-是单线程的"><a href="#为什么-javascript-是单线程的" class="headerlink" title="为什么 javascript 是单线程的"></a>为什么 javascript 是单线程的</h2><p>首先是历史原因，在创建 javascript 这门语言时，多进程多线程的架构并不流行，硬件支持并不好。</p>
+<p>其次是因为多线程的复杂性，多线程操作需要加锁，编码的复杂性会增高。</p>
+<p>而且，如果同时操作 DOM ，在多线程不加锁的情况下，最终会导致 DOM 渲染的结果不可预期。</p>
+<h2 id="为什么-GUI-渲染线程与-JS-引擎线程互斥"><a href="#为什么-GUI-渲染线程与-JS-引擎线程互斥" class="headerlink" title="为什么 GUI 渲染线程与 JS 引擎线程互斥"></a>为什么 GUI 渲染线程与 JS 引擎线程互斥</h2><p>这是由于 JS 是可以操作 DOM 的，如果同时修改元素属性并同时渲染界面(即 <strong>JS线程</strong>和<strong>UI线程</strong>同时运行)， 那么渲染线程前后获得的元素就可能不一致了。</p>
+<p>因此，为了防止渲染出现不可预期的结果，浏览器设定 <strong>GUI渲染线程</strong>和<strong>JS引擎线程</strong>为互斥关系， 当<strong>JS引擎线程</strong>执行时<strong>GUI渲染线程</strong>会被挂起，GUI更新则会被保存在一个队列中等待<strong>JS引擎线程</strong>空闲时立即被执行。</p>
+<h1 id="宏任务、微任务"><a href="#宏任务、微任务" class="headerlink" title="宏任务、微任务"></a>宏任务、微任务</h1><h2 id="宏任务"><a href="#宏任务" class="headerlink" title="宏任务"></a>宏任务</h2><p>我们可以将每次执行栈执行的代码当做是一个宏任务（包括每次从事件队列中获取一个事件回调并放到执行栈中执行）， 每一个宏任务会从头到尾执行完毕，不会执行其他。</p>
+<p>我们前文提到过<strong>JS引擎线程</strong>和<strong>GUI渲染线程</strong>是互斥的关系，浏览器为了能够使<strong>宏任务</strong>和<strong>DOM任务</strong>有序的进行，会在一个<strong>宏任务</strong>执行结果后，在下一个<strong>宏任务</strong>执行前，<strong>GUI渲染线程</strong>开始工作，对页面进行渲染。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 宏任务--&gt;渲染--&gt;宏任务--&gt;渲染--&gt;渲染．．．</span></span><br></pre></td></tr></table></figure>
+<p>主代码块，setTimeout，setInterval等，都属于宏任务</p>
+<h3 id="例一"><a href="#例一" class="headerlink" title="例一"></a>例一</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">document</span>.body.style = <span class="string">'background:black'</span>;</span><br><span class="line"><span class="built_in">document</span>.body.style = <span class="string">'background:red'</span>;</span><br><span class="line"><span class="built_in">document</span>.body.style = <span class="string">'background:blue'</span>;</span><br><span class="line"><span class="built_in">document</span>.body.style = <span class="string">'background:grey'</span>;</span><br></pre></td></tr></table></figure>
+<p>会看到的结果是，页面背景会在瞬间变成灰色，以上代码属于同一次<strong>宏任务</strong>，所以全部执行完才触发<strong>页面渲染</strong>，渲染时<strong>GUI线程</strong>会将所有UI改动优化合并，所以视觉效果上，只会看到页面变成灰色。</p>
+<p>这里存在的疑问就是：<strong>这里的DOM操作是属于宏任务还是微任务？</strong>经过思考加上读了 JavaScript 忍者秘籍，DOM 操作应该是微任务，如果要是宏任务，执行一个宏任务就渲染一次，上面的代码就会变四次颜色了。</p>
+<h3 id="例二"><a href="#例二" class="headerlink" title="例二"></a>例二</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">document</span>.body.style = <span class="string">'background:blue'</span>;</span><br><span class="line">setTimeout(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="built_in">document</span>.body.style = <span class="string">'background:black'</span></span><br><span class="line">&#125;,<span class="number">0</span>)</span><br></pre></td></tr></table></figure>
+<p>会看到，页面先显示成蓝色背景，然后瞬间变成了黑色背景，这是因为以上代码属于两次<strong>宏任务</strong>，第一次<strong>宏任务</strong>执行的代码是将背景变成蓝色，然后触发渲染，将页面变成蓝色，再触发第二次宏任务将背景变成黑色。</p>
+<h2 id="微任务"><a href="#微任务" class="headerlink" title="微任务"></a>微任务</h2><p>我们已经知道<code>宏任务</code>结束后，会执行渲染，然后执行下一个<code>宏任务</code>， 而微任务可以理解成在当前<code>宏任务</code>执行后立即执行的任务。</p>
+<p>也就是说，当<code>宏任务</code>执行完，会在渲染前，将执行期间所产生的所有<code>微任务</code>都执行完。</p>
+<p>Promise，process.nextTick等，属于<code>微任务</code>。</p>
+<h3 id="例一-1"><a href="#例一-1" class="headerlink" title="例一"></a>例一</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">document</span>.body.style = <span class="string">'background:blue'</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="number">1</span>);</span><br><span class="line"><span class="built_in">Promise</span>.resolve().then(<span class="function"><span class="params">()</span>=&gt;</span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="number">2</span>);</span><br><span class="line">  <span class="built_in">document</span>.body.style = <span class="string">'background:black'</span></span><br><span class="line">&#125;);</span><br><span class="line"><span class="built_in">console</span>.log(<span class="number">3</span>);</span><br></pre></td></tr></table></figure>
+<p>控制台输出 1 3 2 , 是因为 promise 对象的 then 方法的回调函数是异步执行，所以 2 最后输出</p>
+<p>页面的背景色直接变成黑色，没有经过蓝色的阶段，是因为，我们在宏任务中将背景设置为蓝色，但在进行渲染前执行了微任务， 在微任务中将背景变成了黑色，然后才执行的渲染</p>
+<h3 id="例二-1"><a href="#例二-1" class="headerlink" title="例二"></a>例二</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">setTimeout(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="number">1</span>)</span><br><span class="line">  <span class="built_in">Promise</span>.resolve(<span class="number">3</span>).then(<span class="function"><span class="params">data</span> =&gt;</span> <span class="built_in">console</span>.log(data))</span><br><span class="line">&#125;, <span class="number">0</span>)</span><br><span class="line"></span><br><span class="line">setTimeout(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="number">2</span>)</span><br><span class="line">&#125;, <span class="number">0</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment">// print : 1 3 2</span></span><br></pre></td></tr></table></figure>
+<p>上面代码共包含两个 setTimeout ，也就是说除主代码块外，共有两个<code>宏任务</code>， 其中第一个<code>宏任务</code>执行中，输出 1 ，并且创建了<code>微任务队列</code>，所以在下一个<code>宏任务</code>队列执行前， 先执行<code>微任务</code>，在<code>微任务</code>执行中，输出 3 ，微任务执行后，执行下一次<code>宏任务</code>，执行中输出 2</p>
+<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><p>执行一个<strong>宏任务</strong>（栈中没有就从<strong>事件队列</strong>中获取）</p>
+<p>执行过程中如果遇到<strong>微任务</strong>，就将它添加到<strong>微任务</strong>的任务队列中</p>
+<p><strong>宏任务</strong>执行完毕后，立即执行当前<strong>微任务队列</strong>中的所有<strong>微任务</strong>（依次执行）</p>
+<p>当前<strong>宏任务</strong>执行完毕，开始检查渲染，然后<strong>GUI线程</strong>接管渲染</p>
+<p>渲染完毕后，<strong>JS线程</strong>继续接管，开始下一个<strong>宏任务</strong>（从事件队列中获取）</p>
+<p><img src="/img/JavaScript/task2.png" alt="task2"></p>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
   </section>
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/12/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/12/">12</a><span class="page-number current">13</span><a class="page-number" href="/page/14/">14</a><span class="space">&hellip;</span><a class="page-number" href="/page/35/">35</a><a class="extend next" rel="next" href="/page/14/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
+    <a class="extend prev" rel="prev" href="/page/12/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/12/">12</a><span class="page-number current">13</span><a class="page-number" href="/page/14/">14</a><span class="space">&hellip;</span><a class="page-number" href="/page/33/">33</a><a class="extend next" rel="next" href="/page/14/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
   </nav>
 
 
@@ -1080,7 +1051,7 @@
         
           <a href="/archives/">
         
-          <span class="site-state-item-count">103</span>
+          <span class="site-state-item-count">99</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -1129,7 +1100,7 @@
         
           
         
-        <span class="site-state-item-count">16</span>
+        <span class="site-state-item-count">15</span>
         <span class="site-state-item-name">分类</span>
         </a>
       </div>
