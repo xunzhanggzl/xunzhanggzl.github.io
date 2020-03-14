@@ -93,18 +93,18 @@
   };
 </script>
 
-  <meta name="description" content="子集 这是一道典型的回溯算法的应用 使用 slice注意这段代码里的 res.push(temp.slice())，如果没有 slice() 的话，res 的最后子元素会都是空数组，[ [], [], [], [] ]，原因就是我们传递了一个引用类型值 temp，相当于引用的复制，并且在 dfs 函数中我们对 temp 进行了改变，最后 temp 会变成 []。 在这段代码里 temp.pop()">
-<meta name="keywords" content="函数传参,回溯">
+  <meta name="description" content="题目描述子集 给定一组不含重复元素的整数数组 nums，返回该数组所有可能的子集（幂集）。 说明：解集不能包含重复的子集。 123456789101112输入: nums = [1,2,3]输出:[  [3],  [1],  [2],  [1,2,3],  [1,3],  [2,3],  [1,2],  []] 代码实现注意这段代码里的 res.push(temp.slice())，如果没有 sl">
+<meta name="keywords" content="backTracking">
 <meta property="og:type" content="article">
 <meta property="og:title" content="LC-子集">
 <meta property="og:url" content="http://yoursite.com/2019/07/19/LC-子集/index.html">
 <meta property="og:site_name" content="gzl的博客">
-<meta property="og:description" content="子集 这是一道典型的回溯算法的应用 使用 slice注意这段代码里的 res.push(temp.slice())，如果没有 slice() 的话，res 的最后子元素会都是空数组，[ [], [], [], [] ]，原因就是我们传递了一个引用类型值 temp，相当于引用的复制，并且在 dfs 函数中我们对 temp 进行了改变，最后 temp 会变成 []。 在这段代码里 temp.pop()">
+<meta property="og:description" content="题目描述子集 给定一组不含重复元素的整数数组 nums，返回该数组所有可能的子集（幂集）。 说明：解集不能包含重复的子集。 123456789101112输入: nums = [1,2,3]输出:[  [3],  [1],  [2],  [1,2,3],  [1,3],  [2,3],  [1,2],  []] 代码实现注意这段代码里的 res.push(temp.slice())，如果没有 sl">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2020-02-13T02:45:29.458Z">
+<meta property="og:updated_time" content="2020-03-14T08:13:27.478Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="LC-子集">
-<meta name="twitter:description" content="子集 这是一道典型的回溯算法的应用 使用 slice注意这段代码里的 res.push(temp.slice())，如果没有 slice() 的话，res 的最后子元素会都是空数组，[ [], [], [], [] ]，原因就是我们传递了一个引用类型值 temp，相当于引用的复制，并且在 dfs 函数中我们对 temp 进行了改变，最后 temp 会变成 []。 在这段代码里 temp.pop()">
+<meta name="twitter:description" content="题目描述子集 给定一组不含重复元素的整数数组 nums，返回该数组所有可能的子集（幂集）。 说明：解集不能包含重复的子集。 123456789101112输入: nums = [1,2,3]输出:[  [3],  [1],  [2],  [1,2,3],  [1,3],  [2,3],  [1,2],  []] 代码实现注意这段代码里的 res.push(temp.slice())，如果没有 sl">
 
 
 
@@ -388,7 +388,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2020-02-13 10:45:29" itemprop="dateModified" datetime="2020-02-13T10:45:29+08:00">2020-02-13</time>
+                <time title="修改时间：2020-03-14 16:13:27" itemprop="dateModified" datetime="2020-03-14T16:13:27+08:00">2020-03-14</time>
               </span>
             
           
@@ -442,13 +442,16 @@
       
 
       
-        <p><a href="https://leetcode-cn.com/problems/subsets/" target="_blank" rel="noopener">子集</a></p>
-<p>这是一道典型的回溯算法的应用</p>
-<h1 id="使用-slice"><a href="#使用-slice" class="headerlink" title="使用 slice"></a>使用 slice</h1><p>注意这段代码里的 <strong>res.push(temp.slice())</strong>，如果没有 slice() 的话，res 的最后子元素会都是空数组，[ [], [], [], [] ]，原因就是我们传递了一个引用类型值 temp，相当于引用的复制，并且在 dfs 函数中我们对 temp 进行了改变，最后 temp 会变成 []。</p>
-<p>在这段代码里 <code>temp.pop()</code>  是点睛之笔</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * @param &#123;number[]&#125; nums</span></span><br><span class="line"><span class="comment"> * @return &#123;number[][]&#125;</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">var</span> subsets = <span class="function"><span class="keyword">function</span> (<span class="params">nums</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">let</span> res = [];</span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">backTracking</span>(<span class="params">index, temp</span>) </span>&#123;</span><br><span class="line">        res.push(temp.slice());</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">let</span> i = index; i &lt; nums.length; i++) &#123;</span><br><span class="line">            temp.push(nums[i]);</span><br><span class="line">            backTracking(i + <span class="number">1</span>, temp)</span><br><span class="line">            temp.pop();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    backTracking(<span class="number">0</span>, []);</span><br><span class="line">    <span class="keyword">return</span> res;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-<h1 id="concat"><a href="#concat" class="headerlink" title="concat"></a>concat</h1><p>下面这段代码中 <strong>res.push(temp)</strong>，因为我们并没有在 dfs 函数中改变 temp，而是在参数过程中改变了 temp，其实是利用了 concat。</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * @param &#123;number[]&#125; nums</span></span><br><span class="line"><span class="comment"> * @return &#123;number[][]&#125;</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">var</span> subsets = <span class="function"><span class="keyword">function</span> (<span class="params">nums</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">let</span> res = [];</span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">backTracking</span>(<span class="params">temp, index</span>) </span>&#123;</span><br><span class="line">        res.push(temp);</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">let</span> i = index; i &lt; nums.length; i++) &#123;</span><br><span class="line">            backTracking(temp.concat([nums[i]]), i + <span class="number">1</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    backTracking([], <span class="number">0</span>)</span><br><span class="line">    <span class="keyword">return</span> res;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+        <h1 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h1><p><a href="https://leetcode-cn.com/problems/subsets/" target="_blank" rel="noopener">子集</a></p>
+<p>给定一组<strong>不含重复元素</strong>的整数数组 <em>nums</em>，返回该数组所有可能的子集（幂集）。</p>
+<p><strong>说明：</strong>解集不能包含重复的子集。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">输入: nums = [1,2,3]</span><br><span class="line">输出:</span><br><span class="line">[</span><br><span class="line">  [3],</span><br><span class="line">  [1],</span><br><span class="line">  [2],</span><br><span class="line">  [1,2,3],</span><br><span class="line">  [1,3],</span><br><span class="line">  [2,3],</span><br><span class="line">  [1,2],</span><br><span class="line">  []</span><br><span class="line">]</span><br></pre></td></tr></table></figure>
+<h1 id="代码实现"><a href="#代码实现" class="headerlink" title="代码实现"></a>代码实现</h1><p>注意这段代码里的 <strong>res.push(temp.slice())</strong>，如果没有 slice() 的话，res 的最后子元素会都是空数组，[ [], [], [], [] ]，原因就是我们传递了一个引用类型值 temp，相当于引用的复制，并且在 dfs 函数中我们对 temp 进行了改变，最后 temp 会变成 []。</p>
+<p>在下面这段代码里 <code>temp.pop()</code>  是点睛之笔</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * @param &#123;number[]&#125; nums</span></span><br><span class="line"><span class="comment"> * @return &#123;number[][]&#125;</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">var</span> subsets = <span class="function"><span class="keyword">function</span>(<span class="params">nums</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">let</span> result = [];</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="keyword">function</span> <span class="title">backTracking</span>(<span class="params">temp, index</span>) </span>&#123;</span><br><span class="line">    result.push(temp.slice())</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">let</span> i = index; i &lt; nums.length; i++) &#123;</span><br><span class="line">      temp.push(nums[i]);</span><br><span class="line">      backTracking(i + <span class="number">1</span>, temp);</span><br><span class="line">      temp.pop();</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  backTracking([], <span class="number">0</span>);</span><br><span class="line">  <span class="keyword">return</span> result;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p>下面这段代码中 <strong>res.push(temp)</strong>，因为我们并没有在 backTracking 函数中改变 temp，而是在参数过程中改变了 temp，其实是利用了 concat。</p>
+<p>ES6 …</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * @param &#123;number[]&#125; nums</span></span><br><span class="line"><span class="comment"> * @return &#123;number[][]&#125;</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">var</span> subsets = <span class="function"><span class="keyword">function</span>(<span class="params">nums</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">let</span> result = [];</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="keyword">function</span> <span class="title">backTracking</span>(<span class="params">temp, index</span>) </span>&#123;</span><br><span class="line">    result.push(temp);</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">let</span> i = index; i &lt; nums.length; i++) &#123;</span><br><span class="line">      backTracking([...temp, nums[i]], i + <span class="number">1</span>);</span><br><span class="line">      <span class="comment">// backTracking(temp.concat([nums[i]]), i + 1);</span></span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  backTracking([], <span class="number">0</span>);</span><br><span class="line">  <span class="keyword">return</span> result;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
 
       
     </div>
@@ -479,9 +482,7 @@
         
         <div class="post-tags">
           
-            <a href="/tags/函数传参/" rel="tag"># 函数传参</a>
-          
-            <a href="/tags/回溯/" rel="tag"># 回溯</a>
+            <a href="/tags/backTracking/" rel="tag"># backTracking</a>
           
         </div>
       
@@ -724,7 +725,11 @@
         
           
         
-        <span class="site-state-item-count">40</span>
+          
+        
+          
+        
+        <span class="site-state-item-count">38</span>
         <span class="site-state-item-name">标签</span>
         </a>
       </div>
@@ -759,7 +764,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#使用-slice"><span class="nav-number">1.</span> <span class="nav-text">使用 slice</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#concat"><span class="nav-number">2.</span> <span class="nav-text">concat</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#题目描述"><span class="nav-number">1.</span> <span class="nav-text">题目描述</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#代码实现"><span class="nav-number">2.</span> <span class="nav-text">代码实现</span></a></li></ol></div>
             
 
           </div>
