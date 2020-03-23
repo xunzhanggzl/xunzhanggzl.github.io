@@ -326,6 +326,261 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/02/24/JavaScript-questions-2/"/>
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="gzl"/>
+      <meta itemprop="description" content=""/>
+      <meta itemprop="image" content="/images/avatar.gif"/>
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="gzl的博客"/>
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/2020/02/24/JavaScript-questions-2/" class="post-title-link" itemprop="url">JavaScript-question-2</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+
+          
+          
+          
+
+          
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2020-02-24 10:38:22" itemprop="dateCreated datePublished" datetime="2020-02-24T10:38:22+08:00">2020-02-24</time>
+            </span>
+          
+
+          
+            
+
+            
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2020-03-04 08:55:52" itemprop="dateModified" datetime="2020-03-04T08:55:52+08:00">2020-03-04</time>
+              </span>
+            
+          
+
+          
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/JavaScript/" itemprop="url" rel="index"><span itemprop="name">JavaScript</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+
+          <br/>
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <blockquote>
+<p><a href="https://github.com/lydiahallie/javascript-questions" target="_blank" rel="noopener">https://github.com/lydiahallie/javascript-questions</a></p>
+<p><a href="https://github.com/lydiahallie/javascript-questions/blob/master/README-zh_CN.md" target="_blank" rel="noopener">https://github.com/lydiahallie/javascript-questions/blob/master/README-zh_CN.md</a></p>
+</blockquote>
+<h1 id="let"><a href="#let" class="headerlink" title="let"></a>let</h1><p>111：let的作用区块</p>
+<p>What’s the output?</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> name = <span class="string">'Lydia'</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">getName</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(name)</span><br><span class="line">  <span class="keyword">let</span> name = <span class="string">'Sarah'</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">getName()</span><br><span class="line"></span><br><span class="line"><span class="comment">// ReferenceError</span></span><br></pre></td></tr></table></figure>
+<p>Each function has its own <em>execution context</em> (or <em>scope</em>). The <code>getName</code> function first looks within its own context (scope) to see if it contains the variable <code>name</code> we’re trying to access. In this case, the <code>getName</code> function contains its own <code>name</code> variable: we declare the variable <code>name</code> with the <code>let</code> keyword, and with the value of <code>&#39;Sarah&#39;</code>.</p>
+<p>Variables with the <code>let</code> keyword (and <code>const</code>) are hoisted, but unlike <code>var</code>, don’t get <em>initialized</em>. They are not accessible before the line we declare (initialize) them. This is called the “temporal dead zone”. When we try to access the variables before they are declared, JavaScript throws a <code>ReferenceError</code>.</p>
+<p>If we wouldn’t have declared the <code>name</code> variable within the <code>getName</code> function, the javascript engine would’ve looked down the <em>scope chain</em>. The outer scope has a variable called <code>name</code> with the value of <code>Lydia</code>. In that case, it would’ve logged <code>Lydia</code>.</p>
+<h1 id="yield"><a href="#yield" class="headerlink" title="yield"></a>yield</h1><p>112：yield的相关性质，待学习</p>
+<p>What’s the output?</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span>* <span class="title">generatorOne</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">yield</span> [<span class="string">'a'</span>, <span class="string">'b'</span>, <span class="string">'c'</span>];</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span>* <span class="title">generatorTwo</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">yield</span>* [<span class="string">'a'</span>, <span class="string">'b'</span>, <span class="string">'c'</span>];</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> one = generatorOne()</span><br><span class="line"><span class="keyword">const</span> two = generatorTwo()</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(one.next().value)</span><br><span class="line"><span class="built_in">console</span>.log(two.next().value)</span><br><span class="line"></span><br><span class="line"><span class="comment">// ['a', 'b', 'c'] and a</span></span><br></pre></td></tr></table></figure>
+<p>With the <code>yield</code> keyword, we <code>yield</code> values in a generator function. With the <code>yield*</code> keyword, we can yield values from another generator function, or iterable object (for example an array).</p>
+<p>In <code>generatorOne</code>, we yield the entire array <code>[&#39;a&#39;, &#39;b&#39;, &#39;c&#39;]</code> using the <code>yield</code> keyword. The value of <code>value</code> property on the object returned by the <code>next</code> method on <code>one</code> (<code>one.next().value</code>) is equal to the entire array <code>[&#39;a&#39;, &#39;b&#39;, &#39;c&#39;]</code>.</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">console</span>.log(one.next().value) <span class="comment">// ['a', 'b', 'c']</span></span><br><span class="line"><span class="built_in">console</span>.log(one.next().value) <span class="comment">// undefined</span></span><br></pre></td></tr></table></figure>
+<p>In <code>generatorTwo</code>, we use the <code>yield*</code> keyword. This means that the first yielded value of <code>two</code>, is equal to the first yielded value in the iterator. The iterator is the array <code>[&#39;a&#39;, &#39;b&#39;, &#39;c&#39;]</code>. The first yielded value is <code>a</code>, so the first time we call <code>two.next().value</code>, <code>a</code> is returned.</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">console</span>.log(two.next().value) <span class="comment">// 'a'</span></span><br><span class="line"><span class="built_in">console</span>.log(two.next().value) <span class="comment">// 'b'</span></span><br><span class="line"><span class="built_in">console</span>.log(two.next().value) <span class="comment">// 'c'</span></span><br><span class="line"><span class="built_in">console</span>.log(two.next().value) <span class="comment">// undefined</span></span><br></pre></td></tr></table></figure>
+<h1 id="operator"><a href="#operator" class="headerlink" title=" operator"></a><code></code> operator</h1><p>113：<code></code>中的立即执行函数</p>
+<p>What’s the output?</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">console</span>.log(<span class="string">`<span class="subst">$&#123;(x =&gt; x)(<span class="string">'I love'</span>)&#125;</span> to program`</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment">// I love to program</span></span><br></pre></td></tr></table></figure>
+<p>Expressions within template literals are evaluated first. This means that the string will contain the returned value of the expression, the immediately invoked function <code>(x =&gt; x)(&#39;I love&#39;)</code> in this case. We pass the value <code>&#39;I love&#39;</code> as an argument to the <code>x =&gt; x</code> arrow function. <code>x</code> is equal to <code>&#39;I love&#39;</code>, which gets returned. This results in <code>I love to program</code>.</p>
+<h1 id="objects-to-null-setInterval"><a href="#objects-to-null-setInterval" class="headerlink" title="objects to null setInterval"></a>objects to null setInterval</h1><p>114：垃圾回收机制，和setInterval的性质</p>
+<p>What will happen?</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> config = &#123;</span><br><span class="line">  alert: setInterval(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'Alert!'</span>)</span><br><span class="line">  &#125;, <span class="number">1000</span>)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">config = <span class="literal">null</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// The setInterval callback will still be called every second</span></span><br></pre></td></tr></table></figure>
+<p>Normally when we set objects equal to <code>null</code>, those objects get <em>garbage collected</em> as there is no reference anymore to that object. However, since the callback function within <code>setInterval</code> is an arrow function (thus bound to the <code>config</code> object), the callback function still holds a reference to the <code>config</code> object. As long as there is a reference, the object won’t get garbage collected. Since it’s not garbage collected, the <code>setInterval</code> callback function will still get invoked every 1000ms (1s).</p>
+<h1 id="Map"><a href="#Map" class="headerlink" title="Map"></a>Map</h1><p>115：Map中key的特性</p>
+<p>Which method(s) will return the value <code>&#39;Hello world!&#39;</code>?</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> myMap = <span class="keyword">new</span> <span class="built_in">Map</span>()</span><br><span class="line"><span class="keyword">const</span> myFunc = <span class="function"><span class="params">()</span> =&gt;</span> <span class="string">'greeting'</span></span><br><span class="line"></span><br><span class="line">myMap.set(myFunc, <span class="string">'Hello world!'</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment">//1</span></span><br><span class="line">myMap.get(<span class="string">'greeting'</span>)</span><br><span class="line"><span class="comment">//2</span></span><br><span class="line">myMap.get(myFunc)</span><br><span class="line"><span class="comment">//3</span></span><br><span class="line">myMap.get(<span class="function"><span class="params">()</span> =&gt;</span> <span class="string">'greeting'</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment">// 2</span></span><br></pre></td></tr></table></figure>
+<p>When adding a key/value pair using the <code>set</code> method, the key will be the value of the first argument passed to the <code>set</code>function, and the value will be the second argument passed to the <code>set</code> function. The key is the <em>function</em> <code>() =&gt; &#39;greeting&#39;</code>in this case, and the value <code>&#39;Hello world&#39;</code>. <code>myMap</code> is now <code>{ () =&gt; &#39;greeting&#39; =&gt; &#39;Hello world!&#39; }</code>.</p>
+<p>1 is wrong, since the key is not <code>&#39;greeting&#39;</code> but <code>() =&gt; &#39;greeting&#39;</code>. 3 is wrong, since we’re creating a new function by passing it as a parameter to the <code>get</code> method. Object interact by <em>reference</em>. Functions are objects, which is why two functions are never strictly equal, even if they are identical: they have a reference to a different spot in memory.</p>
+<h1 id="reference"><a href="#reference" class="headerlink" title="reference"></a>reference</h1><p>116：默认参数和引用，这里可以给person添加一个 <code>food:[1,2,3]</code></p>
+<p>What’s the output?</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> person = &#123;</span><br><span class="line">  name: <span class="string">"Lydia"</span>,</span><br><span class="line">  age: <span class="number">21</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> changeAge = <span class="function">(<span class="params">x = &#123; ...person &#125;</span>) =&gt;</span> x.age += <span class="number">1</span></span><br><span class="line"><span class="keyword">const</span> changeAgeAndName = <span class="function">(<span class="params">x = &#123; ...person &#125;</span>) =&gt;</span> &#123;</span><br><span class="line">  x.age += <span class="number">1</span></span><br><span class="line">  x.name = <span class="string">"Sarah"</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">changeAge(person)</span><br><span class="line">changeAgeAndName()</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(person)</span><br><span class="line"></span><br><span class="line"><span class="comment">// &#123;name: "Lydia", age: 22&#125;</span></span><br></pre></td></tr></table></figure>
+<p>Both the <code>changeAge</code> and <code>changeAgeAndName</code> functions have a default parameter, namely a <em>newly</em> created object <code>{ ...person }</code>. This object has copies of all the key/values in the <code>person</code> object.</p>
+<p>First, we invoke the <code>changeAge</code> function and pass the <code>person</code> object as its argument. This function increases the value of the <code>age</code> property by 1. <code>person</code> is now <code>{ name: &quot;Lydia&quot;, age: 22 }</code>.</p>
+<p>Then, we invoke the <code>changeAgeAndName</code> function, however we don’t pass a parameter. Instead, the value of <code>x</code> is equal to a <em>new</em> object: <code>{ ...person }</code>. Since it’s a new object, it doesn’t affect the values of the properties on the <code>person</code> object. <code>person</code> is still equal to <code>{ name: &quot;Lydia&quot;, age: 22 }</code>.</p>
+<h1 id="setter"><a href="#setter" class="headerlink" title="setter"></a>setter</h1><p>121.setter的返回值</p>
+<p>What’s the output?</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> config = &#123;</span><br><span class="line">  languages: [],</span><br><span class="line">  set language(lang) &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">this</span>.languages.push(lang);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(config.language);</span><br><span class="line"></span><br><span class="line"><span class="comment">// undefined</span></span><br></pre></td></tr></table></figure>
+<p>The <code>language</code> method is a <code>setter</code>. Setters don’t hold an actual value, their purpose is to <em>modify</em> properties. When calling a <code>setter</code> method, <code>undefined</code> gets returned.</p>
+<h1 id="async-await"><a href="#async-await" class="headerlink" title="async await"></a>async await</h1><p>124.async 和 await 相关</p>
+<p>What’s the output?</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">async</span> <span class="function"><span class="keyword">function</span>* <span class="title">range</span>(<span class="params">start, end</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">let</span> i = start; i &lt;= end; i++) &#123;</span><br><span class="line">    <span class="keyword">yield</span> <span class="built_in">Promise</span>.resolve(i);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">(<span class="keyword">async</span> () =&gt; &#123;</span><br><span class="line">  <span class="keyword">const</span> gen = range(<span class="number">1</span>, <span class="number">3</span>);</span><br><span class="line">  <span class="keyword">for</span> <span class="keyword">await</span> (<span class="keyword">const</span> item <span class="keyword">of</span> gen) &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(item);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;)();</span><br><span class="line"></span><br><span class="line"><span class="comment">// 1 2 3</span></span><br></pre></td></tr></table></figure>
+<p>The generator function <code>range</code> returns an async object with promises for each item in the range we pass: <code>Promise{1}</code>, <code>Promise{2}</code>, <code>Promise{3}</code>. We set the variable <code>gen</code> equal to the async object, after which we loop over it using a <code>for await ... of</code> loop. We set the variable <code>item</code> equal to the returned Promise values: first <code>Promise{1}</code>, then <code>Promise{2}</code>, then <code>Promise{3}</code>. Since we’re <em>awaiting</em> the value of <code>item</code>, the resolved promsie, the resolved <em>values</em> of the promises get returned: <code>1</code>, <code>2</code>, then <code>3</code>.</p>
+<h1 id="reference-1"><a href="#reference-1" class="headerlink" title="reference"></a>reference</h1><p>127.reference destructuring 相关</p>
+<p>What’s the output?</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> spookyItems = [<span class="string">"👻"</span>, <span class="string">"🎃"</span>, <span class="string">"🕸"</span>];</span><br><span class="line">(&#123; <span class="attr">item</span>: spookyItems[<span class="number">3</span>] &#125; = &#123; <span class="attr">item</span>: <span class="string">"💀"</span> &#125;);</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(spookyItems);</span><br><span class="line"></span><br><span class="line"><span class="comment">// ["👻", "🎃", "🕸", "💀"]</span></span><br></pre></td></tr></table></figure>
+<p>By destructuring objects, we can unpack values from the right-hand object, and assign the unpacked value to the value of the same property name on the left-hand object. In this case, we’re assigning the value “💀” to <code>spookyItems[3]</code>. This means that we’re modifying the <code>spookyItems</code> array, we’re adding the “💀” to it. When logging <code>spookyItems</code>, <code>[&quot;👻&quot;, &quot;🎃&quot;, &quot;🕸&quot;, &quot;💀&quot;]</code> gets logged.</p>
+<h1 id="const"><a href="#const" class="headerlink" title="const"></a>const</h1><p>129.const 的暂时性死区</p>
+<p>What’s the output?</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> randomValue = <span class="number">21</span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">getInfo</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="keyword">typeof</span> randomValue);</span><br><span class="line">  <span class="keyword">const</span> randomValue = <span class="string">"Lydia Hallie"</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">getInfo();</span><br><span class="line"></span><br><span class="line"><span class="comment">// ReferenceError</span></span><br></pre></td></tr></table></figure>
+<p>Variables declared with the <code>const</code> keyword are not referencable before their initialization: this is called the <em>temporal dead zone</em>. In the <code>getInfo</code> function, the variable <code>randomValue</code> is scoped in the functional scope of <code>getInfo</code>. On the line where we want to log the value of <code>typeof randomValue</code>, the variable <code>randomValue</code> isn’t initialized yet: a <code>ReferenceError</code> gets thrown! The engine didn’t go down the scope chain since we declared the variable <code>randomValue</code> in the <code>getInfo</code> function.</p>
+<h1 id="async-await-1"><a href="#async-await-1" class="headerlink" title="async await"></a>async await</h1><p>130.async await 加上 try catch finally</p>
+<p>What’s the output?</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> myPromise = <span class="built_in">Promise</span>.resolve(<span class="string">"Woah some cool data"</span>);</span><br><span class="line"></span><br><span class="line">(<span class="keyword">async</span> () =&gt; &#123;</span><br><span class="line">  <span class="keyword">try</span> &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="keyword">await</span> myPromise);</span><br><span class="line">  &#125; <span class="keyword">catch</span> &#123;</span><br><span class="line">    <span class="keyword">throw</span> <span class="keyword">new</span> <span class="built_in">Error</span>(<span class="string">`Oops didn't work`</span>);</span><br><span class="line">  &#125; <span class="keyword">finally</span> &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">"Oh finally!"</span>);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;)();</span><br><span class="line"></span><br><span class="line"><span class="comment">// Woah some cool data </span></span><br><span class="line"><span class="comment">// Oh finally!</span></span><br></pre></td></tr></table></figure>
+<p>In the <code>try</code> block, we’re logging the awaited value of the <code>myPromise</code> variable: <code>&quot;Woah some cool data&quot;</code>. Since no errors were thrown in the <code>try</code> block, the code in the <code>catch</code> block doesn’t run. The code in the <code>finally</code> block <em>always</em> runs, <code>&quot;Oh finally!&quot;</code> gets logged.</p>
+<h1 id="call-stack"><a href="#call-stack" class="headerlink" title="call stack"></a>call stack</h1><p>133.考察的是代码的执行顺序</p>
+<p>What’s the output?</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> myPromise = <span class="built_in">Promise</span>.resolve(<span class="built_in">Promise</span>.resolve(<span class="string">"Promise!"</span>));</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">funcOne</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  myPromise.then(<span class="function"><span class="params">res</span> =&gt;</span> res).then(<span class="function"><span class="params">res</span> =&gt;</span> <span class="built_in">console</span>.log(res));</span><br><span class="line">  setTimeout(<span class="function"><span class="params">()</span> =&gt;</span> <span class="built_in">console</span>.log(<span class="string">"Timeout!"</span>, <span class="number">0</span>));</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">"Last line!"</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">async</span> <span class="function"><span class="keyword">function</span> <span class="title">funcTwo</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">const</span> res = <span class="keyword">await</span> myPromise;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="keyword">await</span> res);</span><br><span class="line">  setTimeout(<span class="function"><span class="params">()</span> =&gt;</span> <span class="built_in">console</span>.log(<span class="string">"Timeout!"</span>, <span class="number">0</span>));</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">"Last line!"</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">funcOne();</span><br><span class="line">funcTwo();</span><br><span class="line"></span><br><span class="line"><span class="comment">// Last line! Promise! Promise! Last line! Timeout! Timeout!</span></span><br></pre></td></tr></table></figure>
+<p>First, we invoke <code>funcOne</code>. On the first line of <code>funcOne</code>, we call the <code>myPromise</code> promise, which is an <em>asynchronous</em> operation. While the engine is busy completing the promise, it keeps on running the function <code>funcOne</code>. The next line is the <em>asynchronous</em> <code>setTimeout</code> function, from which the callback is sent to the Web API. (see my article on the event loop here.)</p>
+<p>Both the promise and the timeout are asynchronous operations, the function keeps on running while it’s busy completing the promise and handling the <code>setTimeout</code> callback. This means that <code>Last line!</code> gets logged first, since this is not an asynchonous operation. This is the last line of <code>funcOne</code>, the promise resolved, and <code>Promise!</code> gets logged. However, since we’re invoking <code>funcTwo()</code>, the call stack isn’t empty, and the callback of the <code>setTimeout</code> function cannot get added to the callstack yet.</p>
+<p>In <code>funcTwo</code> we’re, first <em>awaiting</em> the myPromise promise. With the <code>await</code> keyword, we pause the execution of the function until the promise has resolved (or rejected). Then, we log the awaited value of <code>res</code> (since the promise itself returns a promise). This logs <code>Promise!</code>.</p>
+<p>The next line is the <em>asynchronous</em> <code>setTimeout</code> function, from which the callback is sent to the Web API.</p>
+<p>We get to the last line of <code>funcTwo</code>, which logs <code>Last line!</code> to the console. Now, since <code>funcTwo</code> popped off the call stack, the call stack is empty. The callbacks waiting in the queue (<code>() =&gt; console.log(&quot;Timeout!&quot;)</code> from <code>funcOne</code>, and <code>() =&gt; console.log(&quot;Timeout!&quot;)</code> from <code>funcTwo</code>) get added to the call stack one by one. The first callback logs <code>Timeout!</code>, and gets popped off the stack. Then, the second callback logs <code>Timeout!</code>, and gets popped off the stack. This logs <code>Last line! Promise! Promise! Last line! Timeout! Timeout!</code></p>
+<h1 id="export-default"><a href="#export-default" class="headerlink" title="export default"></a>export default</h1><p>134.考察 export default 和 import * as </p>
+<p>How can we invoke <code>sum</code> in <code>index.js</code> from <code>sum.js?</code></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// sum.js</span></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="function"><span class="keyword">function</span> <span class="title">sum</span>(<span class="params">x</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> x + x;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// index.js</span></span><br><span class="line"><span class="keyword">import</span> * <span class="keyword">as</span> sum <span class="keyword">from</span> <span class="string">"./sum"</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// sum.default(4)</span></span><br></pre></td></tr></table></figure>
+<p>For the <code>sum</code> example, it means that the imported value <code>sum</code> looks like this:</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#123; <span class="attr">default</span>: <span class="function"><span class="keyword">function</span> <span class="title">sum</span>(<span class="params">x</span>) </span>&#123; <span class="keyword">return</span> x + x &#125; &#125;</span><br></pre></td></tr></table></figure>
+<p>We can invoke this function, by calling <code>sum.default</code></p>
+<h1 id="class"><a href="#class" class="headerlink" title="class"></a>class</h1><p>139.考察 class 中的变量</p>
+<p>What’s the output?</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Counter</span> </span>&#123;</span><br><span class="line">  #number = 10</span><br><span class="line"></span><br><span class="line">  increment() &#123;</span><br><span class="line">    this.#number++</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  getNum() &#123;</span><br><span class="line">    return this.#number</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> counter = <span class="keyword">new</span> Counter()</span><br><span class="line">counter.increment()</span><br><span class="line"></span><br><span class="line">console.log(counter.#number)</span><br><span class="line"></span><br><span class="line"><span class="comment">// SyntaxError</span></span><br></pre></td></tr></table></figure>
+<p>In ES2020, we can add private variables in classes by using the <code>#</code>. We cannot access these variables outside of the class. When we try to log <code>counter.#number</code>, a SyntaxError gets thrown: we cannot acccess it outside the <code>Counter</code> class!</p>
+<h1 id="yield-1"><a href="#yield-1" class="headerlink" title="yield"></a>yield</h1><p>140.考察 yield</p>
+<p>✨ SOMETHING IS MISSING HERE ✨ 这里应该填什么</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> teams = [</span><br><span class="line">  &#123;</span><br><span class="line">    name: <span class="string">"Team 1"</span>,</span><br><span class="line">    members: [<span class="string">"Paul"</span>, <span class="string">"Lisa"</span>]</span><br><span class="line">  &#125;,</span><br><span class="line">  &#123;</span><br><span class="line">    name: <span class="string">"Team 2"</span>,</span><br><span class="line">    members: [<span class="string">"Laura"</span>, <span class="string">"Tim"</span>]</span><br><span class="line">  &#125;</span><br><span class="line">];</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span>* <span class="title">getMembers</span>(<span class="params">members</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; members.length; i++) &#123;</span><br><span class="line">    <span class="keyword">yield</span> members[i];</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span>* <span class="title">getTeams</span>(<span class="params">teams</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; teams.length; i++) &#123;</span><br><span class="line">    <span class="comment">// ✨ SOMETHING IS MISSING HERE ✨</span></span><br><span class="line">    <span class="keyword">yield</span>* getMembers(teams[i].members)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> obj = getTeams(teams);</span><br><span class="line"><span class="built_in">console</span>.log(obj.next()) <span class="comment">// &#123; value: "Paul", done: false &#125;</span></span><br><span class="line"><span class="built_in">console</span>.log(obj.next()) <span class="comment">// &#123; value: "Lisa", done: false &#125;</span></span><br></pre></td></tr></table></figure>
+<p>In order to iterate over the <code>members</code> in each element in the <code>teams</code> array, we need to pass <code>teams[i].members</code> to the <code>getMembers</code> generator function. The generator function returns a generator object. In order to iterate over each element in this generator object, we need to use <code>yield*</code>.</p>
+<p>If we would’ve written <code>yield</code>, <code>return yield</code>, or <code>return</code>, the entire generator function would’ve gotten returned the first time we called the <code>next</code> method.</p>
+<p>博主更新到了 144 题。</p>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/02/23/RN-《黑客与画家》/"/>
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -742,184 +997,11 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/02/18/vue中配置alias/"/>
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="gzl"/>
-      <meta itemprop="description" content=""/>
-      <meta itemprop="image" content="/images/avatar.gif"/>
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="gzl的博客"/>
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/2020/02/18/vue中配置alias/" class="post-title-link" itemprop="url">vue中配置alias</a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-
-          
-          
-          
-
-          
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-
-              
-                
-              
-
-              <time title="创建时间：2020-02-18 14:57:37 / 修改时间：15:26:29" itemprop="dateCreated datePublished" datetime="2020-02-18T14:57:37+08:00">2020-02-18</time>
-            </span>
-          
-
-          
-            
-
-            
-          
-
-          
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/vue/" itemprop="url" rel="index"><span itemprop="name">vue</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-            
-          
-
-          
-          
-
-          
-
-          
-
-          <br/>
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h1 id="配置-alias"><a href="#配置-alias" class="headerlink" title="配置 alias"></a>配置 alias</h1><p>在 vue 中有时经常会因为引入文件的相对路径过长，这时可以在 vue.config.js 中配置一下别名。</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> path = <span class="built_in">require</span>(<span class="string">'path'</span>)</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">resolve</span>(<span class="params">dir</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> path.join(__dirname, dir)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="built_in">module</span>.exports = &#123;</span><br><span class="line">  chainWebpack(config) &#123;</span><br><span class="line">    config.resolve.alias</span><br><span class="line">      .set(<span class="string">'components'</span>, resolve(<span class="string">'src/components'</span>))</span><br><span class="line">      .set(<span class="string">'common'</span>, resolve(<span class="string">'src/common'</span>))</span><br><span class="line">      .set(<span class="string">'api'</span>, resolve(<span class="string">'src/api'</span>))</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>上面的代码配置了 src 目录下的 components、common 和 api 这三个文件夹。</p>
-<h2 id="在-css-中引入"><a href="#在-css-中引入" class="headerlink" title="在 css 中引入"></a>在 css 中引入</h2><p>这里注意前面要加一个 ~</p>
-<figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">@import <span class="string">"~common/stylus/mixin"</span></span><br><span class="line">@import <span class="string">"~common/stylus/variable"</span></span><br></pre></td></tr></table></figure>
-<h2 id="在-JavaScript-中引入"><a href="#在-JavaScript-中引入" class="headerlink" title="在 JavaScript 中引入"></a>在 JavaScript 中引入</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> SupportIco <span class="keyword">from</span> <span class="string">'components/support-ico/support-ico'</span></span><br></pre></td></tr></table></figure>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// api 目录下有 index.js</span></span><br><span class="line"><span class="keyword">import</span> &#123; getSeller &#125; <span class="keyword">from</span> <span class="string">'api'</span></span><br></pre></td></tr></table></figure>
-<h1 id="源码参考"><a href="#源码参考" class="headerlink" title="源码参考"></a>源码参考</h1><p>在 /node_modules/@vue/cli-service/lib/config/base.js 中找到了下面的代码，也解释了 @ 是 src 目录的别名</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">api.chainWebpack(<span class="function"><span class="params">webpackConfig</span> =&gt;</span> &#123;</span><br><span class="line">  webpackConfig.resolve</span><br><span class="line">    .alias</span><br><span class="line">      .set(<span class="string">'@'</span>, api.resolve(<span class="string">'src'</span>))</span><br><span class="line">      .set(</span><br><span class="line">        <span class="string">'vue$'</span>,</span><br><span class="line">        options.runtimeCompiler</span><br><span class="line">          ? <span class="string">'vue/dist/vue.esm.js'</span></span><br><span class="line">          : <span class="string">'vue/dist/vue.runtime.esm.js'</span></span><br><span class="line">      )</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-          
-        
-      
-    </div>
-
-    
-
-    
-
-    
-    
-    
-
-    
-
-    
-      
-    
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/33/">33</a><a class="extend next" rel="next" href="/page/3/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
+    <a class="extend prev" rel="prev" href="/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/34/">34</a><a class="extend next" rel="next" href="/page/3/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
   </nav>
 
 
@@ -962,7 +1044,7 @@
         
           <a href="/archives/">
         
-          <span class="site-state-item-count">99</span>
+          <span class="site-state-item-count">100</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -978,8 +1060,6 @@
           
         
         
-        
-          
         
           
         
@@ -1104,17 +1184,7 @@
         
           
         
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-        <span class="site-state-item-count">37</span>
+        <span class="site-state-item-count">38</span>
         <span class="site-state-item-name">标签</span>
         </a>
       </div>
