@@ -326,380 +326,6 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/02/18/vue中配置alias/"/>
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="gzl"/>
-      <meta itemprop="description" content=""/>
-      <meta itemprop="image" content="/images/avatar.gif"/>
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="gzl的博客"/>
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/2020/02/18/vue中配置alias/" class="post-title-link" itemprop="url">vue中配置alias</a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-
-          
-          
-          
-
-          
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-
-              
-                
-              
-
-              <time title="创建时间：2020-02-18 14:57:37 / 修改时间：15:26:29" itemprop="dateCreated datePublished" datetime="2020-02-18T14:57:37+08:00">2020-02-18</time>
-            </span>
-          
-
-          
-            
-
-            
-          
-
-          
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/vue/" itemprop="url" rel="index"><span itemprop="name">vue</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-            
-          
-
-          
-          
-
-          
-
-          
-
-          <br/>
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h1 id="配置-alias"><a href="#配置-alias" class="headerlink" title="配置 alias"></a>配置 alias</h1><p>在 vue 中有时经常会因为引入文件的相对路径过长，这时可以在 vue.config.js 中配置一下别名。</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> path = <span class="built_in">require</span>(<span class="string">'path'</span>)</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">resolve</span>(<span class="params">dir</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> path.join(__dirname, dir)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="built_in">module</span>.exports = &#123;</span><br><span class="line">  chainWebpack(config) &#123;</span><br><span class="line">    config.resolve.alias</span><br><span class="line">      .set(<span class="string">'components'</span>, resolve(<span class="string">'src/components'</span>))</span><br><span class="line">      .set(<span class="string">'common'</span>, resolve(<span class="string">'src/common'</span>))</span><br><span class="line">      .set(<span class="string">'api'</span>, resolve(<span class="string">'src/api'</span>))</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>上面的代码配置了 src 目录下的 components、common 和 api 这三个文件夹。</p>
-<h2 id="在-css-中引入"><a href="#在-css-中引入" class="headerlink" title="在 css 中引入"></a>在 css 中引入</h2><p>这里注意前面要加一个 ~</p>
-<figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">@import <span class="string">"~common/stylus/mixin"</span></span><br><span class="line">@import <span class="string">"~common/stylus/variable"</span></span><br></pre></td></tr></table></figure>
-<h2 id="在-JavaScript-中引入"><a href="#在-JavaScript-中引入" class="headerlink" title="在 JavaScript 中引入"></a>在 JavaScript 中引入</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> SupportIco <span class="keyword">from</span> <span class="string">'components/support-ico/support-ico'</span></span><br></pre></td></tr></table></figure>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// api 目录下有 index.js</span></span><br><span class="line"><span class="keyword">import</span> &#123; getSeller &#125; <span class="keyword">from</span> <span class="string">'api'</span></span><br></pre></td></tr></table></figure>
-<h1 id="源码参考"><a href="#源码参考" class="headerlink" title="源码参考"></a>源码参考</h1><p>在 /node_modules/@vue/cli-service/lib/config/base.js 中找到了下面的代码，也解释了 @ 是 src 目录的别名</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">api.chainWebpack(<span class="function"><span class="params">webpackConfig</span> =&gt;</span> &#123;</span><br><span class="line">  webpackConfig.resolve</span><br><span class="line">    .alias</span><br><span class="line">      .set(<span class="string">'@'</span>, api.resolve(<span class="string">'src'</span>))</span><br><span class="line">      .set(</span><br><span class="line">        <span class="string">'vue$'</span>,</span><br><span class="line">        options.runtimeCompiler</span><br><span class="line">          ? <span class="string">'vue/dist/vue.esm.js'</span></span><br><span class="line">          : <span class="string">'vue/dist/vue.runtime.esm.js'</span></span><br><span class="line">      )</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-          
-        
-      
-    </div>
-
-    
-
-    
-
-    
-    
-    
-
-    
-
-    
-      
-    
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/02/18/RN-《三体》/"/>
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="gzl"/>
-      <meta itemprop="description" content=""/>
-      <meta itemprop="image" content="/images/avatar.gif"/>
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="gzl的博客"/>
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/2020/02/18/RN-《三体》/" class="post-title-link" itemprop="url">RN-《三体》</a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-
-          
-          
-          
-
-          
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-
-              
-                
-              
-
-              <time title="创建时间：2020-02-18 08:44:09" itemprop="dateCreated datePublished" datetime="2020-02-18T08:44:09+08:00">2020-02-18</time>
-            </span>
-          
-
-          
-            
-
-            
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">更新于</span>
-                
-                <time title="修改时间：2020-02-23 19:28:07" itemprop="dateModified" datetime="2020-02-23T19:28:07+08:00">2020-02-23</time>
-              </span>
-            
-          
-
-          
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/读书笔记/" itemprop="url" rel="index"><span itemprop="name">读书笔记</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-            
-          
-
-          
-          
-
-          
-
-          
-
-          <br/>
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>她是汪淼常见到的那种老知识分子，<strong>岁月的风霜已消去了他们性情中所有的刚硬和火热，只剩下如水的柔和。</strong></p>
-<p>她说完就转身回到厨房，没有看汪淼一眼，自然看不到他的窘态，<strong>她这几乎天衣无缝的善解人意令汪淼一阵感动。</strong></p>
-<p>经过一个路基维修点，爱因斯坦在一名砸石子的小工身旁停下，默默看着这个在寒风中衣衫破烂、手脸污黑的男孩子，问你父亲：他一天挣多少钱？问过小工后，你父亲回答：五分。这就是他与改变世界的科学大师唯一的一次交流，没有物理学，没有相对论，只有冰冷的现实。<strong>据你父亲说，爱因斯坦听到他的回答后又默默地站在那里好一会儿，看着小工麻木的劳作，手里的烟斗都灭了也没有吸一口。</strong></p>
-<p>“什么都没有。”叶哲泰说，<strong>像回答任何一个小女孩儿的问题那样，他转头慈祥地看着她，</strong>铁高帽和已受的重伤，使他这动作很艰难。</p>
-<p>当一切寂静下来时，她自己也发不出任何声音了，只是凝视着台上父亲已没有生命的躯体，<strong>那没有哭出和喊出的东西在她的血液中弥漫、溶解，将伴她一生。</strong></p>
-<p>大树被拖走了，地面上的石块和树桩划开了树皮，使它巨大的身躯皮开肉绽。它原来所在的位置上，厚厚的落叶构成的腐殖层被压出了一条长沟，沟里很快渗出了水，<strong>陈年落叶使水呈暗红色，像血。</strong></p>
-<p>程丽华的一席话拉近了叶文洁与她的距离，<strong>但叶文洁在灾难中学会了谨慎，她不敢贸然接受这份奢侈的善意。</strong></p>
-<p>叶文洁没有看军代表，<strong>她看到了父亲的血。“程代表，我不知道上面写的事，我不会签的。”</strong></p>
-<p>“我不回去，我们进去吧。”叶文洁的声音仍很轻，但其中有一种斩钉截铁的坚定。<strong>现在除了死后不知是否存在的另一个世界，她最想去的地方就是这样与世隔绝的峰顶了，在这里，她有一种久违的安全感。</strong></p>
-<p><strong>比起科学界的书呆子来，你多年的警务和社会经验显然更有能力觉察这种大规模犯罪。</strong></p>
-<p>现在，眼前这位历经沧桑变得平静淡泊的老人，和那位无知而无畏的大史，成了他摇摇欲坠的精神世界的两根支柱。</p>
-<p><strong>两人都是技术专家，在这外行领导内行的年代，这是难能可贵的。</strong></p>
-<p>应该说，雷志成是一名很敬业的政工干部，忠实地按照那时对他们的要求去做：与群众打成一片，时时站在第一线。<strong>也许是为了做姿态，但他确实做得很好，基地急难险重的工作中，都少不了他的身影，而以往他干得最多的，就是抢修接地线这个既危险又累的活儿。</strong></p>
-<p>问清事情的缘由后，他向悬崖下看了看，说要是检查接地电极的话需要开挖，老雷一个人在下面太费劲，他要下去帮忙，于是就系上了那名战士留下的安全带。</p>
-<p>举火把的是一群孩子，他们脸冻得通红，狗皮帽上有冰碴子，进屋后带着一股寒气。<strong>有两个男孩子冻得最厉害，他们穿得很单薄，却用两件厚棉衣裹着一个什么东西抱在怀里，把棉衣打开来，是一个大瓷盆，里面的酸菜猪肉馅饺子还冒着热气。</strong></p>
-<p>医生告诉叶文洁，她出血达两千多毫升，齐家屯的几十位农民来给她献血，<strong>他们中很多人的孩子她都辅导过，但更多的是素昧平生，只是听孩子和他们的父母说起过她，</strong>要不是他们的话，她死定了。</p>
-<p><strong>记不清有多少个晴朗的日子，叶文洁抱着杨冬同屯子里的女人们坐在白桦树柱围成的院子里，旁边有玩耍的孩子和懒洋洋的大黑狗，温暖的阳光拥抱着这一切。</strong></p>
-<p><strong>在叶文洁的记忆中，这段日子不像是属于自己的，仿佛是从别的人生中飘落的片断，像一片羽毛般飞入自己的生活。</strong></p>
-<p>在这个大兴安岭深处的小山村里，<strong>叶文洁心中的什么东西渐渐融化了，在她心灵的冰原上，融出了小小的一汪清澈的湖泊。</strong></p>
-<p><strong>这时，副部长的脸色一瞬间由温暖的微笑变得冷若冰霜，像不耐烦地扯下一副面具。</strong></p>
-<p><strong>那孩子问大人：他们是烈士吗？大人说不是；孩子又问：他们是敌人吗？大人说也不是；孩子再问：那他们是什么？大人说：是历史。</strong></p>
-<p>监听员可以肯定，现在三体政府已经发出了指令，向那个遥远的世界发出信息，引诱他们回答。信息也许已经发出，也许还没有。<strong>如果是后者，那么他就有了使自己这卑微的生命燃烧一次的机会。</strong></p>
-<p>三体文明的命运，就系于这纤细的两指之上。毫不犹豫地，监听员按下了发射键，高功率电波带着那条简短但可能拯救另一个文明的信息飞向黑暗的太空：这个世界收到了你们的信息。<strong>我是这个世界的一个和平主义者，我首先收到信息是你们文明的幸运，警告你们：不要回答！不要回答！！不要回答！！！</strong></p>
-<p>“元首，我怀疑。金属般的三体精神已经凝固到我们的每一个细胞中，您真的认为它还能融化吗？<strong>我是个小人物，生活在社会的最底层，没有人会注意到我，孤独一生，没有财富没有地位没有爱情，也没有希望。如果我能够拯救一个自己爱上的遥远的美丽世界，那这一辈子至少没有白活。</strong>当然，元首，这也让我有缘见到了您，如果不是这个举动，我这样的小人物也只能在电视上景仰您，所以请允许我在此表达自己的荣幸。”</p>
-<p>把人类看做虫子的三体人似乎忘记了一个事实：<strong>虫子从来就没有被真正战胜过。</strong></p>
-<p>太阳被一小片黑云遮住了，在大地上投下一团移动的阴影。这不是普遍的云，是刚刚到来的一大群蝗虫，它们很快开始在附近的田野上降落，<strong>三个人沐浴在生命的暴雨之中，感受着地球生命的尊严。</strong></p>
-<p>叶文洁走到悬崖边，她曾在这里亲手结束了两个军人的生命。<strong>她并没有像其他同行的人那样眺望云海，而是把目光集中到一个方向，在那一片云层下面，有一个叫齐家屯的小村庄……</strong></p>
-
-          
-        
-      
-    </div>
-
-    
-
-    
-
-    
-    
-    
-
-    
-
-    
-      
-    
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/02/13/JavaScript按位操作符基础知识/"/>
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -875,11 +501,386 @@
 
 
     
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/02/12/JavaScript中sort函数/"/>
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="gzl"/>
+      <meta itemprop="description" content=""/>
+      <meta itemprop="image" content="/images/avatar.gif"/>
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="gzl的博客"/>
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/2020/02/12/JavaScript中sort函数/" class="post-title-link" itemprop="url">JavaScript中sort函数</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+
+          
+          
+          
+
+          
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2020-02-12 20:42:37" itemprop="dateCreated datePublished" datetime="2020-02-12T20:42:37+08:00">2020-02-12</time>
+            </span>
+          
+
+          
+            
+
+            
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2020-02-13 10:46:28" itemprop="dateModified" datetime="2020-02-13T10:46:28+08:00">2020-02-13</time>
+              </span>
+            
+          
+
+          
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/JavaScript/" itemprop="url" rel="index"><span itemprop="name">JavaScript</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+
+          <br/>
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="对数组的排序"><a href="#对数组的排序" class="headerlink" title="对数组的排序"></a>对数组的排序</h1><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> arr = [<span class="number">1</span>,<span class="number">6</span>,<span class="number">9</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">12</span>];</span><br><span class="line"><span class="built_in">console</span>.log(arr.sort()) <span class="comment">// [1, 12, 3, 4, 6, 9]</span></span><br></pre></td></tr></table></figure>
+<p>因为 sort 方法在对数组做排序时，把元素默认成字符串进行相互比较，因此需要添加一个辅助函数，然后 sort 就能根据返回值的情况对数组进行排序</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> arr = [<span class="number">1</span>,<span class="number">6</span>,<span class="number">9</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">12</span>];</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">compare</span>(<span class="params">a, b</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (a &lt; b) &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">-1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span> (a &gt; b) &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">console</span>.log(arr.sort(compare));  <span class="comment">// [1, 3, 4, 6, 9, 12]</span></span><br></pre></td></tr></table></figure>
+<p>上面的方法可以简化为</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> arr = [<span class="number">1</span>,<span class="number">6</span>,<span class="number">9</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">12</span>];</span><br><span class="line"><span class="built_in">console</span>.log(arr.sort(<span class="function">(<span class="params">a, b</span>) =&gt;</span> a - b));  <span class="comment">// [1, 3, 4, 6, 9, 12]</span></span><br></pre></td></tr></table></figure>
+<h1 id="对字符串的排序"><a href="#对字符串的排序" class="headerlink" title="对字符串的排序"></a>对字符串的排序</h1><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> names = [<span class="string">'Ana'</span>,<span class="string">'ana'</span>,<span class="string">'john'</span>,<span class="string">'John'</span>];</span><br><span class="line"><span class="built_in">console</span>.log(names.sort())  <span class="comment">// ["Ana", "John", "ana", "john"]</span></span><br></pre></td></tr></table></figure>
+<p>为什么会出现上面的结果呢？这是因为 JavaScript 在做字符比较的时候，是根据字符对应的 ASCII 值来比较的，例如 A、J、a、j 对应的 ASCII 值分别是 65、74、97、106，虽然 a 在字母表中是最靠前的，但 J 的 ASCII 值比 a 的小，所以排在了 a 前面。</p>
+<p>加入  <code>toLowerCase()</code>  使其按照字母顺序排序</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> names = [<span class="string">'Ana'</span>,<span class="string">'ana'</span>,<span class="string">'john'</span>,<span class="string">'John'</span>];</span><br><span class="line"><span class="built_in">console</span>.log(names.sort(<span class="function">(<span class="params">a, b</span>) =&gt;</span> a.toLowerCase() - b.toLowerCase()))</span><br><span class="line"><span class="comment">//  ["Ana", "ana", "john", "John"]</span></span><br></pre></td></tr></table></figure>
+<p>使用  <code>localeCompare()</code>  可以使小写子母排在前面</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> names = [<span class="string">'Ana'</span>,<span class="string">'ana'</span>,<span class="string">'john'</span>,<span class="string">'John'</span>];</span><br><span class="line"><span class="built_in">console</span>.log(names.sort(<span class="function">(<span class="params">a, b</span>) =&gt;</span> a.localeCompare(b)))</span><br><span class="line"><span class="comment">//  ["ana", "Ana", "john", "John"]</span></span><br></pre></td></tr></table></figure>
+<h1 id="自定义排序"><a href="#自定义排序" class="headerlink" title="自定义排序"></a>自定义排序</h1><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> friends = [</span><br><span class="line">    &#123; <span class="attr">name</span>: <span class="string">'John'</span>, <span class="attr">age</span>: <span class="number">30</span> &#125;,</span><br><span class="line">    &#123; <span class="attr">name</span>: <span class="string">'Ana'</span>, <span class="attr">age</span>: <span class="number">20</span> &#125;,</span><br><span class="line">    &#123; <span class="attr">name</span>: <span class="string">'Chris'</span>, <span class="attr">age</span>: <span class="number">25</span> &#125;</span><br><span class="line">];</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">comparePerson</span>(<span class="params">a, b</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (a.age &lt; b.age) &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">-1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span> (a.age &gt; b.age) &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">console</span>.log(friends.sort(comparePerson));</span><br><span class="line"><span class="comment">// 0: &#123;name: "Ana", age: 20&#125;</span></span><br><span class="line"><span class="comment">// 1: &#123; name: "Chris", age: 25 &#125;</span></span><br><span class="line"><span class="comment">// 2: &#123; name: "John", age: 30 &#125;</span></span><br></pre></td></tr></table></figure>
+<p>简化一下</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> friends = [</span><br><span class="line">    &#123; <span class="attr">name</span>: <span class="string">'John'</span>, <span class="attr">age</span>: <span class="number">30</span> &#125;,</span><br><span class="line">    &#123; <span class="attr">name</span>: <span class="string">'Ana'</span>, <span class="attr">age</span>: <span class="number">20</span> &#125;,</span><br><span class="line">    &#123; <span class="attr">name</span>: <span class="string">'Chris'</span>, <span class="attr">age</span>: <span class="number">25</span> &#125;</span><br><span class="line">];</span><br><span class="line"><span class="built_in">console</span>.log(friends.sort(<span class="function">(<span class="params">a, b</span>) =&gt;</span> a.age - b.age));</span><br></pre></td></tr></table></figure>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/02/10/浏览器的防抖和节流/"/>
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="gzl"/>
+      <meta itemprop="description" content=""/>
+      <meta itemprop="image" content="/images/avatar.gif"/>
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="gzl的博客"/>
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/2020/02/10/浏览器的防抖和节流/" class="post-title-link" itemprop="url">浏览器的防抖和节流</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+
+          
+          
+          
+
+          
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2020-02-10 09:55:44" itemprop="dateCreated datePublished" datetime="2020-02-10T09:55:44+08:00">2020-02-10</time>
+            </span>
+          
+
+          
+            
+
+            
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2020-02-13 10:47:21" itemprop="dateModified" datetime="2020-02-13T10:47:21+08:00">2020-02-13</time>
+              </span>
+            
+          
+
+          
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/浏览器/" itemprop="url" rel="index"><span itemprop="name">浏览器</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+
+          <br/>
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="防抖"><a href="#防抖" class="headerlink" title="防抖"></a>防抖</h1><p>一个比较形象的比喻就是电梯每进来一个人就要等10秒再运行。</p>
+<p>防抖函数代码：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">debounce</span>(<span class="params">fn, delay</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">let</span> timer = <span class="literal">null</span>;</span><br><span class="line">  <span class="keyword">return</span> <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">let</span> context = <span class="keyword">this</span>,</span><br><span class="line">      args = <span class="built_in">arguments</span>;</span><br><span class="line">    clearTimeout(timer);</span><br><span class="line">    timer = setTimeout(<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">      fn.apply(context, args);</span><br><span class="line">    &#125;, delay);</span><br><span class="line">  &#125;;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>比较常见的应用是 input 输入框添加防抖</p>
+<h1 id="节流"><a href="#节流" class="headerlink" title="节流"></a>节流</h1><p>一个比较形象的比喻就是打穿越火线（cf）时，就算一直按着鼠标，也只能在规定射速内射出子弹。</p>
+<p>节流代码：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">throttle</span>(<span class="params">fn, threshhold = <span class="number">250</span>, scope</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">let</span> last,</span><br><span class="line">    deferTimer;</span><br><span class="line">  <span class="keyword">return</span> <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">let</span> context = scope || <span class="keyword">this</span>;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">let</span> now = +<span class="keyword">new</span> <span class="built_in">Date</span>,</span><br><span class="line">      args = <span class="built_in">arguments</span>;</span><br><span class="line">    <span class="keyword">if</span> (last &amp;&amp; now &lt; last + threshhold) &#123;</span><br><span class="line">      <span class="comment">// hold on to it</span></span><br><span class="line">      clearTimeout(deferTimer);</span><br><span class="line">      deferTimer = setTimeout(<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">        last = now;</span><br><span class="line">        fn.apply(context, args);</span><br><span class="line">      &#125;, threshhold);</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">      last = now;</span><br><span class="line">      fn.apply(context, args);</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>比较常见的应用是监听滚动事件，比如是否滑到底部自动加载更多，用throttle来判断</p>
+<h1 id="图片对比"><a href="#图片对比" class="headerlink" title="图片对比"></a>图片对比</h1><p><img src="/img/throttle/1.png" alt="对比"></p>
+<h1 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h1><p><a href="https://stackoverflow.com/questions/25991367/difference-between-throttling-and-debouncing-a-function" target="_blank" rel="noopener">https://stackoverflow.com/questions/25991367/difference-between-throttling-and-debouncing-a-function</a></p>
+<p><a href="http://demo.nimius.net/debounce_throttle/" target="_blank" rel="noopener">http://demo.nimius.net/debounce_throttle/</a></p>
+<p><a href="https://remysharp.com/2010/07/21/throttling-function-calls" target="_blank" rel="noopener">https://remysharp.com/2010/07/21/throttling-function-calls</a></p>
+<p><a href="https://juejin.im/post/5b8de829f265da43623c4261#heading-4" target="_blank" rel="noopener">https://juejin.im/post/5b8de829f265da43623c4261#heading-4</a></p>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
   </section>
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/2/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/">4</a><span class="space">&hellip;</span><a class="page-number" href="/page/34/">34</a><a class="extend next" rel="next" href="/page/4/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
+    <a class="extend prev" rel="prev" href="/page/2/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/">4</a><span class="space">&hellip;</span><a class="page-number" href="/page/32/">32</a><a class="extend next" rel="next" href="/page/4/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
   </nav>
 
 
@@ -922,7 +923,7 @@
         
           <a href="/archives/">
         
-          <span class="site-state-item-count">100</span>
+          <span class="site-state-item-count">96</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -969,7 +970,7 @@
         
           
         
-        <span class="site-state-item-count">15</span>
+        <span class="site-state-item-count">14</span>
         <span class="site-state-item-name">分类</span>
         </a>
       </div>
@@ -1062,7 +1063,7 @@
         
           
         
-        <span class="site-state-item-count">38</span>
+        <span class="site-state-item-count">37</span>
         <span class="site-state-item-name">标签</span>
         </a>
       </div>
